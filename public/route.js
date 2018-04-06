@@ -38,6 +38,14 @@
         controllerAs: 'vm'
       })
 
+      .state('main.perfil', {
+        url: '/miPerfil',
+        templateUrl: './components/usuarios/perfil/perfil.view.html',
+        data: {
+          pageTitle: 'Mi perfil'
+        }
+      })
+
       .state('registrarCliente', {
         url: '/registrarCliente',
         templateUrl: './components/usuarios/cliente/registrarCliente/registrarCliente.view.html',
