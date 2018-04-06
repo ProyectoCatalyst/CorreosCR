@@ -1,6 +1,6 @@
-<aside class="bg-dark">
-  <ul class="nav flex-column">
-    <li class="nav-item pt-5">
+<aside class="bg-dark" id="sidebar">
+  <ul class="nav flex-column pl-2">
+    <li class="nav-item py-3 px-3">
       <a class="nav-link text-white" ui-sref="main.verPerfil" href="">
         <div class="d-inline">
           <i class="fas fa-user"></i>
@@ -8,18 +8,87 @@
         <p class="d-inline">Mi perfil</p>
       </a>
     </li>
-    <li class="nav-item dropright">
-        <a class="nav-link text-white dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <div class="d-inline">
-            <i class="fas fa-ban"></i>
-          </div>
-          <p class="d-inline">dropdown</p>
-        </a>
-        <div class="dropdown-menu">
-          <a class="dropdown-item" ui-sref="">Lorem</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" ui-sref="">Lorem</a>
+    <li class="nav-item dropright py-3 px-3">
+      <a class="nav-link text-white dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="d-inline">
+          <i class="fas fa-users"></i>
         </div>
-      </li>
+        <p class="d-inline">Clientes</p>
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" ui-sref="">Registrar</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" ui-sref="">Listar</a>
+      </div>
+    </li>
+    <li class="nav-item dropright py-3 px-3">
+      <a class="nav-link text-white dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="d-inline">
+          <i class="fas fa-box"></i>
+        </div>
+        <p class="d-inline">Paquetes</p>
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" ui-sref="">Prealertar</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" ui-sref="">Listar</a>
+      </div>
+    </li>
+    <li class="nav-item dropright py-3 px-3">
+      <a class="nav-link text-white dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="d-inline">
+          <i class="fas fa-people-carry"></i>
+        </div>
+        <p class="d-inline">Aduana</p>
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" ui-sref="">Registrar encargado de aduana</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" ui-sref="">Listar encargados de aduana</a>
+      </div>
+    </li>
+    <li class="nav-item dropright py-3 px-3">
+      <a class="nav-link text-white dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="d-inline">
+          <i class="fas fa-building"></i>
+        </div>
+        <p class="d-inline">Sucursales</p>
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" ui-sref="">Registrar encargado de sucursal</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" ui-sref="">Listar encargados de sucursal</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" ui-sref="">Registrar sucursal</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" ui-sref="">Listar sucursales</a>
+      </div>
+    </li>
+    <li class="nav-item dropright py-3 px-3">
+      <a class="nav-link text-white dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="d-inline">
+          <i class="fas fa-motorcycle"></i>
+        </div>
+        <p class="d-inline">Repartidor</p>
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" ui-sref="">Registrar</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" ui-sref="">Listar</a>
+      </div>
+    </li>
+    <li class="nav-item dropright py-3 px-3">
+      <a class="nav-link text-white dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="d-inline">
+          <i class="fas fa-id-card-alt"></i>
+        </div>
+        <p class="d-inline">Convenios</p>
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" ui-sref="">Registrar</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" ui-sref="">Listar</a>
+      </div>
+    </li>
   </ul>
 </aside>
