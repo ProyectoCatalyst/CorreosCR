@@ -21,6 +21,36 @@
         },
         controller: 'controladorInicioSesion',
         controllerAs: 'vm'
+      })
+
+      .state('main', {
+        url: '/main',
+        templateUrl: './components/main/main.view.html',
+        data: {
+          pageTitle: 'Perfil de usuario'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/main/main.controller.js')
+          }]
+        },
+        controller: 'mainController',
+        controllerAs: 'vm'
+      })
+
+      .state('registrarCliente', {
+        url: '/registrarCliente',
+        templateUrl: './components/usuarios/cliente/registrarCliente/registrarCliente.view.html',
+        data: {
+          pageTitle: 'Registrar cliente'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/cliente/registrarCliente/registrarCliente.controller.js')
+          }]
+        },
+        controller: 'controladorRegistrarCliente',
+        controllerAs: 'vm'
       });
 
     $urlRouterProvider.otherwise('/');

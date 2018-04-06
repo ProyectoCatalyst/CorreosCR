@@ -4,13 +4,13 @@
     .module('correosCR')
     .directive('cabeceraPrincipal', cabeceraPrincipal);
 
-  cabeceraPrincipal.$inject = ['$state', 'loginService'];
+  cabeceraPrincipal.$inject = ['$state', 'servicioInicioSesion'];
 
-  function cabeceraPrincipal($state, loginService) {
+  function cabeceraPrincipal($state, servicioInicioSesion) {
 
     let headlineController = function () {
       const vm = this;
-      vm.closeSesion = () => {
+      vm.cerrarSesion = () => {
         swal("¿Desea cerrar la sesión?", {
             buttons: {
               cancel: "Cancelar",
@@ -23,7 +23,7 @@
           .then((value) => {
             switch (value) {
               case "cerrarSesion":
-                loginService.logOut();
+                servicioInicioSesion.logOut();
                 $state.go('paginaInicio');
                 swal({
                   title: "Sesión cerrada correctamente",
