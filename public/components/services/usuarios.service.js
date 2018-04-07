@@ -68,12 +68,6 @@
 
                 if(obj.estado == true){
                     let repartidoresTemp = new Repartidor(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.cedula, obj.fecha, obj.genero, obj.ubicacion, obj.provincia, obj.canton, obj.distrito, obj.direccion,obj.correo, obj.contrasenna, obj.rol, obj.telefono, obj.telefonoAdicional, obj.estado, obj.razonDesact, obj.sucursal);
-        
-                    obj.licencia.forEach(objLicenciaTemp => {
-                        let objLicencia = new Licencia(objLicenciaTemp.codigo, objLicenciaTemp.fechaVencimiento, objLicenciaTemp.tipo, objLicenciaTemp.estado);
-
-                        repartidoresTemp.setLicencia(objLicencia);
-                    });
                 
                     listadeusuarios.push(repartidoresTemp);
                 }

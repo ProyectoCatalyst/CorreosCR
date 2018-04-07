@@ -38,6 +38,14 @@
         controllerAs: 'vm'
       })
 
+      .state('main.inicio', {
+        url: '/inicio',
+        templateUrl: './components/main/inicio/inicio.view.html',
+        data: {
+          pageTitle: 'Inicio'
+        }
+      })
+
       .state('main.perfil', {
         url: '/miPerfil',
         templateUrl: './components/usuarios/perfil/perfil.view.html',

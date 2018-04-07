@@ -16,7 +16,7 @@
       let inicioCorrecto = servicioInicioSesion.logIn(pusuario);
 
       if (inicioCorrecto == true){
-        $state.go('main');
+        $state.go('main.inicio');
       }else{
         swal({
           title: "Verifique su información",
