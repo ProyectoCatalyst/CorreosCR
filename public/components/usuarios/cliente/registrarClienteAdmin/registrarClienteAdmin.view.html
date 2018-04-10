@@ -146,7 +146,14 @@
         <div class="col-md-2">
 
         </div>
-       
+
+
+        <div map-lazy-load="https://maps.google.com/maps/api/js"
+            map-lazy-load-params="{{https://www.google.com/maps/place/Costa+Rica}}">
+            <ng-map center="41,-87" zoom="3"></ng-map>
+        </div>
+
+
         <div class="col-md-10 mt-3 mb-5">
           <button type="submit" class="btn btn-danger">Registrar cliente</button>
         </div>

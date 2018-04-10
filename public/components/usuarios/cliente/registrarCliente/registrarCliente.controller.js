@@ -1,10 +1,11 @@
 (() => {
   'use strict';
   angular
-    .module('correosCR')
+    .module('correosCR', ['ngMap'])
     .controller('controladorRegistrarCliente', controladorRegistrarCliente);
 
-    controladorRegistrarCliente.$inject = ['$http', '$stateParams', '$state', 'servicioUsuarios']; 
+    controladorRegistrarCliente.$inject = ['$http', '$stateParams', '$state', 'servicioUsuarios'];
+    
 
   function controladorRegistrarCliente($http, $stateParams, $state, servicioUsuarios) {
     let vm = this;
