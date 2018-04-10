@@ -54,6 +54,36 @@
         }
       })
 
+      .state('main.registrarTarjetas', {
+        url: '/registrarTarjetas',
+        templateUrl: './components/tarjetas/registrarTarjetas/registrarTarjeta.view.html',
+        data: {
+          pageTitle: 'Registrar tarjeta'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/tarjetas/registrarTarjetas/registrarTarjeta.controller.js')
+          }]
+        },
+        controller: 'controladorRegistrarTarjeta',
+        controllerAs: 'vm'
+      })
+
+      .state('main.listarTarjetas', {
+        url: '/listarTarjetas',
+        templateUrl: './components/tarjetas/listarTarjetas/listarTarjetas.view.html',
+        data: {
+          pageTitle: 'Listar tarjetas'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/tarjetas/listarTarjetas/listarTarjetas.controller.js')
+          }]
+        },
+        controller: 'controladorListarTarjeta',
+        controllerAs: 'vm'
+      })
+
       .state('registrarCliente', {
         url: '/registrarCliente',
         templateUrl: './components/usuarios/cliente/registrarCliente/registrarCliente.view.html',
