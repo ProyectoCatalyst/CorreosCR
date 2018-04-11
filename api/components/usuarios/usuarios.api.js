@@ -35,9 +35,9 @@ module.exports.save = (req, res) => {
 
   newUser.registrar((err) => {
     if(err){
-      res.json({success:false, msg: 'Ha ocurrido un error en el registro de usuarios' + err});
+      res.json({success:false, msj: 'Ha ocurrido un error en el registro de usuarios' + err});
     }else{
-      res.json({success:true, msg:'Se registró el usuario correctamente'});
+      res.json({success:true, msj:'Se registró el usuario correctamente'});
     }
   });
 };
