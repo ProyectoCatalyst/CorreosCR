@@ -18,20 +18,7 @@ let UserSchema = new mongoose.Schema({
   correo            : {type: String, require: true},
   contrasenna       : {type: String, require: true},
   rol               : {type: String, require: true, maxlength: 1, minlength: 1},
-  estado            : {type: Boolean, require: true},
-  // Encargado de aduana
-  // Encargado de sucursal
-  // CLiente
-  telefono          : {type: String},
-  tarjeta           : {type: Array},
-  // Repartidor
-  paqueteAsignado   : {type: Array},
-  licencia          : {type: Array},
-  telefono          : {type: String},
-  telefonoAdicional : {type: String},
-  estado            : {type: String},
-  razonDesact       : {type: String},
-  sucursal          : {type: String},
+  estado            : {type: Boolean, require: true}
 });
 
 //nombre del modelo dentro del back end y el userSchema es el nombre dentro de mongoose

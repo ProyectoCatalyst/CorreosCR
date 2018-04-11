@@ -6,7 +6,7 @@
         <h1 id="tituloPrincipal" class="text-center mt-5">Registrar cliente</h1>
       </div>
     </div>
-    <form name="frmRegistroClientes" ng-submit="vm.registrarCliente(vm.clienteNuevo)">
+    <form name="frmRegistroClientes" ng-submit="vm.preRegistrarCliente(vm.clienteNuevo)">
 
       <div class="row justify-content-center">
 
@@ -86,6 +86,12 @@
           <div class="form-group">
             <label for="txtTelefono">Telefono:</label>
             <input type="number" class="form-control" id="txtTelefono" ng-model="vm.clienteNuevo.telefono" required>
+            <small class="form-text text-danger">* Campo Requerido</small>
+          </div>
+
+          <div class="form-group">
+            <label for="iptFoto">Fotografia:</label>
+            <input type="file" class="form-control-file" id="iptFoto" files-input ng-model="vm.clienteNuevo.photo" required>
             <small class="form-text text-danger">* Campo Requerido</small>
           </div>
 

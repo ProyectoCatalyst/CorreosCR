@@ -4,9 +4,9 @@
     .module('correosCR')
     .controller('controladorRegistrarCliente', controladorRegistrarCliente);
 
-    controladorRegistrarCliente.$inject = ['$http', '$stateParams', '$state', 'servicioUsuarios']; 
+    controladorRegistrarCliente.$inject = ['$http', '$stateParams', '$state', 'servicioUsuarios', 'imageUploadService', 'Upload']; 
 
-  function controladorRegistrarCliente($http, $stateParams, $state, servicioUsuarios) {
+  function controladorRegistrarCliente($http, $stateParams, $state, servicioUsuarios, imageUploadService, Upload) {
     let vm = this;
 
     vm.provincias = $http({
@@ -50,12 +50,21 @@
     }
 
     vm.clienteNuevo = {};
+
+    vm.cloudObj = imageUploadService.getConfiguration();
+
+    vm.preRegistrarCliente = (pclienteNuevo) => {
+      vm.cloudObj.data.file = pclienteNuevo.photo[0];
+      Upload.upload(vm.cloudObj).success((data) =>{
+        vm.registrarCliente(pclienteNuevo, data.url);
+     });
+    }
     
-    vm.registrarCliente= (pclienteNuevo) => {
+    vm.registrarCliente= (pclienteNuevo, urlImagen) => {
 
       let rol = 5;
 
-      let objNuevoCliente = new Cliente(pclienteNuevo.nombre, pclienteNuevo.segundoNombre, pclienteNuevo.primerApellido, pclienteNuevo.segundoApellido, pclienteNuevo.cedula, pclienteNuevo.fecha,  pclienteNuevo.sexo, pclienteNuevo.ubicacion, pclienteNuevo.provincia.name, pclienteNuevo.canton.name, pclienteNuevo.distrito.name, pclienteNuevo.direccion,  pclienteNuevo.correo, pclienteNuevo.contrasenna, rol, pclienteNuevo.telefono);
+      let objNuevoCliente = new Cliente(pclienteNuevo.nombre, pclienteNuevo.segundoNombre, pclienteNuevo.primerApellido, pclienteNuevo.segundoApellido, urlImagen, pclienteNuevo.cedula, pclienteNuevo.fecha,  pclienteNuevo.sexo, pclienteNuevo.ubicacion, pclienteNuevo.provincia.name, pclienteNuevo.canton.name, pclienteNuevo.distrito.name, pclienteNuevo.direccion,  pclienteNuevo.correo, pclienteNuevo.contrasenna, rol, pclienteNuevo.telefono);
       
       let registro = servicioUsuarios.agregarUsuario(objNuevoCliente);
 

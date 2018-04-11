@@ -34,8 +34,7 @@
       if (usuariorepetido == true) {
         registrovalido = false;
       } else {
-        listadeusuarios.push(pNuevoCliente);
-        registrovalido = localStorageFactory.setItem(listaUsuarios, listadeusuarios);
+        registrovalido = dataStorageFactory.setUserData(pNuevoCliente);
       }
 
       return registrovalido;

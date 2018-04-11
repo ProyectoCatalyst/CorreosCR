@@ -12,6 +12,7 @@ const gulp = require('gulp'),
         views : './public/components/**/**/*.html',
         styles: './public/sources/styles/**/*.scss',
         impSass : './public/sources/styles/style.scss',
+        princJs : './**/*.js',
         js: './public/components/**/**/*.js',
         jsBackEnd: './api/**/**/**/*.js',
         excss: './public/*.css'
@@ -30,7 +31,7 @@ gulp.task('connect', () => {
 });
 
 gulp.task('to-do', () => {
-  gulp.src(paths.js)
+  gulp.src([paths.js, paths.princJs, paths.jsBackEnd])
   .pipe(todo())
   .pipe(gulp.dest('./'));
 });
