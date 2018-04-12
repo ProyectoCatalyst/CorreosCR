@@ -4,19 +4,27 @@
     .module('correosCR')
     .controller('controladorRegistrarCliente', controladorRegistrarCliente);
 
-    controladorRegistrarCliente.$inject = ['$http', '$stateParams', '$state', 'servicioUsuarios', 'imageUploadService', 'Upload']; 
+  controladorRegistrarCliente.$inject = ['$http', '$stateParams', '$state', 'servicioUsuarios', 'imageUploadService', 'Upload', 'NgMap'];
 
-  function controladorRegistrarCliente($http, $stateParams, $state, servicioUsuarios, imageUploadService, Upload) {
-    let vm = this;
+  function controladorRegistrarCliente($http, $stateParams, $state, servicioUsuarios, imageUploadService, Upload, NgMap) {
 
+    const vm = this;
+
+
+    NgMap.getMap("map").then(function(map) {
+      vm.map = map;
+    });
+
+    // Funcion que optiene las provincias
     vm.provincias = $http({
       method: 'GET',
       url: './sources/data/provincias.json'
-      }).then( (success) => {
-        vm.provincias = success.data;
-      }, (error) => {
+    }).then((success) => {
+      vm.provincias = success.data;
+    }, (error) => {
     });
 
+    // Funcion que rellena los los cantones
     vm.rellenarCantones = (pidProvincia) => {
       vm.cantones = $http({
         method: 'GET',
@@ -51,24 +59,25 @@
 
     vm.clienteNuevo = {};
 
+
     vm.cloudObj = imageUploadService.getConfiguration();
 
     vm.preRegistrarCliente = (pclienteNuevo) => {
       vm.cloudObj.data.file = pclienteNuevo.photo[0];
-      Upload.upload(vm.cloudObj).success((data) =>{
+      Upload.upload(vm.cloudObj).success((data) => {
         vm.registrarCliente(pclienteNuevo, data.url);
-     });
+      });
     }
-    
-    vm.registrarCliente= (pclienteNuevo, urlImagen) => {
+
+    vm.registrarCliente = (pclienteNuevo, urlImagen) => {
 
       let rol = 5;
 
-      let objNuevoCliente = new Cliente(pclienteNuevo.nombre, pclienteNuevo.segundoNombre, pclienteNuevo.primerApellido, pclienteNuevo.segundoApellido, urlImagen, pclienteNuevo.cedula, pclienteNuevo.fecha,  pclienteNuevo.sexo, pclienteNuevo.ubicacion, pclienteNuevo.provincia.name, pclienteNuevo.canton.name, pclienteNuevo.distrito.name, pclienteNuevo.direccion,  pclienteNuevo.correo, pclienteNuevo.contrasenna, rol, pclienteNuevo.telefono);
-      
+      let objNuevoCliente = new Cliente(pclienteNuevo.nombre, pclienteNuevo.segundoNombre, pclienteNuevo.primerApellido, pclienteNuevo.segundoApellido, urlImagen, pclienteNuevo.cedula, pclienteNuevo.fecha, pclienteNuevo.sexo, pclienteNuevo.ubicacion, pclienteNuevo.provincia.name, pclienteNuevo.canton.name, pclienteNuevo.distrito.name, pclienteNuevo.direccion, pclienteNuevo.correo, pclienteNuevo.contrasenna, rol, pclienteNuevo.telefono);
+
       let registro = servicioUsuarios.agregarUsuario(objNuevoCliente);
 
-      if(registro == true){
+      if (registro == true) {
         swal({
           title: "Registro exitoso",
           text: "Cliente registrado correctamente",
@@ -77,7 +86,7 @@
         });
         vm.clienteNuevo = null;
         $state.go('paginaInicio');
-      }else{
+      } else {
         swal({
           title: "Ha ocurrido un Error",
           text: "No sea tonto, el cliente ya se encuentra registrado",
@@ -86,5 +95,6 @@
         });
       }
     }
+
   }
 })();

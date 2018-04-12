@@ -71,6 +71,11 @@
                             <label>Telefono</label>
                             <input type="number" name="numeroAdicional" class="form-control" ng-model="vm.nuevoRegistro.telefonoAdicional">
                         </div>
+                        <div class="form-group">
+                            <label for="iptFoto">Fotografia:</label>
+                            <input type="file" class="form-control-file" id="iptFoto" files-input ng-model="vm.nuevoRegistro.photo" required>
+                            <small class="form-text text-danger">* Campo Requerido</small>
+                          </div>
 
                         <div class="form-group">
                             <label>Sexo *</label>

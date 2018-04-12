@@ -1,39 +1,39 @@
 (() => {
     'use strcit'
     angular
-    .module('prototipo')
-    .controller('controladorRegistrarRepartidor', controladorRegistrarRepartidor);
+        .module('correosCR')
+        .controller('controladorRegistrarRepartidor', controladorRegistrarRepartidor);
 
     controladorRegistrarRepartidor.$inject = ['$stateParams', '$state', 'servicioUsuarios'];
 
-    function controladorRegistrarRepartidor($stateParams, $state, servicioUsuarios){
+    function controladorRegistrarRepartidor($stateParams, $state, servicioUsuarios, imageUploadService, Upload) {
         let vm = this;
-    
+
         // vm.retornarDatosSucursales = servicioSucursales.retornarNombreSucursalesLS(); // requiere el servicio de sucursales para obtener la informacion de las sucursales en el sistema
         vm.registrarRepartidor = (pnuevoRegistro) => {
 
-            if(!(pnuevoRegistro.contrasenna == pnuevoRegistro.confirmarContrasenna)){
+            if (!(pnuevoRegistro.contrasenna == pnuevoRegistro.confirmarContrasenna)) {
                 swal({
-                    title: "Las contrasenas...",
-                    text: "No coinciden en la confirmacion",
+                    title: "Registro inválido",
+                    text: "Las contraseñas ingresadas no coinciden. Verifique los datos ingresados y proceda a hacer el registro.",
                     icon: "error",
                     button: "Aceptar"
                 });
-            }else{
+            } else {
 
                 pnuevoRegistro.estado = true;
                 pnuevoRegistro.razonDesact = '';
                 pnuevoRegistro.rol = 4;
 
-                let objNuevoRegistro = new Repartidor(pnuevoRegistro.nombre, pnuevoRegistro.segundoNombre, pnuevoRegistro.primerApellido, pnuevoRegistro.segundoApellido, pnuevoRegistro.cedula, pnuevoRegistro.fechaNacimiento, pnuevoRegistro.genero, pnuevoRegistro.ubicacion, pnuevoRegistro.provincia, pnuevoRegistro.canton, pnuevoRegistro.distrito, pnuevoRegistro.direccion,pnuevoRegistro.correo, pnuevoRegistro.contrasenna, pnuevoRegistro.rol, pnuevoRegistro.telefono, pnuevoRegistro.telefonoAdicional, pnuevoRegistro.estado, pnuevoRegistro.razonDesact, pnuevoRegistro.sucursal),
-                aDatos = [objNuevoRegistro, objNuevoRegistro.sucursal],
-                aDatosVerificar = [objNuevoRegistro.correo, objNuevoRegistro.sucursal];
+                let objNuevoRegistro = new Repartidor(pnuevoRegistro.nombre, pnuevoRegistro.segundoNombre, pnuevoRegistro.primerApellido, pnuevoRegistro.segundoApellido, pnuevoRegistro.cedula, pnuevoRegistro.fechaNacimiento, pnuevoRegistro.genero, pnuevoRegistro.ubicacion, pnuevoRegistro.provincia, pnuevoRegistro.canton, pnuevoRegistro.distrito, pnuevoRegistro.direccion, pnuevoRegistro.correo, pnuevoRegistro.contrasenna, pnuevoRegistro.rol, pnuevoRegistro.telefono, pnuevoRegistro.telefonoAdicional, pnuevoRegistro.estado, pnuevoRegistro.razonDesact, pnuevoRegistro.sucursal),
+                    aDatos = [objNuevoRegistro, objNuevoRegistro.sucursal],
+                    aDatosVerificar = [objNuevoRegistro.correo, objNuevoRegistro.sucursal];
 
                 let exito = verificarUsuario(aDatosVerificar[0]),
                     edadCorrecta = verifiarEdad(objNuevoRegistro.fecha);
 
-                if(exito){
-                    if(edadCorrecta){
+                if (exito) {
+                    if (edadCorrecta) {
                         let datosRepartidor = [objNuevoRegistro.cedula, objNuevoRegistro.sucursal, objNuevoRegistro.nombre];
                         servicioUsuarios.agregarRepartidor(aDatos);
                         $state.go('main.listarTodosLosRepartidores');
@@ -43,15 +43,15 @@
                             icon: "success",
                             button: "Aceptar"
                         });
-                    }else{
+                    } else {
                         swal({
                             title: "Verifique su edad",
                             text: "No puede ser menor de edad",
                             icon: "error",
                             button: "Aceptar"
-                        });    
+                        });
                     }
-                }else{
+                } else {
                     swal({
                         title: "Ya existe",
                         text: "El repartidor ya existe en el sistema",
@@ -66,31 +66,31 @@
             $state.go('main.listarTodosLosRepartidores');
         }
         //_______funciones internas________
-        function verificarUsuario(pcorreo){
+        function verificarUsuario(pcorreo) {
 
             let correosSistema = servicioUsuarios.retornarCorreosUsuarios(),
-            existente = false;
+                existente = false;
 
-            for(let i=0; i<correosSistema.length; i++){
+            for (let i = 0; i < correosSistema.length; i++) {
 
-                if(correosSistema[i] == pcorreo){
+                if (correosSistema[i] == pcorreo) {
                     existente = true;
                 }
             }
             return !existente
         }
 
-        function verifiarEdad(pfechaNacimiento){
+        function verifiarEdad(pfechaNacimiento) {
             let hoy = new Date,
                 nacimiento = new Date(pfechaNacimiento),
-                edad = (hoy-nacimiento) / 31536000000, // numero de un anio en milisegundos
+                edad = (hoy - nacimiento) / 31536000000, // numero de un anio en milisegundos
                 menor = false;
-              
-                if(edad < 18){
-                    menor = true
-                }
 
-                return !menor
+            if (edad < 18) {
+                menor = true
+            }
+
+            return !menor
         }
     }
 })();

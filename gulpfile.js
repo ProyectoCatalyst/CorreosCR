@@ -44,10 +44,10 @@ gulp.task('dependencies', () => {
 
   gulp.src([
     './node_modules/angular-messages/angular-messages.min.js',
-    './node_modules/angular-password/angular-password.min.js',
     './node_modules/angular-scroll/angular-scroll.min.js',
     './node_modules/ng-file-upload/dist/ng-file-upload.min.js',
-    './node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js'
+    './node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js',
+    './node_modules/ngmap/build/scripts/ng-map.min.js'
   ])
     .pipe(gulp.dest('./public/lib/angular/dependencies'));
 

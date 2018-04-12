@@ -54,7 +54,7 @@
         dataType: 'json',
         async: false,
         data: {
-          'primerNombre': data.nombre,
+          'primerNombre': data.primerNombre,
           'segundoNombre': data.segundoNombre,
           'primerApellido': data.primerApellido,
           'segundoApellido': data.segundoApellido,

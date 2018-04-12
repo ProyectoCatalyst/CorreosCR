@@ -2,7 +2,7 @@
   'use strict'
 
   angular
-  .module('prototipo')
+  .module('correosCR')
   .controller('controladorEditarRepartidor', controladorEditarRepartidor)
 
   controladorEditarRepartidor.$inject = ['$state', '$stateParams', 'servicioUsuarios']
