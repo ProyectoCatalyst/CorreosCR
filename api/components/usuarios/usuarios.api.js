@@ -3,13 +3,14 @@ const UserModel = require('./usuarios.model');
 module.exports.registrar = (req, res) => {
   let newUser = Object.assign(new UserModel(), req.body);
 
+  let objtemp = req.body;
+
+  console.log('----------------------------------------------------------------------------------------------------------')
+  console.log('Esquema sin armar');
+  console.log(objtemp);
+  console.log('----------------------------------------------------------------------------------------------------------')
+
   switch (newUser.rol) {
-    case '2':
-
-    break;
-    case '3':
-
-    break;
     case '4': // Repartidor
       newUser.paqueteAsignado = req.body.paqueteAsignado;
       newUser.licencia = req.body.licencia;
@@ -18,15 +19,21 @@ module.exports.registrar = (req, res) => {
       newUser.estado = req.body.estado;
       newUser.razonDesact = req.body.razonDesact;
       newUser.sucursal = req.body.sucursal;
-    break;
+      break;
     case '5': // Cliente
+      console.log('es un cliente');
+      newUser.latitud = req.body.latitud;
+      newUser.longitud = req.body.longitud;
       newUser.telefono = req.body.telefono;
-      newUser.tarjeta = req.body.tarjeta;
-    break;
+      console.log('----------------------------------------------------------------------------------------------------------')
+      console.log('Esquema ya armado');
+      console.log(newUser);
+      console.log('----------------------------------------------------------------------------------------------------------')
+      break;
     default:
-    break;
-  }
 
+  }
+  console.log(newUser.latitud);
   newUser.save((err) => {
     if (err) {
       res.json({ success: false, msj: 'Ha ocurrido un error en el registro de usuarios' + err });

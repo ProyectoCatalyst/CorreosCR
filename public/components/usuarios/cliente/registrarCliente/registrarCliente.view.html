@@ -16,10 +16,14 @@
 
           <div class="form-group col-md-3">
             <label for="txtNombre">Primer nombre:</label>
-            <input type="text" class="form-control" id="txtNombre" name="campoNombre1" ng-model="vm.clienteNuevo.nombre" required>
+            <input type="text" class="form-control" id="txtNombre" name="campoNombre1" pattern="[ñáéíóúA-Za-z ]+" ng-model="vm.clienteNuevo.nombre"
+              required>
             <div ng-messages="frmRegistroClientes.campoNombre1.$error" role="alert">
               <div ng-message="required">
                 <small class="form-text text-danger">Este campo es requerido</small>
+              </div>
+              <div ng-message="pattern">
+                <small class="form-text text-muted">Formato incorrecto</small>
               </div>
             </div>
           </div>
@@ -32,11 +36,14 @@
 
           <div class="form-group col-md-3">
             <label for="txtPrimerApellido">Primer apellido:</label>
-            <input type="text" class="form-control" id="txtPrimerApellido" name="campoApellido1" ng-model="vm.clienteNuevo.primerApellido"
+            <input type="text" class="form-control" id="txtPrimerApellido" pattern="[ñáéíóúA-Za-z ]+" name="campoApellido1" ng-model="vm.clienteNuevo.primerApellido"
               required>
             <div ng-messages="frmRegistroClientes.campoApellido1.$error" role="alert">
               <div ng-message="required">
                 <small class="form-text text-danger">Este campo es requerido</small>
+              </div>
+              <div ng-message="pattern">
+                <small class="form-text text-muted">Formato incorrecto</small>
               </div>
             </div>
           </div>
@@ -128,31 +135,6 @@
         <div class="row">
 
           <div class="form-group col-md-3">
-            <label for="txtContrasenna">Contraseña:</label>
-            <input type="password" class="form-control" id="txtContrasenna" name="campoContrasenna" ng-model="vm.clienteNuevo.contrasenna"
-              pw-check='pw1' required>
-            <div ng-messages="frmRegistroClientes.campoContrasenna.$error" role="alert">
-              <div ng-message="required">
-                <small class="form-text text-danger">Este campo es requerido</small>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group col-md-3">
-            <label for="txtConfirmarContrasenna">Confirmar contraseña:</label>
-            <input type="password" class="form-control" id="txtConfirmarContrasenna" name="campoConfContrasenna" pw-check='pw1' ng-model="vm.clienteNuevo.confirmarContrasenna"
-              required>
-            <div ng-messages="frmRegistroClientes.campoConfContrasenna.$error" role="alert">
-              <div ng-message="required">
-                <small class="form-text text-danger">Este campo es requerido</small>
-              </div>
-              <div class='msg-block' ng-show='frmRegistroClientes.$error'>
-                <small class="form-text text-danger msg-error" ng-show='frmRegistroClientes.campoConfContrasenna.$error.pwmatch'>Las contraseñas ingresadas no coinciden</small>
-              </div>
-            </div>
-          </div>
-
-          <div class="form-group col-md-3">
             <label for="sltProvincia">Provincia:</label>
             <select id="sltProvincia" class="custom-select" name="campoProvincias" ng-model="vm.clienteNuevo.provincia" ng-change="vm.rellenarCantones(vm.clienteNuevo.provincia._id)"
               ng-options="provincia as provincia.name for provincia in vm.provincias track by provincia._id" required>
@@ -179,9 +161,6 @@
             </div>
           </div>
 
-        </div>
-
-        <div class="row">
           <div class="form-group col-md-3">
             <label for="sltDistrito">Distrito:</label>
             <select id="sltDistrito" class="custom-select" name="campoDistritos" ng-options="distrito as distrito.name for distrito in vm.distritos track by distrito._id"
@@ -195,17 +174,22 @@
             </div>
           </div>
 
-          <div class="col-md-6">
-            <label for="map">Ubicación exacta:</label>
-            <ng-map id="map" center="current-location" styles="width: 50%; height: 20em;">
-              <marker position="current-location" draggable="true" on-dragend="vm.getCurrentLocation()" coords="marker.coords" options="marker.options"></marker>
-            </ng-map>
-          </div>
-
           <div class="form-group col-md-3">
             <label for="txtDireccion">Direccion</label>
             <textarea class="form-control" id="txtdireccion" ng-model="vm.clienteNuevo.direccion"></textarea>
           </div>
+
+        </div>
+
+        <div class="row">
+
+          <div class="col-md-6 mx-auto">
+            <label for="map">Ubicación exacta:</label>
+            <ng-map id="map" center="current-location" geo-callback="vm.callbackFunc('you')">
+              <marker position="current-location" coords="marker.coords" options="marker.options"></marker>
+            </ng-map>
+          </div>
+
         </div>
 
         <div class="row mt-5">
@@ -213,7 +197,6 @@
             <button type="submit" class="btn btn-danger">Registrar cliente</button>
           </div>
         </div>
-
 
       </form>
     </div>

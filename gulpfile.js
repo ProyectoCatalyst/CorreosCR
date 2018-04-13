@@ -47,7 +47,8 @@ gulp.task('dependencies', () => {
     './node_modules/angular-scroll/angular-scroll.min.js',
     './node_modules/ng-file-upload/dist/ng-file-upload.min.js',
     './node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js',
-    './node_modules/ngmap/build/scripts/ng-map.min.js'
+    './node_modules/ngmap/build/scripts/ng-map.min.js',
+    './node_modules/generate-password/test/generator.js'
   ])
     .pipe(gulp.dest('./public/lib/angular/dependencies'));
 

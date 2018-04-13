@@ -54,6 +54,7 @@
         dataType: 'json',
         async: false,
         data: {
+          //Inicio del esquema basico
           'primerNombre': data.primerNombre,
           'segundoNombre': data.segundoNombre,
           'primerApellido': data.primerApellido,
@@ -61,7 +62,6 @@
           'cedula': data.cedula,
           'fecha': data.fecha,
           'genero': data.genero,
-          'ubicacion': data.ubicacion,
           'provincia': data.provincia,
           'canton': data.canton,
           'distrito': data.distrito,
@@ -69,16 +69,16 @@
           'correo': data.correo,
           'contrasenna': data.contrasenna,
           'rol': data.rol,
-          'telefono': data.telefono,
-          'tarjeta': data.tarjeta,
-          'paqueteAsignado': data.paqueteAsignado,
-          'licencia': data.licencia,
-          'telefono': data.telefono,
-          'tarjeta': data.tarjeta,
-          'paqueteAsignado': data.paqueteAsignado,
-          'licencia': data.licencia,
+          'estado': data.estado,
+          // Final del esquema basico
           'telefono': data.telefono,
           'telefonoAdicional': data.telefonoAdicional,
+          'latitud' : data.latitud,
+          'longitud' : data.longitud,
+          'tarjeta': data.tarjeta,
+          'paqueteAsignado': data.paqueteAsignado,
+          'licencia': data.licencia,
+          'telefono': data.telefono,
           'razonDesact': data.razonDesact,
           'sucursal': data.sucursal
         }
