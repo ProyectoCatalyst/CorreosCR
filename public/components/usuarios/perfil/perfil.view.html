@@ -1,1 +1,27 @@
-<h1 class=" text-center mt-5">hola</h1>
+<main class="hero" id="mainPerfil">
+  <div class="container">
+    <section class="row">
+      <div class="col-md-12">
+        <h1 class="text-center my-5 pt-2">{{vm.usuarioActivo.primerNombre}} {{vm.usuarioActivo.primerApellido}}</h1>
+      </div>
+    </section>
+    <section class="row">
+      <div class="col-md-6 d-flex justify-content-center">
+        <div class="">
+          <img src="sources/img/avatar.jpeg" class="img-fluid rounded-circle" width="200px" height="200px" alt="">
+        </div>
+      </div>
+      <div class="col-md-6 d-flex">
+        <div id="informacion">
+          <p>Cédula: {{vm.usuarioActivo.cedula}}</p>
+          <p>Correo: {{vm.usuarioActivo.correo}}</p>
+          <p>Fecha de nacimiento: {{vm.usuarioActivo.fecha | date:'dd-MM-yyyy'}}</p>
+          <p>Sexo: {{vm.usuarioActivo.genero}}</p>
+          <p>{{vm.usuarioActivo.provincia}}, {{vm.usuarioActivo.canton}}, {{vm.usuarioActivo.distrito}}</p>
+          <button type="button" class="btn btn-danger">Editar información</button>
+          <button type="button" class="btn btn-danger" ng-if="vm.rol==1">Desactivar cuenta</button>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>

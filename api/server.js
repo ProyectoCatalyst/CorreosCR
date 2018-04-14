@@ -62,12 +62,15 @@ app.use( (req, res, next) => {
  * Exportamos las funcionalidades
  */
 const index = require('./index'),
-      usuarios = require('./components/usuarios/usuarios.route');
+      usuarios = require('./components/usuarios/usuarios.route'),
+      tarjetas = require('./components/tarjetas/tarjetas.route');
 /**
  * Se definien las rutas de ExpressJS
  */
+app.use('/api', tarjetas);
 app.use('/api', usuarios);
 app.use('/', index);
+
 
 /// Se guarda todo lo que se ha realizado
 module.exports = app;

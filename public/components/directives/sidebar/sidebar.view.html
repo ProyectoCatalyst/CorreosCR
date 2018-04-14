@@ -1,5 +1,5 @@
-<aside class="position-fixed" id="sidebar">
-  <ul class="navbar-navbar pl-2 pt-5">
+<aside class="" id="sidebar">
+  <ul class="navbar-navbar pl-2 pt-5 w-100">
     <li class="nav-item pb-4" id="mtSidebar">
       <a class="nav-link text-white" ui-sref="main.inicio" href="">
         <div class="d-inline">
@@ -123,6 +123,14 @@
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" ui-sref="">Listar</a>
       </div>
+    </li>
+    <li class="nav-item pb-4" id="mtSidebar">
+      <a class="nav-link">
+        <button class="btn btn-danger" type="button" ng-click="vm.cerrarSesion()">
+          <i class="fas fa-power-off"></i>
+          Cerrar sesión
+        </button>
+      </a>
     </li>
   </ul>
 </aside>

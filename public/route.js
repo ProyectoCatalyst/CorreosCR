@@ -23,6 +23,14 @@
         controllerAs: 'vm'
       })
 
+      .state('404', {
+        url: '/404',
+        templateUrl: './404.html',
+        data: {
+          pageTitle: 'Error 404'
+        }
+      })
+
       .state('main', {
         url: '/main',
         templateUrl: './components/main/main.view.html',
@@ -51,7 +59,14 @@
         templateUrl: './components/usuarios/perfil/perfil.view.html',
         data: {
           pageTitle: 'Mi perfil'
-        }
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/perfil/perfil.controller.js')
+          }]
+        },
+        controller: 'perfilController',
+        controllerAs: 'vm'
       })
 
       .state('main.registrarTarjetas', {
@@ -99,6 +114,6 @@
         controllerAs: 'vm'
       });
 
-    $urlRouterProvider.otherwise('/');
+    $urlRouterProvider.otherwise('/404');
   };
 })();

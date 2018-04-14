@@ -4,9 +4,9 @@
     .module('correosCR')
     .service('servicioUsuarios', servicioUsuarios);
 
-  servicioUsuarios.$inject = ['$q', '$log', '$http', 'localStorageFactory'];
+  servicioUsuarios.$inject = ['$q', '$log', '$http', 'dataStorageFactory', 'localStorageFactory'];
 
-  function servicioUsuarios($q, $log, $http, localStorageFactory) {
+  function servicioUsuarios($q, $log, $http, dataStorageFactory, localStorageFactory) {
 
     const listaUsuarios = 'usuariosLS'; // este es el key
 
@@ -42,7 +42,7 @@
     };
 
     function _obtenerlistadeusuarios() {
-      let listadeusuarioslocal = localStorageFactory.getItem(listaUsuarios),
+      let listadeusuarioslocal = dataStorageFactory.getUsersData(),
           listadeusuarios = [];
       
       if (listadeusuarioslocal == []){

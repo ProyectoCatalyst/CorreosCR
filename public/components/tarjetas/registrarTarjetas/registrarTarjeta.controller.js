@@ -17,11 +17,11 @@
     vm.registrarTarjeta= (pTarjetaNueva) => {
 
       let idCliente = userAuth.getCedula();
+      let fechaTarjeta = pTarjetaNueva.mes + ' / ' + pTarjetaNueva;
+      let objNuevaTarjeta = new Tarjeta(pTarjetaNueva.tipoTarjeta, pTarjetaNueva.nombreTarjeta, pTarjetaNueva.numeroTarjeta, pTarjetaNueva.cvvTarjeta, fechaTarjeta, idCliente);
 
-      let objNuevaTarjeta = new Tarjeta(pTarjetaNueva.tipoTarjeta, pTarjetaNueva.nombreTarjeta, pTarjetaNueva.numeroTarjeta, pTarjetaNueva.cvvTarjeta, pTarjetaNueva.fechaTarjeta, idCliente);
-
-      userAuth.agregarTarjetas(objNuevaTarjeta.numeroTarjeta);
-      servicioUsuarios.actualizarUsuario(userAuth);
+      // userAuth.agregarTarjetas(objNuevaTarjeta.numeroTarjeta);
+      // servicioUsuarios.actualizarUsuario(userAuth);
 
       let registro = servicioTarjetas.agregarTarjetas(objNuevaTarjeta);
 

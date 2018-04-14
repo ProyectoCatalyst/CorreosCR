@@ -1,35 +1,37 @@
 <main class="hero" id="listarTarjeta">
-  <section class="row">
-    <div class="col-md-12">
-      <h1 class="text-center my-5 pt-2">Listar tarjetas</h1>
-    </div>
-  </section>
-  <section class="row justify-content-center">
-    <div class="col-md-12">
-        <table class="table table-striped">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">Cédula del cliente</th>
-                <th scope="col">Número de tarjeta</th>
-                <th scope="col">Propietario de la tarjeta</th>
-                <th scope="col">Tipo de tarjeta</th>
-                <th scope="col">Eliminar tarjeta</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr ng-repeat="tarjeta in vm.listaDeTarjetas">
-                <th scope="row">{{$index+1}}</th>
-                <td>{{tarjeta.idCliente}}</td>
-                <td>{{tarjeta.numeroTarjeta}}</td>
-                <td>{{tarjeta.nombreTarjeta}}</td>
-                <td>{{tarjeta.tipoTarjeta}}</td>
-                <td>
-                    <button type="submit" class="btn btn-danger">Eliminar tarjeta</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-    </div>
-  </section>
+  <div class="container">
+    <section class="row">
+      <div class="col-md-12">
+        <h1 class="text-center my-5 pt-2">Listar tarjetas</h1>
+      </div>
+    </section>
+    <section class="row justify-content-center">
+      <div class="col-md-12">
+          <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Cédula del cliente</th>
+                  <th scope="col">Número de tarjeta</th>
+                  <th scope="col">Propietario de la tarjeta</th>
+                  <th scope="col">Tipo de tarjeta</th>
+                  <th scope="col">Eliminar tarjeta</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr ng-repeat="tarjeta in vm.listaDeTarjetas">
+                  <th scope="row">{{$index+1}}</th>
+                  <td>{{tarjeta.idCliente}}</td>
+                  <td>{{tarjeta.numeroTarjeta}}</td>
+                  <td>{{tarjeta.nombreTarjeta}}</td>
+                  <td>{{tarjeta.tipoTarjeta}}</td>
+                  <td>
+                      <button type="submit" class="btn btn-danger">Eliminar tarjeta</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+      </div>
+    </section>
+  </div>
 </main>

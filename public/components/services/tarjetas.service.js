@@ -4,9 +4,9 @@
     .module('correosCR')
     .service('servicioTarjetas', servicioTarjetas);
 
-  servicioTarjetas.$inject = ['$q', '$log', '$http', 'localStorageFactory'];
+  servicioTarjetas.$inject = ['$q', '$log', '$http', 'dataStorageFactory'];
 
-  function servicioTarjetas($q, $log, $http, localStorageFactory) {
+  function servicioTarjetas($q, $log, $http, dataStorageFactory) {
 
     const listaTarjetas = 'tarjetasLS'; // este es el key
 
@@ -30,15 +30,15 @@
       if (tarjetarepetida == true) {
         registrovalido = false;
       } else {
-        listadetarjetas.push(pNuevaTarjeta);
-        registrovalido = localStorageFactory.setItem(listaTarjetas, listadetarjetas);
+        // listadetarjetas.push(pNuevaTarjeta);
+        registrovalido = dataStorageFactory.setCreditCardData(pNuevaTarjeta);
       }
 
       return registrovalido;
     };
 
     function _obtenerlistadetarjetas(idCliente) {
-      let listadetarjetaslocal = localStorageFactory.getItem(listaTarjetas),
+      let listadetarjetaslocal = dataStorageFactory.getCreditCardData(),
         listadetarjetas = [];
 
       if (listadetarjetaslocal == []) {
