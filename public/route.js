@@ -59,6 +59,54 @@
         },
         controller: 'controladorRegistrarCliente',
         controllerAs: 'vm'
+      })
+
+      .state('registrarConvenio', {
+        url: '/agreementRegistration',
+        templateUrl: './components/convenios/registrarConvenio//registrarConvenio.view.html',
+        data: {
+          pageTitle: 'Registro de Convenios | Correos de Costa Rica'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/convenios/registrarConvenio/registrarConvenio.controller.js')
+          }]
+        },
+        controller: 'controladorRegistrarConvenio',
+        controllerAs: 'vm'
+      })
+      
+      .state('listaConvenios', {
+        url: '/agreementList',
+        templateUrl: './components/convenios/listarConvenios/listarConvenios.view.html',
+        data: {
+          pageTitle: 'Lista de convenios | Correos CR'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($oclazyLoad) => {
+            return $oclazyLoad.load ('./components/convenios/listarConvenios/listarConvenios.controller.js')
+          }]
+        },
+        controller : 'controladorListarConvenios',
+        controllerAs: 'vm'
+      })
+      
+      .state('editarConvenios', {
+        url: '/agreementModify',
+        templateUrl: './components/convenios/editarConvenios/editarConvenios.view.html',
+        data: {
+          pageTitle: 'Edición de convenios | Correos CR'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($oclazyLoad) => {
+            return $oclazyLoad.load ('./components/convenios/editarConvenios/editarConvenios.controller.js')
+          }]
+        },
+        params: {
+          convenioMod: ''
+        },
+        controller : 'controladorEditarConvenios',
+        controllerAs: 'vm'
       });
 
     $urlRouterProvider.otherwise('/');

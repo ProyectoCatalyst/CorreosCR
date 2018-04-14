@@ -62,10 +62,12 @@ app.use( (req, res, next) => {
  * Exportamos las funcionalidades
  */
 const index = require('./index'),
-      usuarios = require('./components/usuarios/usuarios.route');
+      usuarios = require('./components/usuarios/usuarios.route'),
+      convenios = require('./components/convenios/convenios.route');
 /**
  * Se definien las rutas de ExpressJS
  */
+app.use('/api', convenios);
 app.use('/api', usuarios);
 app.use('/', index);
 

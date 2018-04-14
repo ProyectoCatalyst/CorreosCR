@@ -1,0 +1,56 @@
+<main class="container">
+
+    <section class="row">
+  
+      <section class="col-md-12 my-5 mx-auto" id="container">
+  
+        <div class="pb-5" ng-if="vm.usuarioActivo.rol == 5">
+          <h1 class="py-2" id="title">Prealerta de trámites</h1>
+          <h4 class="py-2" id="subtitle">¡Prealerta un trámite nuevo!</h4>
+          <p class="py-2" id="description"><span>Selec</span>ciona uno de la lista</p>
+        </div>
+  
+        <div class="table-responsive row">
+          <table class="table table-hover">
+  
+            <thead>
+              <tr>
+                <th scope="col">Código</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Institución</th>
+                <th scope="col">Costo</th>
+                <th scope="col" colspan="2">Acción</th>
+              </tr>
+            </thead>
+  
+            <tbody>
+              <tr ng-repeat="convenios in vm.listarConvenios">
+                <td>{{convenios.codigoConvenio}}</td>
+                <td>{{convenios.nombreConvenio}}</td>
+                <td>{{convenios.descripcionConvenio}}</td>
+                <td>{{convenios.institucionConvenio}}</td>
+                <td>₡{{convenios.costoConvenio}}</td>
+                <td>
+                  <button type="button" class="btn btn-danger" ng-click="vm.editarConvenio(convenios)">Editar</button>
+                </td>
+                <td ng-if="vm.usuarioActivo.rol == 1">
+                  <button type="button" class="btn btn-danger" ng-click="vm.eliminarConvenio(convenios)">Eliminar</button>
+                </td>
+                <td ng-if="vm.usuarioActivo.rol == 5">
+                  <button type="button" class="btn btn-danger" ng-click="vm.prealertarTramite(convenios)">Prealertar trámite</button>
+                </td>
+              </tr>
+            </tbody>
+  
+          </table>
+  
+          <button  ng-if="vm.usuarioActivo.rol == 1" type="button" class="btn btn-danger" ng-click="vm.agregarConvenio()">Agregar convenio</button>
+  
+        </div>
+  
+      </section>
+  
+    </section>
+  
+  </main>
