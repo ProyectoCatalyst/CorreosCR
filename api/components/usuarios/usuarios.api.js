@@ -3,13 +3,6 @@ const UserModel = require('./usuarios.model');
 module.exports.registrar = (req, res) => {
   let newUser = Object.assign(new UserModel(), req.body);
 
-  let objtemp = req.body;
-
-  console.log('----------------------------------------------------------------------------------------------------------')
-  console.log('Esquema sin armar');
-  console.log(objtemp);
-  console.log('----------------------------------------------------------------------------------------------------------')
-
   switch (newUser.rol) {
     case '4': // Repartidor
       newUser.paqueteAsignado = req.body.paqueteAsignado;
@@ -21,14 +14,9 @@ module.exports.registrar = (req, res) => {
       newUser.sucursal = req.body.sucursal;
       break;
     case '5': // Cliente
-      console.log('es un cliente');
       newUser.latitud = req.body.latitud;
       newUser.longitud = req.body.longitud;
       newUser.telefono = req.body.telefono;
-      console.log('----------------------------------------------------------------------------------------------------------')
-      console.log('Esquema ya armado');
-      console.log(newUser);
-      console.log('----------------------------------------------------------------------------------------------------------')
       break;
     default:
 

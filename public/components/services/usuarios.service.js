@@ -19,14 +19,18 @@
     };
     return publicAPI;
 
-
-    function _agregarUsuario(pNuevoCliente) {
+    
+    /**
+     * Función que se comunica con el dataStorage para guardar el cliente.
+     * @param {Objeto Usuario de cualquier tipo que va a ser almacenado en el backend} pNuevoUsuario 
+     */
+    function _agregarUsuario(pNuevoUsuario) {
       let listadeusuarios = _obtenerlistadeusuarios(),
         registrovalido,
         usuariorepetido = false;
 
       for (let i = 0; i < listadeusuarios.length; i++) {
-        if (listadeusuarios[i].getCorreo() == pNuevoCliente.getCorreo()) {
+        if (listadeusuarios[i].getCorreo() == pNuevoUsuario.getCorreo()) {
           usuariorepetido = true;
         }
       }
@@ -34,12 +38,21 @@
       if (usuariorepetido == true) {
         registrovalido = false;
       } else {
-        registrovalido = dataStorageFactory.setUserData(pNuevoCliente);
+        let objEmail = {
+          to : pNuevoUsuario.getCorreo(),
+          subject: 'Contraseña temporal de la aplicación de Correos de Costa Rica',
+          text: pNuevoUsuario.getContrasenna()
+        };
+        dataStorageFactory.sendMail(objEmail);
+        registrovalido = dataStorageFactory.setUserData(pNuevoUsuario);
       }
 
       return registrovalido;
     };
-
+    
+    /**
+     * función que obtiene la lista de usuarios del backend
+     */
     function _obtenerlistadeusuarios() {
       let listadeusuarioslocal = dataStorageFactory.getUsersData(),
         listadeusuarios = [];
@@ -90,8 +103,6 @@
             break;
         }
       });
-      console.log('----------------------------------------------------------------------')
-      console.log(listadeusuarios)
       return listadeusuarios;
     }
 

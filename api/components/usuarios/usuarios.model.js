@@ -8,6 +8,7 @@ let UserSchema = new mongoose.Schema({
   segundoNombre     : {type: String},
   primerApellido    : {type: String, require: true},
   segundoApellido   : {type: String},
+  foto              : {type: String, require: true},
   cedula            : {type: String, require: true},
   fecha             : {type: String, require: true},
   genero            : {type: String, require: true},
@@ -19,8 +20,18 @@ let UserSchema = new mongoose.Schema({
   contrasenna       : {type: String, require: true},
   rol               : {type: String, require: true, maxlength: 1, minlength: 1},
   estado            : {type: Boolean, require: true},
+  // Repartidor
+  paqueteAsignado   : {type: String},
+  licencia          : {type: Array},
+  telefono          : {type: String},
+  telefonoAdicional : {type: String},
+  razonDesact       : {type: String},
+  sucursal          : {type: String},
+  // Cliente
   tarjeta           : {type: Array},
-  paquetes          : {type: Array}
+  paquetes          : {type: Array},
+  latitud           : {type: String},
+  longitud          : {type: String}
 });
 
 /**

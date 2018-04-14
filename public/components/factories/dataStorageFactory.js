@@ -10,6 +10,7 @@
     const dataAPI = {
       getUsersData: _getUsersData,
       setUserData: _setUserData,
+      sendMail: _sendMail,
       setSession: _setSession,
       closeSession: _closeSession,
       getSession: _getSession
@@ -44,6 +45,10 @@
       return listaUsuarios;
     }
 
+    /**
+     * Toma el objejeto y o envía al backend por una petición de $ajax
+     * @param {objeto usuario} data 
+     */
     function _setUserData(data) {
       let response;
 
@@ -59,6 +64,7 @@
           'segundoNombre': data.segundoNombre,
           'primerApellido': data.primerApellido,
           'segundoApellido': data.segundoApellido,
+          'foto' : data.foto,
           'cedula': data.cedula,
           'fecha': data.fecha,
           'genero': data.genero,
@@ -71,16 +77,18 @@
           'rol': data.rol,
           'estado': data.estado,
           // Final del esquema basico
-          'telefono': data.telefono,
-          'telefonoAdicional': data.telefonoAdicional,
-          'latitud' : data.latitud,
-          'longitud' : data.longitud,
-          'tarjeta': data.tarjeta,
+          // Repartidor
           'paqueteAsignado': data.paqueteAsignado,
           'licencia': data.licencia,
           'telefono': data.telefono,
+          'telefonoAdicional': data.telefonoAdicional,
           'razonDesact': data.razonDesact,
-          'sucursal': data.sucursal
+          'sucursal': data.sucursal,
+          // Cliente
+          'tarjeta': data.tarjeta,
+          'paquetes': data.paquetes,
+          'latitud' : data.latitud,
+          'longitud' : data.longitud,
         }
       });
 
@@ -96,6 +104,34 @@
       return response;
     }
 
+    /**
+     * Función que recibe el correo electrónico y el mensaje a enviar.
+     * @param {Correo y contrasenna, informacion que se va a enviar por mail} data 
+     */
+    function _sendMail (data){
+      let response;
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/mail',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+         'to': data.to,
+         'subject': data.subject,
+         'text': data.text
+        }
+      });
+
+      peticion.done((datos) => {
+        console.log(datos);
+      });
+      peticion.fail((error) => {
+        response = error;
+        console.log(error);
+      });
+    }
     /**
    * Función que almacena las credenciales dentro del session Storage
    * @param {Credenciales} value 

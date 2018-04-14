@@ -70,7 +70,6 @@ class Repartidor extends Usuario {
     this.licencia = [];
     this.telefono = ptelefono;
     this.telefonoAdicional = ptelefonoAdicional;
-    this.estado = pestado;
     this.razonDesact = prazonDesact;
     this.sucursal = psucursal;
   }
@@ -104,6 +103,7 @@ class Cliente extends Usuario {
 
     this.telefono = ptelefono;
     this.tarjeta = [];
+    this.paquetes = [];
     this.latitud = plat;
     this.longitud = plong;
   }

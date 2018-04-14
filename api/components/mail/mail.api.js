@@ -1,6 +1,6 @@
 let nodemailer = require('nodemailer');
 
-module.exports.enviarCorreo = (req,res) => {
+module.exports.enviarCorreo = (req, res) => {
 
   let transporter = nodemailer.createTransport({
     service: 'gmail',
@@ -12,16 +12,17 @@ module.exports.enviarCorreo = (req,res) => {
 
   let mailOptions = {
     from: 'catalyst.proyecto@gmail.com',
-    to: req.body.from,
+    to: req.body.to,
     subject: req.body.subject,
     text: req.body.text,
   };
 
-  transporter.sendMail(mailOptions, (error, info) =>{
-    if (error) {
-      console.log(error);
-    } else {
-      console.log('Email sent: ' + info.response);
+  transporter.sendMail(mailOptions,(error, info)=>{
+    if(error){
+      res.json({success:false, msg:error});
+    }
+    else{
+      res.json({success:true});
     }
   });
-}
+};
