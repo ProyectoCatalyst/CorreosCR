@@ -4,11 +4,11 @@
       .module('correosCR')
       .service('servicioConvenio', servicioConvenio);
   
-    servicioConvenio.$inject = ['$q', '$log', '$http', 'dataStorageFactoy'];
+    servicioConvenio.$inject = ['$q', '$log', '$http', 'dataStorageFactory'];
   
-    function servicioConvenio($q, $log, $http, dataStorageFactoy) {
+    function servicioConvenio($q, $log, $http, dataStorageFactory) {
   
-      const listaConvenios = 'listaConveniosLS';
+      const listaConvenios = 'listaConveniosDB';
   
       let publicAPI = {
         agregarConvenio: _agregarConvenio,
@@ -19,18 +19,18 @@
       return publicAPI;
   
       function _agregarConvenio(pconvenioNuevo) {
-        let conveniosLS = _retornarConvenio(),
+        let conveniosDB = _retornarConvenio(),
               repetido = false;
   
-        for(let i=0; i<conveniosLS.length; i++){
-          if(conveniosLS[i].getCodigo() == pconvenioNuevo.codigoConvenio){
+        for(let i=0; i<conveniosDB.length; i++){
+          if(conveniosDB[i].getCodigo() == pconvenioNuevo.codigoConvenio){
             repetido = true
           }
         }
   
         if(!repetido){
-          conveniosLS.push(pconvenioNuevo);
-          dataStorageFactoy.registrarConvenio(pconvenioNuevo);
+          conveniosDB.push(pconvenioNuevo);
+          dataStorageFactory.registrarConvenio(pconvenioNuevo);
         }
   
         return repetido
@@ -38,12 +38,12 @@
   
       function _retornarConvenio() {
         let listaConveniosTemporal = [],
-            conveniosLS = dataStorageFactoy.retornarConvenios();
+            conveniosDB = dataStorageFactory.retornarConvenios();
   
-        if (conveniosLS.length == 0) {
+        if (conveniosDB.length == 0) {
          listaConveniosTemporal = [];
         } else {
-          conveniosLS.forEach(obj => {
+          conveniosDB.forEach(obj => {
   
             let objConvenio = new Convenio(obj.codigoConvenio, obj.nombreConvenio, obj.descripcionConvenio, obj.institucionConvenio, obj.costoConvenio);
   
@@ -54,12 +54,12 @@
       }
   
       function _eliminarConvenio(pconvenioEliminar){
-        let conveniosLS = _retornarConvenio(),
+        let conveniosDB = _retornarConvenio(),
             actualizarLista = [];
   
-        for(let i=0; i<conveniosLS.length; i++){
-          if(conveniosLS[i].getCodigo() != pconvenioEliminar.codigoConvenio){
-            actualizarLista.push(conveniosLS[i]);
+        for(let i=0; i<conveniosDB.length; i++){
+          if(conveniosDB[i].getCodigo() != pconvenioEliminar.codigoConvenio){
+            actualizarLista.push(conveniosDB[i]);
           }
         }
         let exito = actualizarConvenios(actualizarLista);
@@ -68,11 +68,11 @@
       }
   
       function _editarConvenio(pconvenioMod){
-        let conveniosLS = _retornarConvenio(),
+        let conveniosDB = _retornarConvenio(),
             exito;
   
-        for(let i=0; i<conveniosLS.length; i++){
-          if(conveniosLS[i].getCodigo() == pconvenioMod.codigoConvenio){
+        for(let i=0; i<conveniosDB.length; i++){
+          if(conveniosDB[i].getCodigo() == pconvenioMod.codigoConvenio){
             exito = actualizarConvenios(pconvenioMod);
           }
         }
@@ -81,7 +81,7 @@
   
   
       function actualizarConvenios(pconvenioActualizar){
-        let exito = dataStorageFactoy.actualizarConvenios(pconvenioActualizar);
+        let exito = dataStorageFactory.actualizarConvenios(pconvenioActualizar);
   
         return exito
       }

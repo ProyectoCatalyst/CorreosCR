@@ -63,11 +63,20 @@ app.use( (req, res, next) => {
  */
 const index = require('./index'),
       usuarios = require('./components/usuarios/usuarios.route'),
-      convenios = require('./components/convenios/convenios.route');
+      convenios = require('./components/convenios/convenios.route'),
+      mail = require('./components/mail/mail.route'),
+      tramite = require('./components/tramite/tramite.route');
+
 /**
  * Se definien las rutas de ExpressJS
  */
 app.use('/api', convenios);
+app.use('/api', tramite);
+
+/**
+ * Se definien las rutas de ExpressJS
+ */
+app.use('/api', mail);
 app.use('/api', usuarios);
 app.use('/', index);
 

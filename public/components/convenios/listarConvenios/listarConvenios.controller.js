@@ -5,8 +5,8 @@
     .module('correosCR')
     .controller('controladorListarConvenios', controladorListarConvenios)
   
-    controladorListarConvenios.$inject = ['$state', '$stateParams', 'servicioConvenio', 'servicioInicioSesion' /*, 'servicioTramite'*/ ];
-    function controladorListarConvenios($state, $stateParams, servicioConvenio, servicioInicioSesion /*, servicioTramite*/){
+    controladorListarConvenios.$inject = ['$state', '$stateParams', 'servicioConvenio', 'servicioInicioSesion', 'servicioTramite' ];
+    function controladorListarConvenios($state, $stateParams, servicioConvenio, servicioInicioSesion, servicioTramite){
     
       let vm = this;
   
@@ -14,29 +14,29 @@
   
       vm.usuarioActivo = servicioInicioSesion.getAuthUser();
   
-    //   vm.prealertarTramite = (tramite) => {
-    //     let cedula = servicioInicioSesion.getAuthUser().cedula,
-    //         correo = servicioInicioSesion.getAuthUser().correo,
-    //         tramiteTem = new Tramite(tramite.codigoConvenio, tramite.nombreConvenio, tramite.descripcionConvenio, tramite.institucionConvenio, tramite.costoConvenio, cedula, correo);
+      vm.prealertarTramite = (tramite) => {
+        let cedula = servicioInicioSesion.getAuthUser().cedula,
+            correo = servicioInicioSesion.getAuthUser().correo,
+            tramiteTem = new Tramite(tramite.codigoConvenio, tramite.nombreConvenio, tramite.descripcionConvenio, tramite.institucionConvenio, tramite.costoConvenio, cedula, correo);
   
-    //         let exito = servicioTramite.agregarTramite(tramiteTem);
+            let exito = servicioTramite.agregarTramite(tramiteTem);
   
-    //         if(exito){
-    //           swal({
-    //             title: 'Trámite prealertado',
-    //             text: 'Gracias',
-    //             icon: 'success',
-    //             button: 'Aceptar'
-    //           })
-    //         }else{
-    //           swal({
-    //             title: 'Error',
-    //             text: 'Ya has prealertado este tramite',
-    //             icon: 'error',
-    //             button: 'Aceptar'
-    //           })
-    //         }
-    //   }
+            if(exito){
+              swal({
+                title: 'Trámite prealertado',
+                text: 'Gracias',
+                icon: 'success',
+                button: 'Aceptar'
+              })
+            }else{
+              swal({
+                title: 'Error',
+                text: 'Ya has prealertado este tramite',
+                icon: 'error',
+                button: 'Aceptar'
+              })
+            }
+      }
   
       vm.eliminarConvenio = (pconvenioEliminar) => {
         let confirm = swal({

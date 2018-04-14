@@ -32,7 +32,7 @@
                 <td>{{convenios.institucionConvenio}}</td>
                 <td>₡{{convenios.costoConvenio}}</td>
                 <td>
-                  <button type="button" class="btn btn-danger" ng-click="vm.editarConvenio(convenios)">Editar</button>
+                  <button ng-if="vm.usuarioActivo.rol == 1" type="button" class="btn btn-danger" ng-click="vm.editarConvenio(convenios)">Editar</button>
                 </td>
                 <td ng-if="vm.usuarioActivo.rol == 1">
                   <button type="button" class="btn btn-danger" ng-click="vm.eliminarConvenio(convenios)">Eliminar</button>

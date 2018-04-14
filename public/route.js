@@ -61,7 +61,7 @@
         controllerAs: 'vm'
       })
 
-      .state('registrarConvenio', {
+      .state('main.registrarConvenio', {
         url: '/agreementRegistration',
         templateUrl: './components/convenios/registrarConvenio//registrarConvenio.view.html',
         data: {
@@ -76,7 +76,7 @@
         controllerAs: 'vm'
       })
       
-      .state('listaConvenios', {
+      .state('main.listaConvenios', {
         url: '/agreementList',
         templateUrl: './components/convenios/listarConvenios/listarConvenios.view.html',
         data: {
@@ -106,6 +106,21 @@
           convenioMod: ''
         },
         controller : 'controladorEditarConvenios',
+        controllerAs: 'vm'
+      })
+      
+      .state('registrarRepartidor', {
+        url: '/registrarRepartidor',
+        templateUrl: './components/usuarios/repartidor/registrarRepartidor/registrarRepartidor.view.html',
+        data: {
+          pageTitle: 'Registrar cliente'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/repartidor/registrarRepartidor/registrarRepartidor.controller.js')
+          }]
+        },
+        controller: 'controladorRegistrarRepartidor',
         controllerAs: 'vm'
       });
 
