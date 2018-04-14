@@ -114,6 +114,6 @@
         controllerAs: 'vm'
       });
 
-    $urlRouterProvider.otherwise('/404');
+    $urlRouterProvider.otherwise('/');
   };
 })();
