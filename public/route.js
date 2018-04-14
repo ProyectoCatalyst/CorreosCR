@@ -112,6 +112,21 @@
         },
         controller: 'controladorRegistrarCliente',
         controllerAs: 'vm'
+      })
+      
+      .state('registrarRepartidor', {
+        url: '/registrarRepartidor',
+        templateUrl: './components/usuarios/repartidor/registrarRepartidor/registrarRepartidor.view.html',
+        data: {
+          pageTitle: 'Registrar cliente'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/repartidor/registrarRepartidor/registrarRepartidor.controller.js')
+          }]
+        },
+        controller: 'controladorRegistrarRepartidor',
+        controllerAs: 'vm'
       });
 
     $urlRouterProvider.otherwise('/');

@@ -7,21 +7,21 @@
   dataStorageFactory.$inject = ['$q', '$log', '$http'];
 
   function dataStorageFactory($q, $log, $http) {
-
-    const localAPI = {
+    const dataAPI = {
       getUsersData: _getUsersData,
       setUserData: _setUserData,
+      sendMail: _sendMail,
       getCreditCardData: _getCreditCardData,
       setCreditCardData: _setCreditCardData,
       setSession: _setSession,
       closeSession: _closeSession,
       getSession: _getSession
     };
-    return localAPI;
+    return dataAPI;
 
     /**
-     * Funcion que obtiene los datos de los usuarios del back end y los retorna
-     */
+    * Funcion que obtiene los datos de los usuarios del back end y los retorna
+    */
     function _getUsersData() {
       let listaUsuarios = [];
 
@@ -35,8 +35,8 @@
       });
 
       peticion.done((usuarios) => {
-        // console.log('Datos que vienen desde la base de datos')
-        // console.log(usuarios);
+        console.log('Datos que vienen desde la base de datos')
+        console.log(usuarios);
         listaUsuarios = usuarios;
       });
       peticion.fail(() => {
@@ -47,6 +47,10 @@
       return listaUsuarios;
     }
 
+    /**
+     * Toma el objejeto y o envía al backend por una petición de $ajax
+     * @param {objeto usuario} data 
+     */
     function _setUserData(data) {
       let response;
 
@@ -57,24 +61,41 @@
         dataType: 'json',
         async: false,
         data: {
-          'cedula': data.cedula,
+          //Inicio del esquema basico
           'primerNombre': data.primerNombre,
           'segundoNombre': data.segundoNombre,
           'primerApellido': data.primerApellido,
           'segundoApellido': data.segundoApellido,
-          'fechaNacimiento': data.fechaNacimiento,
-          'correoElectronico': data.correoElectronico,
-          'contrasenna': data.contrasenna,
+          'foto' : data.foto,
+          'cedula': data.cedula,
+          'fecha': data.fecha,
+          'genero': data.genero,
           'provincia': data.provincia,
           'canton': data.canton,
           'distrito': data.distrito,
-          'photo': data.photo,
-          'vehiculos': data.vehiculos
+          'direccion': data.direccion,
+          'correo': data.correo,
+          'contrasenna': data.contrasenna,
+          'rol': data.rol,
+          'estado': data.estado,
+          // Final del esquema basico
+          // Repartidor
+          'paqueteAsignado': data.paqueteAsignado,
+          'licencia': data.licencia,
+          'telefono': data.telefono,
+          'telefonoAdicional': data.telefonoAdicional,
+          'razonDesact': data.razonDesact,
+          'sucursal': data.sucursal,
+          // Cliente
+          'tarjeta': data.tarjeta,
+          'paquetes': data.paquetes,
+          'latitud' : data.latitud,
+          'longitud' : data.longitud,
         }
       });
 
       peticion.done((datos) => {
-        response = datos.msj;
+        response = datos.success;
         console.log('Petición realizada con éxito');
       });
       peticion.fail((error) => {
@@ -85,7 +106,35 @@
       return response;
     }
 
-    
+    /**
+     * Función que recibe el correo electrónico y el mensaje a enviar.
+     * @param {Correo y contrasenna, informacion que se va a enviar por mail} data 
+     */
+    function _sendMail (data){
+      let response;
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/mail',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+         'to': data.to,
+         'subject': data.subject,
+         'text': data.text
+        }
+      });
+
+      peticion.done((datos) => {
+        console.log(datos);
+      });
+      peticion.fail((error) => {
+        response = error;
+        console.log(error);
+      });
+    }
+
     function _getCreditCardData() {
       let listaTarjetas = [];
 
@@ -144,9 +193,9 @@
     }
 
     /**
-     * Función que almacena las credenciales dentro del session Storage
-     * @param {Credenciales} value 
-     */
+   * Función que almacena las credenciales dentro del session Storage
+   * @param {Credenciales} value 
+   */
     function _setSession(value) {
       let response = true;
       sessionStorage.setItem('session', JSON.stringify(value));
@@ -170,6 +219,5 @@
 
       return sessionActive;
     }
-
   }
 })();

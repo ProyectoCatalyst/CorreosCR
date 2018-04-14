@@ -1,5 +1,5 @@
 class Usuario {
-  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado) {
+  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pfoto, pcedula, pfecha, pgenero, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado) {
     this.primerNombre = pnombre;
     this.segundoNombre = psegundoNombre;
     this.primerApellido = pprimerApellido;
@@ -7,12 +7,12 @@ class Usuario {
     this.cedula = pcedula;
     this.fecha = pfecha;
     this.genero = pgenero;
-    this.ubicacion = pubicacion;
     this.provincia = pprovincia;
     this.canton = pcanton;
     this.distrito = pdistrito;
     this.direccion = pdireccion;
     this.correo = pcorreo;
+    this.foto = pfoto;
     this.contrasenna = pcontrasenna;
     this.rol = prol;
     this.estado = pestado;
@@ -45,50 +45,31 @@ class Usuario {
 }
 
 class EncargadoAduanas extends Usuario {
-  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado, proladuana) {
-    super(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado);
-    this.rolAduana = proladuana;
+  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pfoto, pcedula, pfecha, pgenero, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado) {
+    super(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pfoto, pcedula, pfecha, pgenero, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado);
+    //TODO Agregar puesto dentro de la Aduana
   }
-
-  getRolAduana() {
-    return this.rolAduana;
-  }
-
-  setRolAduana(pnuevorol) {
-    this.rolAduana = pnuevorol;
-  }
+  //TODO Hacer metodos del Encargado de la Aduana
 }
 
 class EncargadoSucursales extends Usuario {
-  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado) {
-    super(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado);
-  }
-}
-
-class Cliente extends Usuario {
-  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado) {
-    super(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado);
-    this.telefono = [];
-    this.tarjeta = [];
+  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pfoto, pcedula, pfecha, pgenero, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado) {
+    super(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pfoto, pcedula, pfecha, pgenero, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado);
+    //TODO sucursal asignada
   }
 
-  agregarTarjetas(pnuevatarjeta) {
-    this.tarjeta.push(pnuevatarjeta);
-  }
-
-  agregarTelefono(pnuevotelefono) {
-    this.telefono.push(pnuevotelefono);
-  }
+  //TODO Hacer metodos del Encargado de la sucursales
 }
 
 class Repartidor extends Usuario {
-  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado, ptelefono, ptelefonoAdicional, prazonDesact, psucursal) {
-    super(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pcedula, pfecha, pgenero, pubicacion, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado);
+  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pfoto, pcedula, pfecha, pgenero, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado, prazonDesact, psucursal) {
+
+    super(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pfoto, pcedula, pfecha, pgenero, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado);
 
     this.paqueteAsignado = [];
     this.licencia = [];
-    this.telefono = [];
-    this.estado = pestado;
+    this.telefono = ptelefono;
+    this.telefonoAdicional = ptelefonoAdicional;
     this.razonDesact = prazonDesact;
     this.sucursal = psucursal;
   }
@@ -109,130 +90,34 @@ class Repartidor extends Usuario {
     return this.paqueteAsignado;
   }
 
-  setLicencia(pobjLicencia) {
-    this.licencia.push(pobjLicencia)
+}
+
+class Cliente extends Usuario {
+  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pfoto, pcedula, pfecha, pgenero, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado, ptelefono, plat, plong) {
+
+    super(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pfoto, pcedula, pfecha, pgenero, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado);
+
+    this.telefono = ptelefono;
+    this.tarjeta = [];
+    this.paquetes = [];
+    this.latitud = plat;
+    this.longitud = plong;
   }
 
-  agregarTelefono(pnuevotelefono) {
-    this.telefono.push(pnuevotelefono);
+  agregarTarjetas(pnuevaTarjeta) {
+    this.tarjeta.push(pnuevaTarjeta);
+  }
+
+  obtenerTargetas(){
+    return this.tarjeta;
+  }
+
+  obtenerLatitud(){
+    return this.latitud;
+  }
+
+  obtenerLongitud(){
+    return this.longitud;
   }
 }
 
-class Tarjeta {
-  constructor(ptipoTarjeta, pnombreTarjeta, pnumeroTarjeta, pcvvTarjeta, pfechaTarjeta, pidcliente) {
-    this.tipoTarjeta = ptipoTarjeta;
-    this.nombreTarjeta = pnombreTarjeta;
-    this.numeroTarjeta = pnumeroTarjeta;
-    this.cvvTarjeta = pcvvTarjeta;
-    this.fechaTarjeta = pfechaTarjeta;
-    this.idCliente = pidcliente;
-  }
-
-  getNumeroTarjeta() {
-    return this.numeroTarjeta;
-  }
-
-  getIdDuenno(){
-    return this.idCliente;
-  }
-  //TODO Agregar los metodos de las tarjetas
-}
-
-class Paquete{
-  constructor(pubicacion, ptipoPaquete, ppesoPaquete, pprecioPaquete, pestadoPaquete, pidrepartidor, pidsucursal, pidcliente){
-    this.ubicacion = pubicacion;
-    this.tipoPaquete = ptipoPaquete;
-    this.pesoPaquete = ppesoPaquete;
-    this.precioPaquete = pprecioPaquete;
-    this.estadoPaquete = pestadoPaquete;
-    this.idRepartidor = pidrepartidor;
-    this.idSucursal = pidsucursal;
-    this.idCliente = pidcliente;
-  }
-  //TODO Agregar  los metodos del paquete
-}
-
-class Sucursal{
-  constructor(pcodigoSucursal, pnombreSucursal, pprovincia, pcanton, pdistrito, pestadoSucursal, pubicacion){
-    this.codigoSucursal = pcodigoSucursal;
-    this.nombreSucursal = pnombreSucursal;
-    this.provincia = pprovincia;
-    this.canton = pcanton;
-    this.distrito = pdistrito;
-    this.estadoSucursal = pestadoSucursal;
-    this.ubicacion = pubicacion;
-    this.idEncargadoSucursal = '';
-    this.repartidores = [];
-  }
-
-  getNombreSucursal(){
-    return this.nombreSucursal;
-  }
-
-  getCodigoSucursal(){
-    return this.codigoSucursal;
-  }
-
-  getEstadoSucursal(){
-    return this.estadoSucursal;
-  }
-
-  getUbicacion(){
-    return this.ubicacion;
-  }
-
-  getEncargado(){
-    return this.idEncargadoSucursal;
-  }
-
-  setEncargado(pidnuevoencargado){
-    this.idEncargadoSucursal = pidnuevoencargado;
-  }
-
-  setNuevoRepartidor(pnuevorepartidor){
-    this.repartidores.push(pnuevorepartidor);
-  }
-}
-
-class Convenio{
-  constructor(pcodigoConvenio,pnombreConvenio,pdescripcionConvenio,pinstitucionConvenio,pcostoConvenio){
-    this.codigoConvenio = pcodigoConvenio;
-    this.nombreConvenio = pnombreConvenio;
-    this.descripcionConvenio = pdescripcionConvenio;
-    this.institucionConvenio = pinstitucionConvenio;
-    this.costoConvenio = pcostoConvenio;
-  }
-  
-  getCodigo() {
-    return this.codigoConvenio;
-  }
-  getNombre() {
-    return this.nombreConvenio;
-  }
-  getCosto() {
-    return this.costoConvenio;
-  }
-  
-}
-
-class Licencia{
-  constructor(pcodigo, pfechaVencimiento, ptipo, pestado, pidrepartidor){
-    this.codigo = pcodigo;
-    this.fechaVencimiento = pfechaVencimiento;
-    this.tipo = ptipo;
-    this.estado = pestado;
-    this.idRepartidor = pidrepartidor;
-  }
-
-  getCodigo(){
-    return this.codigo;
-  }
-
-  getEstado(){
-    return this.estado;
-  }
-  
-  getIdRepartidor(){
-    return this.idRepartidor;
-  }
-}

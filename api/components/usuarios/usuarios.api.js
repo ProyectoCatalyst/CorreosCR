@@ -1,60 +1,49 @@
 const UserModel = require('./usuarios.model');
 
-module.exports.save = (req, res) => {
-  let newUser = new UserModel({
-    primerNombre      : req.body.primerNombre,
-    segundoNombre     : req.body.segundoNombre,
-    primerApellido    : req.body.primerApellido,
-    segundoApellido   : req.body.segundoApellido,
-    cedula            : req.body.cedula,
-    fecha             : req.body.fecha,
-    genero            : req.body.genero,
-    ubicacion         : req.body.ubicacion,
-    provincia         : req.body.provincia,
-    canton            : req.body.canton,
-    distrito          : req.body.distrito,
-    direccion         : req.body.direccion,
-    correo            : req.body.correo,
-    contrasenna       : req.body.contrasenna,
-    rol               : req.body.rol,
-    estado            : req.body.estado,
-    // Encargado de aduana
-    // Encargado de sucursal
-    // CLient
-    telefono          : req.body.telefono,
-    tarjeta           : req.body.tarjeta,
-    // Repartidor
-    paqueteAsignado   : req.body.paqueteAsignado,
-    licencia          : req.body.licencia,
-    telefono          : req.body.telefono,
-    telefonoAdicional : req.body.telefonoAdicional,
-    estado            : req.body.estado,
-    razonDesact       : req.body.razonDesact,
-    sucursal          : req.body.sucursal,
-  });
+module.exports.registrar = (req, res) => {
+  let newUser = Object.assign(new UserModel(), req.body);
 
-  newUser.registrar((err) => {
-    if(err){
-      res.json({success:false, msg: 'Ha ocurrido un error en el registro de usuarios' + err});
-    }else{
-      res.json({success:true, msg:'Se registró el usuario correctamente'});
+  switch (newUser.rol) {
+    case '4': // Repartidor
+      newUser.paqueteAsignado = req.body.paqueteAsignado;
+      newUser.licencia = req.body.licencia;
+      newUser.telefono = req.body.telefono;
+      newUser.telefonoAdicional = req.body.telefonoAdicional;
+      newUser.estado = req.body.estado;
+      newUser.razonDesact = req.body.razonDesact;
+      newUser.sucursal = req.body.sucursal;
+      break;
+    case '5': // Cliente
+      newUser.latitud = req.body.latitud;
+      newUser.longitud = req.body.longitud;
+      newUser.telefono = req.body.telefono;
+      break;
+    default:
+
+  }
+  console.log(newUser.latitud);
+  newUser.save((err) => {
+    if (err) {
+      res.json({ success: false, msj: 'Ha ocurrido un error en el registro de usuarios' + err });
+    } else {
+      res.json({ success: true, msj: 'Se registró el usuario correctamente' });
     }
   });
 };
 
-module.exports.listarTodos = (req,res) => {
+module.exports.listarTodos = (req, res) => {
   UserModel.find().then((user) => {
     res.send(user);
   });
 };
 
-module.exports.actualizar = (req,res) => {
-  UserModel.findByIdAndUpdate(req.body.correo, { $set: req.body}, (err, user) => {
-    if (err){
-      res.json({success:false,msg:'No se ha actualizado.' + handleError(err)});
+module.exports.actualizar = (req, res) => {
+  UserModel.findByIdAndUpdate(req.body.correo, { $set: req.body }, (err, user) => {
+    if (err) {
+      res.json({ success: false, msg: 'No se ha actualizado.' + handleError(err) });
 
-    } else{
-      res.json({success:true,msg:'Se ha actualizado correctamente.' + res});
+    } else {
+      res.json({ success: true, msg: 'Se ha actualizado correctamente.' + res });
     }
   });
 };
