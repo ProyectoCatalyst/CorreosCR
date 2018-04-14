@@ -44,21 +44,15 @@ class Usuario {
 
 }
 
-class EncargadoAduanas extends Usuario {
-  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pfoto, pcedula, pfecha, pgenero, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado) {
-    super(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pfoto, pcedula, pfecha, pgenero, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado);
-    //TODO Agregar puesto dentro de la Aduana
-  }
-  //TODO Hacer metodos del Encargado de la Aduana
-}
+class Encargado extends Usuario {
+  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pfoto, pcedula, pfecha, pgenero, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado, ptelefono, ptelefonoAdicional, psucursal, prolAduana) {
+    super(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pfoto, pcedula, pfecha, pgenero, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado, ptelefono, ptelefonoAdicional, psucursal, prolAduana);
 
-class EncargadoSucursales extends Usuario {
-  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pfoto, pcedula, pfecha, pgenero, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado) {
-    super(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pfoto, pcedula, pfecha, pgenero, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado);
-    //TODO sucursal asignada
+    this.telefono = ptelefono;
+    this.telefonoAdicional = ptelefonoAdicional;
+    this.sucursal = psucursal;
+    this.rolAduana = prolAduana;
   }
-
-  //TODO Hacer metodos del Encargado de la sucursales
 }
 
 class Repartidor extends Usuario {

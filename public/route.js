@@ -108,6 +108,21 @@
         controller : 'controladorEditarConvenios',
         controllerAs: 'vm'
       })
+
+      .state('main.registrarEncargado', {
+        url: '/registerManager',
+        templateUrl: './components/usuarios/encargados/registrarEncargado.view.html',
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/encargados/registrarEncargado.controller.js')
+          }]
+        },
+        data: {
+          pageTitle: 'Registrar encargado | Correos CR'
+        },
+        controller: 'controladorRegistroEncargado',
+        controllerAs: 'vm'
+      })
       
       .state('registrarRepartidor', {
         url: '/registrarRepartidor',
