@@ -4,6 +4,7 @@ class Usuario {
     this.segundoNombre = psegundoNombre;
     this.primerApellido = pprimerApellido;
     this.segundoApellido = psegundoApellido;
+    this.foto = pfoto;
     this.cedula = pcedula;
     this.fecha = pfecha;
     this.genero = pgenero;
@@ -12,7 +13,6 @@ class Usuario {
     this.distrito = pdistrito;
     this.direccion = pdireccion;
     this.correo = pcorreo;
-    this.foto = pfoto;
     this.contrasenna = pcontrasenna;
     this.rol = prol;
     this.estado = pestado;
@@ -64,7 +64,7 @@ class EncargadoSucursales extends Usuario {
 class Repartidor extends Usuario {
   constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pfoto, pcedula, pfecha, pgenero, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado, prazonDesact, psucursal) {
 
-    super(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pfoto, pcedula, pfecha, pgenero, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado);
+    super(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pfoto, pcedula, pfecha, pgenero, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pfoto, pcontrasenna, prol, pestado);
 
     this.paqueteAsignado = [];
     this.licencia = [];

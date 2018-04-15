@@ -74,6 +74,22 @@
         },
         controller: 'controladorRegistrarRepartidor',
         controllerAs: 'vm'
+      })
+
+
+      .state('main.editarUsuario', {
+        url: '/editarUsuario',
+        templateUrl: './components/usuarios/editarUsuario/editarUsuario.view.html',
+        data: {
+          pageTitle: 'Editar'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/editarUsuario/editarUsuario.controller.js')
+          }]
+        },
+        controller: 'controladorEditarUsuario',
+        controllerAs: 'vm'
       });
 
     $urlRouterProvider.otherwise('/');
