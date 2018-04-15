@@ -12,7 +12,7 @@
     
     let vm = this;
 
-    vm.listaDeTarjetas = servicioTarjetas.obtenerlistadetarjetas(userAuth.getCedula());
-    
+    vm.listaDeTarjetas = servicioTarjetas.obtenerlistadetarjetas(userAuth.getCorreo());
+    vm.cedulaCliente = userAuth.getCedula();
   }
 })();

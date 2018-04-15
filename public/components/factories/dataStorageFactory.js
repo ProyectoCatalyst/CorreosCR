@@ -35,8 +35,8 @@
       });
 
       peticion.done((usuarios) => {
-        console.log('Datos que vienen desde la base de datos')
-        console.log(usuarios);
+        // console.log('Datos que vienen desde la base de datos')
+        // console.log(usuarios);
         listaUsuarios = usuarios;
       });
       peticion.fail(() => {

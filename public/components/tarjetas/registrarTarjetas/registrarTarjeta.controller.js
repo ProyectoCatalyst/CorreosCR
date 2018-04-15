@@ -16,7 +16,7 @@
     
     vm.registrarTarjeta= (pTarjetaNueva) => {
 
-      let idCliente = userAuth.getCedula();
+      let idCliente = userAuth.getCorreo();
       let fechaTarjeta = pTarjetaNueva.mes + ' / ' + pTarjetaNueva.anno;
       let objNuevaTarjeta = new Tarjeta(pTarjetaNueva.tipoTarjeta, pTarjetaNueva.nombreTarjeta, pTarjetaNueva.numeroTarjeta, pTarjetaNueva.cvvTarjeta, fechaTarjeta, idCliente);
 
