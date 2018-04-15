@@ -51,7 +51,25 @@
         },
         controller: 'controladorRegistrarCliente',
         controllerAs: 'vm'
-      });
+      })
+
+      .state('prealertarPaquetes', {
+        url: '/prealertarPaquetes',
+        templateUrl: './components/paquetes/prealertarPaquete/prealertaPaquete.view.html',
+        data: {
+          pageTitle: 'Prealertar paquete'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/paquetes/prealertarPaquete/prealertarPaquete.controller.js')
+          }]
+        },
+        controller: 'controladorPrealertarPaquete',
+        controllerAs: 'vm'
+      })
+      
+      
+      ;
 
     $urlRouterProvider.otherwise('/');
   };
