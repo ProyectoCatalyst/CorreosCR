@@ -12,7 +12,9 @@ const gulp = require('gulp'),
         views : './public/components/**/**/*.html',
         styles: './public/sources/styles/**/*.scss',
         impSass : './public/sources/styles/style.scss',
+        princJs : './**/*.js',
         js: './public/components/**/**/*.js',
+        jsBackEnd: './api/**/**/**/*.js',
         excss: './public/*.css'
       };
 
@@ -25,10 +27,11 @@ gulp.task('connect', () => {
   browserSync.init({
     server: './public'
   });
+  nodemon();
 });
 
 gulp.task('to-do', () => {
-  gulp.src(paths.js)
+  gulp.src([paths.js, paths.princJs, paths.jsBackEnd])
   .pipe(todo())
   .pipe(gulp.dest('./'));
 });
@@ -41,10 +44,11 @@ gulp.task('dependencies', () => {
 
   gulp.src([
     './node_modules/angular-messages/angular-messages.min.js',
-    './node_modules/angular-password/angular-password.min.js',
     './node_modules/angular-scroll/angular-scroll.min.js',
     './node_modules/ng-file-upload/dist/ng-file-upload.min.js',
-    './node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js'
+    './node_modules/ng-file-upload/dist/ng-file-upload-shim.min.js',
+    './node_modules/ngmap/build/scripts/ng-map.min.js',
+    './node_modules/generate-password/test/generator.js'
   ])
     .pipe(gulp.dest('./public/lib/angular/dependencies'));
 
@@ -70,7 +74,7 @@ gulp.task('dependencies', () => {
 });
 
 gulp.task('reload', () => {
-  gulp.src([paths.views, paths.styles, paths.js])
+  gulp.src([paths.views, paths.styles, paths.js, paths.jsBackEnd])
     .pipe(connect.reload())
     .pipe(browserSync.stream());
 });

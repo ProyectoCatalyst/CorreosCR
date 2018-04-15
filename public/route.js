@@ -38,6 +38,14 @@
         controllerAs: 'vm'
       })
 
+      .state('main.perfil', {
+        url: '/miPerfil',
+        templateUrl: './components/usuarios/perfil/perfil.view.html',
+        data: {
+          pageTitle: 'Mi perfil'
+        }
+      })
+
       .state('registrarCliente', {
         url: '/registrarCliente',
         templateUrl: './components/usuarios/cliente/registrarCliente/registrarCliente.view.html',
@@ -67,9 +75,21 @@
         controller: 'controladorPrealertarPaquete',
         controllerAs: 'vm'
       })
-      
-      
-      ;
+         
+      .state('registrarRepartidor', {
+        url: '/registrarRepartidor',
+        templateUrl: './components/usuarios/repartidor/registrarRepartidor/registrarRepartidor.view.html',
+        data: {
+          pageTitle: 'Registrar cliente'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/repartidor/registrarRepartidor/registrarRepartidor.controller.js')
+          }]
+        },
+        controller: 'controladorRegistrarRepartidor',
+        controllerAs: 'vm'
+      });
 
     $urlRouterProvider.otherwise('/');
   };

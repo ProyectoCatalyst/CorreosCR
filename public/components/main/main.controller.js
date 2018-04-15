@@ -15,5 +15,8 @@
     }
 
     const vm = this;
+
+    vm.rolUsuarioActivo = userAuth.getRol();
+
   };
 })();

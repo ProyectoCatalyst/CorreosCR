@@ -1,157 +1,204 @@
 <navegacion-Principal></navegacion-Principal>
-<div class="hero" id="registroClientes">
-  <header id="headerLanding" class="col-sm-12 col-md-12 col-lg-12">
-    <div class="container-fluid d-none d-md-block">
-      <!-- <img id="FondoLanding" class="img-fluid col-sm-12 col-md-12 col-lg-12"  src="sources/img/landing/1.png"> -->
-      <img id="LogoLanding" class="img-responsive mb-5" alt="Responsive image" src="sources/img/landing/2.png" width="40%" height="30%">
-    </div>
-  </header>
-  <main class="container">
-    <div class="row" id="texto">
+
+<main class="hero" id="registroClientes">
+  <section>
+    <div class="row mt-6">
       <div class="col-md-12 mb-5">
-        <h1 id="tituloPrincipal" class="text-center">Registro de cliente</h1>
+        <h1 id="tituloPrincipal" class="text-center mt-3">Registro de clientes</h1>
+        <p class="text-muted text-center texto-descripcion">Ingrese los datos solicitados para registrarse dentro de la plataforma de Correos de Costa Rica</p>
       </div>
     </div>
-    <form name="frmRegistroClientes" ng-submit="vm.registrarCliente(vm.clienteNuevo)">
 
-      <div class="row justify-content-center">
+    <div class="container justify-content-center">
+      <form name="frmRegistroClientes" ng-submit="vm.preRegistrarCliente(vm.clienteNuevo)" novalidate autocomplete="off">
 
-        <div class="col-md-4">
+        <div class="row">
 
-          <div class="form-group">
-            <label for="txtNombre">Nombre:</label>
-            <input type="text" class="form-control" id="txtNombre" ng-model="vm.clienteNuevo.nombre" required>
-            <small class="form-text text-danger">* Campo requerido</small>
+          <div class="form-group col-md-3">
+            <label for="txtNombre">Primer nombre:</label>
+            <input type="text" class="form-control" id="txtNombre" name="campoNombre1" pattern="[ñáéíóúA-Za-z ]+" ng-model="vm.clienteNuevo.nombre"
+              required>
+            <div ng-messages="frmRegistroClientes.campoNombre1.$error" role="alert">
+              <div ng-message="required">
+                <small class="form-text text-danger">Este campo es requerido</small>
+              </div>
+              <div ng-message="pattern">
+                <small class="form-text text-muted">Formato incorrecto</small>
+              </div>
+            </div>
           </div>
 
-          <div class="form-group">
-            <label for="txtPrimerApellido">Primer apellido:</label>
-            <input type="text" class="form-control" id="txtPrimerApellido" ng-model="vm.clienteNuevo.primerApellido" required>
-            <small class="form-text text-danger">* Campo requerido</small>
-          </div>
-
-          <div class="form-group">
-            <label for="txtCedula">Número de cédula:</label>
-            <input type="number" class="form-control" id="txtCedula" ng-model="vm.clienteNuevo.cedula" required>
-            <small class="form-text text-danger">* Campo requerido</small>
-          </div>
-
-          <div class="form-group">
-            <label for="txtTelefono">Segundo Telefono:</label>
-            <input type="number" class="form-control" id="txtSegundoTelefono" ng-model="vm.clienteNuevo.segundotelefono">
-            <small class="form-text text">*Campo opcional</small>
-          </div>
-
-          <div class="form-group">
-            <label for="txtFechaNacimiento">Fecha de nacimiento:</label>
-            <input type="date" class="form-control" id="txtFechaNacimiento" ng-model="vm.clienteNuevo.fecha" required>
-            <small class="form-text text-danger">* Campo requerido</small>
-          </div>
-
-          <div class="form-group">
-            <label for="txtUbicacion">Ubicacion</label>
-            <input type="text" class="form-control" id="txtubicacion" ng-model="vm.clienteNuevo.ubicacion">
-            <small class="form-text text-danger">* Campo requerido</small>
-          </div>
-
-          <div class="form-group">
-            <label for="sltCanton">Cantón:</label>
-            <select id="sltCanton" class="custom-select" ng-change="vm.rellenarDistrito(vm.clienteNuevo.canton._id)" ng-options="canton as canton.name for canton in vm.cantones track by canton._id"
-              ng-model="vm.clienteNuevo.canton" required>
-              <option value="">Seleccione un cantón</option>
-            </select>
-            <small class="form-text text-danger">* Campo requerido</small>
-          </div>
-
-          <div class="form-group">
-            <label for="txtContrasenna">Contraseña:</label>
-            <input type="password" class="form-control" id="txtContrasenna" ng-model="vm.clienteNuevo.contrasenna" required>
-            <small class="form-text text-danger">* Campo requerido</small>
-          </div>
-
-          <div class="form-group">
-            <label for="txtDireccion">Direccion</label>
-            <input type="text" class="form-control" id="txtdireccion" ng-model="vm.clienteNuevo.direccion">
-          </div>
-
-        </div>
-        <div class="col-md-4">
-
-          <div class="form-group">
-            <label for="txtSegundoNombre">Segundo Nombre:</label>
+          <div class="form-group col-md-3">
+            <label for="txtSegundoNombre">Segundo nombre:</label>
             <input type="text" class="form-control" id="txtSegundoNombre" ng-model="vm.clienteNuevo.segundoNombre">
             <small class="form-text text">*Campo opcional</small>
           </div>
 
-          <div class="form-group">
+          <div class="form-group col-md-3">
+            <label for="txtPrimerApellido">Primer apellido:</label>
+            <input type="text" class="form-control" id="txtPrimerApellido" pattern="[ñáéíóúA-Za-z ]+" name="campoApellido1" ng-model="vm.clienteNuevo.primerApellido"
+              required>
+            <div ng-messages="frmRegistroClientes.campoApellido1.$error" role="alert">
+              <div ng-message="required">
+                <small class="form-text text-danger">Este campo es requerido</small>
+              </div>
+              <div ng-message="pattern">
+                <small class="form-text text-muted">Formato incorrecto</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group col-md-3">
             <label for="txtSegundoApellido">Segundo apellido:</label>
             <input type="text" class="form-control" id="txtSegundoApellido" ng-model="vm.clienteNuevo.segundoApellido">
             <small class="form-text text">*Campo opcional</small>
           </div>
 
-          <div class="form-group">
-            <label for="txtTelefono">Telefono:</label>
-            <input type="number" class="form-control" id="txtTelefono" ng-model="vm.clienteNuevo.telefono" required>
-            <small class="form-text text-danger">* Campo Requerido</small>
-          </div>
+        </div>
 
-          <div class="form-group">
-            <label for="txtEmail">Correo electrónico:</label>
-            <input type="email" class="form-control" id="txtEmail" ng-model="vm.clienteNuevo.correo" required>
-            <small class="form-text text-danger">* Campo requerido</small>
-          </div>
-
-          <div class="form-group">
-            <label for="sltSexo">Sexo</label>
-            <select id="sltSexo" class="custom-select" ng-model="vm.clienteNuevo.sexo" required>
+        <div class="row">
+          <div class="form-group col-md-3">
+            <label for="sltSexo">Sexo:</label>
+            <select id="sltSexo" class="custom-select" name="campoSexo" ng-model="vm.clienteNuevo.sexo" required>
               <option value="">Seleccione un sexo</option>
               <option value="Femenino">Femenino</option>
               <option value="Masculino">Masculino</option>
               <option value="Otro">Otro</option>
             </select>
-            <small class="form-text text-danger">* Campo requerido</small>
+            <div ng-messages="frmRegistroClientes.campoSexo.$error" role="alert">
+              <div ng-message="required">
+                <small class="form-text text-danger">Este campo es requerido</small>
+              </div>
+            </div>
           </div>
 
-          <div class="form-group">
-            <label for="sltProvincia">Provincia:</label>
-            <select id="sltProvincia" class="custom-select" ng-model="vm.clienteNuevo.provincia" ng-change="vm.rellenarCantones(vm.clienteNuevo.provincia._id)"
-              ng-options="provincia as provincia.name for provincia in vm.provincias track by provincia._id" required>
-              <option value="">Seleccione una provincia</option>
-
-            </select>
-            <small class="form-text text-danger">* Campo requerido</small>
+          <div class="form-group col-md-3">
+            <label for="txtCedula">Número de cédula:</label>
+            <input type="number" class="form-control" id="txtCedula" name="campoCedula" ng-model="vm.clienteNuevo.cedula" required>
+            <div ng-messages="frmRegistroClientes.campoCedula.$error" role="alert">
+              <div ng-message="required">
+                <small class="form-text text-danger">Este campo es requerido</small>
+              </div>
+            </div>
           </div>
 
-          <div class="form-group">
-            <label for="sltDistrito">Distrito:</label>
-            <select id="sltDistrito" class="custom-select" ng-options="distrito as distrito.name for distrito in vm.distritos track by distrito._id"
-              ng-model="vm.clienteNuevo.distrito" required>
-              <option value="">Seleccione un distrito</option>
-              <option value="Distrito">Distrito</option>
-            </select>
-            <small class="form-text text-danger">* Campo requerido</small>
+          <div class="form-group col-md-3">
+            <label for="txtTelefono">Teléfono:</label>
+            <input type="number" class="form-control" id="txtTelefono" name="campoTelefono" ng-model="vm.clienteNuevo.telefono" required>
+            <div ng-messages="frmRegistroClientes.campoTelefono.$error" role="alert">
+              <div ng-message="required">
+                <small class="form-text text-danger">Este campo es requerido</small>
+              </div>
+            </div>
           </div>
 
-          <div class="form-group">
-            <label for="txtConfirmarContrasenna">Confirmar contraseña:</label>
-            <input type="password" class="form-control" id="txtConfirmarContrasenna" ng-model="vm.clienteNuevo.confirmarContrasenna"
+          <div class="form-group col-md-3">
+            <label for="txtTelefono">Segundo teléfono:</label>
+            <input type="number" class="form-control" id="txtSegundoTelefono" ng-model="vm.clienteNuevo.segundotelefono">
+            <small class="form-text text">*Campo opcional</small>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-3">
+            <label for="txtFechaNacimiento">Fecha de nacimiento:</label>
+            <input type="date" class="form-control" id="txtFechaNacimiento" name="campoFechaNacimiento" ng-model="vm.clienteNuevo.fecha"
               required>
-            <small class="form-text text-danger">* Campo requerido</small>
+            <div ng-messages="frmRegistroClientes.campoFechaNacimiento.$error" role="alert">
+              <div ng-message="required">
+                <small class="form-text text-danger">Este campo es requerido</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group col-md-6">
+            <label for="iptFoto">Fotografía:</label>
+            <input type="file" class="form-control-file" id="iptFoto" name="campoFoto" files-input ng-model="vm.clienteNuevo.photo" required>
+            <div ng-messages="frmRegistroClientes.campoFoto.$error" role="alert">
+              <div ng-message="required">
+                <small class="form-text text-danger">Este campo es requerido</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group col-md-3">
+            <label for="txtEmail">Correo electrónico:</label>
+            <input type="email" class="form-control" id="txtEmail" name="campoCorreo" ng-model="vm.clienteNuevo.correo" required>
+            <div ng-messages="frmRegistroClientes.campoCorreo.$error" role="alert">
+              <div ng-message="required">
+                <small class="form-text text-danger">Este campo es requerido</small>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+
+          <div class="form-group col-md-3">
+            <label for="sltProvincia">Provincia:</label>
+            <select id="sltProvincia" class="custom-select" name="campoProvincias" ng-model="vm.clienteNuevo.provincia" ng-change="vm.rellenarCantones(vm.clienteNuevo.provincia._id)"
+              ng-options="provincia as provincia.name for provincia in vm.provincias track by provincia._id" required>
+              <option value="">--Seleccione una provincia--</option>
+            </select>
+            <div ng-messages="frmRegistroClientes.campoProvincias.$error" role="alert">
+              <div ng-message="required">
+                <small class="form-text text-danger">Este campo es requerido</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group col-md-3">
+            <label for="sltCanton">Cantón:</label>
+            <select id="sltCanton" class="custom-select" name="campoCanton" ng-change="vm.rellenarDistrito(vm.clienteNuevo.canton._id)"
+              ng-options="canton as canton.name for canton in vm.cantones track by canton._id" ng-model="vm.clienteNuevo.canton"
+              ng-disabled="!vm.clienteNuevo.provincia" required>
+              <option value="">--Seleccione un cantón--</option>
+            </select>
+            <div ng-messages="frmRegistroClientes.campoCanton.$error" role="alert">
+              <div ng-message="required">
+                <small class="form-text text-danger">Este campo es requerido</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group col-md-3">
+            <label for="sltDistrito">Distrito:</label>
+            <select id="sltDistrito" class="custom-select" name="campoDistritos" ng-options="distrito as distrito.name for distrito in vm.distritos track by distrito._id"
+              ng-model="vm.clienteNuevo.distrito" ng-disabled="!vm.clienteNuevo.canton" required>
+              <option value="">--Seleccione un distrito--</option>
+            </select>
+            <div ng-messages="frmRegistroClientes.campoDistritos.$error" role="alert">
+              <div ng-message="required">
+                <small class="form-text text-danger">Este campo es requerido</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group col-md-3">
+            <label for="txtDireccion">Direccion</label>
+            <textarea class="form-control" id="txtdireccion" ng-model="vm.clienteNuevo.direccion"></textarea>
           </div>
 
         </div>
-      </div>
 
-      <div class="row">
-        <div class="col-md-2">
+        <div class="row">
+
+          <div class="col-md-6 mx-auto">
+            <label for="map">Ubicación exacta:</label>
+            <ng-map id="map" center="current-location" geo-callback="vm.callbackFunc('you')">
+              <marker position="current-location" coords="marker.coords" options="marker.options"></marker>
+            </ng-map>
+          </div>
 
         </div>
-        <div class="col-md-10 mt-3 mb-5">
-          <button type="submit" class="btn btn-danger">Registrar cliente</button>
-        </div>
-      </div>
-    </form>
 
-  </main>
-</div>
-<footer-Principal></footer-Principal>
+        <div class="row mt-5">
+          <div class="mx-auto">
+            <button type="submit" class="btn btn-danger">Registrar cliente</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </section>
+</main>
