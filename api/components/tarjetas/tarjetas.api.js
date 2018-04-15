@@ -6,7 +6,8 @@ module.exports.registrar = (req, res) => {
     nombreTarjeta  : req.body.nombreTarjeta,
     numeroTarjeta  : req.body.numeroTarjeta,
     cvvTarjeta     : req.body.cvvTarjeta,
-    fechaTarjeta   : req.body.fechaTarjeta,
+    mesTarjeta     : req.body.mesTarjeta,
+    annoTarjeta    : req.body.annoTarjeta,
     idCliente      : req.body.idCliente
   });
 
@@ -26,7 +27,18 @@ module.exports.listarTodos = (req,res) => {
 };
 
 module.exports.actualizar = (req,res) => {
-  creditCardModel.findByIdAndUpdate(req.body.numeroTarjeta, { $set: req.body}, (err, creditCard) => {
+  creditCardModel.update({numeroTarjeta: req.body.numeroTarjeta}, req.body, (err, creditCard) => {
+    if (err){
+      res.json({success:false,msg:'No se ha actualizado.' + handleError(err)});
+
+    } else{
+      res.json({success:true,msg:'Se ha actualizado correctamente.' + res});
+    }
+  });
+};
+
+module.exports.eliminar = (req,res) => {
+  creditCardModel.remove({numeroTarjeta: req.body.numeroTarjeta}, (err, creditCard) => {
     if (err){
       res.json({success:false,msg:'No se ha actualizado.' + handleError(err)});
 

@@ -99,6 +99,21 @@
         controllerAs: 'vm'
       })
 
+      .state('main.editarTarjetas', {
+        url: '/editarTarjetas',
+        templateUrl: './components/tarjetas/modificarTarjetas/modificarTarjetas.view.html',
+        data: {
+          pageTitle: 'Editar tarjetas'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/tarjetas/modificarTarjetas/modificarTarjetas.controller.js')
+          }]
+        },
+        controller: 'controladorModificarTarjeta',
+        controllerAs: 'vm'
+      })
+
       .state('registrarCliente', {
         url: '/registrarCliente',
         templateUrl: './components/usuarios/cliente/registrarCliente/registrarCliente.view.html',

@@ -27,10 +27,10 @@
                   <td>{{tarjeta.nombreTarjeta}}</td>
                   <td>{{tarjeta.tipoTarjeta}}</td>
                   <td>
-                      <button type="submit" class="btn btn-danger" ng-click="wm.modificarTarjetas(tarjeta.idCliente)">Modificar tarjeta</button>
+                      <button type="submit" class="btn btn-danger" ng-click="vm.modificarTarjetas(tarjeta.numeroTarjeta)">Modificar tarjeta</button>
                   </td>
                   <td>
-                      <button type="submit" class="btn btn-danger">Eliminar tarjeta</button>
+                      <button type="submit" class="btn btn-danger" ng-click="vm.eliminarTarjeta(tarjeta.numeroTarjeta)">Eliminar tarjeta</button>
                   </td>
                 </tr>
               </tbody>

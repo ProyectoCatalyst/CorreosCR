@@ -15,7 +15,8 @@
       obtenerlistadeusuarios: _obtenerlistadeusuarios,
       obtenerlistadeFiltrada: _obtenerListaFiltrada,
       retornarCorreosUsuarios: _retornarCorreosUsuarios,
-      actualizarUsuario: _actualizarUsuario
+      actualizarUsuario: _actualizarUsuario,
+      agregarTarjetaUsuario: _agregarTarjetaUsuario
     };
     return publicAPI;
 
@@ -97,7 +98,7 @@
 
           default:
 
-            let tempUsuario = new Usuario(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.cedula, tempfecha, obj.genero, obj.ubicacion, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol, obj.estado);
+            let tempUsuario = new Usuario(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.foto, obj.cedula, tempfecha, obj.genero, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol, obj.estado);
 
             listadeusuarios.push(tempUsuario);
             break;
@@ -142,6 +143,10 @@
       }
 
       return cedulasSistema
+    }
+
+    function _agregarTarjetaUsuario(pCorreoTarjeta) {
+      dataStorageFactory.addCreditCard(pCorreoTarjeta);
     }
 
   };

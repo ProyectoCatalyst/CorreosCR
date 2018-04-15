@@ -1,4 +1,4 @@
-<main class="hero" id="editarTarjeta">
+<main class="hero" id="modificarTarjeta">
   <div class="container">
     <section class="row">
       <div class="col-md-12">
@@ -38,7 +38,7 @@
   
           <div class="form-group">
             <label for="txtNumeroTarjeta">Número de tarjeta</label>
-            <input type="number" class="form-control" ng-model="vm.tarjetaEditada.numeroTarjeta" />
+            <input type="text" class="form-control" ng-model="vm.tarjetaEditada.numeroTarjeta" disabled/>
             <small class="form-text text-danger">* Campo requerido</small>
           </div>
   
@@ -46,7 +46,7 @@
             <label for="txtFech">Fecha de vencimiento:</label>
             <div class="row">
               <div class="col-md-6">
-                <select class="form-control" ng-model="vm.tarjetaEditada.mes">
+                <select class="form-control" ng-model="vm.tarjetaEditada.mesTarjeta">
                   <option value="">Mes</option>
                   <option value="01">01</option>
                   <option value="02">02</option>
@@ -63,7 +63,7 @@
                 </select>
               </div>
               <div class="col-md-6">
-                <select class="form-control" ng-model="vm.tarjetaEditada.anno">
+                <select class="form-control" ng-model="vm.tarjetaEditada.annoTarjeta">
                   <option value="">Año</option>
                   <option value="18">2018</option>
                   <option value="19">2019</option>
@@ -84,6 +84,7 @@
       <section class="row justify-content-center">
         <div class="col-md-8">
           <button type="submit" class="btn btn-danger mt-3">Editar tarjeta</button>
+          <button type="button" class="btn btn-danger mt-3 ml-2" ng-click="vm.regresar()">Regresar</button>
         </div>
       </section>
     </form>

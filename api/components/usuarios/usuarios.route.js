@@ -34,4 +34,9 @@ router.route('/update_users')
     users.actualizar(req,res);
 });
 
+router.route('/add_creditCard')
+  .put((req, res) => {
+    users.agregar_tarjeta(req,res);
+});
+
 module.exports = router;

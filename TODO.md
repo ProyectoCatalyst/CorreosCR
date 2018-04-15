@@ -12,6 +12,8 @@
 | node_modules\@uirouter\core\_bundles\ui-router-core.js | 5027 | typeof?
 | node_modules\@uirouter\core\_bundles\ui-router-core.js | 5627 | Validate incoming view name with a regexp to allow:
 | node_modules\argparse\lib\help\formatter.js | 10 | add [additonal formatters][1]
+| node_modules\body-parser\lib\types\json.js | 74 | maybe make this configurable or part of "strict" option
+| node_modules\body-parser\node_modules\debug\browser.js | 37 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\bootstrap\dist\js\bootstrap.bundle.js | 4688 | @fat these should probably be refactored out of modal.js
 | node_modules\bootstrap\dist\js\bootstrap.bundle.js | 5840 | @fat remove sketch reliance on jQuery position/offset
 | node_modules\bootstrap\dist\js\bootstrap.js | 2254 | @fat these should probably be refactored out of modal.js
@@ -23,8 +25,6 @@
 | node_modules\browser-sync\client\dist\index.js | 153 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\bson\lib\bson\decimal128.js | 239 | implementing a custom parsing for this, or refactoring the regex would yield
 | node_modules\connect\node_modules\debug\browser.js | 37 | add a `localStorage` variable to explicitly enable/disable colors
-| node_modules\body-parser\lib\types\json.js | 74 | maybe make this configurable or part of "strict" option
-| node_modules\body-parser\node_modules\debug\browser.js | 37 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\csso\lib\parser\index.js | 190 | remove it as wrong thing
 | node_modules\csso\lib\parser\index.js | 1594 | remove '=' since it's wrong operator, but theat as operator
 | node_modules\duplexer2\node_modules\string_decoder\index.js | 43 | Handling all encodings inside a single object makes it very difficult
@@ -65,9 +65,9 @@
 | node_modules\jsdoc\lib\jsdoc\schema.js | 385 | define this as an enumeration elsewhere
 | node_modules\jsdoc\lib\jsdoc\schema.js | 504 | make these an enumeration
 | node_modules\jsdoc\templates\default\publish.js | 675 | move the tutorial functions to templateHelper.js
+| node_modules\moment\src\locale\fr.js | 50 | Return 'e' when day of month > 1. Move this case inside
 | node_modules\mongodb\lib\bulk\common.js | 202 | Something better
 | node_modules\mongodb\lib\bulk\ordered.js | 227 | Bring from driver information in isMaster
-| node_modules\moment\src\locale\fr.js | 50 | Return 'e' when day of month > 1. Move this case inside
 | node_modules\mongodb-core\lib\connection\pool.js | 1193 | reenable when sessions development is complete
 | node_modules\mongodb-core\lib\topologies\replset.js | 1188 | once we drop Node 4, use destructuring either here or in arguments.
 | node_modules\mongodb-core\lib\topologies\shared.js | 385 | 
@@ -220,13 +220,13 @@
 | node_modules\duplexer2\node_modules\readable-stream\lib\_stream_writable.js | 365 | @isaacs clean this up
 | node_modules\engine.io\node_modules\debug\src\browser.js | 41 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\engine.io-client\node_modules\debug\src\browser.js | 41 | add a `localStorage` variable to explicitly enable/disable colors
-| node_modules\express\node_modules\mime\build\test.js | 46 | Uncomment once #157 is resolved
-| node_modules\express\node_modules\iconv-lite\lib\extend-node.js | 167 | Set _charsWritten.
 | node_modules\express\node_modules\iconv-lite\encodings\dbcs-codec.js | 348 | What if we have no default? (resCode == undefined)
 | node_modules\express\node_modules\iconv-lite\encodings\dbcs-codec.js | 472 | Callback with seq.
 | node_modules\express\node_modules\iconv-lite\encodings\dbcs-data.js | 64 | KDDI extension to Shift_JIS
 | node_modules\express\node_modules\iconv-lite\encodings\dbcs-data.js | 65 | IBM CCSID 942 = CP932, but F0-F9 custom chars and other char changes.
 | node_modules\express\node_modules\iconv-lite\encodings\dbcs-data.js | 66 | IBM CCSID 943 = Shift_JIS = CP932 with original Shift_JIS lower 128 chars.
+| node_modules\express\node_modules\iconv-lite\lib\extend-node.js | 167 | Set _charsWritten.
+| node_modules\express\node_modules\mime\build\test.js | 46 | Uncomment once #157 is resolved
 | node_modules\glob-stream\node_modules\readable-stream\lib\_stream_writable.js | 145 | defer error events consistently everywhere, not just the cb
 | node_modules\globule\node_modules\minimatch\test\basic.js | 3 | Some of these tests do very bad things with backslashes, and will
 | node_modules\globule\node_modules\minimatch\test\defaults.js | 3 | Some of these tests do very bad things with backslashes, and will
@@ -369,8 +369,8 @@
 | public\clases.js | 52 | Hacer metodos del Encargado de la Aduana
 | public\clases.js | 58 | sucursal asignada
 | public\clases.js | 61 | Hacer metodos del Encargado de la sucursales
-| public\clases.js | 141 | Agregar los metodos de las tarjetas
-| public\clases.js | 155 | Agregar  los metodos del paquete
+| public\clases.js | 142 | Agregar los metodos de las tarjetas
+| public\clases.js | 156 | Agregar  los metodos del paquete
 | node_modules\angular\angular.js | 2122 | @misko this function needs to be removed
 | node_modules\angular\angular.js | 2148 | @perf update `nodes` instead of creating a new object?
 | node_modules\angular\angular.js | 3717 | do we still need this?
@@ -472,7 +472,6 @@
 | node_modules\htmlparser2\lib\FeedHandler.js | 5 | make this a streamable handler
 | node_modules\htmlparser2\lib\Tokenizer.js | 627 | make events conditional
 | node_modules\htmlparser2\lib\Tokenizer.js | 880 | add a way to remove current tag
-| node_modules\iconv-lite\lib\extend-node.js | 166 | Set _charsWritten.
 | node_modules\iconv-lite\encodings\dbcs-codec.js | 347 | What if we have no default? (resCode == undefined)
 | node_modules\iconv-lite\encodings\dbcs-codec.js | 471 | Callback with seq.
 | node_modules\iconv-lite\encodings\dbcs-data.js | 63 | KDDI extension to Shift_JIS
@@ -480,6 +479,7 @@
 | node_modules\iconv-lite\encodings\dbcs-data.js | 65 | IBM CCSID 943 = Shift_JIS = CP932 with original Shift_JIS lower 128 chars.
 | node_modules\iconv-lite\encodings\dbcs-data.js | 80 | Euro = 0x80 in cp936, but not in GBK (where it's valid but undefined)
 | node_modules\iconv-lite\encodings\dbcs-data.js | 104 | Support GB18030 (~27000 chars + whole unicode mapping, cp54936)
+| node_modules\iconv-lite\lib\extend-node.js | 166 | Set _charsWritten.
 | node_modules\immutable\dist\immutable.js | 2255 | seems like these methods are very similar
 | node_modules\ink-docstrap\template\publish.js | 841 | move the tutorial functions to templateHelper.js
 | node_modules\jquery\dist\jquery.js | 753 | identify versions
@@ -489,6 +489,8 @@
 | node_modules\jquery\dist\jquery.slim.js | 767 | identify versions
 | node_modules\jquery\dist\jquery.slim.js | 4234 | Now that all calls to _data and _removeData have been replaced
 | node_modules\jquery\src\data.js | 85 | Now that all calls to _data and _removeData have been replaced
+| node_modules\js-yaml\dist\js-yaml.js | 1542 | rework to inline fn with no type cast?
+| node_modules\js-yaml\dist\js-yaml.js | 2896 | Add tag format check.
 | node_modules\js-base64\test-moment\moment.js | 363 | Remove "ordinalParse" fallback in next major release.
 | node_modules\js-base64\test-moment\moment.js | 1007 | add sorting
 | node_modules\js-base64\test-moment\moment.js | 1047 | Another silent failure?
@@ -500,8 +502,6 @@
 | node_modules\js-base64\test-moment\moment.js | 3113 | remove 'name' arg after deprecation is removed
 | node_modules\js-base64\test-moment\moment.js | 3668 | Remove "ordinalParse" fallback in next major release.
 | node_modules\js-base64\test-moment\moment.js | 4226 | Use this.as('ms')?
-| node_modules\js-yaml\dist\js-yaml.js | 1542 | rework to inline fn with no type cast?
-| node_modules\js-yaml\dist\js-yaml.js | 2896 | Add tag format check.
 | node_modules\localtunnel\lib\Tunnel.js | 47 | @shtylman don't print to stdout?
 | node_modules\localtunnel\lib\TunnelCluster.js | 77 | some languages have single threaded servers which makes opening up
 | node_modules\lodash\function\debounce.js | 62 | Changes.cancel();
@@ -574,10 +574,10 @@
 ### FIXMEs
 | Filename | line # | FIXME
 |:------|:------:|:------
-| node_modules\connect\node_modules\debug\node.js | 177 | Should probably have an option in net.Socket to create a
-| node_modules\connect\node_modules\debug\node.js | 185 | Hack to have stream not keep the event loop alive.
 | node_modules\body-parser\node_modules\debug\node.js | 177 | Should probably have an option in net.Socket to create a
 | node_modules\body-parser\node_modules\debug\node.js | 185 | Hack to have stream not keep the event loop alive.
+| node_modules\connect\node_modules\debug\node.js | 177 | Should probably have an option in net.Socket to create a
+| node_modules\connect\node_modules\debug\node.js | 185 | Hack to have stream not keep the event loop alive.
 | node_modules\finalhandler\node_modules\debug\node.js | 177 | Should probably have an option in net.Socket to create a
 | node_modules\finalhandler\node_modules\debug\node.js | 185 | Hack to have stream not keep the event loop alive.
 | node_modules\leasot\lib\reporters\custom.js | 9 | make the default header a configurable option

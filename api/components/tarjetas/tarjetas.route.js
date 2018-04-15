@@ -34,4 +34,9 @@ router.route('/update_creditCard')
     tarjetas.actualizar(req,res);
 });
 
+router.route('/delete_creditCard')
+  .delete((req, res) => {
+    tarjetas.eliminar(req,res);
+});
+
 module.exports = router;

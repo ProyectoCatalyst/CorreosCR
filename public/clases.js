@@ -122,12 +122,13 @@ class Cliente extends Usuario {
 }
 
 class Tarjeta {
-  constructor(ptipoTarjeta, pnombreTarjeta, pnumeroTarjeta, pcvvTarjeta, pfechaTarjeta, pidcliente) {
+  constructor(ptipoTarjeta, pnombreTarjeta, pnumeroTarjeta, pcvvTarjeta, pmesTarjeta, pannoTarjeta, pidcliente) {
     this.tipoTarjeta = ptipoTarjeta;
     this.nombreTarjeta = pnombreTarjeta;
     this.numeroTarjeta = pnumeroTarjeta;
     this.cvvTarjeta = pcvvTarjeta;
-    this.fechaTarjeta = pfechaTarjeta;
+    this.mesTarjeta = pmesTarjeta,
+    this.annoTarjeta = pannoTarjeta,
     this.idCliente = pidcliente;
   }
 
