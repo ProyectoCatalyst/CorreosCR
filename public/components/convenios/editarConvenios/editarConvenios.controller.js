@@ -25,6 +25,7 @@
       }
   
       vm.editarConvenio = (pactualizarConvenio) => {
+        pactualizarConvenio.desact = previoConvenio.desact;
         let exito = servicioConvenio.editarConvenio(pactualizarConvenio);
   
         if(exito){

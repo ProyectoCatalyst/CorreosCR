@@ -25,7 +25,8 @@
             </thead>
   
             <tbody>
-              <tr ng-repeat="convenios in vm.listarConvenios">
+              <tr ng-repeat="convenios in vm.listarConveniosAct">
+                <th>Activo</th>
                 <td>{{convenios.codigoConvenio}}</td>
                 <td>{{convenios.nombreConvenio}}</td>
                 <td>{{convenios.descripcionConvenio}}</td>
@@ -35,12 +36,27 @@
                   <button ng-if="vm.usuarioActivo.rol == 1" type="button" class="btn btn-danger" ng-click="vm.editarConvenio(convenios)">Editar</button>
                 </td>
                 <td ng-if="vm.usuarioActivo.rol == 1">
-                  <button type="button" class="btn btn-danger" ng-click="vm.eliminarConvenio(convenios)">Eliminar</button>
+                  <button type="button" class="btn btn-danger" ng-click="vm.desactConvenio(convenios)">Desactivar</button>
                 </td>
                 <td ng-if="vm.usuarioActivo.rol == 5">
                   <button type="button" class="btn btn-danger" ng-click="vm.prealertarTramite(convenios)">Prealertar trámite</button>
                 </td>
               </tr>
+
+              <tr ng-repeat="convenios in vm.listarConveniosDesact" ng-if="vm.usuarioActivo.rol==1">
+                  <th>Desactivado</th>
+                  <td>{{convenios.codigoConvenio}}</td>
+                  <td>{{convenios.nombreConvenio}}</td>
+                  <td>{{convenios.descripcionConvenio}}</td>
+                  <td>{{convenios.institucionConvenio}}</td>
+                  <td>₡{{convenios.costoConvenio}}</td>
+                  <td ng-if="vm.usuarioActivo.rol == 1">
+                    <button type="button" class="btn btn-danger" ng-click="vm.reactConvenio(convenios)">Activar</button>
+                  </td>
+                  <td ng-if="vm.usuarioActivo.rol == 5">
+                    <button type="button" class="btn btn-danger" ng-click="vm.prealertarTramite(convenios)">Prealertar trámite</button>
+                  </td>
+                </tr>
             </tbody>
   
           </table>

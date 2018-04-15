@@ -111,10 +111,10 @@
 
       .state('main.registrarEncargado', {
         url: '/registerManager',
-        templateUrl: './components/usuarios/encargados/registrarEncargado.view.html',
+        templateUrl: './components/usuarios/encargados/registrarEncargado/registrarEncargado.view.html',
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/usuarios/encargados/registrarEncargado.controller.js')
+            return $ocLazyLoad.load('./components/usuarios/encargados/registrarEncargado/registrarEncargado.controller.js')
           }]
         },
         data: {

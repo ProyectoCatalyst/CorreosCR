@@ -6,7 +6,8 @@ module.exports.registrar = (req, res) => {
         costoConvenio  : req.body.costoConvenio,
         descripcionConvenio  : req.body.descripcionConvenio,
         institucionConvenio  : req.body.institucionConvenio,
-        nombreConvenio  : req.body.nombreConvenio
+        nombreConvenio  : req.body.nombreConvenio,
+        desact : req.body.desact
     });
 
     newConvenio.save((err) => {
@@ -30,7 +31,7 @@ module.exports.retornar = (req,res) => {
  * @param {response} res 
  */
 module.exports.actualizar = (req,res) => {
-    ConvenioModel.findByIdAndUpdate(req.body.codigoConvenio, { $set: req.body }, (err, user) => {
+    ConvenioModel.update(req.params.codigoConvenio, req.body, (err, user) => {
       if (err){ // no se logra, error siempre viene como true
         res.json({success:false,msg:'No se ha actualizado.' + handleError(err) } );
   

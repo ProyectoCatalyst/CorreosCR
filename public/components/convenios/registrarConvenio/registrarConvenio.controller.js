@@ -14,7 +14,8 @@
         let objNuevoConvenio = new Convenio(pconvenioNuevo.codigoConvenio, pconvenioNuevo.nombreConvenio,
           pconvenioNuevo.descripcionConvenio,
           pconvenioNuevo.institucionConvenio,
-          pconvenioNuevo.costoConvenio
+          pconvenioNuevo.costoConvenio,
+          false
         );
   
         let repetido = servicioConvenio.agregarConvenio(objNuevoConvenio);

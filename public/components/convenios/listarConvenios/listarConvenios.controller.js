@@ -10,7 +10,9 @@
     
       let vm = this;
   
-      vm.listarConvenios = servicioConvenio.retornarConvenio();
+      vm.listarConveniosAct = servicioConvenio.retornarConvenioEstado(false);
+
+      vm.listarConveniosDesact = servicioConvenio.retornarConvenioEstado(true);
   
       vm.usuarioActivo = servicioInicioSesion.getAuthUser();
   
@@ -38,19 +40,21 @@
             }
       }
   
-      vm.eliminarConvenio = (pconvenioEliminar) => {
+      vm.desactConvenio = (pconvenioDesact) => {
         let confirm = swal({
-          title: '¿Quiere eliminar este convenio?',
-          text: 'Una vez eliminado se perderá la informacion',
+          title: '¿Quiere desactivar este convenio?',
+          text: 'Una vez desactivado no podrá ser visualizado por los usuarios',
           buttons: ['Cancelar', 'Continuar'],
           icon: 'warning',
           dangerMode: 'true'
         }).then((confirmacion) => {
           if(confirmacion){
+
+            pconvenioDesact.desact = true;
   
-            let eliminacion = servicioConvenio.eliminarConvenio(pconvenioEliminar);
+            let desactivacion = servicioConvenio.editarConvenio(pconvenioDesact);
   
-            if(eliminacion){
+            if(desactivacion){
               $state.reload()
             }else{
               swal({
@@ -71,6 +75,12 @@
           }
         });
        
+      }
+
+      vm.reactConvenio = (pconvenioReact) => {
+        pconvenioReact.desact = false;
+        servicioConvenio.editarConvenio(pconvenioReact);
+        $state.reload();
       }
   
       vm.editarConvenio = (convenioMod) => {

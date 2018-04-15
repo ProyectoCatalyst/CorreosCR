@@ -14,7 +14,8 @@
         agregarConvenio: _agregarConvenio,
         retornarConvenio: _retornarConvenio,
         eliminarConvenio: _eliminarConvenio,
-        editarConvenio: _editarConvenio
+        editarConvenio: _editarConvenio,
+        retornarConvenioEstado: _retornarConvenioEstado
       }
       return publicAPI;
   
@@ -45,7 +46,7 @@
         } else {
           conveniosDB.forEach(obj => {
   
-            let objConvenio = new Convenio(obj.codigoConvenio, obj.nombreConvenio, obj.descripcionConvenio, obj.institucionConvenio, obj.costoConvenio);
+            let objConvenio = new Convenio(obj.codigoConvenio, obj.nombreConvenio, obj.descripcionConvenio, obj.institucionConvenio, obj.costoConvenio, obj.desact);
   
             listaConveniosTemporal.push(objConvenio)
           });
@@ -77,6 +78,18 @@
           }
         }
         return exito
+      }
+
+      function _retornarConvenioEstado(pestado){
+        let conveniosBD = _retornarConvenio(),
+            conveniosEstado = [];
+
+        for(let i=0; i<conveniosBD.length; i++){
+          if(conveniosBD[i].desact == String(pestado)){
+            conveniosEstado.push(conveniosBD[i]);
+          }
+        }
+        return conveniosEstado
       }
   
   

@@ -130,7 +130,9 @@
                 'nombreConvenio': data.nombreConvenio,
                 'descripcionConvenio': data.descripcionConvenio,
                 'institucionConvenio': data.institucionConvenio,
-                'costoConvenio': data.costoConvenio
+                'costoConvenio': data.costoConvenio,
+                'desact': data.desact
+                
             }
         });
         peticion.done((datos) => {
@@ -187,11 +189,12 @@
                 'nombreConvenio': data.nombreConvenio,
                 'descripcionConvenio': data.descripcionConvenio,
                 'institucionConvenio': data.institucionConvenio,
-                'costoConvenio': data.costoConvenio
+                'costoConvenio': data.costoConvenio,
+                'desact': data.desact
             }
         });
         peticion.done((datos) => {
-            respuesta = datos.msj;
+            respuesta = datos.msg;
             console.log('Petición realizada con éxito')
         });
         peticion.fail((error) => {

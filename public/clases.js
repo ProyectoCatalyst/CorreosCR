@@ -121,13 +121,14 @@ class Cliente extends Usuario {
 
 class Convenio{
 
-  constructor(pcodigoConvenio,pnombreConvenio,pdescripcionConvenio,pinstitucionConvenio,pcostoConvenio){
+  constructor(pcodigoConvenio,pnombreConvenio,pdescripcionConvenio,pinstitucionConvenio,pcostoConvenio, pdesact){
 
     this.codigoConvenio = pcodigoConvenio;
     this.nombreConvenio = pnombreConvenio;
     this.descripcionConvenio = pdescripcionConvenio;
     this.institucionConvenio = pinstitucionConvenio;
     this.costoConvenio = pcostoConvenio;
+    this.desact = pdesact;
     
   }
   
