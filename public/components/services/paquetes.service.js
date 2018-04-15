@@ -20,7 +20,7 @@
         encontrarEstadoActivo: _encontrarEstadoActivo,
         modificarEstado: _modificarEstado,
         costoPaquete: _costoPaquete
-      };
+      }
       return publicAPI;
   
       function _getAuthUser() {

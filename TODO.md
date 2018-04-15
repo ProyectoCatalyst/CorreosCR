@@ -7,13 +7,13 @@
 | node_modules\@uirouter\angularjs\release\angular-ui-router.js | 5634 | Validate incoming view name with a regexp to allow:
 | node_modules\@uirouter\angularjs\release\angular-ui-router.js | 9851 | Use $view service as a central point for registering component-level hooks
 | node_modules\@uirouter\angularjs\release\ui-router-angularjs.js | 1863 | Use $view service as a central point for registering component-level hooks
-| node_modules\argparse\lib\help\formatter.js | 10 | add [additonal formatters][1]
-| node_modules\body-parser\lib\types\json.js | 74 | maybe make this configurable or part of "strict" option
-| node_modules\body-parser\node_modules\debug\browser.js | 37 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\@uirouter\core\_bundles\ui-router-core.js | 2603 | explicitly make this user configurable
 | node_modules\@uirouter\core\_bundles\ui-router-core.js | 3076 | Also compare parameters
 | node_modules\@uirouter\core\_bundles\ui-router-core.js | 5027 | typeof?
 | node_modules\@uirouter\core\_bundles\ui-router-core.js | 5627 | Validate incoming view name with a regexp to allow:
+| node_modules\argparse\lib\help\formatter.js | 10 | add [additonal formatters][1]
+| node_modules\body-parser\lib\types\json.js | 74 | maybe make this configurable or part of "strict" option
+| node_modules\body-parser\node_modules\debug\browser.js | 37 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\bootstrap\dist\js\bootstrap.bundle.js | 178 | Remove in v5
 | node_modules\bootstrap\dist\js\bootstrap.bundle.js | 4784 | @fat these should probably be refactored out of modal.js
 | node_modules\bootstrap\dist\js\bootstrap.bundle.js | 5943 | @fat remove sketch reliance on jQuery position/offset
@@ -30,6 +30,8 @@
 | node_modules\connect\node_modules\debug\browser.js | 37 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\csso\lib\parser\index.js | 190 | remove it as wrong thing
 | node_modules\csso\lib\parser\index.js | 1594 | remove '=' since it's wrong operator, but theat as operator
+| node_modules\duplexer2\node_modules\string_decoder\index.js | 43 | Handling all encodings inside a single object makes it very difficult
+| node_modules\duplexer2\node_modules\string_decoder\index.js | 45 | There should be a utf8-strict encoding that rejects invalid UTF-8 code
 | node_modules\finalhandler\node_modules\debug\browser.js | 37 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\fs-extra\lib\mkdirs\win32.js | 13 | expand to include the rest
 | node_modules\glob\node_modules\minimatch\browser.js | 461 | It would probably be faster to determine this
@@ -42,8 +44,6 @@
 | node_modules\gulp-connect\node_modules\send\index.js | 685 | this is all lame, refactor meeee
 | node_modules\js-yaml\lib\js-yaml\loader.js | 591 | rework to inline fn with no type cast?
 | node_modules\js-yaml\lib\js-yaml\type.js | 45 | Add tag format check.
-| node_modules\duplexer2\node_modules\string_decoder\index.js | 43 | Handling all encodings inside a single object makes it very difficult
-| node_modules\duplexer2\node_modules\string_decoder\index.js | 45 | There should be a utf8-strict encoding that rejects invalid UTF-8 code
 | node_modules\node-gyp\node_modules\glob\common.js | 106 | is an absolute `cwd` supposed to be resolved against `root`?
 | node_modules\ngmap\build\scripts\ng-map.debug.js | 245 | it's for backward compatibiliy. will be removed
 | node_modules\ngmap\build\scripts\ng-map.debug.js | 860 | Add remove button.
@@ -54,13 +54,13 @@
 | node_modules\ngmap\build\scripts\ng-map.no-dependency.js | 254 | it's for backward compatibiliy. will be removed
 | node_modules\ngmap\build\scripts\ng-map.no-dependency.js | 878 | Add remove button.
 | node_modules\ngmap\build\scripts\ng-map.no-dependency.js | 1279 | DEPRECATED
+| node_modules\ngmap\spec\e2e\testapp_spec.js | 32 | apply retry when it has console error. e.g. google image 404 error
 | node_modules\ngmap\spec\directives\map_spec_bak.js | 64 | need to test events, but don't know how to detect event in a map
 | node_modules\ngmap\spec\directives\map_spec_bak.js | 68 | need to test observers
 | node_modules\ngmap\spec\directives\marker_spec_bak.js | 55 | need to test marker events, but don't know don't know how to get events of a marker
 | node_modules\ngmap\spec\directives\marker_spec_bak.js | 59 | need to test marker observers
 | node_modules\ngmap\spec\directives\shape_spec_bak.js | 47 | should test events, but don't know how to get events of a shape
 | node_modules\ngmap\spec\directives\shape_spec_bak.js | 51 | need to test observers
-| node_modules\ngmap\spec\e2e\testapp_spec.js | 32 | apply retry when it has console error. e.g. google image 404 error
 | node_modules\ngmap\spec\lib\angular-mocks.js | 46 | @vojta remove this temporary api
 | node_modules\ngmap\spec\lib\angular-mocks.js | 876 | @i this prevents methods being logged,
 | node_modules\ngmap\spec\lib\angular-mocks.js | 1156 | @vojta change params to: method, url, data, headers, callback
@@ -85,6 +85,11 @@
 | node_modules\ngmap\spec\lib\angular.js | 24480 | @perf generate setters to shave off ~40ms or 1-1.5%
 | node_modules\ngmap\spec\lib\angular.js | 24687 | @perf support naked previousNode in `enter` to avoid creation of jqLite wrapper?
 | node_modules\ngmap\spec\lib\angular.js | 25889 | Add a test for this case
+| node_modules\ngmap\spec\services\attr2_options_spec.js | 184 | 
+| node_modules\ngmap\spec\services\attr2_options_spec.js | 190 | 
+| node_modules\ngmap\spec\services\attr2_options_spec.js | 196 | 
+| node_modules\ngmap\spec\services\attr2_options_spec.js | 201 | need some mock jobs for object, NavigatorGeolocation and GeoCoder
+| node_modules\ngmap\spec\services\attr2_options_spec.js | 205 | needs some mock jobs for object and attrs
 | node_modules\ngmap\testapp\lib\angular-ui-router.js | 1249 | in 1.0, make string .is() return false if value is undefined/null by default.
 | node_modules\ngmap\testapp\lib\angular-ui-router.js | 1998 | Optimize groups of rules with non-empty prefix into some sort of decision tree
 | node_modules\ngmap\testapp\lib\angular-ui-router.js | 2003 | Re-implement this in 1.0 for https://github.com/angular-ui/ui-router/issues/1573
@@ -115,11 +120,6 @@
 | node_modules\ngmap\testapp\lib\prettify.js | 557 | handle tabs here?
 | node_modules\ngmap\testapp\lib\prettify.js | 947 | @mikesamuel recognize non-latin letters and numerals in idents
 | node_modules\ngmap\testapp\lib\prettify.js | 1215 | Possibly optimize by using '' if there's no flicker.
-| node_modules\ngmap\spec\services\attr2_options_spec.js | 184 | 
-| node_modules\ngmap\spec\services\attr2_options_spec.js | 190 | 
-| node_modules\ngmap\spec\services\attr2_options_spec.js | 196 | 
-| node_modules\ngmap\spec\services\attr2_options_spec.js | 201 | need some mock jobs for object, NavigatorGeolocation and GeoCoder
-| node_modules\ngmap\spec\services\attr2_options_spec.js | 205 | needs some mock jobs for object and attrs
 | node_modules\node-sass\node_modules\glob\common.js | 106 | is an absolute `cwd` supposed to be resolved against `root`?
 | node_modules\oclazyload\bower_components\angular\angular.js | 2005 | @misko this function needs to be removed
 | node_modules\oclazyload\bower_components\angular\angular.js | 2031 | @perf update `nodes` instead of creating a new object?
@@ -151,9 +151,9 @@
 | node_modules\oclazyload\bower_components\angular-mocks\angular-mocks.js | 1340 | @vojta change params to: method, url, data, headers, callback
 | node_modules\raw-body\node_modules\bytes\index.js | 36 | use is-finite module?
 | node_modules\rimraf\node_modules\glob\common.js | 106 | is an absolute `cwd` supposed to be resolved against `root`?
+| node_modules\sass-graph\node_modules\glob\common.js | 106 | is an absolute `cwd` supposed to be resolved against `root`?
 | node_modules\sass-graph\node_modules\yargs\yargs.js | 250 | actually deprecate self.defaults.
 | node_modules\sass-graph\node_modules\yargs\yargs.js | 347 | deprecate self.demand in favor of
-| node_modules\sass-graph\node_modules\glob\common.js | 106 | is an absolute `cwd` supposed to be resolved against `root`?
 | node_modules\serve-index\node_modules\debug\browser.js | 37 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\tiny-lr\node_modules\debug\browser.js | 37 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\vinyl-fs\lib\dest\index.js | 56 | option for either backpressure or lossy
@@ -167,20 +167,21 @@
 | node_modules\@uirouter\angularjs\lib-esm\directives\viewDirective.js | 320 | Use $view service as a central point for registering component-level hooks
 | node_modules\@uirouter\core\lib\resolve\resolvable.js | 13 | explicitly make this user configurable
 | node_modules\@uirouter\core\lib\transition\transition.js | 165 | Also compare parameters
+| node_modules\@uirouter\core\lib\url\urlMatcherFactory.js | 78 | typeof?
 | node_modules\@uirouter\core\lib\view\view.js | 58 | Validate incoming view name with a regexp to allow:
 | node_modules\@uirouter\core\lib-esm\resolve\resolvable.js | 11 | explicitly make this user configurable
 | node_modules\@uirouter\core\lib-esm\transition\transition.js | 163 | Also compare parameters
-| node_modules\@uirouter\core\lib-esm\view\view.js | 56 | Validate incoming view name with a regexp to allow:
 | node_modules\@uirouter\core\lib-esm\url\urlMatcherFactory.js | 76 | typeof?
-| node_modules\csso\lib\compressor\restructure\1-initialMergeRuleset.js | 41 | remove initial merge
-| node_modules\csso\lib\compressor\restructure\8-restructRuleset.js | 80 | need to be checked
-| node_modules\csso\lib\compressor\restructure\8-restructRuleset.js | 136 | disallow up merge only if any property interception only (i.e. diff.ne2overrided.length > 0);
+| node_modules\@uirouter\core\lib-esm\view\view.js | 56 | Validate incoming view name with a regexp to allow:
 | node_modules\csso\lib\compressor\clean\Ruleset.js | 16 | remove toLowerCase when type selectors will be normalized
 | node_modules\csso\lib\compressor\compress\color.js | 290 | remove those tokens
 | node_modules\csso\lib\compressor\compress\color.js | 297 | remove those tokens
 | node_modules\csso\lib\compressor\compress\color.js | 307 | remove those tokens
 | node_modules\csso\lib\compressor\compress\color.js | 315 | remove those tokens
 | node_modules\csso\lib\compressor\compress\Url.js | 30 | make better quote type selection
+| node_modules\csso\lib\compressor\restructure\1-initialMergeRuleset.js | 41 | remove initial merge
+| node_modules\csso\lib\compressor\restructure\8-restructRuleset.js | 80 | need to be checked
+| node_modules\csso\lib\compressor\restructure\8-restructRuleset.js | 136 | disallow up merge only if any property interception only (i.e. diff.ne2overrided.length > 0);
 | node_modules\duplexer2\node_modules\readable-stream\lib\_stream_writable.js | 162 | defer error events consistently everywhere, not just the cb
 | node_modules\duplexer2\node_modules\readable-stream\lib\_stream_writable.js | 365 | @isaacs clean this up
 | node_modules\engine.io\node_modules\debug\src\browser.js | 41 | add a `localStorage` variable to explicitly enable/disable colors
@@ -218,7 +219,6 @@
 | node_modules\ngmap\build\docs\js\prettify.js | 1215 | Possibly optimize by using '' if there's no flicker.
 | node_modules\ngmap\config\jsdoc\template\publish.js | 644 | move the tutorial functions to templateHelper.js
 | node_modules\node-sass\node_modules\request\lib\auth.js | 52 | More complete implementation of RFC 2617.
-| node_modules\@uirouter\core\lib\url\urlMatcherFactory.js | 78 | typeof?
 | node_modules\nodemon\node_modules\debug\src\browser.js | 41 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\sass-graph\node_modules\yargs\lib\argsert.js | 7 | should this eventually raise an exception.
 | node_modules\sass-graph\node_modules\yargs\lib\command.js | 288 | move positional arg logic to yargs-parser and remove this duplication
@@ -227,8 +227,8 @@
 | node_modules\socket.io-parser\node_modules\debug\src\browser.js | 41 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\vinyl-fs\node_modules\readable-stream\lib\_stream_writable.js | 145 | defer error events consistently everywhere, not just the cb
 | node_modules\csso\lib\compressor\restructure\prepare\index.js | 23 | need to be checked
-| node_modules\gulp-connect\node_modules\serve-static\node_modules\send\index.js | 791 | this is all lame, refactor meeee
 | node_modules\gulp-connect\node_modules\send\node_modules\debug\browser.js | 37 | add a `localStorage` variable to explicitly enable/disable colors
+| node_modules\gulp-connect\node_modules\serve-static\node_modules\send\index.js | 791 | this is all lame, refactor meeee
 | node_modules\gulp-connect\node_modules\serve-static\node_modules\mime\build\test.js | 46 | Uncomment once #157 is resolved
 | node_modules\nodemon\node_modules\expand-brackets\node_modules\debug\src\browser.js | 36 | add a `localStorage` variable to explicitly enable/disable colors
 | public\clases.js | 50 | Agregar puesto dentro de la Aduana
@@ -354,6 +354,7 @@
 | node_modules\svgo\plugins\_collections.js | 913 | exactly one 'light source element'
 | node_modules\svgo\plugins\_collections.js | 1107 | "at most one 'font-face-src' element"
 | node_modules\svgo\plugins\_collections.js | 1111 | empty content
+| node_modules\tough-cookie\lib\cookie.js | 1193 | persist lastAccessed
 | node_modules\ua-parser-js\src\ua-parser.js | 639 | move to string map
 | node_modules\xmlhttprequest-ssl\lib\XMLHttpRequest.js | 271 | Make this case insensitive
 | node_modules\xmlhttprequest-ssl\lib\XMLHttpRequest.js | 423 | Prevent looped redirects
@@ -361,7 +362,6 @@
 | node_modules\xmlhttprequest-ssl\lib\XMLHttpRequest.js | 646 | figure out InspectorInstrumentation::didLoadXHR(cookie)
 | node_modules\yargs\lib\command.js | 207 | move positional arg logic to yargs-parser and remove this duplication
 | node_modules\yargs\lib\validation.js | 159 | case-insensitive configurability
-| node_modules\tough-cookie\lib\cookie.js | 1193 | persist lastAccessed
 
 ### FIXMEs
 | Filename | line # | FIXME

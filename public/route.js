@@ -76,6 +76,24 @@
         controllerAs: 'vm'
       })
          
+      .state('main.listarPaquetesPrealertados', {
+        url: '/listarPaquetesPrealertados',
+        templateUrl: './components/paquetes/listarPaquetes/listarPaquetes.view.html',
+        data: {
+          pageTitle: 'lista Paquetes prealertados | Paquetes'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/paquetes/listarPaquetes/listarPaquetes.controller.js')
+          }]
+        },
+        params: {
+          objPaqueteprealertado: ''
+        },
+        controller: 'controladorlistaPaquetesPrealertados',
+        controllerAs: 'vm'
+      })
+
       .state('registrarRepartidor', {
         url: '/registrarRepartidor',
         templateUrl: './components/usuarios/repartidor/registrarRepartidor/registrarRepartidor.view.html',

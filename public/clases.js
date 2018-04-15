@@ -154,6 +154,14 @@ class Paquete{
     this.idCliente = pidcliente;
   }
   //TODO Agregar  los metodos del paquete
+
+  getTracking(){
+    return this.trackingPaquete;
+  }
+  getEstadoPaquete(){
+    return this.estadoPaquete;
+  }
+  
 }
 
 class Sucursal{
