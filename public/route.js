@@ -114,6 +114,21 @@
         controllerAs: 'vm'
       })
 
+      .state('main.listarClientes', {
+        url: '/listarClientes',
+        templateUrl: './components/usuarios/cliente/listarClientes/listarClientes.view.html',
+        data: {
+          pageTitle: 'Listar clientes'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/cliente/listarClientes/listarClientes.controller.js')
+          }]
+        },
+        controller: 'controladorListarClientes',
+        controllerAs: 'vm'
+      })
+
       .state('registrarCliente', {
         url: '/registrarCliente',
         templateUrl: './components/usuarios/cliente/registrarCliente/registrarCliente.view.html',
