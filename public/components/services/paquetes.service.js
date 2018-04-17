@@ -44,7 +44,7 @@
   
       function _listarPaquetesPrealertados(pusuarioRol, psucursalID) {
         let listaPaquetesPrealertados = [];
-        let listaPaquetesPrealertadosLocal = JSON.parse(localStorage.getItem("listaPaquetesPrealertadosLS"));
+        let listaPaquetesPrealertadosLocal = _retornarPaquetesPrealertados();
   
         if (listaPaquetesPrealertadosLocal == null) {
           listaPaquetesPrealertados = [];
