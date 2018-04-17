@@ -2,19 +2,14 @@
     'use strict';
     angular
         .module('correosCR')
-        .controller('controladorPrealertarPaquete', controladorPrealertarPaquete);
+        .controller('controladorPrealertar', controladorPrealertar);
+    controladorPrealertar.$inject = ['$http', '$stateParams', '$state', 'servicioPaquetes', 'servicioInicioSesion'];
 
-    controladorPrealertarPaquete.$inject = ['$http','$stateParams', '$state', 'servicioPaquetes', 'servicioUsuarios'];
+    function controladorPrealertar($http, $stateParams, $state, servicioPaquetes, servicioInicioSesion) {
 
-    function controladorPrealertarPaquete($http, $stateParams, $state, servicioPaquetes, servicioUsuarios) {
+        const userAuth = servicioInicioSesion.getAuthUser();
 
         let vm = this;
-
-        const userAuth = servicioPaquetes.getAuthUser();
-        if (userAuth == undefined) {
-            $state.go('inicioSesion');
-        }
-        vm.usuarioActivo = userAuth;
 
         vm.tipoPaquetes = $http({
             method: 'GET',
@@ -23,71 +18,43 @@
             vm.tipoPaquetes = success.data;
         }, function (error) { }); //tipoPaquete
 
-        vm.tipoMensajero = $http({
-            method: 'GET',
-            url: './sources/data/tipoMensajero.json'
-        }).then(function (success) {
-            vm.tipoMensajero = success.data
-        }, function (error) {
-        }); //tipoMensajero
+        vm.paqueteNuevo = {};
+        vm.paqueteNuevo.trackingPaquete = servicioPaquetes.numeroTracking();
+
+        vm.prealertarPaquete = (pPaqueteNuevo) => {
+
+            let idCliente = userAuth.getCorreo(),
+                idSucursal = 400,
+                idRepartidor = 0,
+                estadoPaquete = 'Prealertado',
+                costoEnvio = 3500;
+                pPaqueteNuevo.costoTotalPaquete = 3000;
+
+            let objNuevoPaquete = new Paquete(pPaqueteNuevo.trackingPaquete, pPaqueteNuevo.tipoPaquete._id, 
+                pPaqueteNuevo.pesoPaquete, pPaqueteNuevo.precioPaquete, costoEnvio, pPaqueteNuevo.costoTotalPaquete,
+                estadoPaquete, idRepartidor, idSucursal, idCliente, pPaqueteNuevo.idMensajero);
+
+            let prealerta = servicioPaquetes.prealertarPaquete(objNuevoPaquete);
 
 
-        vm.nuevoPaquetePrealertado = {};
 
-        vm.nuevoPaquetePrealertado.trackingPaquete = servicioPaquetes.numeroTracking();
-
-        listarPaquetesPrealertados();
-        vm.prealertarPaquete = (pnuevoPaquetePrealertado) => {
-
-            pnuevoPaquetePrealertado.usuarioPaquete = userAuth.cedula;
-            pnuevoPaquetePrealertado.usuarioSucursal = userAuth.idSucursal;
-            pnuevoPaquetePrealertado.estadoPaquete = 'Prealertado';
-            pnuevoPaquetePrealertado.idRepartidorPaquete = 0;
-
-
-            let objNuevoPaquetePrealertado = new Paquete(pnuevoPaquetePrealertado.trackingPaquete, pnuevoPaquetePrealertado.usuarioPaquete, pnuevoPaquetePrealertado.tipoPaquete, pnuevoPaquetePrealertado.pesoPaquete, pnuevoPaquetePrealertado.precioPaquete, pnuevoPaquetePrealertado.costoTotalPaquete, pnuevoPaquetePrealertado.estadoPaquete, pnuevoPaquetePrealertado.usuarioSucursal, pnuevoPaquetePrealertado.idRepartidorPaquete);
-
-            let codigoValidado = servicioPaquetes.prealertarPaquete(objNuevoPaquetePrealertado);
-
-            if (codigoValidado == true) {
+            if (prealerta == true) {
                 swal({
-                    title: "Paquete prealertado!",
-                    text: "El paquete se ha prealertado exitosamente",
+                    title: "Pre-alerta exitosa",
+                    text: "Paquete pre-alertado correctamente",
                     icon: "success",
                     button: "Aceptar"
                 });
-                $state.reload();
+                vm.paquete = null;
+                $state.go('main.inicio');
             } else {
                 swal({
-                    title: "Error",
-                    text: "ha ocurrido un error interno por favor vuelva intentarlo",
+                    title: "Ha ocurrido un Error",
+                    text: "El paquete no ha sido pre-alertado",
                     icon: "error",
                     button: "Aceptar"
                 });
-                $state.reload();
-            } //fin else
-
-            vm.nuevoPaquetePrealertado = null;
-            listarPaquetesPrealertados();
-
-        } // fin vm.prealertar paquetes
-
-        vm.costo = () => {
-
-            let
-                pesoPaquete = vm.nuevoPaquetePrealertado.pesoPaquete,
-                impuestoCalcular = vm.nuevoPaquetePrealertado.tipoPaquete._id,
-                precioPaquete = vm.nuevoPaquetePrealertado.precioPaquete;
-
-            vm.nuevoPaquetePrealertado.costoTotalPaquete = "₡ " + servicioPaquetes.costoPaquete(pesoPaquete, precioPaquete, impuestoCalcular);
+            }
         }
-
-        vm.listarPaquetesPrealertados = () => {
-            $state.go('main.listarPaquetesPrealertados')
-        }
-
-        function listarPaquetesPrealertados() {
-            vm.listaPaquetesPrealertados = servicioPaquetes.retornarPaquetesPrealertados();
-        }
-    } // fin de la función controladorPrealertarPaquete
-})();
+    }
+})()

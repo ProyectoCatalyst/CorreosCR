@@ -143,16 +143,19 @@ class Tarjeta {
 }
 
 class Paquete{
-  constructor(ptrackingPaquete, ptipoPaquete, ppesoPaquete, pprecioPaquete, pcostoTotalPaquete, pestadoPaquete, pidrepartidor, pidsucursal, pidcliente){
+  constructor(ptrackingPaquete, ptipoPaquete, ppesoPaquete, pprecioPaquete, pcostoEnvio, 
+    pcostoTotalPaquete, pestadoPaquete, pidrepartidor, pidsucursal, pidcliente, pidmensajero){
     this.trackingPaquete = ptrackingPaquete;
     this.tipoPaquete = ptipoPaquete;
     this.pesoPaquete = ppesoPaquete;
     this.precioPaquete = pprecioPaquete;
+    this.costoEnvio = pcostoEnvio;
     this.costoTotalPaquete = pcostoTotalPaquete;
     this.estadoPaquete = pestadoPaquete;
     this.idRepartidor = pidrepartidor;
     this.idSucursal = pidsucursal;
     this.idCliente = pidcliente;
+    this.idMensajero = pidmensajero;
   }
   //TODO Agregar  los metodos del paquete
 

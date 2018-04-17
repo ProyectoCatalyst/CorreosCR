@@ -129,39 +129,71 @@
         controllerAs: 'vm'
       })
 
-      .state('prealertarPaquetes', {
+      .state('main.prealerta', {
         url: '/prealertarPaquetes',
-        templateUrl: './components/paquetes/prealertarPaquete/prealertaPaquete.view.html',
+        templateUrl: './components/paquetes/prealertarPaquete/prealertarPaquete.view.html',
         data: {
-          pageTitle: 'Prealertar paquete'
+          pageTitle: 'Prealerta de paquetes'
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
             return $ocLazyLoad.load('./components/paquetes/prealertarPaquete/prealertarPaquete.controller.js')
           }]
         },
-        controller: 'controladorPrealertarPaquete',
+        controller: 'controladorPrealertar',
         controllerAs: 'vm'
       })
          
-      .state('main.listarPaquetesPrealertados', {
-        url: '/listarPaquetesPrealertados',
+      .state('main.listarPaquetes', {
+        url: '/listarPaquetes',
         templateUrl: './components/paquetes/listarPaquetes/listarPaquetes.view.html',
         data: {
-          pageTitle: 'lista Paquetes prealertados | Paquetes'
+          pageTitle: 'Listar Paquetes'
+        },
+        resolve: {
+          load:['$ocLazyLoad', ($oclazyLoad)=>{
+            return $oclazyLoad.load('./components/paquetes/listarPaquetes/listarPaquetes.controller.js')
+          }]
+        },
+        controller:'controladorListarPaquetes',
+        controllerAs: 'vm'
+      })
+      .state('main.estadoPaquete', {
+        url: '/estadoPaquete',
+        templateUrl: './components/paquetes/consultarEstado/consultarEstado.view.html',
+        data: {
+          pageTitle: 'Estado paquete | Paquetes'
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load('./components/paquetes/listarPaquetes/listarPaquetes.controller.js')
+            return $ocLazyLoad.load('./components/paquetes/consultarEstado/consultarEstado.controller.js')
           }]
         },
         params: {
-          objPaqueteprealertado: ''
+          objPaqueteEstado: ''
         },
-        controller: 'controladorlistaPaquetesPrealertados',
+        controller: 'controladorConsultarEstado',
         controllerAs: 'vm'
       })
 
+      .state('main.modificarEstadoPaquete', {
+        url: '/modificarEstadoPaquete',
+        templateUrl: './components/paquetes/modificarEstado/modificarEstado.view.html',
+        data: {
+          pageTitle: 'modificar estado paquete | paquete'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/paquetes/modificarEstado/modificarEstado.controller.js')
+          }]
+        },
+        params: {
+          objPaqueteModEstado: ''
+        },
+        controller: 'controladorModificarEstadoPaquete',
+        controllerAs: 'vm'
+      })
+      
       .state('registrarRepartidor', {
         url: '/registrarRepartidor',
         templateUrl: './components/usuarios/repartidor/registrarRepartidor/registrarRepartidor.view.html',

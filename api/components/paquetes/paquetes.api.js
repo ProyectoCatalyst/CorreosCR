@@ -2,15 +2,17 @@ const packageModel = require('./paquetes.model');
 
 module.exports.registrar = (req, res) => {
     let newPackage = new packageModel({
-        trackingPaquete: req.body.trackingPaquete,
-        tipoPaquete: req.body.tipoPaquete,
-        pesoPaquete: req.body.pesoPaquete,
-        precioPaquete: req.body.precioPaquete,
-        costoTotalPaquete: req.body.costoTotalPaquete,
-        estadoPaquete: req.body.estadoPaquete,
-        idRepartidor: req.body.idRepartidor,
-        idSucursal: req.body.idSucursal,
-        idCliente: req.body.idCliente,
+        trackingPaquete     : req.body.trackingPaquete,
+        tipoPaquete         : req.body.tipoPaquete,
+        pesoPaquete         : req.body.pesoPaquete,
+        precioPaquete       : req.body.precioPaquete,
+        costoEnvio          : req.body.costoEnvio,
+        costoTotalPaquete   : req.body.costoTotalPaquete,
+        estadoPaquete       : req.body.estadoPaquete,
+        idRepartidor        : req.body.idRepartidor,
+        idSucursal          : req.body.idSucursal,
+        idCliente           : req.body.idCliente,
+        idMensajero         : req.body.idMensajero
     });
 
     newPackage.save((err) => {
@@ -29,7 +31,8 @@ module.exports.listarTodos = (req, res) => {
 };
 
 module.exports.actualizar = (req, res) => {
-    packageModel.findByIdAndUpdate(req.body.trackingPaquete, { $set: req.body }, (err, package) => {
+    console.log(req);
+    packageModel.update({trackingPaquete: req.body.trackingPaquete}, req.body, (err, package) => {
         if (err) {
             res.json({ success: false, msg: 'No se ha actualizado.' + handleError(err) });
 

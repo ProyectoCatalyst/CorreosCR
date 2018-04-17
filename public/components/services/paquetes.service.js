@@ -4,13 +4,10 @@
       .module('correosCR')
       .service('servicioPaquetes', servicioPaquetes);
   
-    servicioPaquetes.$inject = ['$q', '$log', '$http', 'servicioUsuarios', 'localStorageFactory'];
-    function servicioPaquetes($q, $log, $http, servicioUsuarios, localStorageFactory) {
+    servicioPaquetes.$inject = ['$q', '$log', '$http', 'servicioInicioSesion', 'servicioUsuarios', 'dataStorageFactory', 'localStorageFactory'];
+    function servicioPaquetes($q, $log, $http, servicioInicioSesion, servicioUsuarios, dataStorageFactory, localStorageFactory) {
   
-        const listaPaquetesPrealertados = 'listaPaquetesPrealertadosLS'; // este es el key
-
       let publicAPI = {
-        getAuthUser: _getAuthUser,
         prealertarPaquete: _prealertarPaquete,
         retornarPaquetesPrealertados: _retornarPaquetesPrealertados,
         listarPaquetesPrealertados: _listarPaquetesPrealertados,
@@ -23,47 +20,26 @@
       }
       return publicAPI;
   
-      function _getAuthUser() {
-        let sessionActiva = localStorageFactory.getSession(),
-          usuarioActivo;
+      function _prealertarPaquete(pPaqueteNuevo) {
   
-        if (!sessionActiva) {
-          usuarioActivo = undefined;
+        let listaPaquetesPrealertados = _retornarPaquetesPrealertados(),
+            registrovalido = true,
+            paqueteRepetido = false;
+
+        for (let i = 0; i < listaPaquetesPrealertados.length; i++) {
+         
+          if (listaPaquetesPrealertados[i].getTracking() == pPaqueteNuevo.trackingPaquete) {
+            paqueteRepetido = true;
+          }
+        }
+
+        if (paqueteRepetido == true) {
+          registrovalido = false;
         } else {
-          usuarioActivo = obtenerDatosUsuarioActivo(sessionActiva);
+          registrovalido = dataStorageFactory.setPackage(pPaqueteNuevo);
         }
-  
-        return usuarioActivo;
-      };
-  
-      function obtenerDatosUsuarioActivo(pcorreo) {
-        let listaUsuarios = servicioUsuarios.obtenerlistadeusuarios(),
-          datosUsuario;
-  
-        for (let i = 0; i < listaUsuarios.length; i++) {
-          if (listaUsuarios[i].getCorreo() == pcorreo) {
-            datosUsuario = listaUsuarios[i];
-          }
-        };
-  
-        return datosUsuario;
-      }
-  
-      function _prealertarPaquete(pnuevoPaquetePrealertado) {
-  
-        let listaPaquetesPrealertados = _retornarPaquetesPrealertados();
-        let tamanno = listaPaquetesPrealertados.length;
-        let validarCodigo = true;
-        for (let i = 0; i < tamanno; i++) {
-          if (pnuevoPaquetePrealertado.capturarTrackingPaquete() == listaPaquetesPrealertados[i].capturarTrackingPaquete()) {
-            validarCodigo == false;
-          }
-        }
-        if (validarCodigo == true) {
-          listaPaquetesPrealertados.push(pnuevoPaquetePrealertado);
-          localStorage.setItem('listaPaquetesPrealertadosLS', JSON.stringify(listaPaquetesPrealertados));
-        }
-        return validarCodigo;
+
+        return registrovalido;
       }//fin prealertar paquete
   
       function _listarPaquetesPrealertados(pusuarioRol, psucursalID) {
@@ -74,18 +50,20 @@
           listaPaquetesPrealertados = [];
         } else {
           listaPaquetesPrealertadosLocal.forEach(obj => {
-            let objPaquetesPrealertados = new Paquete(obj.trackingPaquete, obj.usuarioPaquete, obj.tipoPaquete, obj.pesoPaquete, obj.precioPaquete, obj.costoTotalPaquete, obj.estadoPaquete, obj.idSucursalPaquete, obj.idRepartidorPaquete);
+            let objPaquetesPrealertados = new Paquete(obj.trackingPaquete,obj.tipoPaquete, obj.pesoPaquete,
+              obj.precioPaquete, obj.costoEnvio, obj.costoTotalPaquete, obj.estadoPaquete, obj.idRepartidor, 
+              obj.idSucursal, obj.idCliente, obj.idMensajero);
             switch (pusuarioRol) {
-              case 1:
+              case "1":
                 listaPaquetesPrealertados.push(objPaquetesPrealertados);
                 break;
-              case 2:
+              case "2":
                 if (objPaquetesPrealertados.estadoPaquete == "Prealertado") {
                   listaPaquetesPrealertados.push(objPaquetesPrealertados);
                 }
                 break;
-              case 3:
-                if (objPaquetesPrealertados.estadoPaquete == "Saliendo de aduana" && objPaquetesPrealertados.idSucursalPaquete == psucursalID) {
+              case "3":
+                if (objPaquetesPrealertados.estadoPaquete == "Saliendo de aduana" && objPaquetesPrealertados.idSucursal == psucursalID) {
                   listaPaquetesPrealertados.push(objPaquetesPrealertados);
                 }
                 break;
@@ -100,7 +78,7 @@
         return listaPaquetesPrealertados;
       }//fin retornar PaquetesPrealertados
   
-      function _retornarPaquetesPorRepartidor(pusuarioCedula) {
+      function _retornarPaquetesPorRepartidor(pusuarioCorreo) {
         let listaPaquetesPorRepartidor = [];
         let listaPaquetesPrealertadosLocal = JSON.parse(localStorage.getItem("listaPaquetesPrealertadosLS"));
   
@@ -109,8 +87,10 @@
         } else {
   
           listaPaquetesPrealertadosLocal.forEach(obj => {
-            let objPaquetesPrealertados = new Paquete(obj.trackingPaquete, obj.usuarioPaquete, obj.tipoPaquete, obj.pesoPaquete, obj.precioPaquete, obj.costoTotalPaquete, obj.estadoPaquete, obj.idSucursalPaquete, obj.idRepartidorPaquete);
-            if (objPaquetesPrealertados.estadoPaquete == "Entregado a repartidor" && objPaquetesPrealertados.idRepartidorPaquete == pusuarioCedula) {
+            let objPaquetesPrealertados = new Paquete(obj.trackingPaquete,obj.tipoPaquete, obj.pesoPaquete,
+              obj.precioPaquete, obj.costoEnvio, obj.costoTotalPaquete, obj.estadoPaquete, obj.idRepartidor, 
+              obj.idSucursal, obj.idCliente);
+            if (objPaquetesPrealertados.estadoPaquete == "Entregado a repartidor" && objPaquetesPrealertados.idRepartidorPaquete == usuarioCorreo) {
               listaPaquetesPorRepartidor.push(objPaquetesPrealertados);
             }
           });
@@ -120,17 +100,20 @@
   
   
       //--sesion activa cliente lista paquetes de su perfil--//
-      function _retornarPaquetesPorCliente(pusuarioCedula) {
+      function _retornarPaquetesPorCliente(pusuarioCorreo) {
         let listaPaquetesPorCliente = [];
-        let listaPaquetesPrealertadosLocal = JSON.parse(localStorage.getItem("listaPaquetesPrealertadosLS"));
+        let listaPaquetesPrealertadosLocal = _retornarPaquetesPrealertados();
   
         if (listaPaquetesPrealertadosLocal == null) {
           listaPaquetesPorCliente = [];
         } else {
   
           listaPaquetesPrealertadosLocal.forEach(obj => {
-            let objPaquetesPrealertados = new Paquete(obj.trackingPaquete, obj.usuarioPaquete, obj.tipoPaquete, obj.pesoPaquete, obj.precioPaquete, obj.costoTotalPaquete, obj.estadoPaquete, obj.idSucursalPaquete, obj.idRepartidorPaquete);
-            if (objPaquetesPrealertados.usuarioPaquete == pusuarioCedula) {
+            let objPaquetesPrealertados = new Paquete(obj.trackingPaquete,obj.tipoPaquete, obj.pesoPaquete,
+               obj.precioPaquete, obj.costoEnvio, obj.costoTotalPaquete, obj.estadoPaquete, obj.idRepartidor, 
+               obj.idSucursal, obj.idCliente, obj.idMensajero);
+
+            if (objPaquetesPrealertados.idCliente == pusuarioCorreo) {
               listaPaquetesPorCliente.push(objPaquetesPrealertados);
             }
           });
@@ -141,14 +124,17 @@
   
       //prueba devolver todos los paquetes
       function _retornarPaquetesPrealertados() {
+       
+        let ListaPaquetesBD = dataStorageFactory.getPackage();
         let listaPaquetesPrealertados = [];
-        let listaPaquetesPrealertadosLocal = JSON.parse(localStorage.getItem("listaPaquetesPrealertadosLS"));
-  
-        if (listaPaquetesPrealertadosLocal == null) {
+
+        if (ListaPaquetesBD == null) {
           listaPaquetesPrealertados = [];
         } else {
-          listaPaquetesPrealertadosLocal.forEach(obj => {
-            let objPaquetesPrealertados = new Paquete(obj.trackingPaquete, obj.usuarioPaquete, obj.tipoPaquete, obj.pesoPaquete, obj.precioPaquete, obj.costoTotalPaquete, obj.estadoPaquete, obj.idSucursalPaquete, obj.idRepartidorPaquete);
+          ListaPaquetesBD.forEach(obj => {
+            let objPaquetesPrealertados = new Paquete(obj.trackingPaquete, obj.tipoPaquete, obj.pesoPaquete,
+              obj.precioPaquete, obj.costoEnvio, obj.costoTotalPaquete, obj.estadoPaquete, obj.idRepartidor, 
+              obj.idSucursal, obj.idCliente, obj.idMensajero);
   
             listaPaquetesPrealertados.push(objPaquetesPrealertados)
           });
@@ -219,22 +205,20 @@
         let listaPaquetesPrealertados = _retornarPaquetesPrealertados();
         let tamanno = listaPaquetesPrealertados.length;
         for (let i = 0; i < tamanno; i++) {
-          if (pobjPaqueteTemp.estadoPaquete == listaPaquetesPrealertados[i].capturarTrackingPaquete()) {
-            paqueteEncontrado = listaPaquetesPrealertados[i].capturarEstadoPaquete()
+          if (pobjPaqueteTemp.estadoPaquete == listaPaquetesPrealertados[i].getTracking()) {
+            paqueteEncontrado = listaPaquetesPrealertados[i].getEstadoPaquete()
           }
         }
         return paqueteEncontrado;
       }
   
-      function _modificarEstado(PaquetesPrealertadosMod) { // recibo el nueva informacion
-        let listaPaquetes = _retornarPaquetesPrealertados(); // recibo todos los paquetes del sistema
+      function _modificarEstado(pPaquetesPrealertadosMod) { // recibo el nueva informacion
   
-        for (let i = 0; i < listaPaquetes.length; i++) {
-          if (PaquetesPrealertadosMod.trackingPaquete == listaPaquetes[i].capturarTrackingPaquete()) {
-            listaPaquetes[i] = PaquetesPrealertadosMod;
-          }
-        }
-        actualizarListaPaquetes(listaPaquetes);
+        let modificacionExitosa = false;
+
+        modificacionExitosa = dataStorageFactory.updatePackage(pPaquetesPrealertadosMod);
+  
+        return modificacionExitosa;
       }// fin función actualizarEstado
   
   

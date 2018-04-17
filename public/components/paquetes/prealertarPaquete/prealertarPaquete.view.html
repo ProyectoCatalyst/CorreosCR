@@ -1,78 +1,70 @@
-<navegacion-Principal></navegacion-Principal>
-<div class="hero" id="prealertarPaquetes">
-    <header id="headerLanding" class="col-sm-12 col-md-12 col-lg-12" id="fondoHeader">
-        <div class="container-fluid d-none d-md-block">
-            <!-- <img src="sources/img/registrar/logoMenu.png" alt="" srcset=""> -->
-            <img id="LogoLanding" class="img-responsive mb-5" alt="Responsive image" src="sources/img/landing/2.png" width="40%" height="30%">
-        </div>
-    </header>
-    <main class="container">
-        <div class="row" id="texto">
-            <div class="col-md-12 mb-5">
-                <h2>{{vm.usuarioActivo.primerNombre}} {{vm.usuarioActivo.cedula}}</h2>
-                <h1 id="tituloPrincipal">Prealerte su paquete!</h1>
-                <h4>¡Es fácil y sencillo!</h4>
-                <p>Complete los siguientes datos</p>
+<main class="hero" id="prealertaPaquetes">
+    <div class="container">
+        <section class="row">
+            <div class="col-md-12">
+                <h1 class="text-center my-5 pt-2">Prealertar paquete</h1>
             </div>
-        </div>
-        <form name="frmPrealertarPaquetes" ng-submit="vm.prealertarPaquete(vm.nuevoPaquetePrealertado)">
-            <div class="row justify-content-center">
+        </section>
+        <form name="frmPrealertaPaquete" ng-submit="vm.prealertarPaquete(vm.paqueteNuevo)">
+            <section class="row justify-content-center">
+
                 <div class="col-md-4">
-                    <div class="form-group">
-                        <label>Número de tracking: </label>
-                        <input type="text" class="form-control" ng-model="vm.nuevoPaquetePrealertado.trackingPaquete" ng-disabled="true">
-                    </div>
 
                     <div class="form-group">
-                        <label for="sltTipoMensajero">Courier </label>
-                        <select id="sltTipoMensajero" ng-options="tipoMensajero as tipoMensajero.name for tipoMensajero in vm.tipoMensajero track by tipoMensajero._id"
-                            ng-model="nuevoPaquetePrealertado.tipoMensajero" class="custom-select" required>
-                            <option value="">Seleccione un courier</option>
-                            <small class="form-text text-danger">* Campo requerido</small>
-                        </select>
+                        <label for="txtTrackingPaquete">Número de tracking:</label>
+                        <input type="text" class="form-control" ng-model="vm.paqueteNuevo.trackingPaquete" disabled/>
+                        <small class="form-text">* Identificador único del paquete</small>
                     </div>
-
                     <div class="form-group">
-                        <label for="sltTipoPaquete">Tipo del paquete</label>
+                        <label for="txtTipoPaquete">Tipo de paquete:</label>
                         <select id="sltTipoPaquete" ng-options="tipoPaquete as tipoPaquete.name for tipoPaquete in vm.tipoPaquetes track by tipoPaquete._id"
-                            ng-model="vm.nuevoPaquetePrealertado.tipoPaquete" class="custom-select" required>
+                            ng-model="vm.paqueteNuevo.tipoPaquete" class="custom-select" required>
                             <option value="">Seleccione un tipo de paquete</option>
                         </select>
                         <small class="form-text text-danger">* Campo requerido</small>
                     </div>
-
                     <div class="form-group">
-                        <label>Peso: </label>
-                        <input type="number" class="form-control" ng-model="vm.nuevoPaquetePrealertado.pesoPaquete" required>
+                        <label for="txtPrecio">Precio del paquete:</label>
+                        <input type="text" class="form-control" ng-model="vm.paqueteNuevo.precioPaquete" />
                         <small class="form-text text-danger">* Campo requerido</small>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Precio: </label>
-                        <input type="number" class="form-control" ng-model="vm.nuevoPaquetePrealertado.precioPaquete" required value=0>
-                        <small class="form-text text-danger">* Campo requerido</small>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Costo envio: </label>
-                        <input type="text" class="form-control" ng-model="vm.nuevoPaquetePrealertado.impuestoPaquete" ng-disabled="true">
-                        <small class="form-text text-danger">* Campo requerido</small>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Costo total: </label>
-                        <input type="text" class="form-control" ng-model="vm.nuevoPaquetePrealertado.costoTotalPaquete" ng-disabled="true">
                     </div>
                 </div>
-            </div>
-
-            <div class="row">
-                <div class="form-group">
-                    <button type="submit" class="btn btn-danger">Prealertar paquete</button>
-                    <button type="button" class="btn btn-danger" ng-click="vm.costo(nuevoPaquetePrealertado)">Calcular costo total</button>
-                    <button type="button" class="btn btn-danger" ng-click="vm.listarPaquetesPrealertados(paquetesPrealertados)">Lista de paquetes prealertados</button>
-                    <small class="form-text text">*Campo opcional</small>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="txtMensajería">Empresa logística:</label>
+                        <select class="form-control" ng-model="vm.paqueteNuevo.idMensajero">
+                            <option value="">Seleccione la empresa logística</option>
+                            <option value="Fedex">Fedex</option>
+                            <option value="DHL">DHL</option>
+                        </select>
+                        <small class="form-text text-danger">* Campo requerido</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="txtPesoPaquete">Peso del paquete:</label>
+                        <input type="text" class="form-control" ng-model="vm.paqueteNuevo.pesoPaquete" />
+                        <small class="form-text text-danger">* Campo requerido</small>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="txtPrecio">Costo de envio:</label>
+                                <input type="text" class="form-control" ng-model="vm.paqueteNuevo.costoEnvio" disabled/>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="txtPrecio">Costo total:</label>
+                                <input type="text" class="form-control" ng-model="vm.paqueteNuevo.costoTotal" disabled/>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+
+            </section>
+            <section class="row justify-content-center">
+                <div class="col-md-8">
+                    <button type="submit" class="btn btn-danger mt-3">Prealertar</button>
+                    <button type="button" class="btn btn-danger mt-3" ng-click="vm.calcularCosto()">Calcular</button>
+                </div>
+            </section>
         </form>
-    </main>
+    </div>
+</main>

@@ -1,53 +1,39 @@
-<navegacion-Principal></navegacion-Principal>
-<div class="hero" id="prealertarPaquetes">
-    <header id="headerLanding" class="col-sm-12 col-md-12 col-lg-12" id="fondoHeader">
-        <div class="container-fluid d-none d-md-block">
-            <!-- <img src="sources/img/registrar/logoMenu.png" alt="" srcset=""> -->
-            <img id="LogoLanding" class="img-responsive mb-5" alt="Responsive image" src="sources/img/landing/2.png" width="40%" height="30%">
-        </div>
-    </header>
-    <main class="container">
-        <div class="row" id="texto">
-            <div class="col-md-12 mb-5">
-
-                <h1 id="tituloPrincipal" class="text-center my-5">Lista paquetes prealertados</h1>
-                <h2>{{vm.usuarioActivo.primerNombre}} {{vm.usuarioActivo.cedula}}</h2>
-                <h1 id="tituloPrincipal">Prealerte su paquete!</h1>
-                <h4>¡Es fácil y sencillo!</h4>
-                <p>Complete los siguientes datos</p>
+<main class="hero" id="listarPaquetes">
+    <div class="container">
+        <section class="row">
+            <div class="col-md-12">
+                <h1 class="text-center my-5 pt-2">Lista de paquetes</h1>
             </div>
-        </div>
-        <form name="frmPrealertarPaquetes" ng-submit="vm.prealertarPaquete(vm.nuevoPaquetePrealertado)">
-            <div class="row justify-content-center">
-                <div class="col-md-4">
-                    <table class="table mt-4">
-                        <thead class="">
-                            <tr>
-                                <th scope="col">Cliente</th>
-                                <th scope="col">Número de tracking</th>
-                                <th scope="col">Tipo de paquete</th>
-                                <th scope="col">Peso</th>
-                                <th scope="col">Precio</th>
-                                <th scope="col">Acciones</th>
-                            </tr>
-                        </thead>
-
-                        <tbody>
-                            <tr ng-repeat="paquetesPrealertados in vm.listarPaquetesPrealertados">
-                                <td>{{paquetesPrealertados.usuarioPaquete}}</td>
-                                <td>{{paquetesPrealertados.trackingPaquete}}</td>
-                                <td>{{paquetesPrealertados.tipoPaquete.name}}</td>
-                                <td>{{paquetesPrealertados.pesoPaquete}} Kg</td>
-                                <td>₡ {{paquetesPrealertados.precioPaquete}}</td>
-                                <td>
-                                    <button type="click" class="btn btn-danger" ng-click="vm.estadoPaquete(paquetesPrealertados)">
-                                        Consultar estado
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+        </section>
+        <section class="row justify-content-center">
+            <div>
+                <table class="table">
+                    <thead class="">
+                        <tr>
+                            <th scope="col">Cliente</th>
+                            <th scope="col">Número de tracking</th>
+                            <th scope="col">Tipo de paquete</th>
+                            <th scope="col">Peso</th>
+                            <th scope="col">Precio</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="paquetesPrealertados in vm.listarPaquetesPrealertados">
+                            <td>{{paquetesPrealertados.idCliente}}</td>
+                            <td>{{paquetesPrealertados.trackingPaquete}}</td>
+                            <td>{{paquetesPrealertados.tipoPaquete}}</td>
+                            <td>{{paquetesPrealertados.pesoPaquete}} Kg</td>
+                            <td>₡ {{paquetesPrealertados.precioPaquete}}</td>
+                            <td>
+                                <button type="click" class="btn btn-danger" ng-click="vm.estadoPaquete(paquetesPrealertados)">
+                                    Consultar estado
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-        </form>
-    </main>
+        </section>
+    </div>
+</main>

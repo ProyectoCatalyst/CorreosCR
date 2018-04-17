@@ -1,6 +1,6 @@
 const express = require('express'),
       router = express.Router(),
-      tarjetas = require('./paquetes.api');
+      paquetes = require('./paquetes.api');
 
 /**
  * 
