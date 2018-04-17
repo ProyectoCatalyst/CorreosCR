@@ -1,0 +1,37 @@
+<main class="container-fluid">
+    <div class="container" id="header">
+        <section class="row">
+            <div class="col-md-12 mt-5">
+                <h1 id="tituloPrincipal" class="text-center">Estado paquete # {{vm.paqueteActivo}}</h1>
+                <ng-model="vm.rolUsuario" ng-init="rolUsuario = true">
+                    <table class="table mt-5">
+                        <thead class="">
+                            <tr>
+                                <th scope="col-6">Tracking de paquete</th>
+                                <th scope="col-6">Estado de paquete</th>
+                                <th scope="col-6" ng-if="rolUsuario" ng-hide="false">Actualizar</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <b>{{vm.mostrarPaquete.trackingPaquete}}
+                                        <b>
+                                </td>
+                                <td>
+                                    <b>{{vm.mostrarPaquete.estadoPaquete}}
+                                        <b>
+                                </td>
+                                <td>
+                                    <button type="click" class="btn btn-danger" ng-click="vm.modificarEstadoPaquete(vm.mostrarPaquete)" ng-if="rolUsuario">
+                                        Modificar estado
+                                    </button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+            </div>
+        </section>
+    </div>
+</main>

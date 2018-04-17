@@ -24,6 +24,10 @@
       getLicenceData: _getLicenceData,
       setLicenceData: _setLicenceData,
 
+      getPackage: _getPackage,
+      setPackage: _setPackage,
+      updatePackage: _updatePackage,
+
       setSession: _setSession,
       closeSession: _closeSession,
       getSession: _getSession
@@ -77,7 +81,7 @@
           'segundoNombre': data.segundoNombre,
           'primerApellido': data.primerApellido,
           'segundoApellido': data.segundoApellido,
-          'foto' : data.foto,
+          'foto': data.foto,
           'cedula': data.cedula,
           'fecha': data.fecha,
           'genero': data.genero,
@@ -100,8 +104,8 @@
           // Cliente
           'tarjeta': data.tarjeta,
           'paquetes': data.paquetes,
-          'latitud' : data.latitud,
-          'longitud' : data.longitud,
+          'latitud': data.latitud,
+          'longitud': data.longitud,
         }
       });
 
@@ -126,8 +130,8 @@
         dataType: 'json',
         async: false,
         data: {
-          correo: pCorreoTarjeta.correo,
-          numeroTarjeta: pCorreoTarjeta.numeroTarjeta,
+          correo : pCorreoTarjeta[0],
+          numeroTarjeta : pCorreoTarjeta[1]
         }
       });
 
@@ -148,7 +152,7 @@
 * Función que recibe el correo electrónico y el mensaje a enviar.
      * @param {Correo y contrasenna, informacion que se va a enviar por mail} data 
      */
-    function _sendMail (data){
+    function _sendMail(data) {
       let response;
 
       let peticion = $.ajax({
@@ -158,9 +162,9 @@
         dataType: 'json',
         async: false,
         data: {
-         'to': data.to,
-         'subject': data.subject,
-         'text': data.text
+          'to': data.to,
+          'subject': data.subject,
+          'text': data.text
         }
       });
 
@@ -208,13 +212,13 @@
         dataType: 'json',
         async: false,
         data: {
-          tipoTarjeta    : pnuevatarjeta.tipoTarjeta,
-          nombreTarjeta  : pnuevatarjeta.nombreTarjeta,
-          numeroTarjeta  : pnuevatarjeta.numeroTarjeta,
-          cvvTarjeta     : pnuevatarjeta.cvvTarjeta,
-          mesTarjeta     : pnuevatarjeta.mesTarjeta,
-          annoTarjeta    : pnuevatarjeta.annoTarjeta,
-          idCliente      : pnuevatarjeta.idCliente
+          'tipoTarjeta'    : pnuevatarjeta.tipoTarjeta,
+          'nombreTarjeta'  : pnuevatarjeta.nombreTarjeta,
+          'numeroTarjeta' : pnuevatarjeta.numeroTarjeta,
+          'cvvTarjeta'     : pnuevatarjeta.cvvTarjeta,
+          'mesTarjeta'     : pnuevatarjeta.mesTarjeta,
+          'annoTarjeta'    : pnuevatarjeta.annoTarjeta,
+          'idCliente'      : pnuevatarjeta.idCliente
         }
       });
 
@@ -240,13 +244,13 @@
         dataType: 'json',
         async: false,
         data: {
-          tipoTarjeta    : ptarjetaActualizada.tipoTarjeta,
-          nombreTarjeta  : ptarjetaActualizada.nombreTarjeta,
-          numeroTarjeta  : ptarjetaActualizada.numeroTarjeta,
-          cvvTarjeta     : ptarjetaActualizada.cvvTarjeta,
-          mesTarjeta     : ptarjetaActualizada.mesTarjeta,
-          annoTarjeta    : ptarjetaActualizada.annoTarjeta,
-          idCliente      : ptarjetaActualizada.idCliente
+          tipoTarjeta: ptarjetaActualizada.tipoTarjeta,
+          nombreTarjeta: ptarjetaActualizada.nombreTarjeta,
+          numeroTarjeta: ptarjetaActualizada.numeroTarjeta,
+          cvvTarjeta: ptarjetaActualizada.cvvTarjeta,
+          mesTarjeta: ptarjetaActualizada.mesTarjeta,
+          annoTarjeta: ptarjetaActualizada.annoTarjeta,
+          idCliente: ptarjetaActualizada.idCliente
         }
       });
 
@@ -272,7 +276,7 @@
         dataType: 'json',
         async: false,
         data: {
-          numeroTarjeta  : pNumeroTarjeta
+          numeroTarjeta: pNumeroTarjeta
         }
       });
 
@@ -288,6 +292,105 @@
       return response;
     }
 
+    function _getPackage() {
+      let listaPaquetes = [];
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/get_all_package',
+        type: 'get',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+
+        }
+      });
+
+      peticion.done((datos) => {
+        // console.log('Datos que vienen desde la base de datos')
+        // console.log(datos);
+        listaPaquetes = datos;
+      });
+      peticion.fail(() => {
+        listaPaquetes = [];
+        // console.log('Ocurrió un error');
+      });
+
+      return listaPaquetes;
+    }
+
+    function _setPackage(ppaqueteNuevo) {
+      let response;
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/save_package',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          'trackingPaquete': ppaqueteNuevo.trackingPaquete,
+          'tipoPaquete': ppaqueteNuevo.tipoPaquete,
+          'pesoPaquete': ppaqueteNuevo.pesoPaquete,
+          'precioPaquete': ppaqueteNuevo.precioPaquete,
+          'costoEnvio': ppaqueteNuevo.costoEnvio,
+          'costoTotalPaquete': ppaqueteNuevo.costoTotalPaquete,
+          'estadoPaquete': ppaqueteNuevo.estadoPaquete,
+          'idRepartidor': ppaqueteNuevo.idRepartidor,
+          'idSucursal': ppaqueteNuevo.idSucursal,
+          'idCliente': ppaqueteNuevo.idCliente,
+          'idMensajero': ppaqueteNuevo.idMensajero
+        }
+      });
+
+      peticion.done((datos) => {
+        response = datos.success;
+        console.log('Petición realizada con éxito');
+      });
+      peticion.fail((error) => {
+        response = error;
+        console.log('Ocurrió un error');
+      });
+
+      return response;
+    }
+
+
+    function _updatePackage(ppaqueteActualizado) {
+      let response;
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/update_package',
+        type: 'put',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          'trackingPaquete': ppaqueteActualizado.trackingPaquete,
+          'tipoPaquete': ppaqueteActualizado.tipoPaquete,
+          'pesoPaquete': ppaqueteActualizado.pesoPaquete,
+          'precioPaquete': ppaqueteActualizado.precioPaquete,
+          'costoEnvio': ppaqueteActualizado.costoEnvio,
+          'costoTotalPaquete': ppaqueteActualizado.costoTotalPaquete,
+          'estadoPaquete': ppaqueteActualizado.estadoPaquete,
+          'idRepartidor': ppaqueteActualizado.idRepartidor,
+          'idSucursal': ppaqueteActualizado.idSucursal,
+          'idCliente': ppaqueteActualizado.idCliente,
+          'idMensajero': ppaqueteActualizado.idMensajero
+        }
+      });
+
+      peticion.done((datos) => {
+        response = datos.success;
+        console.log('Petición realizada con éxito paquete actualizado');
+      });
+      peticion.fail((error) => {
+        response = error;
+        console.log('Ocurrió un error el actualizar paquete');
+      });
+
+      return response;
+    }
 
     function _getLicenceData() {
       let listaLicencias = [];
@@ -342,32 +445,33 @@
       });
 
       return response;
-    }
+    } 
+
     /**
    * Función que almacena las datos dentro del session Storage
    */
-  function _setData(value) {
-    let response = true;
-    sessionStorage.setItem('userData', JSON.stringify(value));
-    return response;
-  }
+    function _setData(value) {
+      let response = true;
+      sessionStorage.setItem('userData', JSON.stringify(value));
+      return response;
+    }
 
-  /**
-   * Función que elimina los datos de la sesión activa
-   */
-  function _removeData() {
-    let response = true;
-    sessionStorage.removeItem('userData');
-    return response;
-  };
+    /**
+     * Función que elimina los datos de la sesión activa
+     */
+    function _removeData() {
+      let response = true;
+      sessionStorage.removeItem('userData');
+      return response;
+    };
 
-  /**
-   * Función que retorna los datos almacenados dentro del sessionStorage
-   */
-  function _getData() {
-    let userData = JSON.parse(sessionStorage.getItem('userData'));
-    return userData;
-  }
+    /**
+     * Función que retorna los datos almacenados dentro del sessionStorage
+     */
+    function _getData() {
+      let userData = JSON.parse(sessionStorage.getItem('userData'));
+      return userData;
+    }
 
     /**
    * Función que almacena las credenciales dentro del session Storage
