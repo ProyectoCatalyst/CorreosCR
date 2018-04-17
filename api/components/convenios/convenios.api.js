@@ -31,8 +31,8 @@ module.exports.retornar = (req,res) => {
  * @param {response} res 
  */
 module.exports.actualizar = (req,res) => {
-    ConvenioModel.update(req.params.codigoConvenio, req.body, (err, user) => {
-      if (err){ // no se logra, error siempre viene como true
+    ConvenioModel.update({codigoConvenio: req.body.codigoConvenio}, req.body, (err, convenio) => {
+      if (err){
         res.json({success:false,msg:'No se ha actualizado.' + handleError(err) } );
   
       } else{

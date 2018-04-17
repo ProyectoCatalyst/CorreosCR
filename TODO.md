@@ -12,8 +12,8 @@
 | node_modules\@uirouter\core\_bundles\ui-router-core.js | 5027 | typeof?
 | node_modules\@uirouter\core\_bundles\ui-router-core.js | 5627 | Validate incoming view name with a regexp to allow:
 | node_modules\argparse\lib\help\formatter.js | 10 | add [additonal formatters][1]
-| node_modules\body-parser\lib\types\json.js | 74 | maybe make this configurable or part of "strict" option
 | node_modules\body-parser\node_modules\debug\browser.js | 37 | add a `localStorage` variable to explicitly enable/disable colors
+| node_modules\body-parser\lib\types\json.js | 74 | maybe make this configurable or part of "strict" option
 | node_modules\bootstrap\dist\js\bootstrap.bundle.js | 4688 | @fat these should probably be refactored out of modal.js
 | node_modules\bootstrap\dist\js\bootstrap.bundle.js | 5840 | @fat remove sketch reliance on jQuery position/offset
 | node_modules\bootstrap\dist\js\bootstrap.js | 2254 | @fat these should probably be refactored out of modal.js
@@ -22,13 +22,13 @@
 | node_modules\bootstrap\js\dist\scrollspy.js | 115 | @fat remove sketch reliance on jQuery position/offset
 | node_modules\bootstrap\js\src\modal.js | 401 | @fat these should probably be refactored out of modal.js
 | node_modules\bootstrap\js\src\scrollspy.js | 132 | @fat remove sketch reliance on jQuery position/offset
-| node_modules\browser-sync\client\dist\index.js | 153 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\bson\lib\bson\decimal128.js | 239 | implementing a custom parsing for this, or refactoring the regex would yield
 | node_modules\connect\node_modules\debug\browser.js | 37 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\csso\lib\parser\index.js | 190 | remove it as wrong thing
 | node_modules\csso\lib\parser\index.js | 1594 | remove '=' since it's wrong operator, but theat as operator
 | node_modules\duplexer2\node_modules\string_decoder\index.js | 43 | Handling all encodings inside a single object makes it very difficult
 | node_modules\duplexer2\node_modules\string_decoder\index.js | 45 | There should be a utf8-strict encoding that rejects invalid UTF-8 code
+| node_modules\browser-sync\client\dist\index.js | 153 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\express\node_modules\send\index.js | 791 | this is all lame, refactor meeee
 | node_modules\finalhandler\node_modules\debug\browser.js | 37 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\fs-extra\lib\mkdirs\win32.js | 13 | expand to include the rest
@@ -67,8 +67,8 @@
 | node_modules\jsdoc\templates\default\publish.js | 675 | move the tutorial functions to templateHelper.js
 | node_modules\mongodb\lib\bulk\common.js | 202 | Something better
 | node_modules\mongodb\lib\bulk\ordered.js | 227 | Bring from driver information in isMaster
-| node_modules\mongodb-core\lib\connection\pool.js | 1193 | reenable when sessions development is complete
 | node_modules\moment\src\locale\fr.js | 50 | Return 'e' when day of month > 1. Move this case inside
+| node_modules\mongodb-core\lib\connection\pool.js | 1193 | reenable when sessions development is complete
 | node_modules\mongodb-core\lib\topologies\replset.js | 1188 | once we drop Node 4, use destructuring either here or in arguments.
 | node_modules\mongodb-core\lib\topologies\shared.js | 385 | 
 | node_modules\mongoose\lib\error\divergentArray.js | 23 | write up a docs page (FAQ) and link to it

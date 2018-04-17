@@ -10,6 +10,7 @@
     const dataAPI = {
       getUsersData: _getUsersData,
       setUserData: _setUserData,
+      updateUserData: _updateUserData,
 
       registrarConvenio: _registrarConvenio,
       retornarConvenios: _retornarConvenios,
@@ -97,6 +98,12 @@
           'paquetes': data.paquetes,
           'latitud' : data.latitud,
           'longitud' : data.longitud,
+           //   Encargados
+           'telefono': data.telefono,
+           'telefonoAdicional': data.telefonoAdicional,
+           'sucursal': data.sucursal,
+           'rolAduana': data.rolAduana
+          
         }
       });
 
@@ -110,6 +117,63 @@
       });
 
       return response;
+    }
+
+    function _updateUserData(data){
+        let respuesta;
+
+        let peticion = $.ajax({
+            url: 'http://localhost:4000/api//update_users',
+            type: 'put',
+            contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+            dataType: 'json',
+            async: false,
+            data: {
+                'primerNombre': data.primerNombre,
+                'segundoNombre': data.segundoNombre,
+                'primerApellido': data.primerApellido,
+                'segundoApellido': data.segundoApellido,
+                'foto' : data.foto,
+                'cedula': data.cedula,
+                'fecha': data.fecha,
+                'genero': data.genero,
+                'provincia': data.provincia,
+                'canton': data.canton,
+                'distrito': data.distrito,
+                'direccion': data.direccion,
+                'correo': data.correo,
+                'contrasenna': data.contrasenna,
+                'rol': data.rol,
+                'estado': data.estado,
+                // Final del esquema basico
+                // Repartidor
+                'paqueteAsignado': data.paqueteAsignado,
+                'licencia': data.licencia,
+                'telefono': data.telefono,
+                'telefonoAdicional': data.telefonoAdicional,
+                'razonDesact': data.razonDesact,
+                'sucursal': data.sucursal,
+                // Cliente
+                'tarjeta': data.tarjeta,
+                'paquetes': data.paquetes,
+                'latitud' : data.latitud,
+                'longitud' : data.longitud,
+                 //   Encargados
+                 'telefono': data.telefono,
+                 'telefonoAdicional': data.telefonoAdicional,
+                 'sucursal': data.sucursal,
+                 'rolAduana': data.rolAduana
+            }
+        });
+        peticion.done((datos) => {
+            respuesta = datos.msg;
+            console.log('Petición realizada con éxito')
+        });
+        peticion.fail((error) => {
+            respuesta = error;
+            console.log('Error en la petición')
+        });
+        return respuesta;
     }
 
     /**

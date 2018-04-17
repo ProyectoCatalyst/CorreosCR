@@ -123,6 +123,39 @@
         controller: 'controladorRegistroEncargado',
         controllerAs: 'vm'
       })
+
+      .state('main.listarEncargados', {
+        url: '/listManager',
+        templateUrl: './components/usuarios/encargados/listarEncargados/listarEncargados.view.html',
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/encargados/listarEncargados/listarEncargados.controller.js')
+          }]
+        },
+        data: {
+          pageTitle: 'Listar encargados | Correos CR'
+        },
+        controller: 'controladorListarEncargados',
+        controllerAs: 'vm'
+      })
+
+      .state('main.editarEncargados', {
+        url: '/modifyManager',
+        templateUrl: './components/usuarios/encargados/editarEncargado/editarEncargado.view.html',
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/encargados/editarEncargado/editarEncargado.controller.js')
+          }]
+        },
+        params: {
+          datosMod: ''
+        },
+        data: {
+          pageTitle: 'Editar encargado | Correos CR'
+        },
+        controller: 'controladorEditarEncargado',
+        controllerAs: 'vm'
+      })
       
       .state('registrarRepartidor', {
         url: '/registrarRepartidor',
