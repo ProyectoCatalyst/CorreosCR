@@ -127,8 +127,8 @@
         dataType: 'json',
         async: false,
         data: {
-          correo: pCorreoTarjeta.correo,
-          numeroTarjeta: pCorreoTarjeta.numeroTarjeta,
+          correo : pCorreoTarjeta[0],
+          numeroTarjeta : pCorreoTarjeta[1]
         }
       });
 
@@ -209,13 +209,13 @@
         dataType: 'json',
         async: false,
         data: {
-          tipoTarjeta: pnuevatarjeta.tipoTarjeta,
-          nombreTarjeta: pnuevatarjeta.nombreTarjeta,
-          numeroTarjeta: pnuevatarjeta.numeroTarjeta,
-          cvvTarjeta: pnuevatarjeta.cvvTarjeta,
-          mesTarjeta: pnuevatarjeta.mesTarjeta,
-          annoTarjeta: pnuevatarjeta.annoTarjeta,
-          idCliente: pnuevatarjeta.idCliente
+          'tipoTarjeta'    : pnuevatarjeta.tipoTarjeta,
+          'nombreTarjeta'  : pnuevatarjeta.nombreTarjeta,
+          'numeroTarjeta' : pnuevatarjeta.numeroTarjeta,
+          'cvvTarjeta'     : pnuevatarjeta.cvvTarjeta,
+          'mesTarjeta'     : pnuevatarjeta.mesTarjeta,
+          'annoTarjeta'    : pnuevatarjeta.annoTarjeta,
+          'idCliente'      : pnuevatarjeta.idCliente
         }
       });
 
