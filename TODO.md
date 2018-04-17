@@ -13,7 +13,6 @@
 | node_modules\@uirouter\core\_bundles\ui-router-core.js | 5627 | Validate incoming view name with a regexp to allow:
 | node_modules\argparse\lib\help\formatter.js | 10 | add [additonal formatters][1]
 | node_modules\body-parser\node_modules\debug\browser.js | 37 | add a `localStorage` variable to explicitly enable/disable colors
-| node_modules\body-parser\lib\types\json.js | 74 | maybe make this configurable or part of "strict" option
 | node_modules\bootstrap\dist\js\bootstrap.bundle.js | 4688 | @fat these should probably be refactored out of modal.js
 | node_modules\bootstrap\dist\js\bootstrap.bundle.js | 5840 | @fat remove sketch reliance on jQuery position/offset
 | node_modules\bootstrap\dist\js\bootstrap.js | 2254 | @fat these should probably be refactored out of modal.js
@@ -22,6 +21,10 @@
 | node_modules\bootstrap\js\dist\scrollspy.js | 115 | @fat remove sketch reliance on jQuery position/offset
 | node_modules\bootstrap\js\src\modal.js | 401 | @fat these should probably be refactored out of modal.js
 | node_modules\bootstrap\js\src\scrollspy.js | 132 | @fat remove sketch reliance on jQuery position/offset
+<<<<<<< HEAD
+=======
+| node_modules\browser-sync\client\dist\index.js | 153 | add a `localStorage` variable to explicitly enable/disable colors
+>>>>>>> master
 | node_modules\bson\lib\bson\decimal128.js | 239 | implementing a custom parsing for this, or refactoring the regex would yield
 | node_modules\connect\node_modules\debug\browser.js | 37 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\csso\lib\parser\index.js | 190 | remove it as wrong thing
@@ -65,9 +68,13 @@
 | node_modules\jsdoc\lib\jsdoc\schema.js | 385 | define this as an enumeration elsewhere
 | node_modules\jsdoc\lib\jsdoc\schema.js | 504 | make these an enumeration
 | node_modules\jsdoc\templates\default\publish.js | 675 | move the tutorial functions to templateHelper.js
+| node_modules\moment\src\locale\fr.js | 50 | Return 'e' when day of month > 1. Move this case inside
 | node_modules\mongodb\lib\bulk\common.js | 202 | Something better
 | node_modules\mongodb\lib\bulk\ordered.js | 227 | Bring from driver information in isMaster
+<<<<<<< HEAD
 | node_modules\moment\src\locale\fr.js | 50 | Return 'e' when day of month > 1. Move this case inside
+=======
+>>>>>>> master
 | node_modules\mongodb-core\lib\connection\pool.js | 1193 | reenable when sessions development is complete
 | node_modules\mongodb-core\lib\topologies\replset.js | 1188 | once we drop Node 4, use destructuring either here or in arguments.
 | node_modules\mongodb-core\lib\topologies\shared.js | 385 | 
@@ -365,6 +372,15 @@
 | node_modules\stylus\node_modules\source-map\test\source-map\test-util.js | 202 | Issue #128: Define and test this function properly.
 | node_modules\gulp-connect\node_modules\serve-static\node_modules\mime\build\test.js | 46 | Uncomment once #157 is resolved
 | node_modules\nodemon\node_modules\expand-brackets\node_modules\debug\src\browser.js | 36 | add a `localStorage` variable to explicitly enable/disable colors
+<<<<<<< HEAD
+=======
+| public\clases.js | 50 | Agregar puesto dentro de la Aduana
+| public\clases.js | 52 | Hacer metodos del Encargado de la Aduana
+| public\clases.js | 58 | sucursal asignada
+| public\clases.js | 61 | Hacer metodos del Encargado de la sucursales
+| public\clases.js | 142 | Agregar los metodos de las tarjetas
+| public\clases.js | 156 | Agregar  los metodos del paquete
+>>>>>>> master
 | node_modules\angular\angular.js | 2122 | @misko this function needs to be removed
 | node_modules\angular\angular.js | 2148 | @perf update `nodes` instead of creating a new object?
 | node_modules\angular\angular.js | 3717 | do we still need this?
@@ -483,6 +499,8 @@
 | node_modules\jquery\dist\jquery.slim.js | 767 | identify versions
 | node_modules\jquery\dist\jquery.slim.js | 4234 | Now that all calls to _data and _removeData have been replaced
 | node_modules\jquery\src\data.js | 85 | Now that all calls to _data and _removeData have been replaced
+| node_modules\js-yaml\dist\js-yaml.js | 1542 | rework to inline fn with no type cast?
+| node_modules\js-yaml\dist\js-yaml.js | 2896 | Add tag format check.
 | node_modules\js-base64\test-moment\moment.js | 363 | Remove "ordinalParse" fallback in next major release.
 | node_modules\js-base64\test-moment\moment.js | 1007 | add sorting
 | node_modules\js-base64\test-moment\moment.js | 1047 | Another silent failure?
@@ -494,12 +512,9 @@
 | node_modules\js-base64\test-moment\moment.js | 3113 | remove 'name' arg after deprecation is removed
 | node_modules\js-base64\test-moment\moment.js | 3668 | Remove "ordinalParse" fallback in next major release.
 | node_modules\js-base64\test-moment\moment.js | 4226 | Use this.as('ms')?
-| node_modules\js-yaml\dist\js-yaml.js | 1542 | rework to inline fn with no type cast?
-| node_modules\js-yaml\dist\js-yaml.js | 2896 | Add tag format check.
 | node_modules\localtunnel\lib\Tunnel.js | 47 | @shtylman don't print to stdout?
 | node_modules\localtunnel\lib\TunnelCluster.js | 77 | some languages have single threaded servers which makes opening up
 | node_modules\lodash\function\debounce.js | 62 | Changes.cancel();
-| node_modules\moment\locale\fr.js | 54 | Return 'e' when day of month > 1. Move this case inside
 | node_modules\moment\min\locales.js | 3290 | Return 'e' when day of month > 1. Move this case inside
 | node_modules\moment\min\moment-with-locales.js | 357 | Remove "ordinalParse" fallback in next major release.
 | node_modules\moment\min\moment-with-locales.js | 1000 | add sorting
@@ -513,9 +528,10 @@
 | node_modules\moment\min\moment-with-locales.js | 3668 | Remove "ordinalParse" fallback in next major release.
 | node_modules\moment\min\moment-with-locales.js | 4196 | Use this.as('ms')?
 | node_modules\moment\min\moment-with-locales.js | 7781 | Return 'e' when day of month > 1. Move this case inside
+| node_modules\moment\locale\fr.js | 54 | Return 'e' when day of month > 1. Move this case inside
 | node_modules\mongodb\lib\cursor.js | 1228 | refactor this logic into core
 | node_modules\mongoose\lib\aggregate.js | 503 | refactor to reuse the query builder logic
-| node_modules\mongoose\lib\query.js | 3520 | refactor
+| node_modules\mongoose\lib\query.js | 3518 | refactor
 | node_modules\mquery\lib\mquery.js | 3040 | 
 | node_modules\ng-file-upload\dist\FileAPI.js | 1310 | error
 | node_modules\ng-file-upload\dist\FileAPI.js | 2202 | Оло-ло, нужно рефакторить это место

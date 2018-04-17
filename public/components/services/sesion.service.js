@@ -4,9 +4,9 @@
   .module('correosCR')
   .service('servicioInicioSesion', servicioInicioSesion);
 
-  servicioInicioSesion.$inject = ['$log', '$http', 'servicioUsuarios', 'localStorageFactory'];
+  servicioInicioSesion.$inject = ['$log', '$http', 'servicioUsuarios', 'dataStorageFactory'];
 
-  function servicioInicioSesion($log, $http, servicioUsuarios, localStorageFactory){
+  function servicioInicioSesion($log, $http, servicioUsuarios,dataStorageFactory, localStorageFactory){
 
     const loginAPI = {
       logIn : _logIn,
@@ -22,7 +22,7 @@
 
       for(let i = 0; i<listaUsuarios.length; i++){
         if(listaUsuarios[i].getCorreo() == credentials.correo && listaUsuarios[i].getContrasenna() == credentials.contrasenna){
-          localStorageFactory.setSession(listaUsuarios[i].getCorreo());
+          dataStorageFactory.setSession(listaUsuarios[i].getCorreo());
           incioExitoso = true;
         }
       }
@@ -30,13 +30,13 @@
     };
 
     function _logOut(){
-      let cierreExitoso = localStorageFactory.closeSession();
+      let cierreExitoso = dataStorageFactory.closeSession();
 
       return cierreExitoso;
     };
 
     function _getAuthUser() {
-      let sessionActiva = localStorageFactory.getSession(),
+      let sessionActiva = dataStorageFactory.getSession(),
           usuarioActivo;
 
       if(!sessionActiva){

@@ -1,6 +1,6 @@
 const express = require('express'),
       router = express.Router(),
-      users = require('./usuarios.api');
+      tarjetas = require('./tarjetas.api');
 
 /**
  * 
@@ -13,30 +13,30 @@ router.param('id', (req, res, next, id) => {
 /**
  * Función que se encarga de registrar los usuarios dentro del local storage
  */
-router.route('/save_user')
+router.route('/save_creditCard')
   .post((req, res) => {
-    users.registrar(req,res);
+    tarjetas.registrar(req,res);
 });
 
 /**
  * Función que obtiene todos los usuarios
  */
-router.route('/get_all_users')
+router.route('/get_all_creditCard')
   .get((req, res) => {
-    users.listarTodos(req,res);
+    tarjetas.listarTodos(req,res);
 });
 
 /**
  * Función que actualiza los usuarios
  */
-router.route('/update_users')
+router.route('/update_creditCard')
   .put((req, res) => {
-    users.actualizar(req,res);
+    tarjetas.actualizar(req,res);
 });
 
-router.route('/add_creditCard')
-  .put((req, res) => {
-    users.agregar_tarjeta(req,res);
+router.route('/delete_creditCard')
+  .delete((req, res) => {
+    tarjetas.eliminar(req,res);
 });
 
 module.exports = router;

@@ -19,7 +19,17 @@
       registrarTramite: _registrarTramite,
       retornarTramite: _retornarTramite,  
 
+      addCreditCard: _addCreditCard,
       sendMail: _sendMail,
+
+      getCreditCardData: _getCreditCardData,
+      setCreditCardData: _setCreditCardData,
+      updateCreditCard: _updateCreditCard,
+      deleteCreditCard: _deleteCreditCard,
+      setData: _setData,
+      removeData: _removeData,
+      getData: _getData,
+
       setSession: _setSession,
       closeSession: _closeSession,
       getSession: _getSession
@@ -42,8 +52,8 @@
       });
 
       peticion.done((usuarios) => {
-        console.log('Datos que vienen desde la base de datos')
-        console.log(usuarios);
+        // console.log('Datos que vienen desde la base de datos')
+        // console.log(usuarios);
         listaUsuarios = usuarios;
       });
       peticion.fail(() => {
@@ -324,6 +334,31 @@
         });
         return tramitesDB
     }
+    function _addCreditCard(pCorreoTarjeta) {
+      let response;
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/add_creditCard',
+        type: 'put',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          correo: pCorreoTarjeta.correo,
+          numeroTarjeta: pCorreoTarjeta.numeroTarjeta,
+        }
+      });
+
+      peticion.done((datos) => {
+        response = datos.success;
+        console.log('Petición realizada con éxito');
+      });
+      peticion.fail((error) => {
+        response = error;
+        console.log('Ocurrió un error con la tarjeta');
+      });
+
+      return response;
+    }
 
     /**
      * Función que recibe el correo electrónico y el mensaje a enviar.
@@ -353,6 +388,148 @@
         console.log(error);
       });
     }
+
+    function _getCreditCardData() {
+      let listaTarjetas = [];
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/get_all_creditCard',
+        type: 'get',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+
+        }
+      });
+
+      peticion.done((datos) => {
+        listaTarjetas = datos;
+        console.log('Petición realizada con éxito');
+      });
+      peticion.fail(() => {
+        listaTarjetas = [];
+        console.log('Ocurrió un error');
+      });
+
+      return listaTarjetas;
+    }
+
+    function _setCreditCardData(pnuevatarjeta) {
+      let response;
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/save_creditCard',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          tipoTarjeta    : pnuevatarjeta.tipoTarjeta,
+          nombreTarjeta  : pnuevatarjeta.nombreTarjeta,
+          numeroTarjeta  : pnuevatarjeta.numeroTarjeta,
+          cvvTarjeta     : pnuevatarjeta.cvvTarjeta,
+          mesTarjeta     : pnuevatarjeta.mesTarjeta,
+          annoTarjeta    : pnuevatarjeta.annoTarjeta,
+          idCliente      : pnuevatarjeta.idCliente
+        }
+      });
+
+      peticion.done((datos) => {
+        response = datos.success;
+        console.log('Petición realizada con éxito');
+      });
+      peticion.fail((error) => {
+        response = error;
+        console.log('Ocurrió un error');
+      });
+
+      return response;
+    }
+
+    function _updateCreditCard(ptarjetaActualizada) {
+      let response;
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/update_creditCard',
+        type: 'put',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          tipoTarjeta    : ptarjetaActualizada.tipoTarjeta,
+          nombreTarjeta  : ptarjetaActualizada.nombreTarjeta,
+          numeroTarjeta  : ptarjetaActualizada.numeroTarjeta,
+          cvvTarjeta     : ptarjetaActualizada.cvvTarjeta,
+          mesTarjeta     : ptarjetaActualizada.mesTarjeta,
+          annoTarjeta    : ptarjetaActualizada.annoTarjeta,
+          idCliente      : ptarjetaActualizada.idCliente
+        }
+      });
+
+      peticion.done((datos) => {
+        response = datos.success;
+        // console.log('Petición realizada con éxito');
+      });
+      peticion.fail((error) => {
+        response = error;
+        // console.log('Ocurrió un error');
+      });
+
+      return response;
+    }
+
+    function _deleteCreditCard(pNumeroTarjeta) {
+      let response;
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/delete_creditCard',
+        type: 'delete',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          numeroTarjeta  : pNumeroTarjeta
+        }
+      });
+
+      peticion.done((datos) => {
+        response = datos.success;
+        // console.log('Petición realizada con éxito');
+      });
+      peticion.fail((error) => {
+        response = error;
+        // console.log('Ocurrió un error');
+      });
+
+      return response;
+    }
+    /**
+   * Función que almacena las datos dentro del session Storage
+   */
+  function _setData(value) {
+    let response = true;
+    sessionStorage.setItem('userData', JSON.stringify(value));
+    return response;
+  }
+
+  /**
+   * Función que elimina los datos de la sesión activa
+   */
+  function _removeData() {
+    let response = true;
+    sessionStorage.removeItem('userData');
+    return response;
+  };
+
+  /**
+   * Función que retorna los datos almacenados dentro del sessionStorage
+   */
+  function _getData() {
+    let userData = JSON.parse(sessionStorage.getItem('userData'));
+    return userData;
+  }
+
     /**
    * Función que almacena las credenciales dentro del session Storage
    * @param {Credenciales} value 
@@ -377,7 +554,6 @@
      */
     function _getSession() {
       let sessionActive = JSON.parse(sessionStorage.getItem('session'));
-
       return sessionActive;
     }
   }
