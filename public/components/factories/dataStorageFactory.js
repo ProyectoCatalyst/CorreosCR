@@ -21,6 +21,14 @@
       removeData: _removeData,
       getData: _getData,
 
+      getCarrierData: _getCarrierData,
+      setCarrierData: _setCarrierData,
+      updateCarrierData: _updateCarrierData,
+
+      getSucursalData: _getSucursalData,
+      setSucursalData: _setSucursalData,
+      updateSucursalData: _updateSucursalData,
+
       setSession: _setSession,
       closeSession: _closeSession,
       getSession: _getSession
@@ -284,6 +292,88 @@
 
       return response;
     }
+
+    function _getCarrierData() {
+      let listaCarrier = [];
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/get_all_carrier',
+        type: 'get',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {}
+      });
+
+      peticion.done((carrier) => {
+        console.log('Datos que vienen desde la base de datos')
+        console.log(datos);
+        listaCarrier = datos;
+      });
+      peticion.fail(() => {
+        listaCarrier = [];
+        console.log('Ocurrió un error');
+      });
+
+      return listaCarrier;
+    }
+
+    function _setCarrierData(pnuevoCarrier) {
+      let response;
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/save_carrier',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          'codigoCarrier'  : pnuevoCarrier.codigoCarrier,
+          'nombreCarrier'  : pnuevoCarrier.nombreCarrier,
+          'estadoCarrier'  : pnuevoCarrier.estadoCarrier
+        }
+      });
+
+      peticion.done((datos) => {
+        response = datos.success;
+        console.log('Petición realizada con éxito');
+      });
+      peticion.fail((error) => {
+        response = error;
+        console.log('Ocurrió un error');
+      });
+
+      return response;
+    }
+
+    function _updateCarrierData(data){
+      let respuesta;
+
+      let peticion = $.ajax({
+          url: 'http://localhost:4000/api/update_carrier',
+          type: 'put',
+          contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+          dataType: 'json',
+          async: false,
+          data: {
+              'codigoCarrier': data.codigoCarrier,
+              'nombreCarrier': data.nombreCarrier,
+              'estadoCarrier': data.estadoCarrier
+          }
+      });
+      peticion.done((datos) => {
+          respuesta = datos.msg;
+          console.log('Petición realizada con éxito')
+      });
+      peticion.fail((error) => {
+          respuesta = error;
+          console.log('Error en la petición')
+      });
+      return respuesta;
+  }
+
+
+
     /**
    * Función que almacena las datos dentro del session Storage
    */

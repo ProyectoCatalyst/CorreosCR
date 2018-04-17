@@ -240,3 +240,49 @@ class Licencia{
     return this.idRepartidor;
   }
 }
+class Carriers{
+
+  constructor(pcodigoCarrier,pnombreCarrier,pestadoCarrier){
+
+    this.codigoCarrier = pcodigoCarrier;
+    this.nombreCarrier = pnombreCarrier;
+    this.estadoCarrier = pestadoCarrier;
+    
+  }
+  
+  getCodigo() {
+    return this.codigoCarrier;
+  }
+  getNombre() {
+    return this.nombreCarrier;
+  }
+  getEstado() {
+    return this.estadoCarrier;
+  }
+}
+class Sucursal{
+  constructor(pcodigoSucursal, pnombreSucursal, pprovincia, pcanton, pdistrito, pestadoSucursal){
+    this.codigoSucursal = pcodigoSucursal;
+    this.nombreSucursal = pnombreSucursal;
+    this.provincia = pprovincia;
+    this.canton = pcanton;
+    this.distrito = pdistrito;
+    this.estadoSucursal = pestadoSucursal;
+
+  }//fin constructor clase sucursal
+
+
+
+  capturarNombreSucursal(){
+    return this.nombreSucursal;
+  }
+  capturarCodigoSucursal(){
+    return this.codigoSucursal;
+  }
+  retornarRepartidoresSucursal(){
+    return this.repartidoresSucursal;
+  }
+  retornarEstadoSucursal(){
+    return this.estadoSucursal;
+  }
+}//fin clase sucursal

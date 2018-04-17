@@ -64,11 +64,15 @@ app.use( (req, res, next) => {
 const index = require('./index'),
       usuarios = require('./components/usuarios/usuarios.route'),
       tarjetas = require('./components/tarjetas/tarjetas.route'),
-      mail = require('./components/mail/mail.route');
+      mail = require('./components/mail/mail.route'),
+      carrier = require('./components/carrier/carrier.route'),
+      sucursales = require('./components/sucursales/sucursales.route.js' );
 
 /**
  * Se definien las rutas de ExpressJS
  */
+app.use('/api', carrier);
+app.use('/api', sucursales);
 app.use('/api', tarjetas);
 app.use('/api', mail);
 app.use('/api', usuarios);

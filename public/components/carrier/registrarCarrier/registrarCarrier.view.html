@@ -1,0 +1,42 @@
+<header class= "row" id="fondoHeader">
+  <div class = "container-fluid d-none d-md-block m-2" id="logoHeader">
+    <img src="sources/img/registrar/logoMenu.png" alt="" srcset="">
+  </div>
+</header>
+<section class="container">
+<form name="frmRegistrarCarrier" ng-submit="vm.registrarCarrier(vm.CarrierNuevo)" autocomplete="off">
+  <div class="row">
+    <div class="col-md-12 py-5">
+      <h1 class="text-center">Registro de mensajeros</h1>
+      <div class="col-9 sm-col-12">
+
+          <h3 id="subtitulo">Registre un nuevo mensajero</h3>
+          
+          <p>Complete los siguientes datos</p>
+        <div class="row">
+          <form ng-submit="vm.registrarCarrier(vm.CarrierNuevo)">
+            <div class="col-sm-12 col-md-6 form-group">
+              <label for="txtCodigoCarrier">Código de mensajero: </label>
+              <input type="tel" class="form-control" ng-model="vm.CarrierNuevo.codigoCarrier" id="txtCodigoCarrier" required>
+            </div>
+
+            <div class="col-sm-12 col-md-6 form-group">
+              <label for="txtNombreSucursal">Nombre del mensajero: </label>
+              <input type="text" class="form-control" ng-model="vm.CarrierNuevo.nombreCarrier" id="txtNombreCarrier" required>
+            </div>
+          </form>
+        </div>
+      </div>
+          
+        <div class="px-2 row">
+            <div class="col-sm-12 col-md-2">
+                <button type="submit" class="btn  btn-danger btn-lg m-5 " id="bntRegistrar">Registrar mensajero</button>
+            </div>
+        </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</form>
+</section>
