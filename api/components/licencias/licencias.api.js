@@ -1,7 +1,7 @@
 const licenciasModel = require('./licencias.model');
 
 module.exports.registrar = (req, res) => {
-  let newLicence = new licenceModel({
+  let newLicense = new licenciasModel({
     codigo            : req.body.codigo,
     fechaVencimiento  : req.body.fechaVencimiento,
     estado            : req.body.estado,
@@ -24,7 +24,7 @@ module.exports.listarTodos = (req,res) => {
 };
 
 module.exports.actualizar = (req,res) => {
-  licenciasModel.findByIdAndUpdate(req.body.licencias, { $set: req.body}, (err, licencias) => {
+  creditCardModel.update({codigo: req.body.codigo}, req.body, (err, licencias) => {
     if (err){
       res.json({success:false,msg:'No se ha actualizado.' + handleError(err)});
 

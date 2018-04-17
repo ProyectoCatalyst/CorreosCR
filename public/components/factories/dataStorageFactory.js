@@ -20,6 +20,9 @@
       setData: _setData,
       removeData: _removeData,
       getData: _getData,
+      
+      getLicenceData: _getLicenceData,
+      setLicenceData: _setLicenceData,
 
       setSession: _setSession,
       closeSession: _closeSession,
@@ -141,7 +144,8 @@
     }
 
     /**
-     * Función que recibe el correo electrónico y el mensaje a enviar.
+     
+* Función que recibe el correo electrónico y el mensaje a enviar.
      * @param {Correo y contrasenna, informacion que se va a enviar por mail} data 
      */
     function _sendMail (data){
@@ -194,7 +198,6 @@
 
       return listaTarjetas;
     }
-
     function _setCreditCardData(pnuevatarjeta) {
       let response;
 
@@ -280,6 +283,62 @@
       peticion.fail((error) => {
         response = error;
         // console.log('Ocurrió un error');
+      });
+
+      return response;
+    }
+
+
+    function _getLicenceData() {
+      let listaLicencias = [];
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/get_all_licences',
+        type: 'get',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+
+        }
+      });
+
+      peticion.done((datos) => {
+        listaLicencias = datos;
+        console.log('Petición realizada con éxito');
+      });
+      peticion.fail(() => {
+        listaLicencias = [];
+        console.log('Ocurrió un error');
+      });
+
+      return listaLicencias;
+    }
+
+    function _setLicenceData(pnuevaLicencia) {
+      let response;
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/save_creditCard',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          'codigo'            : pnuevaLicencia.codigo,
+          'fechaVencimiento'  : pnuevaLicencia.fechaVencimiento,
+          'estado'            : pnuevaLicencia.estado,
+          'idRepartidor'      : pnuevaLicencia.idRepartidor
+        }
+      });
+
+      peticion.done((datos) => {
+        response = datos.success;
+        console.log('Petición realizada con éxito');
+      });
+      peticion.fail((error) => {
+        response = error;
+        console.log('Ocurrió un error');
       });
 
       return response;
