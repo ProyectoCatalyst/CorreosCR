@@ -1,0 +1,42 @@
+<div class="container">
+    <form ng-submit="vm.actualizarPaquete(vm.PaquetesPrealertadosMod)">
+
+        <div class="row">
+            <div class="col-md-8 my-5">
+                <h1 id="tituloPrincipal">Cambiar estado del paquete: # {{vm.informacionPaquete.trackingPaquete}}</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="sltEstadosPaquetes">Estado del paquete</label>
+                    <select id="sltEstadosPaquetes" ng-options="estadosPaquetes as estadosPaquetes.name for estadosPaquetes in vm.estadosPaquetes track by estadosPaquetes._id"
+                        ng-model="vm.PaquetesPrealertadosMod.estadoPaquete" class="custom-select" required>
+                        <option value="">Seleccione el nuevo estado del paquete</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group">
+                <label>Asigne un repartidor para entregar el paquete *</label>
+                <select ng-model="vm.PaquetesPrealertadosMod.idRepartidorPaquete.name" class="custom-select">>
+                    <option value>Seleccione un repartidor</option>
+                    <option value="1">Repartidor quemado 1</option>
+                    <option value="2">Repartidor quemado 2</option>
+
+                    <option ng-repeat="datosRepartidores in vm.repartidoresActivos" value="{{datosRepartidores.cedula}}">{{datosRepartidores.primerNombre}} {{datosRepartidores.primerApellido}}</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mt-3">
+                <button type="submit" class="btn btn-danger">Actualizar estado</button>
+                <button type="button" class="btn btn-danger" ng-click="vm.regresar()">Regresar</button>
+            </div>
+        </div>
+    </form>
+</div>
