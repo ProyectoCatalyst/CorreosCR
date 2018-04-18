@@ -28,7 +28,9 @@ let UserSchema = new mongoose.Schema({
   razonDesact       : {type: String},
   sucursal          : {type: String},
   // Cliente
-  tarjeta           : {type: Array},
+  tarjeta           : [{
+    numeroTarjeta : {type: String},
+  }],
   paquetes          : {type: Array},
   latitud           : {type: String},
   longitud          : {type: String}

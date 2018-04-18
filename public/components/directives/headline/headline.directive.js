@@ -9,7 +9,7 @@
   function cabeceraPrincipal($state, servicioInicioSesion) {
 
     let headlineController = function () {
-      const vm = this;
+      let vm = this;
       vm.cerrarSesion = () => {
         swal("¿Desea cerrar la sesión?", {
             buttons: {
