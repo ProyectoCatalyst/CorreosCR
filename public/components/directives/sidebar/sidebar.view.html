@@ -1,6 +1,6 @@
 <aside class="" id="sidebar">
   <ul class="navbar-navbar pl-2 pt-5 w-100">
-    <li class="nav-item pb-4" id="mtSidebar">
+    <li class="nav-item pb-2" id="mtSidebar">
       <a class="nav-link text-white" ui-sref="main.inicio" href="">
         <div class="d-inline">
           <i class="fas fa-home"></i>
@@ -8,15 +8,31 @@
         <p class="d-inline pl-1">Inicio</p>
       </a>
     </li>
-    <li class="nav-item pb-4" id="mtSidebar">
-      <a class="nav-link text-white" ui-sref="main.perfil" href="">
+    <li class="nav-item dropright pb-2" id="mtSidebar">
+      <a class="nav-link text-white dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <div class="d-inline">
-          <i class="fas fa-user"></i>
+          <i class="fas fa-user-circle"></i>
         </div>
         <p class="d-inline pl-1">Mi perfil</p>
       </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" ui-sref="main.perfil">Información</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" ui-sref="">Casillero</a>
+      </div>
     </li>
-    <li class="nav-item dropright pb-4" ng-if="vm.rolUsuario==5">
+    <li class="nav-item dropright pb-2" ng-if="vm.rolUsuario==1">
+      <a class="nav-link text-white dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="d-inline">
+          <i class="fas fa-user"></i>
+        </div>
+        <p class="d-inline pl-1">Usuarios</p>
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" ui-sref="">Listar</a>
+      </div>
+    </li>
+    <li class="nav-item dropright pb-2" ng-if="vm.rolUsuario==5">
       <a class="nav-link text-white dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <div class="d-inline">
           <i class="fab fa-cc-visa"></i>
@@ -29,7 +45,7 @@
         <a class="dropdown-item" ui-sref="main.listarTarjetas">Listar</a>
       </div>
     </li>
-    <li class="nav-item dropright pb-4" ng-if="vm.rolUsuario==4">
+    <li class="nav-item dropright pb-2" ng-if="vm.rolUsuario==4">
       <a class="nav-link text-white dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <div class="d-inline">
           <i class="fas fa-id-card"></i>
@@ -42,7 +58,7 @@
         <a class="dropdown-item" ui-sref="">Listar</a>
       </div>
     </li>
-    <li class="nav-item dropright pb-4" ng-if="vm.rolUsuario==1||vm.rolUsuario==3">
+    <li class="nav-item dropright pb-2" ng-if="vm.rolUsuario==1||vm.rolUsuario==3">
       <a class="nav-link text-white dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <div class="d-inline">
           <i class="fas fa-users"></i>
@@ -55,7 +71,7 @@
         <a class="dropdown-item" ui-sref="main.listarClientes">Listar</a>
       </div>
     </li>
-    <li class="nav-item dropright pb-4" ng-if="vm.rolUsuario==1||vm.rolUsuario==2||vm.rolUsuario==5">
+    <li class="nav-item dropright pb-2" ng-if="vm.rolUsuario==1||vm.rolUsuario==2||vm.rolUsuario==5">
       <a class="nav-link text-white dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <div class="d-inline">
           <i class="fas fa-box"></i>
@@ -68,7 +84,7 @@
         <a class="dropdown-item" ui-sref="main.listarPaquetes">Listar</a>
       </div>
     </li>
-    <li class="nav-item dropright pb-4" ng-if="vm.rolUsuario==1">
+    <li class="nav-item dropright pb-3" ng-if="vm.rolUsuario==1">
       <a class="nav-link text-white dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <div class="d-inline">
           <i class="fas fa-people-carry"></i>
@@ -81,7 +97,7 @@
         <a class="dropdown-item" ui-sref="">Listar encargados de aduana</a>
       </div>
     </li>
-    <li class="nav-item dropright pb-4" ng-if="vm.rolUsuario==1">
+    <li class="nav-item dropright pb-3" ng-if="vm.rolUsuario==1">
       <a class="nav-link text-white dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <div class="d-inline">
           <i class="fas fa-building"></i>
@@ -98,7 +114,7 @@
         <a class="dropdown-item" ui-sref="">Listar encargados de sucursal</a>
       </div>
     </li>
-    <li class="nav-item dropright pb-4" ng-if="vm.rolUsuario==1||vm.rolUsuario==3">
+    <li class="nav-item dropright pb-3" ng-if="vm.rolUsuario==1||vm.rolUsuario==3">
       <a class="nav-link text-white dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <div class="d-inline">
           <i class="fas fa-motorcycle"></i>
@@ -111,7 +127,7 @@
         <a class="dropdown-item" ui-sref="">Listar</a>
       </div>
     </li>
-    <li class="nav-item dropright pb-4" ng-if="vm.rolUsuario==1">
+    <li class="nav-item dropright pb-3" ng-if="vm.rolUsuario==1">
       <a class="nav-link text-white dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <div class="d-inline">
           <i class="fas fa-id-card-alt"></i>
@@ -124,7 +140,20 @@
         <a class="dropdown-item" ui-sref="">Listar</a>
       </div>
     </li>
-    <li class="nav-item pb-4" id="mtSidebar">
+    <li class="nav-item dropright pb-3" ng-if="vm.rolUsuario==1">
+      <a class="nav-link text-white dropdown-toggle" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <div class="d-inline">
+          <i class="fas fa-truck-loading"></i>
+        </div>
+        <p class="d-inline pl-1">Logística</p>
+      </a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" ui-sref="">Registrar</a>
+        <div class="dropdown-divider"></div>
+        <a class="dropdown-item" ui-sref="">Listar</a>
+      </div>
+    </li>
+    <li class="nav-item pb-4">
       <a class="nav-link">
         <button class="btn btn-danger" type="button" ng-click="vm.cerrarSesion()">
           <i class="fas fa-power-off"></i>

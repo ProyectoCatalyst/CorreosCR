@@ -6,27 +6,31 @@
             </div>
         </section>
         <section class="row justify-content-center">
-            <div>
-                <table class="table">
+            <div class="col-md-12">
+                <table class="table table-striped">
                     <thead class="">
                         <tr>
-                            <th scope="col">Cliente</th>
+                            <th scope="col">#</th>
+                            <th scope="col" ng-if="vm.rol==5">Nombre del cliente</th>
+                            <th scope="col" ng-if="vm.rol==1||vm.rol==2||vm.rol==3||vm.rol==4">Correo electrónico del cliente</th>
                             <th scope="col">Número de tracking</th>
                             <th scope="col">Tipo de paquete</th>
                             <th scope="col">Peso</th>
                             <th scope="col">Precio</th>
-                            <th scope="col">Acciones</th>
+                            <th scope="col">Consultar estado</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat="paquetesPrealertados in vm.listarPaquetesPrealertados">
-                            <td>{{paquetesPrealertados.idCliente}}</td>
+                            <th scope="row">{{$index+1}}</th>
+                            <td ng-if="vm.rol==5">{{vm.nombreUsuario}} {{vm.apellidoUsuario}}</td>
+                            <td ng-if="vm.rol==1||vm.rol==2||vm.rol==3||vm.rol==4">{{paquetesPrealertados.idCliente}}</td>
                             <td>{{paquetesPrealertados.trackingPaquete}}</td>
                             <td>{{paquetesPrealertados.tipoPaquete}}</td>
                             <td>{{paquetesPrealertados.pesoPaquete}} Kg</td>
                             <td>₡ {{paquetesPrealertados.precioPaquete}}</td>
                             <td>
-                                <button type="click" class="btn btn-danger" ng-click="vm.estadoPaquete(paquetesPrealertados)">
+                                <button type="click" class="btn btn-danger" ng-click="vm.estadoPaquete(paquetesPrealertados.trackingPaquete)">
                                     Consultar estado
                                 </button>
                             </td>
