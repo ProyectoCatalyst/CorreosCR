@@ -62,7 +62,7 @@ class EncargadoSucursales extends Usuario {
 }
 
 class Repartidor extends Usuario {
-  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pfoto, pcedula, pfecha, pgenero, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado, prazonDesact, psucursal) {
+  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pfoto, pcedula, pfecha, pgenero, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado, ptelefono, ptelefonoAdicional, prazonDesact, psucursal) {
 
     super(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pfoto, pcedula, pfecha, pgenero, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado);
 
@@ -93,7 +93,7 @@ class Repartidor extends Usuario {
 }
 
 class Cliente extends Usuario {
-  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pfoto, pcedula, pfecha, pgenero, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado, ptelefono, plat, plong) {
+  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pfoto, pcedula, pfecha, pgenero, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado, ptelefono, plat, plong, pcasillero) {
 
     super(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pfoto, pcedula, pfecha, pgenero, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado);
 
@@ -102,21 +102,22 @@ class Cliente extends Usuario {
     this.paquetes = [];
     this.latitud = plat;
     this.longitud = plong;
+    this.casillero = pcasillero;
   }
 
   agregarTarjetas(pnuevaTarjeta) {
     this.tarjeta.push(pnuevaTarjeta);
   }
 
-  obtenerTargetas(){
+  obtenerTargetas() {
     return this.tarjeta;
   }
 
-  obtenerLatitud(){
+  obtenerLatitud() {
     return this.latitud;
   }
 
-  obtenerLongitud(){
+  obtenerLongitud() {
     return this.longitud;
   }
 }
@@ -128,23 +129,23 @@ class Tarjeta {
     this.numeroTarjeta = pnumeroTarjeta;
     this.cvvTarjeta = pcvvTarjeta;
     this.mesTarjeta = pmesTarjeta,
-    this.annoTarjeta = pannoTarjeta,
-    this.idCliente = pidcliente;
+      this.annoTarjeta = pannoTarjeta,
+      this.idCliente = pidcliente;
   }
 
   getNumeroTarjeta() {
     return this.numeroTarjeta;
   }
 
-  getIdDuenno(){
+  getIdDuenno() {
     return this.idCliente;
   }
   //TODO Agregar los metodos de las tarjetas
 }
 
-class Paquete{
-  constructor(ptrackingPaquete, ptipoPaquete, ppesoPaquete, pprecioPaquete, pcostoEnvio, 
-    pcostoTotalPaquete, pestadoPaquete, pidrepartidor, pidsucursal, pidcliente, pidmensajero){
+class Paquete {
+  constructor(ptrackingPaquete, ptipoPaquete, ppesoPaquete, pprecioPaquete, pcostoEnvio,
+    pcostoTotalPaquete, pestadoPaquete, pidrepartidor, pidsucursal, pidcliente, pidmensajero) {
     this.trackingPaquete = ptrackingPaquete;
     this.tipoPaquete = ptipoPaquete;
     this.pesoPaquete = ppesoPaquete;
@@ -159,17 +160,17 @@ class Paquete{
   }
   //TODO Agregar  los metodos del paquete
 
-  getTracking(){
+  getTracking() {
     return this.trackingPaquete;
   }
-  getEstadoPaquete(){
+  getEstadoPaquete() {
     return this.estadoPaquete;
   }
-  
+
 }
 
-class Sucursal{
-  constructor(pcodigoSucursal, pnombreSucursal, pprovincia, pcanton, pdistrito, pestadoSucursal, pubicacion){
+class Sucursal {
+  constructor(pcodigoSucursal, pnombreSucursal, pprovincia, pcanton, pdistrito, pestadoSucursal, pubicacion) {
     this.codigoSucursal = pcodigoSucursal;
     this.nombreSucursal = pnombreSucursal;
     this.provincia = pprovincia;
@@ -181,44 +182,44 @@ class Sucursal{
     this.repartidores = [];
   }
 
-  getNombreSucursal(){
+  getNombreSucursal() {
     return this.nombreSucursal;
   }
 
-  getCodigoSucursal(){
+  getCodigoSucursal() {
     return this.codigoSucursal;
   }
 
-  getEstadoSucursal(){
+  getEstadoSucursal() {
     return this.estadoSucursal;
   }
 
-  getUbicacion(){
+  getUbicacion() {
     return this.ubicacion;
   }
 
-  getEncargado(){
+  getEncargado() {
     return this.idEncargadoSucursal;
   }
 
-  setEncargado(pidnuevoencargado){
+  setEncargado(pidnuevoencargado) {
     this.idEncargadoSucursal = pidnuevoencargado;
   }
 
-  setNuevoRepartidor(pnuevorepartidor){
+  setNuevoRepartidor(pnuevorepartidor) {
     this.repartidores.push(pnuevorepartidor);
   }
 }
 
-class Convenio{
-  constructor(pcodigoConvenio,pnombreConvenio,pdescripcionConvenio,pinstitucionConvenio,pcostoConvenio){
+class Convenio {
+  constructor(pcodigoConvenio, pnombreConvenio, pdescripcionConvenio, pinstitucionConvenio, pcostoConvenio) {
     this.codigoConvenio = pcodigoConvenio;
     this.nombreConvenio = pnombreConvenio;
     this.descripcionConvenio = pdescripcionConvenio;
     this.institucionConvenio = pinstitucionConvenio;
     this.costoConvenio = pcostoConvenio;
   }
-  
+
   getCodigo() {
     return this.codigoConvenio;
   }
@@ -228,11 +229,11 @@ class Convenio{
   getCosto() {
     return this.costoConvenio;
   }
-  
+
 }
 
-class Licencia{
-  constructor(pcodigo, pfechaVencimiento, ptipo, pestado, pidrepartidor){
+class Licencia {
+  constructor(pcodigo, pfechaVencimiento, ptipo, pestado, pidrepartidor) {
     this.codigo = pcodigo;
     this.fechaVencimiento = pfechaVencimiento;
     this.tipo = ptipo;
@@ -240,15 +241,29 @@ class Licencia{
     this.idRepartidor = pidrepartidor;
   }
 
-  getCodigo(){
+  getCodigo() {
     return this.codigo;
   }
 
-  getEstado(){
+  getEstado() {
     return this.estado;
   }
-  
-  getIdRepartidor(){
+
+  getIdRepartidor() {
     return this.idRepartidor;
+  }
+}
+
+class Casillero {
+  constructor(pnumeroCasillero, pidCliente) {
+    this.pnumeroCasillero = this.pnumeroCasillero;
+    this.idCliente = idCliente;
+  }
+
+  getNumeroCasillero() {
+    return this.pnumeroCasillero;
+  }
+  getIdCliente() {
+    return this.idCliente;
   }
 }

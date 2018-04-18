@@ -16,11 +16,12 @@
       obtenerlistadeFiltrada: _obtenerListaFiltrada,
       retornarCorreosUsuarios: _retornarCorreosUsuarios,
       actualizarUsuario: _actualizarUsuario,
-      agregarTarjetaUsuario: _agregarTarjetaUsuario
+      agregarTarjetaUsuario: _agregarTarjetaUsuario,
+      asignarCasillero: _asignarCasillero
     };
     return publicAPI;
 
-    
+
     /**
      * Función que se comunica con el dataStorage para guardar el cliente.
      * @param {Objeto Usuario de cualquier tipo que va a ser almacenado en el backend} pNuevoUsuario 
@@ -40,7 +41,7 @@
         registrovalido = false;
       } else {
         let objEmail = {
-          to : pNuevoUsuario.getCorreo(),
+          to: pNuevoUsuario.getCorreo(),
           subject: 'Contraseña temporal de la aplicación de Correos de Costa Rica',
           text: pNuevoUsuario.getContrasenna()
         };
@@ -50,7 +51,7 @@
 
       return registrovalido;
     };
-    
+
     /**
      * función que obtiene la lista de usuarios del backend
      */
@@ -91,10 +92,10 @@
             break;
 
           case 5:
-            let tempCliente = new Cliente(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.foto, obj.cedula, tempfecha, obj.genero, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol, obj.estado, obj.telefono, obj.latitud, obj.longitud);
+            let tempCliente = new Cliente(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.foto, obj.cedula, tempfecha, obj.genero, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol, obj.estado, obj.telefono, obj.latitud, obj.longitud , obj.casillero);
 
             listadeusuarios.push(tempCliente);
-           break;
+            break;
 
           default:
 
@@ -149,6 +150,11 @@
       dataStorageFactory.addCreditCard(pCorreoTarjeta);
     }
 
+    function _asignarCasillero() {
+      let casilleroNuevo = 0;
+      casilleroNuevo = Math.round((Math.random() * 1937));
+      return casilleroNuevo;
+    }
   };
 
 })();

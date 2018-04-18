@@ -9,6 +9,7 @@
                             <tr>
                                 <th scope="col-6">Tracking de paquete</th>
                                 <th scope="col-6">Estado de paquete</th>
+                                <th scope="col-6">Empresa logística</th>
                                 <th scope="col-6" ng-if="rolUsuario" ng-hide="false">Actualizar</th>
                             </tr>
                         </thead>
@@ -21,6 +22,10 @@
                                 </td>
                                 <td>
                                     <b>{{vm.mostrarPaquete.estadoPaquete}}
+                                        <b>
+                                </td>
+                                <td>
+                                    <b>{{vm.mostrarPaquete.idMensajero}}
                                         <b>
                                 </td>
                                 <td>

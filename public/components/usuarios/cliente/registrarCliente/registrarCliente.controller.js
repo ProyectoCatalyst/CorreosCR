@@ -89,7 +89,9 @@
         contrasenna += chars.charAt(x);
       }
 
-      let objNuevoCliente = new Cliente(pclienteNuevo.nombre, pclienteNuevo.segundoNombre, pclienteNuevo.primerApellido, pclienteNuevo.segundoApellido, urlImagen, pclienteNuevo.cedula, pclienteNuevo.fecha, pclienteNuevo.sexo, pclienteNuevo.provincia.name, pclienteNuevo.canton.name, pclienteNuevo.distrito.name, pclienteNuevo.direccion, pclienteNuevo.correo, contrasenna, rol, estado, pclienteNuevo.telefono, pclienteNuevo.latitud, pclienteNuevo.longitud);
+      let casillero = servicioUsuarios.asignarCasillero();
+
+      let objNuevoCliente = new Cliente(pclienteNuevo.nombre, pclienteNuevo.segundoNombre, pclienteNuevo.primerApellido, pclienteNuevo.segundoApellido, urlImagen, pclienteNuevo.cedula, pclienteNuevo.fecha, pclienteNuevo.sexo, pclienteNuevo.provincia.name, pclienteNuevo.canton.name, pclienteNuevo.distrito.name, pclienteNuevo.direccion, pclienteNuevo.correo, contrasenna, rol, estado, pclienteNuevo.telefono, pclienteNuevo.latitud, pclienteNuevo.longitud, casillero);
 
       console.log(objNuevoCliente);
 

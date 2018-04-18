@@ -17,6 +17,7 @@ module.exports.registrar = (req, res) => {
       newUser.latitud = req.body.latitud;
       newUser.longitud = req.body.longitud;
       newUser.telefono = req.body.telefono;
+      newUser.casillero = req.body.casillero;
       break;
     default:
 

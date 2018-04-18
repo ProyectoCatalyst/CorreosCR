@@ -222,7 +222,24 @@
         },
         controller: 'controladorRegistrarRepartidor',
         controllerAs: 'vm'
-      });
+      })
+      
+      .state('main.casillero', {
+        url: '/casillero',
+        templateUrl: './components/casillero/vistaCasillero.view.html',
+        data: {
+          pageTitle: 'Mostrar casillero'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/casillero/vistaCasillero.controller.js')
+          }]
+        },
+        controller: 'controladorCasillero',
+        controllerAs: 'vm'
+      })
+      
+      ;
 
     $urlRouterProvider.otherwise('/');
   };
