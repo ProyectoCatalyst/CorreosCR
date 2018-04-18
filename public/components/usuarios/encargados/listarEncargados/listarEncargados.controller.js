@@ -22,9 +22,34 @@
         }
 
         vm.cambiarEstado = (pencargadoDesact) => {
-            pencargadoDesact.estado =  !pencargadoDesact.estado;
-            servicioUsuarios.actualizarUsuario(pencargadoDesact);
-            $state.reload();
+            let confirm;
+
+            if(pencargadoDesact.estado){
+                confirm = swal({
+                    title: '¿Quiere desactivar este encargado?',
+                    text: 'Una vez desactivado no podrá hacer uso del sistema',
+                    buttons: ['Cancelar', 'Continuar'],
+                    icon: 'warning',
+                    dangerMode: 'true'
+                  }).then((confirmacion) => {
+                    if(confirmacion){
+                        pencargadoDesact.estado =  !pencargadoDesact.estado;
+                        servicioUsuarios.actualizarUsuario(pencargadoDesact);
+                        $state.reload();
+                    }else{
+                      swal({
+                        title: "Hubo un problema en la desactivacion",
+                        text: "La información no se desactivo",
+                        icon: "error",
+                        button: "Aceptar"
+                      });
+                    }
+                  });
+            }else{
+                pencargadoDesact.estado =  !pencargadoDesact.estado;
+                servicioUsuarios.actualizarUsuario(pencargadoDesact);
+                $state.reload();
+            }
         }
 
         vm.agregarEncargado = () => {

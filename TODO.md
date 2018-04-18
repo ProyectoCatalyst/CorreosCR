@@ -1,6 +1,130 @@
 ### TODOs
 | Filename | line # | TODO
 |:------|:------:|:------
+| node_modules\babylon\lib\index.js | 21 | 
+| node_modules\babylon\lib\index.js | 25 | 
+| node_modules\babylon\lib\index.js | 1990 | 
+| node_modules\babylon\lib\index.js | 3325 | fix this
+| node_modules\babylon\lib\index.js | 4868 | better type. Node is an N.AnyExport.
+| node_modules\babylon\lib\index.js | 6484 | This should be a type error. Passing in a SourceLocation, and it expects a Position.
+| node_modules\babylon\lib\index.js | 7966 | actually a bit more complex in TypeScript, but shouldn't matter.
+| node_modules\babylon\lib\index.js | 7975 | Would be nice to avoid lookahead. Want a hasLineBreakUpNext() method...
+| node_modules\bson\browser_build\bson.js | 6018 | add validation descriptor w/o calling accessors
+| node_modules\bson\browser_build\bson.js | 9422 | Legacy, not needed anymore. Remove in next major version.
+| node_modules\bson\browser_build\bson.js | 14093 | implementing a custom parsing for this, or refactoring the regex would yield
+| node_modules\catharsis\lib\describe.js | 355 | this hardcodes the order and placement of functionNew and functionThis; need to move
+| node_modules\debug\src\browser.js | 36 | add a `localStorage` variable to explicitly enable/disable colors
+| node_modules\ecc-jsbn\lib\ec.js | 15 | if(x.compareTo(q) >= 0) error
+| node_modules\ecc-jsbn\lib\ec.js | 78 | compression flag
+| node_modules\ecc-jsbn\lib\ec.js | 162 | optimized handling of constants
+| node_modules\ecc-jsbn\lib\ec.js | 189 | modularize the multiplication algorithm
+| node_modules\ecc-jsbn\lib\sec.js | 150 | make this into a proper hashtable
+| node_modules\entities\lib\decode.js | 46 | consider creating a merged map
+| node_modules\entities\lib\encode.js | 30 | add ranges
+| node_modules\express\lib\request.js | 448 | change req.host to return host in next major
+| node_modules\form-data\lib\form_data.js | 115 | Looks like there is bug in Node fs.createReadStream
+| node_modules\gulp\bin\gulp.js | 181 | batch these
+| node_modules\htmlparser2\lib\FeedHandler.js | 5 | make this a streamable handler
+| node_modules\htmlparser2\lib\Tokenizer.js | 627 | make events conditional
+| node_modules\htmlparser2\lib\Tokenizer.js | 880 | add a way to remove current tag
+| node_modules\iconv-lite\encodings\dbcs-codec.js | 347 | What if we have no default? (resCode == undefined)
+| node_modules\iconv-lite\encodings\dbcs-codec.js | 471 | Callback with seq.
+| node_modules\iconv-lite\encodings\dbcs-data.js | 63 | KDDI extension to Shift_JIS
+| node_modules\iconv-lite\encodings\dbcs-data.js | 64 | IBM CCSID 942 = CP932, but F0-F9 custom chars and other char changes.
+| node_modules\iconv-lite\encodings\dbcs-data.js | 65 | IBM CCSID 943 = Shift_JIS = CP932 with original Shift_JIS lower 128 chars.
+| node_modules\iconv-lite\encodings\dbcs-data.js | 80 | Euro = 0x80 in cp936, but not in GBK (where it's valid but undefined)
+| node_modules\iconv-lite\encodings\dbcs-data.js | 104 | Support GB18030 (~27000 chars + whole unicode mapping, cp54936)
+| node_modules\iconv-lite\lib\extend-node.js | 166 | Set _charsWritten.
+| node_modules\immutable\dist\immutable.js | 2255 | seems like these methods are very similar
+| node_modules\ink-docstrap\template\publish.js | 841 | move the tutorial functions to templateHelper.js
+| node_modules\jquery\dist\jquery.js | 753 | identify versions
+| node_modules\jquery\dist\jquery.js | 767 | identify versions
+| node_modules\jquery\dist\jquery.js | 4234 | Now that all calls to _data and _removeData have been replaced
+| node_modules\jquery\dist\jquery.slim.js | 753 | identify versions
+| node_modules\jquery\dist\jquery.slim.js | 767 | identify versions
+| node_modules\jquery\dist\jquery.slim.js | 4234 | Now that all calls to _data and _removeData have been replaced
+| node_modules\jquery\src\data.js | 85 | Now that all calls to _data and _removeData have been replaced
+| node_modules\js-base64\test-moment\moment.js | 363 | Remove "ordinalParse" fallback in next major release.
+| node_modules\js-base64\test-moment\moment.js | 1007 | add sorting
+| node_modules\js-base64\test-moment\moment.js | 1047 | Another silent failure?
+| node_modules\js-base64\test-moment\moment.js | 1839 | Find a better way to register and load all the locales in Node
+| node_modules\js-base64\test-moment\moment.js | 2108 | We need to take the current isoWeekYear, but that depends on
+| node_modules\js-base64\test-moment\moment.js | 2283 | Replace the vanilla JS Date object with an indepentent day-of-week check.
+| node_modules\js-base64\test-moment\moment.js | 2387 | Move this to another part of the creation flow to prevent circular deps
+| node_modules\js-base64\test-moment\moment.js | 2682 | Use [].sort instead?
+| node_modules\js-base64\test-moment\moment.js | 3113 | remove 'name' arg after deprecation is removed
+| node_modules\js-base64\test-moment\moment.js | 3668 | Remove "ordinalParse" fallback in next major release.
+| node_modules\js-base64\test-moment\moment.js | 4226 | Use this.as('ms')?
+| node_modules\js-yaml\dist\js-yaml.js | 1542 | rework to inline fn with no type cast?
+| node_modules\js-yaml\dist\js-yaml.js | 2896 | Add tag format check.
+| node_modules\localtunnel\lib\Tunnel.js | 47 | @shtylman don't print to stdout?
+| node_modules\localtunnel\lib\TunnelCluster.js | 77 | some languages have single threaded servers which makes opening up
+| node_modules\lodash\function\debounce.js | 62 | Changes.cancel();
+| node_modules\moment\locale\fr.js | 54 | Return 'e' when day of month > 1. Move this case inside
+| node_modules\moment\min\locales.js | 3290 | Return 'e' when day of month > 1. Move this case inside
+| node_modules\moment\min\moment-with-locales.js | 357 | Remove "ordinalParse" fallback in next major release.
+| node_modules\moment\min\moment-with-locales.js | 1000 | add sorting
+| node_modules\moment\min\moment-with-locales.js | 1040 | Another silent failure?
+| node_modules\moment\min\moment-with-locales.js | 1828 | Find a better way to register and load all the locales in Node
+| node_modules\moment\min\moment-with-locales.js | 2108 | We need to take the current isoWeekYear, but that depends on
+| node_modules\moment\min\moment-with-locales.js | 2283 | Replace the vanilla JS Date object with an indepentent day-of-week check.
+| node_modules\moment\min\moment-with-locales.js | 2387 | Move this to another part of the creation flow to prevent circular deps
+| node_modules\moment\min\moment-with-locales.js | 2682 | Use [].sort instead?
+| node_modules\moment\min\moment-with-locales.js | 3113 | remove 'name' arg after deprecation is removed
+| node_modules\moment\min\moment-with-locales.js | 3668 | Remove "ordinalParse" fallback in next major release.
+| node_modules\moment\min\moment-with-locales.js | 4196 | Use this.as('ms')?
+| node_modules\moment\min\moment-with-locales.js | 7781 | Return 'e' when day of month > 1. Move this case inside
+| node_modules\mongodb\lib\cursor.js | 1228 | refactor this logic into core
+| node_modules\mongoose\lib\aggregate.js | 503 | refactor to reuse the query builder logic
+| node_modules\mongoose\lib\query.js | 3520 | refactor
+| node_modules\mquery\lib\mquery.js | 3040 | 
+| node_modules\ng-file-upload\dist\FileAPI.js | 1310 | error
+| node_modules\ng-file-upload\dist\FileAPI.js | 2202 | Оло-ло, нужно рефакторить это место
+| node_modules\ngmap\controllers\map-controller.js | 219 | it's for backward compatibiliy. will be removed
+| node_modules\ngmap\directives\drawing-manager.js | 22 | Add remove button.
+| node_modules\ngmap\directives\info-window.js | 191 | DEPRECATED
+| node_modules\readable-stream\lib\_stream_writable.js | 289 | defer error events consistently everywhere, not just the cb
+| node_modules\request\lib\auth.js | 52 | More complete implementation of RFC 2617.
+| node_modules\sanitize-html\dist\sanitize-html.js | 926 | Legacy, not needed anymore. Remove in next major version.
+| node_modules\sanitize-html\dist\sanitize-html.js | 3770 | consider creating a merged map
+| node_modules\sanitize-html\dist\sanitize-html.js | 3855 | add ranges
+| node_modules\sanitize-html\dist\sanitize-html.js | 4275 | make this a streamable handler
+| node_modules\sanitize-html\dist\sanitize-html.js | 5413 | make events conditional
+| node_modules\sanitize-html\dist\sanitize-html.js | 5666 | add a way to remove current tag
+| node_modules\sanitize-html\dist\sanitize-html.js | 10505 | make this comparison case-insensitive on windows?
+| node_modules\sanitize-html\dist\sanitize-html.js | 20956 | @bmeurer Change this back to const once hole checks are
+| node_modules\sanitize-html\dist\sanitize-html.js | 22405 | defer error events consistently everywhere, not just the cb
+| node_modules\sanitize-html\dist\sanitize-html.js | 23281 | Handling all encodings inside a single object makes it very difficult
+| node_modules\sanitize-html\dist\sanitize-html.js | 23283 | There should be a utf8-strict encoding that rejects invalid UTF-8 code
+| node_modules\stylus\lib\parser.js | 2054 | TernaryOp :)
+| node_modules\svgo\plugins\convertPathData.js | 71 | get rid of functions returns
+| node_modules\svgo\plugins\convertShapeToPath.js | 42 | Calculate sizes from % and non-px units if possible.
+| node_modules\svgo\plugins\_collections.js | 514 | in - 'If no value is provided and this is the first filter primitive,
+| node_modules\svgo\plugins\_collections.js | 608 | divisor - 'The default value is the sum of all values in kernelMatrix,
+| node_modules\svgo\plugins\_collections.js | 612 | targetX - 'By default, the convolution matrix is centered in X over each
+| node_modules\svgo\plugins\_collections.js | 617 | kernelUnitLength - 'The first number is the <dx> value. The second number
+| node_modules\svgo\plugins\_collections.js | 655 | 'exactly one light source element, in any order'
+| node_modules\svgo\plugins\_collections.js | 913 | exactly one 'light source element'
+| node_modules\svgo\plugins\_collections.js | 1107 | "at most one 'font-face-src' element"
+| node_modules\svgo\plugins\_collections.js | 1111 | empty content
+| node_modules\tough-cookie\lib\cookie.js | 1193 | persist lastAccessed
+| node_modules\ua-parser-js\src\ua-parser.js | 639 | move to string map
+| node_modules\node-sass\lib\index.js | 462 | remove for 4.0
+| node_modules\node-sass\test\types.js | 242 | I'm not sure this object works well, it likely needs to be fleshed out more...
+| node_modules\node-sass\test\types.js | 249 | I'm not sure this object works well, it likely needs to be fleshed out more...
+| node_modules\node-sass\test\types.js | 294 | TypeError
+| node_modules\node-sass\test\types.js | 302 | TypeError
+| node_modules\node-sass\test\types.js | 401 | more complex set/get value scenarios
+| node_modules\node-sass\test\types.js | 432 | TypeError
+| node_modules\node-sass\test\types.js | 510 | TypeError
+| node_modules\node-sass\test\types.js | 518 | TypeError
+| node_modules\node-sass\test\types.js | 610 | TypeError
+| node_modules\xmlhttprequest-ssl\lib\XMLHttpRequest.js | 271 | Make this case insensitive
+| node_modules\xmlhttprequest-ssl\lib\XMLHttpRequest.js | 423 | Prevent looped redirects
+| node_modules\xmlhttprequest-ssl\lib\XMLHttpRequest.js | 452 | Check if an XHR event needs to be fired here
+| node_modules\xmlhttprequest-ssl\lib\XMLHttpRequest.js | 646 | figure out InspectorInstrumentation::didLoadXHR(cookie)
+| node_modules\yargs\lib\command.js | 207 | move positional arg logic to yargs-parser and remove this duplication
+| node_modules\yargs\lib\validation.js | 159 | case-insensitive configurability
 | node_modules\@uirouter\angularjs\release\angular-ui-router.js | 2610 | explicitly make this user configurable
 | node_modules\@uirouter\angularjs\release\angular-ui-router.js | 3083 | Also compare parameters
 | node_modules\@uirouter\angularjs\release\angular-ui-router.js | 5034 | typeof?
@@ -12,6 +136,7 @@
 | node_modules\@uirouter\core\_bundles\ui-router-core.js | 5027 | typeof?
 | node_modules\@uirouter\core\_bundles\ui-router-core.js | 5627 | Validate incoming view name with a regexp to allow:
 | node_modules\argparse\lib\help\formatter.js | 10 | add [additonal formatters][1]
+| node_modules\body-parser\lib\types\json.js | 74 | maybe make this configurable or part of "strict" option
 | node_modules\body-parser\node_modules\debug\browser.js | 37 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\bootstrap\dist\js\bootstrap.bundle.js | 4688 | @fat these should probably be refactored out of modal.js
 | node_modules\bootstrap\dist\js\bootstrap.bundle.js | 5840 | @fat remove sketch reliance on jQuery position/offset
@@ -21,17 +146,13 @@
 | node_modules\bootstrap\js\dist\scrollspy.js | 115 | @fat remove sketch reliance on jQuery position/offset
 | node_modules\bootstrap\js\src\modal.js | 401 | @fat these should probably be refactored out of modal.js
 | node_modules\bootstrap\js\src\scrollspy.js | 132 | @fat remove sketch reliance on jQuery position/offset
-<<<<<<< HEAD
-=======
 | node_modules\browser-sync\client\dist\index.js | 153 | add a `localStorage` variable to explicitly enable/disable colors
->>>>>>> master
 | node_modules\bson\lib\bson\decimal128.js | 239 | implementing a custom parsing for this, or refactoring the regex would yield
 | node_modules\connect\node_modules\debug\browser.js | 37 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\csso\lib\parser\index.js | 190 | remove it as wrong thing
 | node_modules\csso\lib\parser\index.js | 1594 | remove '=' since it's wrong operator, but theat as operator
 | node_modules\duplexer2\node_modules\string_decoder\index.js | 43 | Handling all encodings inside a single object makes it very difficult
 | node_modules\duplexer2\node_modules\string_decoder\index.js | 45 | There should be a utf8-strict encoding that rejects invalid UTF-8 code
-| node_modules\browser-sync\client\dist\index.js | 153 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\express\node_modules\send\index.js | 791 | this is all lame, refactor meeee
 | node_modules\finalhandler\node_modules\debug\browser.js | 37 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\fs-extra\lib\mkdirs\win32.js | 13 | expand to include the rest
@@ -68,13 +189,9 @@
 | node_modules\jsdoc\lib\jsdoc\schema.js | 385 | define this as an enumeration elsewhere
 | node_modules\jsdoc\lib\jsdoc\schema.js | 504 | make these an enumeration
 | node_modules\jsdoc\templates\default\publish.js | 675 | move the tutorial functions to templateHelper.js
-| node_modules\moment\src\locale\fr.js | 50 | Return 'e' when day of month > 1. Move this case inside
 | node_modules\mongodb\lib\bulk\common.js | 202 | Something better
 | node_modules\mongodb\lib\bulk\ordered.js | 227 | Bring from driver information in isMaster
-<<<<<<< HEAD
 | node_modules\moment\src\locale\fr.js | 50 | Return 'e' when day of month > 1. Move this case inside
-=======
->>>>>>> master
 | node_modules\mongodb-core\lib\connection\pool.js | 1193 | reenable when sessions development is complete
 | node_modules\mongodb-core\lib\topologies\replset.js | 1188 | once we drop Node 4, use destructuring either here or in arguments.
 | node_modules\mongodb-core\lib\topologies\shared.js | 385 | 
@@ -157,7 +274,6 @@
 | node_modules\ngmap\testapp\lib\prettify.js | 947 | @mikesamuel recognize non-latin letters and numerals in idents
 | node_modules\ngmap\testapp\lib\prettify.js | 1215 | Possibly optimize by using '' if there's no flicker.
 | node_modules\node-gyp\node_modules\glob\common.js | 106 | is an absolute `cwd` supposed to be resolved against `root`?
-| node_modules\node-sass\node_modules\glob\common.js | 106 | is an absolute `cwd` supposed to be resolved against `root`?
 | node_modules\oclazyload\bower_components\angular\angular.js | 2005 | @misko this function needs to be removed
 | node_modules\oclazyload\bower_components\angular\angular.js | 2031 | @perf update `nodes` instead of creating a new object?
 | node_modules\oclazyload\bower_components\angular\angular.js | 3539 | do we still need this?
@@ -197,6 +313,7 @@
 | node_modules\underscore-contrib\test\vendor\jquery.js | 3157 | Stop taunting the data cache; remove global events and always attach to document
 | node_modules\underscore-contrib\test\vendor\jquery.js | 4512 | Move to normal caching system
 | node_modules\underscore-contrib\test\vendor\qunit.js | 152 | why??
+| node_modules\node-sass\node_modules\glob\common.js | 106 | is an absolute `cwd` supposed to be resolved against `root`?
 | node_modules\vinyl-fs\lib\dest\index.js | 56 | option for either backpressure or lossy
 | node_modules\vinyl-fs\node_modules\string_decoder\index.js | 43 | Handling all encodings inside a single object makes it very difficult
 | node_modules\vinyl-fs\node_modules\string_decoder\index.js | 45 | There should be a utf8-strict encoding that rejects invalid UTF-8 code
@@ -319,8 +436,8 @@
 | node_modules\jsdoc\lib\jsdoc\util\templateHelper.js | 941 | generate a warning (ideally during parsing!)
 | node_modules\jsdoc\lib\jsdoc\util\templateHelper.js | 975 | docs
 | node_modules\jsdoc\plugins\test\specs\markdown.js | 13 | more tests; refactor the plugin so multiple settings can be tested
-| node_modules\localtunnel\node_modules\yargs\lib\validation.js | 136 | case-insensitive configurability
 | node_modules\localtunnel\node_modules\debug\src\browser.js | 36 | add a `localStorage` variable to explicitly enable/disable colors
+| node_modules\localtunnel\node_modules\yargs\lib\validation.js | 136 | case-insensitive configurability
 | node_modules\moment\src\lib\create\from-array.js | 100 | We need to take the current isoWeekYear, but that depends on
 | node_modules\moment\src\lib\create\from-string-and-format.js | 19 | Move this to another part of the creation flow to prevent circular deps
 | node_modules\moment\src\lib\create\from-string.js | 136 | Replace the vanilla JS Date object with an indepentent day-of-week check.
@@ -357,13 +474,13 @@
 | node_modules\ngmap\build\docs\js\prettify.js | 947 | @mikesamuel recognize non-latin letters and numerals in idents
 | node_modules\ngmap\build\docs\js\prettify.js | 1215 | Possibly optimize by using '' if there's no flicker.
 | node_modules\ngmap\config\jsdoc\template\publish.js | 644 | move the tutorial functions to templateHelper.js
-| node_modules\node-sass\node_modules\request\lib\auth.js | 52 | More complete implementation of RFC 2617.
 | node_modules\nodemon\node_modules\debug\src\browser.js | 41 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\sass-graph\node_modules\yargs\lib\argsert.js | 7 | should this eventually raise an exception.
 | node_modules\sass-graph\node_modules\yargs\lib\command.js | 288 | move positional arg logic to yargs-parser and remove this duplication
 | node_modules\sass-graph\node_modules\yargs\lib\validation.js | 173 | case-insensitive configurability
 | node_modules\send\node_modules\debug\src\browser.js | 36 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\socket.io-parser\node_modules\debug\src\browser.js | 41 | add a `localStorage` variable to explicitly enable/disable colors
+| node_modules\node-sass\node_modules\request\lib\auth.js | 52 | More complete implementation of RFC 2617.
 | node_modules\vinyl-fs\node_modules\readable-stream\lib\_stream_writable.js | 145 | defer error events consistently everywhere, not just the cb
 | node_modules\csso\lib\compressor\restructure\prepare\index.js | 23 | need to be checked
 | node_modules\express\node_modules\body-parser\lib\types\json.js | 74 | maybe make this configurable or part of "strict" option
@@ -372,15 +489,8 @@
 | node_modules\stylus\node_modules\source-map\test\source-map\test-util.js | 202 | Issue #128: Define and test this function properly.
 | node_modules\gulp-connect\node_modules\serve-static\node_modules\mime\build\test.js | 46 | Uncomment once #157 is resolved
 | node_modules\nodemon\node_modules\expand-brackets\node_modules\debug\src\browser.js | 36 | add a `localStorage` variable to explicitly enable/disable colors
-<<<<<<< HEAD
-=======
-| public\clases.js | 50 | Agregar puesto dentro de la Aduana
-| public\clases.js | 52 | Hacer metodos del Encargado de la Aduana
-| public\clases.js | 58 | sucursal asignada
-| public\clases.js | 61 | Hacer metodos del Encargado de la sucursales
-| public\clases.js | 142 | Agregar los metodos de las tarjetas
-| public\clases.js | 156 | Agregar  los metodos del paquete
->>>>>>> master
+| public\clases.js | 136 | Agregar los metodos de las tarjetas
+| public\clases.js | 150 | Agregar  los metodos del paquete
 | node_modules\angular\angular.js | 2122 | @misko this function needs to be removed
 | node_modules\angular\angular.js | 2148 | @perf update `nodes` instead of creating a new object?
 | node_modules\angular\angular.js | 3717 | do we still need this?
@@ -451,139 +561,18 @@
 | node_modules\taffydb\taffy.js | 1092 | The curly braces used to be unescaped
 | node_modules\tweetnacl\nacl-fast.js | 2160 | Completely remove this in v0.15.
 | node_modules\tweetnacl\nacl.js | 947 | Completely remove this in v0.15.
-| node_modules\unzip-response\index.js | 6 | use Array#includes when targeting Node.js 6
 | node_modules\update-notifier\index.js | 25 | Remove deprecated options at some point far into the future
-| node_modules\uws\uws.js | 388 | default HTTP response
+| node_modules\unzip-response\index.js | 6 | use Array#includes when targeting Node.js 6
 | node_modules\vinyl\index.js | 43 | should this be moved to vinyl-fs?
 | node_modules\vinyl\index.js | 154 | should this be moved to vinyl-fs?
-| node_modules\babylon\lib\index.js | 21 | 
-| node_modules\babylon\lib\index.js | 25 | 
-| node_modules\babylon\lib\index.js | 1990 | 
-| node_modules\babylon\lib\index.js | 3325 | fix this
-| node_modules\babylon\lib\index.js | 4868 | better type. Node is an N.AnyExport.
-| node_modules\babylon\lib\index.js | 6484 | This should be a type error. Passing in a SourceLocation, and it expects a Position.
-| node_modules\babylon\lib\index.js | 7966 | actually a bit more complex in TypeScript, but shouldn't matter.
-| node_modules\babylon\lib\index.js | 7975 | Would be nice to avoid lookahead. Want a hasLineBreakUpNext() method...
-| node_modules\bson\browser_build\bson.js | 6018 | add validation descriptor w/o calling accessors
-| node_modules\bson\browser_build\bson.js | 9422 | Legacy, not needed anymore. Remove in next major version.
-| node_modules\bson\browser_build\bson.js | 14093 | implementing a custom parsing for this, or refactoring the regex would yield
-| node_modules\catharsis\lib\describe.js | 355 | this hardcodes the order and placement of functionNew and functionThis; need to move
-| node_modules\debug\src\browser.js | 36 | add a `localStorage` variable to explicitly enable/disable colors
-| node_modules\ecc-jsbn\lib\ec.js | 15 | if(x.compareTo(q) >= 0) error
-| node_modules\ecc-jsbn\lib\ec.js | 78 | compression flag
-| node_modules\ecc-jsbn\lib\ec.js | 162 | optimized handling of constants
-| node_modules\ecc-jsbn\lib\ec.js | 189 | modularize the multiplication algorithm
-| node_modules\ecc-jsbn\lib\sec.js | 150 | make this into a proper hashtable
-| node_modules\entities\lib\decode.js | 46 | consider creating a merged map
-| node_modules\entities\lib\encode.js | 30 | add ranges
-| node_modules\express\lib\request.js | 448 | change req.host to return host in next major
-| node_modules\form-data\lib\form_data.js | 115 | Looks like there is bug in Node fs.createReadStream
-| node_modules\gulp\bin\gulp.js | 181 | batch these
-| node_modules\htmlparser2\lib\FeedHandler.js | 5 | make this a streamable handler
-| node_modules\htmlparser2\lib\Tokenizer.js | 627 | make events conditional
-| node_modules\htmlparser2\lib\Tokenizer.js | 880 | add a way to remove current tag
-| node_modules\iconv-lite\encodings\dbcs-codec.js | 347 | What if we have no default? (resCode == undefined)
-| node_modules\iconv-lite\encodings\dbcs-codec.js | 471 | Callback with seq.
-| node_modules\iconv-lite\encodings\dbcs-data.js | 63 | KDDI extension to Shift_JIS
-| node_modules\iconv-lite\encodings\dbcs-data.js | 64 | IBM CCSID 942 = CP932, but F0-F9 custom chars and other char changes.
-| node_modules\iconv-lite\encodings\dbcs-data.js | 65 | IBM CCSID 943 = Shift_JIS = CP932 with original Shift_JIS lower 128 chars.
-| node_modules\iconv-lite\encodings\dbcs-data.js | 80 | Euro = 0x80 in cp936, but not in GBK (where it's valid but undefined)
-| node_modules\iconv-lite\encodings\dbcs-data.js | 104 | Support GB18030 (~27000 chars + whole unicode mapping, cp54936)
-| node_modules\iconv-lite\lib\extend-node.js | 166 | Set _charsWritten.
-| node_modules\immutable\dist\immutable.js | 2255 | seems like these methods are very similar
-| node_modules\ink-docstrap\template\publish.js | 841 | move the tutorial functions to templateHelper.js
-| node_modules\jquery\dist\jquery.js | 753 | identify versions
-| node_modules\jquery\dist\jquery.js | 767 | identify versions
-| node_modules\jquery\dist\jquery.js | 4234 | Now that all calls to _data and _removeData have been replaced
-| node_modules\jquery\dist\jquery.slim.js | 753 | identify versions
-| node_modules\jquery\dist\jquery.slim.js | 767 | identify versions
-| node_modules\jquery\dist\jquery.slim.js | 4234 | Now that all calls to _data and _removeData have been replaced
-| node_modules\jquery\src\data.js | 85 | Now that all calls to _data and _removeData have been replaced
-| node_modules\js-yaml\dist\js-yaml.js | 1542 | rework to inline fn with no type cast?
-| node_modules\js-yaml\dist\js-yaml.js | 2896 | Add tag format check.
-| node_modules\js-base64\test-moment\moment.js | 363 | Remove "ordinalParse" fallback in next major release.
-| node_modules\js-base64\test-moment\moment.js | 1007 | add sorting
-| node_modules\js-base64\test-moment\moment.js | 1047 | Another silent failure?
-| node_modules\js-base64\test-moment\moment.js | 1839 | Find a better way to register and load all the locales in Node
-| node_modules\js-base64\test-moment\moment.js | 2108 | We need to take the current isoWeekYear, but that depends on
-| node_modules\js-base64\test-moment\moment.js | 2283 | Replace the vanilla JS Date object with an indepentent day-of-week check.
-| node_modules\js-base64\test-moment\moment.js | 2387 | Move this to another part of the creation flow to prevent circular deps
-| node_modules\js-base64\test-moment\moment.js | 2682 | Use [].sort instead?
-| node_modules\js-base64\test-moment\moment.js | 3113 | remove 'name' arg after deprecation is removed
-| node_modules\js-base64\test-moment\moment.js | 3668 | Remove "ordinalParse" fallback in next major release.
-| node_modules\js-base64\test-moment\moment.js | 4226 | Use this.as('ms')?
-| node_modules\localtunnel\lib\Tunnel.js | 47 | @shtylman don't print to stdout?
-| node_modules\localtunnel\lib\TunnelCluster.js | 77 | some languages have single threaded servers which makes opening up
-| node_modules\lodash\function\debounce.js | 62 | Changes.cancel();
-| node_modules\moment\min\locales.js | 3290 | Return 'e' when day of month > 1. Move this case inside
-| node_modules\moment\min\moment-with-locales.js | 357 | Remove "ordinalParse" fallback in next major release.
-| node_modules\moment\min\moment-with-locales.js | 1000 | add sorting
-| node_modules\moment\min\moment-with-locales.js | 1040 | Another silent failure?
-| node_modules\moment\min\moment-with-locales.js | 1828 | Find a better way to register and load all the locales in Node
-| node_modules\moment\min\moment-with-locales.js | 2108 | We need to take the current isoWeekYear, but that depends on
-| node_modules\moment\min\moment-with-locales.js | 2283 | Replace the vanilla JS Date object with an indepentent day-of-week check.
-| node_modules\moment\min\moment-with-locales.js | 2387 | Move this to another part of the creation flow to prevent circular deps
-| node_modules\moment\min\moment-with-locales.js | 2682 | Use [].sort instead?
-| node_modules\moment\min\moment-with-locales.js | 3113 | remove 'name' arg after deprecation is removed
-| node_modules\moment\min\moment-with-locales.js | 3668 | Remove "ordinalParse" fallback in next major release.
-| node_modules\moment\min\moment-with-locales.js | 4196 | Use this.as('ms')?
-| node_modules\moment\min\moment-with-locales.js | 7781 | Return 'e' when day of month > 1. Move this case inside
-| node_modules\moment\locale\fr.js | 54 | Return 'e' when day of month > 1. Move this case inside
-| node_modules\mongodb\lib\cursor.js | 1228 | refactor this logic into core
-| node_modules\mongoose\lib\aggregate.js | 503 | refactor to reuse the query builder logic
-| node_modules\mongoose\lib\query.js | 3518 | refactor
-| node_modules\mquery\lib\mquery.js | 3040 | 
-| node_modules\ng-file-upload\dist\FileAPI.js | 1310 | error
-| node_modules\ng-file-upload\dist\FileAPI.js | 2202 | Оло-ло, нужно рефакторить это место
-| node_modules\ngmap\controllers\map-controller.js | 219 | it's for backward compatibiliy. will be removed
-| node_modules\ngmap\directives\drawing-manager.js | 22 | Add remove button.
-| node_modules\ngmap\directives\info-window.js | 191 | DEPRECATED
-| node_modules\node-sass\lib\index.js | 462 | remove for 4.0
-| node_modules\node-sass\test\types.js | 242 | I'm not sure this object works well, it likely needs to be fleshed out more...
-| node_modules\node-sass\test\types.js | 249 | I'm not sure this object works well, it likely needs to be fleshed out more...
-| node_modules\node-sass\test\types.js | 294 | TypeError
-| node_modules\node-sass\test\types.js | 302 | TypeError
-| node_modules\node-sass\test\types.js | 401 | more complex set/get value scenarios
-| node_modules\node-sass\test\types.js | 432 | TypeError
-| node_modules\node-sass\test\types.js | 510 | TypeError
-| node_modules\node-sass\test\types.js | 518 | TypeError
-| node_modules\node-sass\test\types.js | 610 | TypeError
-| node_modules\readable-stream\lib\_stream_writable.js | 289 | defer error events consistently everywhere, not just the cb
-| node_modules\request\lib\auth.js | 52 | More complete implementation of RFC 2617.
-| node_modules\sanitize-html\dist\sanitize-html.js | 926 | Legacy, not needed anymore. Remove in next major version.
-| node_modules\sanitize-html\dist\sanitize-html.js | 3770 | consider creating a merged map
-| node_modules\sanitize-html\dist\sanitize-html.js | 3855 | add ranges
-| node_modules\sanitize-html\dist\sanitize-html.js | 4275 | make this a streamable handler
-| node_modules\sanitize-html\dist\sanitize-html.js | 5413 | make events conditional
-| node_modules\sanitize-html\dist\sanitize-html.js | 5666 | add a way to remove current tag
-| node_modules\sanitize-html\dist\sanitize-html.js | 10505 | make this comparison case-insensitive on windows?
-| node_modules\sanitize-html\dist\sanitize-html.js | 20956 | @bmeurer Change this back to const once hole checks are
-| node_modules\sanitize-html\dist\sanitize-html.js | 22405 | defer error events consistently everywhere, not just the cb
-| node_modules\sanitize-html\dist\sanitize-html.js | 23281 | Handling all encodings inside a single object makes it very difficult
-| node_modules\sanitize-html\dist\sanitize-html.js | 23283 | There should be a utf8-strict encoding that rejects invalid UTF-8 code
-| node_modules\stylus\lib\parser.js | 2054 | TernaryOp :)
-| node_modules\svgo\plugins\convertPathData.js | 71 | get rid of functions returns
-| node_modules\svgo\plugins\convertShapeToPath.js | 42 | Calculate sizes from % and non-px units if possible.
-| node_modules\svgo\plugins\_collections.js | 514 | in - 'If no value is provided and this is the first filter primitive,
-| node_modules\svgo\plugins\_collections.js | 608 | divisor - 'The default value is the sum of all values in kernelMatrix,
-| node_modules\svgo\plugins\_collections.js | 612 | targetX - 'By default, the convolution matrix is centered in X over each
-| node_modules\svgo\plugins\_collections.js | 617 | kernelUnitLength - 'The first number is the <dx> value. The second number
-| node_modules\svgo\plugins\_collections.js | 655 | 'exactly one light source element, in any order'
-| node_modules\svgo\plugins\_collections.js | 913 | exactly one 'light source element'
-| node_modules\svgo\plugins\_collections.js | 1107 | "at most one 'font-face-src' element"
-| node_modules\svgo\plugins\_collections.js | 1111 | empty content
-| node_modules\tough-cookie\lib\cookie.js | 1193 | persist lastAccessed
-| node_modules\ua-parser-js\src\ua-parser.js | 639 | move to string map
-| node_modules\xmlhttprequest-ssl\lib\XMLHttpRequest.js | 271 | Make this case insensitive
-| node_modules\xmlhttprequest-ssl\lib\XMLHttpRequest.js | 423 | Prevent looped redirects
-| node_modules\xmlhttprequest-ssl\lib\XMLHttpRequest.js | 452 | Check if an XHR event needs to be fired here
-| node_modules\xmlhttprequest-ssl\lib\XMLHttpRequest.js | 646 | figure out InspectorInstrumentation::didLoadXHR(cookie)
-| node_modules\yargs\lib\command.js | 207 | move positional arg logic to yargs-parser and remove this duplication
-| node_modules\yargs\lib\validation.js | 159 | case-insensitive configurability
+| node_modules\uws\uws.js | 388 | default HTTP response
 
 ### FIXMEs
 | Filename | line # | FIXME
 |:------|:------:|:------
+| node_modules\csso\lib\cli.js | 10 | don't chain until node.js 0.10 drop, since setEncoding isn't chainable in 0.10
+| node_modules\debug\src\node.js | 200 | Should probably have an option in net.Socket to create a
+| node_modules\debug\src\node.js | 208 | Hack to have stream not keep the event loop alive.
 | node_modules\body-parser\node_modules\debug\node.js | 177 | Should probably have an option in net.Socket to create a
 | node_modules\body-parser\node_modules\debug\node.js | 185 | Hack to have stream not keep the event loop alive.
 | node_modules\connect\node_modules\debug\node.js | 177 | Should probably have an option in net.Socket to create a
@@ -613,6 +602,3 @@
 | node_modules\q\q.js | 363 | Remove this helper and Q.return once ES6 generators are in
 | node_modules\q\q.js | 1309 | Remove this case when SM does ES6 generators.
 | node_modules\q\q.js | 1341 | Remove this interface once ES6 generators are in SpiderMonkey.
-| node_modules\csso\lib\cli.js | 10 | don't chain until node.js 0.10 drop, since setEncoding isn't chainable in 0.10
-| node_modules\debug\src\node.js | 200 | Should probably have an option in net.Socket to create a
-| node_modules\debug\src\node.js | 208 | Hack to have stream not keep the event loop alive.

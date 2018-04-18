@@ -65,9 +65,8 @@ const index = require('./index'),
       usuarios = require('./components/usuarios/usuarios.route'),
       convenios = require('./components/convenios/convenios.route'),
       mail = require('./components/mail/mail.route'),
-      tramite = require('./components/tramite/tramite.route');
-      tarjetas = require('./components/tarjetas/tarjetas.route'),
-      mail = require('./components/mail/mail.route');
+      tramite = require('./components/tramite/tramite.route'),
+      tarjetas = require('./components/tarjetas/tarjetas.route');
 
 /**
  * Se definien las rutas de ExpressJS
