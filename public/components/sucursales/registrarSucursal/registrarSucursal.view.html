@@ -59,26 +59,29 @@
               <small class="form-text text-danger">* Campo requerido</small>
             </div>
 --------------------
-            <div class="form-group col-md-12">
+          <!-- <form ng-submit="vm.enviarCoords(vm.coords)" novalidate>
+            <div class="form-group col-md-6">
               <label>Donde está su hotel?</label>
               <small class="form-text text-muted">Ejemplo: Puntarenas, Playa Hermosa</small>
               <input places-auto-complete size=80 component-restrictions="{country:'cr'}" class="form-control my-3" type="text" ng-model="vm.direccion">
 
               <ng-map center="{{vm.direccion}}" zoom="14">
-                <marker position="{{vm.direccion}}'" draggable="true" ng-model="vm.coords"></marker>
+                <marker position="{{vm.direccion}}'" draggable="true" on-dragend="vm.onDragEnd($event)" ng-model="vm.coords"></marker>
               </ng-map>
             </div>
+            <p>
+              {{vm.coords}}
+            </p>
+          </form> -->
+
             
 --------------------
           </div>
         </div>
-        <!--row-->
+   
         <div class="px-2 row">
           <div class="col-sm-12 col-md-2">
             <button type="submit" class="btn  btn-danger btn-lg m-5 " id="bntRegistrar">Registrar sucursal</button>
-          </div>
-          <div class="col-sm-12 col-md-auto">
-            <button type="button" class="btn btn-primary btn-lg m-5" ng-click="vm.listarSucursales(sucursal)">Listar sucursales</button>
           </div>
         </div>
       </div>

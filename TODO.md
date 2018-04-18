@@ -1,16 +1,16 @@
 ### TODOs
 | Filename | line # | TODO
 |:------|:------:|:------
+| node_modules\@uirouter\core\_bundles\ui-router-core.js | 2603 | explicitly make this user configurable
+| node_modules\@uirouter\core\_bundles\ui-router-core.js | 3076 | Also compare parameters
+| node_modules\@uirouter\core\_bundles\ui-router-core.js | 5027 | typeof?
+| node_modules\@uirouter\core\_bundles\ui-router-core.js | 5627 | Validate incoming view name with a regexp to allow:
 | node_modules\@uirouter\angularjs\release\angular-ui-router.js | 2610 | explicitly make this user configurable
 | node_modules\@uirouter\angularjs\release\angular-ui-router.js | 3083 | Also compare parameters
 | node_modules\@uirouter\angularjs\release\angular-ui-router.js | 5034 | typeof?
 | node_modules\@uirouter\angularjs\release\angular-ui-router.js | 5634 | Validate incoming view name with a regexp to allow:
 | node_modules\@uirouter\angularjs\release\angular-ui-router.js | 9851 | Use $view service as a central point for registering component-level hooks
 | node_modules\@uirouter\angularjs\release\ui-router-angularjs.js | 1863 | Use $view service as a central point for registering component-level hooks
-| node_modules\@uirouter\core\_bundles\ui-router-core.js | 2603 | explicitly make this user configurable
-| node_modules\@uirouter\core\_bundles\ui-router-core.js | 3076 | Also compare parameters
-| node_modules\@uirouter\core\_bundles\ui-router-core.js | 5027 | typeof?
-| node_modules\@uirouter\core\_bundles\ui-router-core.js | 5627 | Validate incoming view name with a regexp to allow:
 | node_modules\argparse\lib\help\formatter.js | 10 | add [additonal formatters][1]
 | node_modules\body-parser\lib\types\json.js | 74 | maybe make this configurable or part of "strict" option
 | node_modules\bootstrap\dist\js\bootstrap.bundle.js | 178 | Remove in v5
@@ -87,12 +87,6 @@
 | node_modules\ngmap\build\scripts\ng-map.no-dependency.js | 878 | Add remove button.
 | node_modules\ngmap\build\scripts\ng-map.no-dependency.js | 1279 | DEPRECATED
 | node_modules\ngmap\spec\e2e\testapp_spec.js | 32 | apply retry when it has console error. e.g. google image 404 error
-| node_modules\ngmap\spec\directives\map_spec_bak.js | 64 | need to test events, but don't know how to detect event in a map
-| node_modules\ngmap\spec\directives\map_spec_bak.js | 68 | need to test observers
-| node_modules\ngmap\spec\directives\marker_spec_bak.js | 55 | need to test marker events, but don't know don't know how to get events of a marker
-| node_modules\ngmap\spec\directives\marker_spec_bak.js | 59 | need to test marker observers
-| node_modules\ngmap\spec\directives\shape_spec_bak.js | 47 | should test events, but don't know how to get events of a shape
-| node_modules\ngmap\spec\directives\shape_spec_bak.js | 51 | need to test observers
 | node_modules\ngmap\spec\lib\angular-mocks.js | 46 | @vojta remove this temporary api
 | node_modules\ngmap\spec\lib\angular-mocks.js | 876 | @i this prevents methods being logged,
 | node_modules\ngmap\spec\lib\angular-mocks.js | 1156 | @vojta change params to: method, url, data, headers, callback
@@ -117,6 +111,12 @@
 | node_modules\ngmap\spec\lib\angular.js | 24480 | @perf generate setters to shave off ~40ms or 1-1.5%
 | node_modules\ngmap\spec\lib\angular.js | 24687 | @perf support naked previousNode in `enter` to avoid creation of jqLite wrapper?
 | node_modules\ngmap\spec\lib\angular.js | 25889 | Add a test for this case
+| node_modules\ngmap\spec\directives\map_spec_bak.js | 64 | need to test events, but don't know how to detect event in a map
+| node_modules\ngmap\spec\directives\map_spec_bak.js | 68 | need to test observers
+| node_modules\ngmap\spec\directives\marker_spec_bak.js | 55 | need to test marker events, but don't know don't know how to get events of a marker
+| node_modules\ngmap\spec\directives\marker_spec_bak.js | 59 | need to test marker observers
+| node_modules\ngmap\spec\directives\shape_spec_bak.js | 47 | should test events, but don't know how to get events of a shape
+| node_modules\ngmap\spec\directives\shape_spec_bak.js | 51 | need to test observers
 | node_modules\ngmap\spec\services\attr2_options_spec.js | 184 | 
 | node_modules\ngmap\spec\services\attr2_options_spec.js | 190 | 
 | node_modules\ngmap\spec\services\attr2_options_spec.js | 196 | 
@@ -153,6 +153,7 @@
 | node_modules\ngmap\testapp\lib\prettify.js | 947 | @mikesamuel recognize non-latin letters and numerals in idents
 | node_modules\ngmap\testapp\lib\prettify.js | 1215 | Possibly optimize by using '' if there's no flicker.
 | node_modules\node-gyp\node_modules\glob\common.js | 106 | is an absolute `cwd` supposed to be resolved against `root`?
+| node_modules\node-sass\node_modules\glob\common.js | 106 | is an absolute `cwd` supposed to be resolved against `root`?
 | node_modules\oclazyload\bower_components\angular\angular.js | 2005 | @misko this function needs to be removed
 | node_modules\oclazyload\bower_components\angular\angular.js | 2031 | @perf update `nodes` instead of creating a new object?
 | node_modules\oclazyload\bower_components\angular\angular.js | 3539 | do we still need this?
@@ -198,17 +199,16 @@
 | node_modules\vinyl-fs\node_modules\vinyl\index.js | 23 | should this be moved to vinyl-fs?
 | node_modules\vinyl-fs\node_modules\vinyl\index.js | 42 | should this be moved to vinyl-fs?
 | node_modules\vinyl-fs\node_modules\vinyl\index.js | 149 | should this be moved to vinyl-fs?
-| node_modules\node-sass\node_modules\glob\common.js | 106 | is an absolute `cwd` supposed to be resolved against `root`?
-| node_modules\@uirouter\angularjs\lib\directives\viewDirective.js | 196 | Use $view service as a central point for registering component-level hooks
-| node_modules\@uirouter\angularjs\lib-esm\directives\viewDirective.js | 320 | Use $view service as a central point for registering component-level hooks
 | node_modules\@uirouter\core\lib\resolve\resolvable.js | 13 | explicitly make this user configurable
 | node_modules\@uirouter\core\lib\transition\transition.js | 165 | Also compare parameters
-| node_modules\@uirouter\core\lib\view\view.js | 58 | Validate incoming view name with a regexp to allow:
 | node_modules\@uirouter\core\lib\url\urlMatcherFactory.js | 78 | typeof?
+| node_modules\@uirouter\core\lib\view\view.js | 58 | Validate incoming view name with a regexp to allow:
 | node_modules\@uirouter\core\lib-esm\resolve\resolvable.js | 11 | explicitly make this user configurable
 | node_modules\@uirouter\core\lib-esm\transition\transition.js | 163 | Also compare parameters
 | node_modules\@uirouter\core\lib-esm\url\urlMatcherFactory.js | 76 | typeof?
 | node_modules\@uirouter\core\lib-esm\view\view.js | 56 | Validate incoming view name with a regexp to allow:
+| node_modules\@uirouter\angularjs\lib\directives\viewDirective.js | 196 | Use $view service as a central point for registering component-level hooks
+| node_modules\@uirouter\angularjs\lib-esm\directives\viewDirective.js | 320 | Use $view service as a central point for registering component-level hooks
 | node_modules\csso\lib\compressor\clean\Ruleset.js | 16 | remove toLowerCase when type selectors will be normalized
 | node_modules\csso\lib\compressor\compress\color.js | 290 | remove those tokens
 | node_modules\csso\lib\compressor\compress\color.js | 297 | remove those tokens
@@ -310,12 +310,12 @@
 | node_modules\jsdoc\plugins\test\specs\markdown.js | 13 | more tests; refactor the plugin so multiple settings can be tested
 | node_modules\localtunnel\node_modules\debug\src\browser.js | 36 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\localtunnel\node_modules\yargs\lib\validation.js | 136 | case-insensitive configurability
-| node_modules\moment\src\lib\duration\as.js | 35 | Use this.as('ms')?
-| node_modules\moment\src\lib\locale\locales.js | 50 | Find a better way to register and load all the locales in Node
-| node_modules\moment\src\lib\locale\set.js | 19 | Remove "ordinalParse" fallback in next major release.
 | node_modules\moment\src\lib\create\from-array.js | 100 | We need to take the current isoWeekYear, but that depends on
 | node_modules\moment\src\lib\create\from-string-and-format.js | 19 | Move this to another part of the creation flow to prevent circular deps
 | node_modules\moment\src\lib\create\from-string.js | 136 | Replace the vanilla JS Date object with an indepentent day-of-week check.
+| node_modules\moment\src\lib\duration\as.js | 35 | Use this.as('ms')?
+| node_modules\moment\src\lib\locale\locales.js | 50 | Find a better way to register and load all the locales in Node
+| node_modules\moment\src\lib\locale\set.js | 19 | Remove "ordinalParse" fallback in next major release.
 | node_modules\moment\src\lib\moment\add-subtract.js | 9 | remove 'name' arg after deprecation is removed
 | node_modules\moment\src\lib\moment\min-max.js | 52 | Use [].sort instead?
 | node_modules\moment\src\lib\units\day-of-month.js | 26 | Remove "ordinalParse" fallback in next major release.
@@ -326,8 +326,6 @@
 | node_modules\ngmap\build\docs\js\prettify.js | 557 | handle tabs here?
 | node_modules\ngmap\build\docs\js\prettify.js | 947 | @mikesamuel recognize non-latin letters and numerals in idents
 | node_modules\ngmap\build\docs\js\prettify.js | 1215 | Possibly optimize by using '' if there's no flicker.
-| node_modules\ngmap\config\jsdoc\template\publish.js | 644 | move the tutorial functions to templateHelper.js
-| node_modules\nodemon\node_modules\debug\src\browser.js | 41 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\ng-file-model\sample\lib\angular\angular.js | 1828 | @misko this function needs to be removed
 | node_modules\ng-file-model\sample\lib\angular\angular.js | 1854 | @perf just check if all items in `nodes` are siblings and if they are return the original
 | node_modules\ng-file-model\sample\lib\angular\angular.js | 3234 | do we still need this?
@@ -347,6 +345,9 @@
 | node_modules\ng-file-model\sample\lib\angular\angular.js | 25216 | @perf why not move this to the action fn?
 | node_modules\ng-file-model\sample\lib\angular\angular.js | 27060 | @perf generate setters to shave off ~40ms or 1-1.5%
 | node_modules\ng-file-model\sample\lib\angular\angular.js | 27266 | @perf support naked previousNode in `enter` to avoid creation of jqLite wrapper?
+| node_modules\ngmap\config\jsdoc\template\publish.js | 644 | move the tutorial functions to templateHelper.js
+| node_modules\node-sass\node_modules\request\lib\auth.js | 52 | More complete implementation of RFC 2617.
+| node_modules\nodemon\node_modules\debug\src\browser.js | 41 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\sass-graph\node_modules\yargs\lib\argsert.js | 7 | should this eventually raise an exception.
 | node_modules\sass-graph\node_modules\yargs\lib\command.js | 288 | move positional arg logic to yargs-parser and remove this duplication
 | node_modules\sass-graph\node_modules\yargs\lib\validation.js | 173 | case-insensitive configurability
@@ -361,7 +362,6 @@
 | node_modules\tiny-lr\node_modules\iconv-lite\encodings\dbcs-data.js | 104 | Support GB18030 (~27000 chars + whole unicode mapping, cp54936)
 | node_modules\tiny-lr\node_modules\iconv-lite\lib\extend-node.js | 166 | Set _charsWritten.
 | node_modules\vinyl-fs\node_modules\readable-stream\lib\_stream_writable.js | 145 | defer error events consistently everywhere, not just the cb
-| node_modules\node-sass\node_modules\request\lib\auth.js | 52 | More complete implementation of RFC 2617.
 | node_modules\csso\lib\compressor\restructure\prepare\index.js | 23 | need to be checked
 | node_modules\gulp-connect\node_modules\send\node_modules\debug\browser.js | 37 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\gulp-connect\node_modules\serve-static\node_modules\send\index.js | 791 | this is all lame, refactor meeee
@@ -531,6 +531,16 @@
 | node_modules\ngmap\controllers\map-controller.js | 219 | it's for backward compatibiliy. will be removed
 | node_modules\ngmap\directives\drawing-manager.js | 22 | Add remove button.
 | node_modules\ngmap\directives\info-window.js | 191 | DEPRECATED
+| node_modules\node-sass\lib\index.js | 462 | remove for 4.0
+| node_modules\node-sass\test\types.js | 242 | I'm not sure this object works well, it likely needs to be fleshed out more...
+| node_modules\node-sass\test\types.js | 249 | I'm not sure this object works well, it likely needs to be fleshed out more...
+| node_modules\node-sass\test\types.js | 294 | TypeError
+| node_modules\node-sass\test\types.js | 302 | TypeError
+| node_modules\node-sass\test\types.js | 401 | more complex set/get value scenarios
+| node_modules\node-sass\test\types.js | 432 | TypeError
+| node_modules\node-sass\test\types.js | 510 | TypeError
+| node_modules\node-sass\test\types.js | 518 | TypeError
+| node_modules\node-sass\test\types.js | 610 | TypeError
 | node_modules\readable-stream\lib\_stream_writable.js | 289 | defer error events consistently everywhere, not just the cb
 | node_modules\request\lib\auth.js | 52 | More complete implementation of RFC 2617.
 | node_modules\sanitize-html\dist\sanitize-html.js | 926 | Legacy, not needed anymore. Remove in next major version.
@@ -563,16 +573,6 @@
 | node_modules\xmlhttprequest-ssl\lib\XMLHttpRequest.js | 646 | figure out InspectorInstrumentation::didLoadXHR(cookie)
 | node_modules\yargs\lib\command.js | 207 | move positional arg logic to yargs-parser and remove this duplication
 | node_modules\yargs\lib\validation.js | 159 | case-insensitive configurability
-| node_modules\node-sass\lib\index.js | 462 | remove for 4.0
-| node_modules\node-sass\test\types.js | 242 | I'm not sure this object works well, it likely needs to be fleshed out more...
-| node_modules\node-sass\test\types.js | 249 | I'm not sure this object works well, it likely needs to be fleshed out more...
-| node_modules\node-sass\test\types.js | 294 | TypeError
-| node_modules\node-sass\test\types.js | 302 | TypeError
-| node_modules\node-sass\test\types.js | 401 | more complex set/get value scenarios
-| node_modules\node-sass\test\types.js | 432 | TypeError
-| node_modules\node-sass\test\types.js | 510 | TypeError
-| node_modules\node-sass\test\types.js | 518 | TypeError
-| node_modules\node-sass\test\types.js | 610 | TypeError
 
 ### FIXMEs
 | Filename | line # | FIXME

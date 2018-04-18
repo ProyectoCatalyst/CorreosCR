@@ -4,9 +4,9 @@
     .module('correosCR')
     .controller('controladorRegistrarSucursal', controladorRegistrarSucursal);
 
-  controladorRegistrarSucursal.$inject = ['$stateParams', '$state', '$http', 'servicioSucursales'];
+  controladorRegistrarSucursal.$inject = ['$stateParams', '$state', '$http', 'servicioSucursales', 'NgMap'];
 
-  function controladorRegistrarSucursal($stateParams, $state, $http, servicioSucursales) {
+  function controladorRegistrarSucursal($stateParams, $state, $http, servicioSucursales, NgMap) {
     let vm = this;
 
     vm.provincias = $http({
@@ -53,12 +53,14 @@
     vm.SucursalNueva = {};
     vm.listaSucursales = servicioSucursales.retornarSucursal();
 
-    listarSucursales();
     vm.registrarSucursal = (psucursalNueva) => {
+
       if(psucursalNueva.estadoSucursal==null){
         psucursalNueva.estadoSucursal = true;
       }
-      let objNuevaSucursal = new Sucursal(psucursalNueva.codigoSucursal, psucursalNueva.nombreSucursal, psucursalNueva.provincia, psucursalNueva.canton, psucursalNueva.distrito, psucursalNueva.estadoSucursal);
+      
+      let objNuevaSucursal = new Sucursal(psucursalNueva.codigoSucursal, psucursalNueva.nombreSucursal, 
+        psucursalNueva.provincia.name, psucursalNueva.canton.name, psucursalNueva.distrito.name, psucursalNueva.estadoSucursal);
 
       let codigoValidado = servicioSucursales.agregarSucursal(objNuevaSucursal);
 
@@ -79,32 +81,13 @@
       }//fin else
 
       vm.SucursalNueva = null;
-      listarSucursales();
+      
 
     }// fin vm.registrarSucursal
 
     vm.listarSucursales = () => {
       $state.go('main.listarSucursales')
+    }  
+
   }
-  
-  function listarSucursales() {
-    vm.listaSucursales = servicioSucursales.retornarSucursal();
-  }// fin listar Sucursales
-
-//   function openInfoWindow(marker) {
-//     var markerLatLng = marker.getPosition();
-//     infoWindow.setContent([
-//         '&lt;b&gt;La posicion del marcador es:&lt;/b&gt;&lt;br/&gt;',
-//         markerLatLng.lat(),
-//         ', ',
-//         markerLatLng.lng(),
-//         '&lt;br/&gt;&lt;br/&gt;Arr&amp;aacute;strame y haz click para actualizar la posici&amp;oacute;n.'
-//     ].join(''));
-//     infoWindow.open(map, marker);
-// }
-
-
-
-
-  }// fin de la función controladorRegistrarSucursal
 })();

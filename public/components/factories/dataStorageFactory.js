@@ -410,7 +410,7 @@
         data: {}
       });
 
-      peticion.done((carrier) => {
+      peticion.done((datos) => {
         console.log('Datos que vienen desde la base de datos')
         console.log(datos);
         listaCarrier = datos;
@@ -489,7 +489,7 @@
       data: {}
     });
 
-    peticion.done((sucursales) => {
+    peticion.done((datos) => {
       console.log('Datos que vienen desde la base de datos')
       console.log(datos);
       listaSucursales = datos;
@@ -502,7 +502,7 @@
     return listaSucursales;
   }
 
-  function _setSucursalesData(psucursalNueva) {
+  function _setSucursalesData(sucursalNueva) {
     let response;
 
     let peticion = $.ajax({
@@ -512,12 +512,13 @@
       dataType: 'json',
       async: false,
       data: {
-        'codigoSucursal'  : codigoSucursal.codigoCarrier,
-        'nombreSucursal'  : nombreSucursal.nombreCarrier,
-        'provincia'       : provincia.estadoCarrier,
-        'canton'          : canton.estadoCarrier,
-        'distrito'        : distrito.nombreCarrier,
-        'estadoSucursal'  : estadoSucursal.estadoCarrier
+        'codigoSucursal'  : sucursalNueva.codigoSucursal,
+        'nombreSucursal'  : sucursalNueva.nombreSucursal,
+        'provincia'       : sucursalNueva.provincia,
+        'canton'          : sucursalNueva.canton,
+        'distrito'        : sucursalNueva.distrito,
+        'estadoSucursal'  : sucursalNueva.estadoSucursal
+        // 'ubicacion'       : psucursalNueva.ubicacion
       }
     });
 
@@ -533,7 +534,7 @@
     return response;
   }
 
-  function _updateSucursalesData(data){
+  function _updateSucursalesData(){
     let respuesta;
 
     let peticion = $.ajax({
@@ -543,12 +544,12 @@
         dataType: 'json',
         async: false,
         data: {
-          'codigoSucursal'  : codigoSucursal.codigoCarrier,
-          'nombreSucursal'  : nombreSucursal.nombreCarrier,
-          'provincia'       : provincia.estadoCarrier,
-          'canton'          : canton.estadoCarrier,
-          'distrito'        : distrito.nombreCarrier,
-          'estadoSucursal'  : estadoSucursal.estadoCarrier
+          'codigoSucursal'  : codigoSucursal,
+          'nombreSucursal'  : nombreSucursal,
+          'provincia'       : provincia,
+          'canton'          : canton,
+          'distrito'        : distrito,
+          'estadoSucursal'  : estadoSucursal
         }
     });
     peticion.done((datos) => {

@@ -8,7 +8,8 @@ let sucursalesSchema = new mongoose.Schema({
   provincia : {type: String, required: true},
   canton : {type: String, required: true},
   distrito : {type: String, required: true},
-  estadoSucursal : {type: String, required: true},
+  estadoSucursal : {type: String, required: true}
+  // ubicacion: {type: String, required:true}
   
 });
 

@@ -21,7 +21,7 @@
       </thead>
 
       <tbody>
-        <tr ng-repeat="carrier in vm.listarCarrierAct">
+        <tr ng-repeat="carrier in vm.listarCarrierAct()">
           <td>{{carrier.codigoCarrier}}</td>
           <td>{{carrier.nombreCarrier}}</td>
          <td>
@@ -46,7 +46,7 @@
         </tr>
       </thead>
        <tbody>
-        <tr ng-repeat="carrier in vm.listarCarrierDesact">
+        <tr ng-repeat="carrier in vm.listarCarrierDesact()">
           <td>{{carrier.codigoCarrier}}</td>
           <td>{{carrier.nombreCarrier}}</td>
           <td>

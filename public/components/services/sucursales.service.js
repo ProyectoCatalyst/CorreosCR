@@ -12,8 +12,6 @@
       agregarSucursal: _agregarSucursal,
       retornarSucursal: _retornarSucursal,
       editarSucursal: _editarSucursal,
-      eliminarSucursal: _eliminarSucursal,
-      cambiarEstado: _cambiarEstado,
       retornarSucursalesDesact: _retornarSucursalesDesact,
       retornarSucursalesAct: _retornarSucursalesAct,
       retornarNombreSucursalesLS: _retornarNombreSucursalesLS
@@ -27,7 +25,7 @@
       let validarCodigo = true;
       let tamanno = listaSucursales.length;
       for (let i = 0; i < tamanno; i++) {
-        if (psucursalNueva.capturarCodigoSucursal() == listaSucursales[i].capturarCodigoSucursal()) {
+        if (psucursalNueva.codigoSucursal == listaSucursales[i].getCodigoSucursal()) {
           validarCodigo = false;
         }
       }
@@ -50,7 +48,9 @@
       } else {
         listaSucursalesDB.forEach(obj => {
 
-          let objSucursalesAct = new Sucursal(obj.codigoSucursal, obj.nombreSucursal, obj.provincia, obj.canton, obj.distrito, obj.estadoSucursal);
+          let objSucursalesAct = new Sucursal(obj.codigoSucursal, 
+            obj.nombreSucursal, obj.provincia, obj.canton, obj.distrito, 
+            obj.estadoSucursal);
 
           sucursalesTemp.push(objSucursalesAct);
         });
@@ -60,10 +60,10 @@
     }// fin función retornarSucursal
 
 
-    function _editarCarrier(pcarrierEditado) {
+    function _editarSucursal(pcarrierEditado) {
       let modificacionExitosa = false;
 
-      modificacionExitosa = dataStorageFactory.updateCarrier(pcarrierEditado);
+      modificacionExitosa = dataStorageFactory.updateSucursal(pcarrierEditado);
 
       return modificacionExitosa;
 

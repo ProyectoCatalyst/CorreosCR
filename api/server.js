@@ -66,7 +66,7 @@ const index = require('./index'),
       tarjetas = require('./components/tarjetas/tarjetas.route'),
       mail = require('./components/mail/mail.route'),
       carrier = require('./components/carrier/carrier.route'),
-      sucursales = require('./components/sucursales/sucursales.route.js' );
+      sucursales = require('./components/sucursales/sucursales.route.js' ),
       paquetes = require('./components/paquetes/paquetes.route');
 
 /**

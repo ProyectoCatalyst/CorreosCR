@@ -11,7 +11,7 @@
 
     let publicAPI = {
       agregarCarrier: _agregarCarrier,
-      retornarCarrier: _retornarCarrier,
+      retornarCarrierAct: _retornarCarrierAct,
       editarCarrier: _editarCarrier, 
     }
 
@@ -19,7 +19,7 @@
 
     function _agregarCarrier(pCarrierNuevo) {
 
-      let listaCarrier = _retornarCarrier();
+      let listaCarrier = _retornarCarrierAct();
       let validarCodigo = true;
       let tamanno = listaCarrier.length;
       for (let i = 0; i < tamanno; i++) {
@@ -35,7 +35,7 @@
       return validarCodigo;
     }// fin función agregar
 
-    function _retornarCarrier() {
+    function _retornarCarrierAct() {
 
       let listaCarrierDB = dataStorageFactory.getCarrierData(),
         carrierTemp = [];
@@ -85,7 +85,7 @@
 
           carrierActLS.push(objCarrierAct);
         });
-        return carrierActLS;
+        return carrierAct;
       }
     }
 

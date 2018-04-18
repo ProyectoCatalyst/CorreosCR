@@ -62,7 +62,7 @@ class EncargadoSucursales extends Usuario {
 }
 
 class Repartidor extends Usuario {
-  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pfoto, pcedula, pfecha, pgenero, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado, prazonDesact, psucursal) {
+  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pfoto, pcedula, pfecha, pgenero, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado, ptelefono, ptelefonoAdicional, prazonDesact, psucursal) {
 
     super(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pfoto, pcedula, pfecha, pgenero, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado);
 
@@ -169,14 +169,14 @@ class Paquete{
 }
 
 class Sucursal{
-  constructor(pcodigoSucursal, pnombreSucursal, pprovincia, pcanton, pdistrito, pestadoSucursal, pubicacion){
+  constructor(pcodigoSucursal, pnombreSucursal, pprovincia, pcanton, pdistrito, pestadoSucursal){
     this.codigoSucursal = pcodigoSucursal;
     this.nombreSucursal = pnombreSucursal;
     this.provincia = pprovincia;
     this.canton = pcanton;
     this.distrito = pdistrito;
     this.estadoSucursal = pestadoSucursal;
-    this.ubicacion = pubicacion;
+    // this.ubicacion = pubicacion;
     this.idEncargadoSucursal = '';
     this.repartidores = [];
   }
