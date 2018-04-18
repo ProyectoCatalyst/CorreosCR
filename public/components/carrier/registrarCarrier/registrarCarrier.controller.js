@@ -1,7 +1,7 @@
 (() => {
   'use strict';
   angular
-    .module('correoCR')
+    .module('correosCR')
     .controller('controladorRegistrarCarrier', controladorRegistrarCarrier);
 
   controladorRegistrarCarrier.$inject = ['$stateParams', '$state', '$http', 'servicioCarrier'];

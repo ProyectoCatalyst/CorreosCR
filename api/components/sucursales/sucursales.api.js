@@ -1,4 +1,4 @@
-const carrierModel = require('./sucursales.model');
+const sucursalesModel = require('./sucursales.model');
 
 module.exports.registrar = (req, res) => {
   let newSucursales = new sucursalesModel({
@@ -7,7 +7,7 @@ module.exports.registrar = (req, res) => {
     provincia  : req.body.provincia,
     canton  : req.body.canton,
     distrito  : req.body.distrito,
-    estadoSucursal  : req.body.estadoSucursal,
+    estadoSucursal  : req.body.estadoSucursal
 
   });
 

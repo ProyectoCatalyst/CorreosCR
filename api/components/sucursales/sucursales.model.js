@@ -3,12 +3,12 @@ let mongoose = require('mongoose');
 
 //Esquema 
 let sucursalesSchema = new mongoose.Schema({
-  codigoSucursal   : {type: String, require: true},
-  nombreSucursal : {type: String, require: true},
-  provincia : {type: String, require: true},
-  canton : {type: String, require: true},
-  distrito : {type: String, require: true},
-  estadoSucursal : {type: String, require: true},
+  codigoSucursal   : {type: String, required: true},
+  nombreSucursal : {type: String, required: true},
+  provincia : {type: String, required: true},
+  canton : {type: String, required: true},
+  distrito : {type: String, required: true},
+  estadoSucursal : {type: String, required: true},
   
 });
 

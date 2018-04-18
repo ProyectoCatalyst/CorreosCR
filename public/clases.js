@@ -260,29 +260,3 @@ class Carriers{
     return this.estadoCarrier;
   }
 }
-class Sucursal{
-  constructor(pcodigoSucursal, pnombreSucursal, pprovincia, pcanton, pdistrito, pestadoSucursal){
-    this.codigoSucursal = pcodigoSucursal;
-    this.nombreSucursal = pnombreSucursal;
-    this.provincia = pprovincia;
-    this.canton = pcanton;
-    this.distrito = pdistrito;
-    this.estadoSucursal = pestadoSucursal;
-
-  }//fin constructor clase sucursal
-
-
-
-  capturarNombreSucursal(){
-    return this.nombreSucursal;
-  }
-  capturarCodigoSucursal(){
-    return this.codigoSucursal;
-  }
-  retornarRepartidoresSucursal(){
-    return this.repartidoresSucursal;
-  }
-  retornarEstadoSucursal(){
-    return this.estadoSucursal;
-  }
-}//fin clase sucursal

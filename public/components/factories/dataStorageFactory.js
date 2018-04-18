@@ -25,9 +25,9 @@
       setCarrierData: _setCarrierData,
       updateCarrierData: _updateCarrierData,
 
-      getSucursalData: _getSucursalData,
-      setSucursalData: _setSucursalData,
-      updateSucursalData: _updateSucursalData,
+      getSucursalesData: _getSucursalesData,
+      setSucursalesData: _setSucursalesData,
+      updateSucursalesData: _updateSucursalesData,
 
       setSession: _setSession,
       closeSession: _closeSession,
@@ -372,6 +372,90 @@
       return respuesta;
   }
 
+  function _getSucursalesData() {
+    let listaSucursales = [];
+
+    let peticion = $.ajax({
+      url: 'http://localhost:4000/api/get_all_sucursales',
+      type: 'get',
+      contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+      dataType: 'json',
+      async: false,
+      data: {}
+    });
+
+    peticion.done((sucursales) => {
+      console.log('Datos que vienen desde la base de datos')
+      console.log(datos);
+      listaSucursales = datos;
+    });
+    peticion.fail(() => {
+      listaSucursales = [];
+      console.log('Ocurrió un error');
+    });
+
+    return listaSucursales;
+  }
+
+  function _setSucursalesData(psucursalNueva) {
+    let response;
+
+    let peticion = $.ajax({
+      url: 'http://localhost:4000/api/save_sucursales',
+      type: 'post',
+      contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+      dataType: 'json',
+      async: false,
+      data: {
+        'codigoSucursal'  : codigoSucursal.codigoCarrier,
+        'nombreSucursal'  : nombreSucursal.nombreCarrier,
+        'provincia'       : provincia.estadoCarrier,
+        'canton'          : canton.estadoCarrier,
+        'distrito'        : distrito.nombreCarrier,
+        'estadoSucursal'  : estadoSucursal.estadoCarrier
+      }
+    });
+
+    peticion.done((datos) => {
+      response = datos.success;
+      console.log('Petición realizada con éxito');
+    });
+    peticion.fail((error) => {
+      response = error;
+      console.log('Ocurrió un error');
+    });
+
+    return response;
+  }
+
+  function _updateSucursalesData(data){
+    let respuesta;
+
+    let peticion = $.ajax({
+        url: 'http://localhost:4000/api/update_sucursales',
+        type: 'put',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          'codigoSucursal'  : codigoSucursal.codigoCarrier,
+          'nombreSucursal'  : nombreSucursal.nombreCarrier,
+          'provincia'       : provincia.estadoCarrier,
+          'canton'          : canton.estadoCarrier,
+          'distrito'        : distrito.nombreCarrier,
+          'estadoSucursal'  : estadoSucursal.estadoCarrier
+        }
+    });
+    peticion.done((datos) => {
+        respuesta = datos.msg;
+        console.log('Petición realizada con éxito')
+    });
+    peticion.fail((error) => {
+        respuesta = error;
+        console.log('Error en la petición')
+    });
+    return respuesta;
+}
 
 
     /**
