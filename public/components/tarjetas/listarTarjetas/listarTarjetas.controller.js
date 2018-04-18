@@ -22,7 +22,6 @@
 
     vm.eliminarTarjeta = (pNumeroTarjeta) => {
       
-     
       swal({
         title: "¿Desea eliminar la tarjeta?",
         text: "¿Está seguro que desea eliminar la tarjeta: " + pNumeroTarjeta + " ?",

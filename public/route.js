@@ -177,15 +177,12 @@
         url: '/estadoPaquete',
         templateUrl: './components/paquetes/consultarEstado/consultarEstado.view.html',
         data: {
-          pageTitle: 'Estado paquete | Paquetes'
+          pageTitle: 'Estado del paquete'
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
             return $ocLazyLoad.load('./components/paquetes/consultarEstado/consultarEstado.controller.js')
           }]
-        },
-        params: {
-          objPaqueteEstado: ''
         },
         controller: 'controladorConsultarEstado',
         controllerAs: 'vm'
@@ -195,15 +192,12 @@
         url: '/modificarEstadoPaquete',
         templateUrl: './components/paquetes/modificarEstado/modificarEstado.view.html',
         data: {
-          pageTitle: 'modificar estado paquete | paquete'
+          pageTitle: 'Modificar estado de paquete'
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
             return $ocLazyLoad.load('./components/paquetes/modificarEstado/modificarEstado.controller.js')
           }]
-        },
-        params: {
-          objPaqueteModEstado: ''
         },
         controller: 'controladorModificarEstadoPaquete',
         controllerAs: 'vm'

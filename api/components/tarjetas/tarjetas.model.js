@@ -9,7 +9,7 @@ let creditCardSchema = new mongoose.Schema({
   cvvTarjeta    : {type: String, required: true},
   mesTarjeta    : {type: String, required: true},
   annoTarjeta   : {type: String, required: true},
-  idCliente     : {type: String, required: true},
+  idCliente     : {type: String, required: true}
 });
 
 //nombre del modelo dentro del back end y el userSchema es el nombre dentro de mongoose
