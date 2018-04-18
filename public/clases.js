@@ -78,14 +78,6 @@ class Repartidor extends Usuario {
     return this.licencia
   }
 
-  getCorreo() {
-    return this.correo
-  }
-
-  getEstado() {
-    return this.estado
-  }
-
   getPaqAsignados() {
     return this.paqueteAsignado;
   }
