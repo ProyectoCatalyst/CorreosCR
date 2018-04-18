@@ -3,11 +3,11 @@ let mongoose = require('mongoose');
 
 //Esquema de Licencias
 let creditCardSchema = new mongoose.Schema({
-  tipoTarjeta   : {type: String, require: true},
-  nombreTarjeta : {type: String, require: true},
-  numeroTarjeta : {type: String, require: true},
-  cvvTarjeta    : {type: String, require: true},
-  mesTarjeta    : {type: String, require: true},
+  tipoTarjeta   : {type: String, required: true},
+  nombreTarjeta : {type: String, required: true},
+  numeroTarjeta : {type: String, required: true},
+  cvvTarjeta    : {type: String, required: true},
+  mesTarjeta    : {type: String, required: true},
   annoTarjeta   : {type: String, required: true},
   idCliente     : {type: String, required: true},
 });

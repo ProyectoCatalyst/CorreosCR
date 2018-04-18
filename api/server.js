@@ -67,16 +67,19 @@ const index = require('./index'),
       mail = require('./components/mail/mail.route'),
       carrier = require('./components/carrier/carrier.route'),
       sucursales = require('./components/sucursales/sucursales.route.js' );
+      paquetes = require('./components/paquetes/paquetes.route');
 
 /**
  * Se definien las rutas de ExpressJS
  */
 app.use('/api', carrier);
 app.use('/api', sucursales);
+app.use('/api', paquetes);
 app.use('/api', tarjetas);
 app.use('/api', mail);
 app.use('/api', usuarios);
 app.use('/', index);
+
 
 
 /// Se guarda todo lo que se ha realizado

@@ -50,7 +50,7 @@ module.exports.actualizar = (req, res) => {
 
 module.exports.agregar_tarjeta = function(req,res){
   console.log(req.body);
-  UserModel.update({correo: req.body.correo}, {$push: {'tarjeta': {numeroTarjeta: req.body.numeroTarjeta}}},
+  UserModel.update({correo: req.body.correo}, {$push: {tarjeta: {numeroTarjeta: req.body.numeroTarjeta}}},
       function(error){
           if(error){
               res.json({ success: false, msg: 'No se ha actualizado la tarjeta debido al siguiente error: ' + handleError(error) });

@@ -143,17 +143,29 @@ class Tarjeta {
 }
 
 class Paquete{
-  constructor(pubicacion, ptipoPaquete, ppesoPaquete, pprecioPaquete, pestadoPaquete, pidrepartidor, pidsucursal, pidcliente){
-    this.ubicacion = pubicacion;
+  constructor(ptrackingPaquete, ptipoPaquete, ppesoPaquete, pprecioPaquete, pcostoEnvio, 
+    pcostoTotalPaquete, pestadoPaquete, pidrepartidor, pidsucursal, pidcliente, pidmensajero){
+    this.trackingPaquete = ptrackingPaquete;
     this.tipoPaquete = ptipoPaquete;
     this.pesoPaquete = ppesoPaquete;
     this.precioPaquete = pprecioPaquete;
+    this.costoEnvio = pcostoEnvio;
+    this.costoTotalPaquete = pcostoTotalPaquete;
     this.estadoPaquete = pestadoPaquete;
     this.idRepartidor = pidrepartidor;
     this.idSucursal = pidsucursal;
     this.idCliente = pidcliente;
+    this.idMensajero = pidmensajero;
   }
   //TODO Agregar  los metodos del paquete
+
+  getTracking(){
+    return this.trackingPaquete;
+  }
+  getEstadoPaquete(){
+    return this.estadoPaquete;
+  }
+  
 }
 
 class Sucursal{
@@ -241,7 +253,6 @@ class Licencia{
   }
 }
 class Carriers{
-
   constructor(pcodigoCarrier,pnombreCarrier,pestadoCarrier){
 
     this.codigoCarrier = pcodigoCarrier;
