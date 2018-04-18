@@ -88,3 +88,41 @@
   </section>
 
 </main>
+
+<main class="hero" id="listarTarjeta">
+    <div class="container">
+      <section class="row">
+        <div class="col-md-12">
+            <h2 id="title" class="py-5">Lista de licencias</h2>
+        </div>
+      </section>
+      <section class="row justify-content-center">
+        <div class="col-md-12">
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Licencia del repartidor</th>
+                    <th scope="col">Fecha vencimiento</th>
+                    <th scope="col">Tipo</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Repartidor</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="tarjeta in vm.listaDeLicencias">
+                    <th scope="row">{{$index+1}}</th>
+                    <td>{{vm.cedulaCliente}}</td>
+                    <td>{{tarjeta.numeroTarjeta}}</td>
+                    <td>{{tarjeta.nombreTarjeta}}</td>
+                    <td>{{tarjeta.tipoTarjeta}}</td>
+                    <td>
+                        <button type="submit" class="btn btn-danger" ng-click="vm.modificarLicencia(licencia.codigo)">Modificar licencia</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+      </section>
+    </div>
+  </main>
