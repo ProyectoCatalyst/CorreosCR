@@ -102,7 +102,7 @@
                 <div class="row">
                     <div class="form-group col-md-3">
                         <label for="txtFechaNacimiento">Fecha de nacimiento:</label>
-                        <input type="date" class="form-control" id="txtFechaNacimiento" name="campoFechaNacimiento" ng-model="vm.repartidorNuevo.fecha"
+                        <input type="date" class="form-control" id="txtFechaNacimiento" name="campoFechaNacimiento" ng-model="vm.repartidorNuevo.fechaNacimiento"
                             required>
                         <div ng-messages="frmRegistroClientes.campoFechaNacimiento.$error" role="alert">
                             <div ng-message="required">
@@ -124,7 +124,7 @@
 
                     <div class="form-group col-md-3">
                         <label for="sltSucursal">Selecione sucursal en la cuál trabaja:</label>
-                        <select id="sltSucursal" class="custom-select" name="campoProvincias" ng-model="vm.repartidorNuevo.Sucursal" required>
+                        <select id="sltSucursal" class="custom-select" name="campoProvincias" ng-model="vm.repartidorNuevo.sucursal" required>
                             <option value="">--Seleccione una sucursal--</option>
                             <option value="Sucursal">Sucursal</option>
                         </select>

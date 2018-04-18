@@ -61,8 +61,6 @@
             Upload.upload(vm.cloudObj).success((data) => {
                 vm.registrarRepartidor(prepartidorNuevo, data.url);
             });
-            console.log(prepartidorNuevo)
-
         }
 
 
@@ -78,12 +76,12 @@
                 contrasenna += chars.charAt(x);
             }
 
-            let nuevoRepartidor = new Repartidor(prepartidorNuevo.nombre, prepartidorNuevo.segundoNombre, prepartidorNuevo.primerApellido, prepartidorNuevo.segundoApellido, urlImagen, prepartidorNuevo.cedula, prepartidorNuevo.fechaNacimiento, prepartidorNuevo.genero,  prepartidorNuevo.correo, contrasenna, rol, estado, prepartidorNuevo.telefono, prepartidorNuevo.telefonoAdicional, prepartidorNuevo.sucursal);
+            let nuevoRepartidor = new Repartidor(prepartidorNuevo.nombre, prepartidorNuevo.segundoNombre, prepartidorNuevo.primerApellido, prepartidorNuevo.segundoApellido, urlImagen, prepartidorNuevo.cedula, prepartidorNuevo.fechaNacimiento, prepartidorNuevo.sexo, prepartidorNuevo.provincia.name, prepartidorNuevo.canton.name, prepartidorNuevo.distrito.name, prepartidorNuevo.direccion, prepartidorNuevo.correo, contrasenna, rol, estado, prepartidorNuevo.telefono, prepartidorNuevo.segundotelefono, '',prepartidorNuevo.sucursal);
 
 
             console.log(nuevoRepartidor);
 
-             let registro = servicioUsuarios.agregarUsuario(nuevoRepartidor);
+            let registro = servicioUsuarios.agregarUsuario(nuevoRepartidor);
 
             if (registro == true) {
                 swal({
@@ -92,7 +90,8 @@
                     icon: "success",
                     button: "Aceptar"
                 });
-              
+                vm.clienteNuevo = null;
+                $state.go('main.listarTodosLosRepartidores');
             } else {
                 swal({
                     title: "Ha ocurrido un Error",

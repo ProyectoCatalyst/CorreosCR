@@ -77,7 +77,7 @@
           case 4:
 
             if (obj.estado == true) {
-              let repartidoresTemp = new Repartidor(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.foto, obj.cedula, tempfecha, obj.genero, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo,obj.contrasenna, obj.rol, obj.estado, obj.telefono, obj.telefonoAdicional, obj.razonDesact, obj.sucursal);
+              let repartidoresTemp = new Repartidor(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.foto, obj.cedula, tempfecha, obj.genero, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol, obj.estado, obj.telefono, obj.ptelefonoAdicional, obj.razonDesact, obj.sucursal);
 
               obj.licencia.forEach(objLicenciaTemp => {
                 let objLicencia = new Licencia(objLicenciaTemp.codigo, objLicenciaTemp.fechaVencimiento, objLicenciaTemp.tipo, objLicenciaTemp.estado);

@@ -129,7 +129,7 @@
         controllerAs: 'vm'
       })
 
-      .state('registrarRepartidor', {
+      .state('main.registrarRepartidor', {
         url: '/registrarRepartidor',
         templateUrl: './components/usuarios/repartidor/registrarRepartidor/registrarRepartidor.view.html',
         data: {
@@ -161,7 +161,7 @@
       })
 
 
-      .state('listarTodosLosRepartidores', {
+      .state('main.listarTodosLosRepartidores', {
         url: '/listarTodosLosRepartidores',
         templateUrl: './components/usuarios/repartidor/listarTodosLosRepartidores/listarTodosLosRepartidores.view.html',
         data: {
@@ -172,7 +172,7 @@
             return $ocLazyLoad.load('./components/usuarios/repartidor/listarTodosLosRepartidores/listarTodosLosRepartidores.controller.js')
           }]
         },
-        controller: 'listarTodosLosRepartidores',
+        controller: 'controladorListaTodosRepartidores',
         controllerAs: 'vm'
       });
 
