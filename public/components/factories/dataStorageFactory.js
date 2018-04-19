@@ -128,12 +128,8 @@
            'telefono': data.telefono,
            'telefonoAdicional': data.telefonoAdicional,
            'sucursal': data.sucursal,
-<<<<<<< HEAD
-           'rolAduana': data.rolAduana  
-=======
            'rolAduana': data.rolAduana
           
->>>>>>> origin/Álvaro
         }
       });
 
