@@ -46,7 +46,7 @@
                     button: "Aceptar"
                 });
                 vm.paquete = null;
-                $state.go('main.inicio');
+                $state.go('main.listarPaquetes');
             } else {
                 swal({
                     title: "Ha ocurrido un Error",

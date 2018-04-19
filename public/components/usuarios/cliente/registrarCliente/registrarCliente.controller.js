@@ -104,7 +104,7 @@
           icon: "success",
           button: "Aceptar"
         });
-        // vm.clienteNuevo = null;
+        vm.clienteNuevo = null;
         // $state.go('paginaInicio');
       } else {
         swal({

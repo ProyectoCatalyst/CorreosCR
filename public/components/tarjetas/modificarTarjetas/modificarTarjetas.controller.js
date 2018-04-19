@@ -31,7 +31,7 @@
         });
         vm.tarjetaNueva = null;
         servicioTarjetas.removerDatosSession();
-        $state.go('main.inicio');
+        $state.go('main.listarTarjetas');
       } else {
         swal({
           title: "Ha ocurrido un Error",

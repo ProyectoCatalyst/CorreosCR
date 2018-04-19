@@ -90,7 +90,7 @@
     function _eliminarTarjeta(pNumeroTarjeta) {
       let eliminarExitosa = false;
 
-      modificacionExitosa = dataStorageFactory.deleteCreditCard(pNumeroTarjeta);
+      eliminarExitosa = dataStorageFactory.deleteCreditCard(pNumeroTarjeta);
 
       return eliminarExitosa;
     }

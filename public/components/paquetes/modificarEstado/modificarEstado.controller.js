@@ -4,9 +4,9 @@
         .module('correosCR')
         .controller('controladorModificarEstadoPaquete', controladorModificarEstadoPaquete);
 
-    controladorModificarEstadoPaquete.$inject = ['$stateParams', '$state', '$http', 'servicioPaquetes', 'servicioInicioSesion'];
+    controladorModificarEstadoPaquete.$inject = ['$stateParams', '$state', '$http', 'servicioPaquetes', 'servicioInicioSesion', 'servicioUsuarios'];
 
-    function controladorModificarEstadoPaquete($stateParams, $state, $http, servicioPaquetes, servicioInicioSesion) {
+    function controladorModificarEstadoPaquete($stateParams, $state, $http, servicioPaquetes, servicioInicioSesion, servicioUsuarios) {
 
         let vm = this;
         const userAuth = servicioInicioSesion.getAuthUser();
@@ -23,6 +23,9 @@
 
         vm.paqueteMostrar = paqueteActivo;
 
+        let repartidoresRol = 3;
+
+        vm.listaDeRepartidores = servicioUsuarios.obtenerlistaFiltrada(repartidoresRol);
         vm.cambioEstado = (pEstado, idRepartidor) => {
             let estadoDatos = [pEstado, idRepartidor],
                 estado = '';
@@ -70,7 +73,7 @@
 
         vm.regresar = () => {
             servicioPaquetes.removerDatosSession();
-            $state.go('main.listarPaquetes');
+            $state.go('main.estadoPaquete');
         }
     }
 })();

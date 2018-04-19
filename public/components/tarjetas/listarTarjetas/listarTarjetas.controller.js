@@ -34,8 +34,9 @@
           swal("La tarjeta ha sido eliminada", {
             icon: "success",
           });
-          $state.go('main.inicio');
+          
           servicioTarjetas.eliminarTarjeta(pNumeroTarjeta);
+          $state.go('main.inicio');
         }
       });
       

@@ -14,7 +14,7 @@
                             <th scope="col" ng-if="vm.rol==5">Nombre del cliente</th>
                             <th scope="col" ng-if="vm.rol==1||vm.rol==2||vm.rol==3||vm.rol==4">Correo electrónico del cliente</th>
                             <th scope="col">Número de tracking</th>
-                            <th scope="col">Tipo de paquete</th>
+                            <!-- <th scope="col">Tipo de paquete</th> -->
                             <th scope="col">Peso</th>
                             <th scope="col">Precio</th>
                             <th scope="col">Consultar estado</th>
@@ -26,7 +26,7 @@
                             <td ng-if="vm.rol==5">{{vm.nombreUsuario}} {{vm.apellidoUsuario}}</td>
                             <td ng-if="vm.rol==1||vm.rol==2||vm.rol==3||vm.rol==4">{{paquetesPrealertados.idCliente}}</td>
                             <td>{{paquetesPrealertados.trackingPaquete}}</td>
-                            <td>{{paquetesPrealertados.tipoPaquete}}</td>
+                            <!-- <td>{{paquetesPrealertados.tipoPaquete}}</td> -->
                             <td>{{paquetesPrealertados.pesoPaquete}} Kg</td>
                             <td>₡ {{paquetesPrealertados.precioPaquete}}</td>
                             <td>

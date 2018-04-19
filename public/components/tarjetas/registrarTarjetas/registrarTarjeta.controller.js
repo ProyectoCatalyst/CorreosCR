@@ -32,7 +32,7 @@
           button: "Aceptar"
         });
         vm.tarjetaNueva = null;
-        $state.go('main.inicio');
+        $state.go('main.listarTarjetas');
       }else{
         swal({
           title: "Ha ocurrido un Error",

@@ -58,10 +58,7 @@
                                 <label>Asigne un repartidor para entregar el paquete:</label>
                                 <select ng-model="vm.PaquetesPrealertadosMod.idRepartidorPaquete.name" class="custom-select">>
                                     <option value>Seleccione un repartidor</option>
-                                    <option value="1">Repartidor quemado 1</option>
-                                    <option value="2">Repartidor quemado 2</option>
-
-                                    <option ng-repeat="datosRepartidores in vm.repartidoresActivos" value="{{datosRepartidores.cedula}}">{{datosRepartidores.primerNombre}} {{datosRepartidores.primerApellido}}</option>
+                                    <option ng-repeat="repartidor in vm.listaDeRepartidores" value="{{repartidor.cedula}}">{{repartidor.primerNombre}} {{repartidor.primerApellido}}</option>
                                 </select>
                             </div>
                         </form>
