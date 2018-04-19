@@ -1,36 +1,44 @@
-<main class="container-fluid">
-    <div class="container" id="header">
+<main class="hero" id="consultarEstado">
+    <div class="container">
         <section class="row">
-            <div class="col-md-12 mt-5">
-                <h1 id="tituloPrincipal" class="text-center">Estado paquete # {{vm.paqueteActivo}}</h1>
-                <ng-model="vm.rolUsuario" ng-init="rolUsuario = true">
-                    <table class="table mt-5">
-                        <thead class="">
-                            <tr>
-                                <th scope="col-6">Tracking de paquete</th>
-                                <th scope="col-6">Estado de paquete</th>
-                                <th scope="col-6" ng-if="rolUsuario" ng-hide="false">Actualizar</th>
-                            </tr>
-                        </thead>
+            <div class="col-md-10">
+                <h1 class="text-center my-5 pt-2">Estado del paquete</h1>
+            </div>
+        </section>
+        <section class="row justify-content-center">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead class="">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Tracking</th>
+                            <th scope="col">Estado de paquete</th>
+                            <th scope="col">Empresa logística</th>
+                            <th scope="col" ng-if="vm.rol==1||vm.rol==2||vm.rol==3||vm.rol==4">Modificar estado</th>
+                        </tr>
+                    </thead>
 
-                        <tbody>
-                            <tr>
-                                <td>
-                                    <b>{{vm.mostrarPaquete.trackingPaquete}}
-                                        <b>
-                                </td>
-                                <td>
-                                    <b>{{vm.mostrarPaquete.estadoPaquete}}
-                                        <b>
-                                </td>
-                                <td>
-                                    <button type="click" class="btn btn-danger" ng-click="vm.modificarEstadoPaquete(vm.mostrarPaquete)" ng-if="rolUsuario">
-                                        Modificar estado
-                                    </button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <tbody>
+                        <tr>
+                            <th scope="row">{{$index+1}}</th>
+                            <td>{{vm.paqueteMostrar.trackingPaquete}}</td>
+                            <td>{{vm.paqueteMostrar.estadoPaquete}}</td>
+                            <td>{{vm.paqueteMostrar.idMensajero}}</td>
+                            <td ng-if="vm.rol==1||vm.rol==2||vm.rol==3||vm.rol==4">
+                                <button type="click" class="btn btn-danger" ng-click="vm.modificarEstadoPaquete(vm.mostrarPaquete)">
+                                    Modificar estado
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section class="row">
+            <div class="col-md-12">
+                <button type="button" class="btn btn-danger" ng-click="vm.regresar()">
+                    Regresar
+                </button>
             </div>
         </section>
     </div>

@@ -14,8 +14,12 @@
             $state.go('inicioSesion');
         }
 
+        vm.retornarPaquetesPrealertados = servicioPaquetes.retornarPaquetesPrealertados();
+
+        vm.nombreUsuario = userAuth.primerNombre;
+        vm.apellidoUsuario = userAuth.primerApellido;
+        vm.rol = userAuth.getRol();
         let usuarioCorreo = userAuth.correo;
-        let usuarioCedula = userAuth.cedula;
         let usuarioRol = userAuth.rol;
         let sucursalID = userAuth.idSucursal;
 
@@ -41,11 +45,9 @@
         }
 
         vm.estadoPaquete = (ppaquetesPrealertados) => {
-
-            $state.go('main.estadoPaquete', { objPaqueteEstado: JSON.stringify(ppaquetesPrealertados) });
+            servicioPaquetes.agregarDatosSession(ppaquetesPrealertados);
+            $state.go('main.estadoPaquete');
         }
-
-        vm.retornarPaquetesPrealertados = servicioPaquetes.retornarPaquetesPrealertados();
 
     }
 })();

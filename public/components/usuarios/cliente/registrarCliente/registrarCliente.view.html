@@ -185,8 +185,8 @@
 
           <div class="col-md-6 mx-auto">
             <label for="map">Ubicación exacta:</label>
-            <ng-map id="map" center="{{vm.direccion}}" geo-callback="vm.callbackFunc('you')">
-              <marker position="{{vm.direccion}}" draggable="true" on-coords="marker.coords" options="marker.options"></marker>
+            <ng-map id="map" center="current-location" geo-callback="vm.callbackFunc('you')">
+              <marker position="current-location" coords="marker.coords" options="marker.options"></marker>
             </ng-map>
           </div>
 

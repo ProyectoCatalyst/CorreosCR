@@ -1,42 +1,67 @@
-<div class="container">
-    <form ng-submit="vm.actualizarPaquete(vm.PaquetesPrealertadosMod)">
-
-        <div class="row">
-            <div class="col-md-8 my-5">
-                <h1 id="tituloPrincipal">Cambiar estado del paquete: # {{vm.informacionPaquete.trackingPaquete}}</h1>
+<main class="hero" id="consultarEstado">
+    <div class="container">
+        <section class="row">
+            <div class="col-md-12">
+                <h1 class="text-center my-5 pt-2">Cambiar estado</h1>
             </div>
-        </div>
-
-        <div class="row">
+        </section>
+        <section class="row justify-content-center">
+            <div class="col-md-12">
+                <table class="table table-striped">
+                    <thead class="">
+                        <tr>
+                            <th scope="col">Pre-alertado</th>
+                            <th scope="col">En aduana</th>
+                            <th scope="col">En sucursal</th>
+                            <th scope="col">Repartidor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <button type="button" class="btn btn-danger" ng-click="">
+                                    Pre-alertado
+                                </button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-danger" ng-click="">
+                                    Enviar a sucursal
+                                </button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-danger" ng-click="">
+                                    Asignar repartidor
+                                </button>
+                            </td>
+                            <td>
+                                <button type="button" class="btn btn-danger" ng-click="">
+                                    Entregar a cliente
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <section class="row">
             <div class="col-md-6">
-                <div class="form-group">
-                    <label for="sltEstadosPaquetes">Estado del paquete</label>
-                    <select id="sltEstadosPaquetes" ng-options="estadosPaquetes as estadosPaquetes.name for estadosPaquetes in vm.estadosPaquetes track by estadosPaquetes._id"
-                        ng-model="vm.PaquetesPrealertadosMod.estadoPaquete" class="custom-select" required>
-                        <option value="">Seleccione el nuevo estado del paquete</option>
+                <div class="form-group mt-2">
+                    <label>Asigne un repartidor para entregar el paquete:</label>
+                    <select ng-model="vm.PaquetesPrealertadosMod.idRepartidorPaquete.name" class="custom-select">>
+                        <option value>Seleccione un repartidor</option>
+                        <option value="1">Repartidor quemado 1</option>
+                        <option value="2">Repartidor quemado 2</option>
+
+                        <option ng-repeat="datosRepartidores in vm.repartidoresActivos" value="{{datosRepartidores.cedula}}">{{datosRepartidores.primerNombre}} {{datosRepartidores.primerApellido}}</option>
                     </select>
                 </div>
             </div>
-        </div>
-
+        </section>
         <div class="row">
-            <div class="form-group">
-                <label>Asigne un repartidor para entregar el paquete *</label>
-                <select ng-model="vm.PaquetesPrealertadosMod.idRepartidorPaquete.name" class="custom-select">>
-                    <option value>Seleccione un repartidor</option>
-                    <option value="1">Repartidor quemado 1</option>
-                    <option value="2">Repartidor quemado 2</option>
-
-                    <option ng-repeat="datosRepartidores in vm.repartidoresActivos" value="{{datosRepartidores.cedula}}">{{datosRepartidores.primerNombre}} {{datosRepartidores.primerApellido}}</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-md-6 mt-3">
-                <button type="submit" class="btn btn-danger">Actualizar estado</button>
+            <div class="col-md-6 mt-2">
+                <button type="button" class="btn btn-danger">Guardar</button>
                 <button type="button" class="btn btn-danger" ng-click="vm.regresar()">Regresar</button>
             </div>
         </div>
-    </form>
-</div>
+    </div>
+</main>
