@@ -14,7 +14,7 @@
 
     let clientesRol = 5;
 
-    vm.listaDeUsuarios = servicioUsuarios.obtenerlistadeFiltrada(clientesRol);
+    vm.listaDeUsuarios = servicioUsuarios.obtenerlistaFiltrada(clientesRol);
    
   }
 })();

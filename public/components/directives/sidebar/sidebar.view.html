@@ -29,7 +29,7 @@
         <p class="d-inline pl-1">Usuarios</p>
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" ui-sref="">Listar</a>
+        <a class="dropdown-item" ui-sref="main.listarUsuarios">Listar</a>
       </div>
     </li>
     <li class="nav-item dropright pb-2" ng-if="vm.rolUsuario==5">
@@ -66,7 +66,7 @@
         <p class="d-inline pl-1">Clientes</p>
       </a>
       <div class="dropdown-menu">
-        <a class="dropdown-item" ui-sref="">Registrar</a>
+        <a class="dropdown-item" ui-sref="main.registrarCliente">Registrar</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" ui-sref="main.listarClientes">Listar</a>
       </div>
@@ -94,7 +94,7 @@
       <div class="dropdown-menu">
         <a class="dropdown-item" ui-sref="main.registrarEncargado">Registrar encargado de aduana</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" ui-sref="">Listar encargados de aduana</a>
+        <a class="dropdown-item" ui-sref="main.listarEncargados">Listar encargados de aduana</a>
       </div>
     </li>
     <li class="nav-item dropright pb-3" ng-if="vm.rolUsuario==1">
@@ -107,11 +107,11 @@
       <div class="dropdown-menu">
         <a class="dropdown-item" ui-sref="main.registroSucursales">Registrar una sucursal</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" ui-sref="">Registrar encargado de sucursal</a>
+        <a class="dropdown-item" ui-sref="main.registrarEncargado">Registrar encargado de sucursal</a>
         <div class="dropdown-divider"></div>
         <a class="dropdown-item" ui-sref="">Listar sucursales</a>
         <div class="dropdown-divider"></div>
-        <a class="dropdown-item" ui-sref="">Listar encargados de sucursal</a>
+        <a class="dropdown-item" ui-sref="main.listarEncargados">Listar encargados de sucursal</a>
       </div>
     </li>
     <li class="nav-item dropright pb-3" ng-if="vm.rolUsuario==1||vm.rolUsuario==3">

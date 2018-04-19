@@ -5,13 +5,13 @@
         <h1 class="text-center my-5 pt-2">Registrar Tarjeta</h1>
       </div>
     </section>
-    <form name="frmRegistroTarjetas" ng-submit="vm.registrarTarjeta(vm.tarjetaNueva)">
+    <form name="frmRegistroTarjetas" novalidate ng-submit="vm.registrarTarjeta(vm.tarjetaNueva)">
       <section class="row justify-content-center">
         <div class="col-md-4">
   
           <div class="form-group">
             <label for="txtConfirmarContrasenna">Tipo de tarjeta:</label>
-            <select class="form-control" ng-model="vm.tarjetaNueva.tipoTarjeta">
+            <select class="form-control" ng-model="vm.tarjetaNueva.tipoTarjeta" required>
               <option value="">Seleccione el tipo de tarjeta</option>
               <option value="Visa">Visa</option>
               <option value="MasterCard">Master Card</option>
@@ -23,13 +23,13 @@
   
           <div class="form-group">
             <label for="txtNombreTarjeta">Nombre como aparece en la tarjeta:</label>
-            <input type="text" class="form-control" ng-model="vm.tarjetaNueva.nombreTarjeta" />
+            <input type="text" class="form-control" ng-model="vm.tarjetaNueva.nombreTarjeta" required/>
             <small class="form-text text-danger">* Campo requerido</small>
           </div>
   
           <div class="form-group">
             <label>Código CVV:</label>
-            <input type="text" class="form-control" ng-model="vm.tarjetaNueva.cvvTarjeta" />
+            <input type="text" class="form-control" ng-model="vm.tarjetaNueva.cvvTarjeta" required/>
             <small class="form-text text-danger">* Campo requerido</small>
           </div>
   
@@ -38,7 +38,7 @@
   
           <div class="form-group">
             <label for="txtNumeroTarjeta">Número de tarjeta</label>
-            <input type="number" class="form-control" ng-model="vm.tarjetaNueva.numeroTarjeta" />
+            <input type="number" class="form-control" ng-model="vm.tarjetaNueva.numeroTarjeta" required/>
             <small class="form-text text-danger">* Campo requerido</small>
           </div>
   
@@ -46,7 +46,7 @@
             <label for="txtFech">Fecha de vencimiento:</label>
             <div class="row">
               <div class="col-md-6">
-                <select class="form-control" ng-model="vm.tarjetaNueva.mes">
+                <select class="form-control" ng-model="vm.tarjetaNueva.mes" required>
                   <option value="">Mes</option>
                   <option value="01">01</option>
                   <option value="02">02</option>
@@ -63,7 +63,7 @@
                 </select>
               </div>
               <div class="col-md-6">
-                <select class="form-control" ng-model="vm.tarjetaNueva.anno">
+                <select class="form-control" ng-model="vm.tarjetaNueva.anno" required>
                   <option value="">Año</option>
                   <option value="18">2018</option>
                   <option value="19">2019</option>
@@ -83,7 +83,7 @@
       </section>
       <section class="row justify-content-center">
         <div class="col-md-8">
-          <button type="submit" class="btn btn-danger mt-3">Registrar tarjeta</button>
+          <button type="submit" class="btn btn-danger mt-3" ng-disabled="frmRegistroTarjetas.$invalid">Registrar tarjeta</button>
         </div>
       </section>
     </form>

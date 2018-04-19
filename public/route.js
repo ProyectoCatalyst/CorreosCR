@@ -144,6 +144,21 @@
         controllerAs: 'vm'
       })
 
+      .state('main.registrarCliente', {
+        url: '/registrarCliente',
+        templateUrl: './components/usuarios/cliente/registrarCliente//registroClienteMain/registroClienteMain.view.html',
+        data: {
+          pageTitle: 'Registrar cliente'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/cliente/registrarCliente/registrarCliente.controller.js')
+          }]
+        },
+        controller: 'controladorRegistrarCliente',
+        controllerAs: 'vm'
+      })
+
       .state('main.registrarConvenio', {
         url: '/agreementRegistration',
         templateUrl: './components/convenios/registrarConvenio//registrarConvenio.view.html',
@@ -295,6 +310,21 @@
           }]
         },
         controller: 'controladorModificarEstadoPaquete',
+        controllerAs: 'vm'
+      })
+
+      .state('main.listarUsuarios', {
+        url: '/listarUsuarios',
+        templateUrl: './components/usuarios/listarTodosUsuarios/listarTodosUsuarios.view.html',
+        data: {
+          pageTitle: 'Listar usuarios'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/listarTodosUsuarios/listarTodosUsuarios.controller.js')
+          }]
+        },
+        controller: 'controladorListarUsuarios',
         controllerAs: 'vm'
       })
 

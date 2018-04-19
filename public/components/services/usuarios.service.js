@@ -13,11 +13,12 @@
     let publicAPI = {
       agregarUsuario: _agregarUsuario,
       obtenerlistadeusuarios: _obtenerlistadeusuarios,
-      obtenerlistadeFiltrada: _obtenerListaFiltrada,
+      obtenerlistaFiltrada: _obtenerlistaFiltrada,
       retornarCorreosUsuarios: _retornarCorreosUsuarios,
       actualizarUsuario: _actualizarUsuario,
       agregarTarjetaUsuario: _agregarTarjetaUsuario,
-      asignarCasillero: _asignarCasillero
+      asignarCasillero: _asignarCasillero,
+      obtenerListaPorEstados: _obtenerListaPorEstados
     };
     return publicAPI;
 
@@ -113,7 +114,7 @@
       return modificacionExitosa;
     }
 
-    function _obtenerListaFiltrada(pnumrol) {
+    function _obtenerlistaFiltrada(pnumrol) {
       let listadeusuarios = _obtenerlistadeusuarios(),
         listaFiltrada = [];
 
@@ -145,6 +146,18 @@
       let casilleroNuevo = 0;
       casilleroNuevo = Math.round((Math.random() * 1937));
       return casilleroNuevo;
+    }
+
+    function _obtenerListaPorEstados(pestado) {
+      let listadeusuarios = _obtenerlistadeusuarios(),
+          listaFiltrada = [];
+
+      for(let i = 0; i < listadeusuarios.length; i++){
+        if(listadeusuarios[i].getEstado() == pestado){
+          listaFiltrada.push(listadeusuarios[i]);
+        }
+      }
+      return listaFiltrada;
     }
   };
 

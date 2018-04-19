@@ -57,7 +57,7 @@
         }
 
         function listarEncargadosSucursalAct(){
-            let encargadosSucursal = servicioUsuarios.obtenerlistadeFiltrada(3),
+            let encargadosSucursal = servicioUsuarios.obtenerlistaFiltrada(3),
             encargadosSucursalAct = [];
 
             for(let i=0; i<encargadosSucursal.length; i++){
@@ -69,7 +69,7 @@
         }
 
         function listarEncargadosAduanaAct(){
-            let encargadosAduana = servicioUsuarios.obtenerlistadeFiltrada(2),
+            let encargadosAduana = servicioUsuarios.obtenerlistaFiltrada(2),
             encargadosAduanaAct = [];
 
             for(let i=0; i<encargadosAduana.length; i++){
@@ -81,7 +81,7 @@
         }
 
         function listarEncargadosSucursalDesact(){
-            let encargadosSucursal = servicioUsuarios.obtenerlistadeFiltrada(3),
+            let encargadosSucursal = servicioUsuarios.obtenerlistaFiltrada(3),
             encargadosSucursalDesact = [];
 
             for(let i=0; i<encargadosSucursal.length; i++){
@@ -93,7 +93,7 @@
         }
 
         function listarEncargadosAduanaDesact() {
-            let encargadosAduana = servicioUsuarios.obtenerlistadeFiltrada(2),
+            let encargadosAduana = servicioUsuarios.obtenerlistaFiltrada(2),
             encargadosAduanaDesact = [];
 
             for(let i=0; i<encargadosAduana.length; i++){

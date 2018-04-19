@@ -25,14 +25,14 @@
                     </div>
                     <div class="form-group">
                         <label for="txtPrecio">Precio del paquete:</label>
-                        <input type="text" class="form-control" ng-model="vm.paqueteNuevo.precioPaquete" />
+                        <input type="text" class="form-control" ng-model="vm.paqueteNuevo.precioPaquete" required/>
                         <small class="form-text text-danger">* Campo requerido</small>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
                         <label for="txtMensajería">Empresa logística:</label>
-                        <select class="form-control" ng-model="vm.paqueteNuevo.idMensajero">
+                        <select class="form-control" ng-model="vm.paqueteNuevo.idMensajero" required>
                             <option value="">Seleccione la empresa logística</option>
                             <option value="Fedex">Fedex</option>
                             <option value="DHL">DHL</option>
@@ -41,7 +41,7 @@
                     </div>
                     <div class="form-group">
                         <label for="txtPesoPaquete">Peso del paquete:</label>
-                        <input type="text" class="form-control" ng-model="vm.paqueteNuevo.pesoPaquete" />
+                        <input type="text" class="form-control" ng-model="vm.paqueteNuevo.pesoPaquete" required/>
                         <small class="form-text text-danger">* Campo requerido</small>
                     </div>
                     <div class="form-group">
@@ -61,7 +61,7 @@
             </section>
             <section class="row justify-content-center">
                 <div class="col-md-8">
-                    <button type="submit" class="btn btn-danger mt-3">Prealertar</button>
+                    <button type="submit" class="btn btn-danger mt-3" ng-disabled="frmPrealertaPaquete.$invalid">Prealertar</button>
                     <button type="button" class="btn btn-danger mt-3" ng-click="vm.calcularCosto()">Calcular</button>
                 </div>
             </section>
