@@ -2,3 +2,5 @@ node_modules
 public/lib
 package-lock.json
 public/sources/styles.min.css
+TODO.md
+debug.log
