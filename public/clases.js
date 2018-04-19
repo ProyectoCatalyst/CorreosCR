@@ -163,14 +163,14 @@ class Paquete {
 }
 
 class Sucursal {
-  constructor(pcodigoSucursal, pnombreSucursal, pprovincia, pcanton, pdistrito, pestadoSucursal, pubicacion) {
+  constructor(pcodigoSucursal, pnombreSucursal, pprovincia, pcanton, pdistrito, pestadoSucursal) {
     this.codigoSucursal = pcodigoSucursal;
     this.nombreSucursal = pnombreSucursal;
     this.provincia = pprovincia;
     this.canton = pcanton;
     this.distrito = pdistrito;
     this.estadoSucursal = pestadoSucursal;
-    this.ubicacion = pubicacion;
+    // this.ubicacion = pubicacion;
     this.idEncargadoSucursal = '';
     this.repartidores = [];
   }
@@ -248,7 +248,25 @@ class Licencia {
     return this.idRepartidor;
   }
 }
+class Carriers{
+  constructor(pcodigoCarrier,pnombreCarrier,pestadoCarrier){
 
+    this.codigoCarrier = pcodigoCarrier;
+    this.nombreCarrier = pnombreCarrier;
+    this.estadoCarrier = pestadoCarrier;
+    
+  }
+  
+  getCodigo() {
+    return this.codigoCarrier;
+  }
+  getNombre() {
+    return this.nombreCarrier;
+  }
+  getEstado() {
+    return this.estadoCarrier;
+  }
+}
 class Casillero {
   constructor(pnumeroCasillero, pidCliente) {
     this.pnumeroCasillero = this.pnumeroCasillero;

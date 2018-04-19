@@ -2,40 +2,37 @@
   'use strict'
 
   angular
-  .module('correosCR') //cambiar
-  .controller('controladorRegistrarLicencia', controladorRegistrarLicencia)
+    .module('correosCR') //cambiar
+    .controller('controladorRegistrarLicencia', controladorRegistrarLicencia)
 
-  controladorRegistrarLicencia.$inject =['$stateParams', '$state', 'servicioUsuarios']
-  function controladorRegistrarLicencia($stateParams, $state, servicioUsuarios){
+  controladorRegistrarLicencia.$inject = ['$http', '$stateParams', '$state', 'servicioLicencia', 'servicioInicioSesion'];
 
-    if(!$stateParams.datos){
-      $state.go('main.perfilRepartidor');
-    }
-    
+  function controladorRegistrarTarjeta($http, $stateParams, $state, servicioTarjetas, servicioInicioSesion) {
+
+    const userAuth = servicioInicioSesion.getAuthUser();
+
     let vm = this;
 
-    let datosRepartidor = JSON.parse($stateParams.datos); // correo, sucursal, nombre
-    
     vm.nombreRepartidor = datosRepartidor[2];
     vm.registrarLicencia = (pnuevoRegistro) => {
 
       pnuevoRegistro.estado = true;
-      
-      let objLicencia = new Licencia(pnuevoRegistro.codigo, pnuevoRegistro.fechaVencimiento, pnuevoRegistro.tipoLicencia, pnuevoRegistro.estado, pnuevoRegistro.foto),
-          existente = verificarLicencia(objLicencia),
-          fechaValida = verificarFechaVencimiento(objLicencia.fechaVencimiento),
-          datosAgregar = [objLicencia, datosRepartidor[0], datosRepartidor[1]];
 
-      if(existente){
+      let objLicencia = new Licencia(pnuevoRegistro.codigo, pnuevoRegistro.fechaVencimiento, pnuevoRegistro.tipo, pnuevoRegistro.estado, pnuevoRegistro.idrepartidor),
+        existente = verificarLicencia(objLicencia),
+        fechaValida = verificarFechaVencimiento(objLicencia.fechaVencimiento),
+        datosAgregar = [objLicencia, datosRepartidor[0], datosRepartidor[1]];
+
+      if (existente) {
         swal({
           title: 'La licencia ya esta en el sistema',
           text: 'Intenta con una que no este registrada',
           icon: 'error',
           button: 'Aceptar'
         });
-      }else{
-        
-          if(fechaValida){
+      } else {
+
+        if (fechaValida) {
           swal({
             title: 'Hemos agregado la licencia',
             text: 'La licencia esta registrada en el sistema',
@@ -44,8 +41,8 @@
           });
           servicioUsuarios.registrarLicencia(datosAgregar);
 
-          $state.go('main.listarLicencias', {datos: JSON.stringify(datosRepartidor)});
-        }else{
+          $state.go('main.listarLicencias', { datos: JSON.stringify(datosRepartidor) });
+        } else {
           swal({
             title: 'La licencia está vencida',
             text: 'No se puede registrar',
@@ -53,33 +50,30 @@
             button: 'Aceptar'
           });
         }
-
       }
     }
 
     // __________funciones internas__________
 
-    function verificarLicencia(pobjLicencia){
+    function verificarLicencia(pobjLicencia) {
       let licenciasLS = servicioUsuarios.retornarTodasLicencias(),
-          existente = false;
+        existente = false;
 
-      for (let i=0; i<licenciasLS.length; i++){
-        if(licenciasLS[i].getCodigo() == pobjLicencia.codigo){
+      for (let i = 0; i < licenciasLS.length; i++) {
+        if (licenciasLS[i].getCodigo() == pobjLicencia.codigo) {
           existente = true;
         }
       }
-
       return existente
-      
     }
 
-    function verificarFechaVencimiento(pfecha){
+    function verificarFechaVencimiento(pfecha) {
       let hoy = new Date(),
-      vencida = false;
+        vencida = false;
 
-      hoy.setHours(0,0,0,0);
+      hoy.setHours(0, 0, 0, 0);
 
-      if(hoy>=pfecha){
+      if (hoy >= pfecha) {
         vencida = true
       }
       return !vencida

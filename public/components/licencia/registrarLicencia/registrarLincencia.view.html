@@ -11,10 +11,9 @@
         </section>
         <form name="registrarLicencia" class="row" novalidate ng-submit="vm.registrarLicencia(vm.nuevoRegistro)">
             <section class="row justify-content-center">
-                <div class="col-md-4">
+                <div class="col-md-7">
 
                     <div class="form-group">
-                        <label for="txtConfirmarContrasenna">Tipo de tarjeta:</label>
                         <label>Tipo de licencia *</label>
                         <select name="tipoLicencia" class="custom-select" required ng-model="vm.nuevoRegistro.tipoLicencia">
                             <option value>Seleccione el tipo de licencia que posee</option>
@@ -40,7 +39,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-4">
+                <div class="col-md-12">
                     <!-- <div class="form-group">
                         <input type="file" name="foto" class="custom-file-input" ng-model="vm.nuevoRegistro.foto" lang="es">
                         <label class="custom-file-label">Suba una foto *</label>
@@ -51,11 +50,6 @@
                             <button type="submit" class="btn btn-danger col-md-5" ng-disabled="registrarLicencia.$invalid">Registrar</button>
                         </div>
                     </div>
-                </div>
-            </section>
-            <section class="row justify-content-center">
-                <div class="col-md-8">
-                    <button type="submit" class="btn btn-danger mt-3">Registrar tarjeta</button>
                 </div>
             </section>
         </form>

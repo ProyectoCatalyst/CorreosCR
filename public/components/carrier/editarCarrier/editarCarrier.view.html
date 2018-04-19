@@ -1,0 +1,26 @@
+<main>
+  <section class="container">
+    <div class="row">
+      <div class="col-md-12 py-5">
+        <h1 class="text-center">Informacion del mensajero {{vm.carrierActiva}}</h1>
+
+        <div class="col-9">
+          <form ng-submit="vm.editarCarrier(vm.CarrierMod)">
+            <div class="form-group">
+                <p>Puede modificar los datos completando el formulario o elminar el mensajero actual</p>
+              <label for="txtNombreCarrier">Nombre: </label>
+              <input type="text" class="form-control" ng-model="vm.CarrierMod.nombreCarrier" id="txtNombreCarrier" required>
+
+            </div>
+
+            <button type="submit" class="btn btn-primary">Actualizar Mensajero</button>
+
+            <button type="button" class="btn btn-secondary" ng-click="vm.regresar()">Regresar</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </section>
+</main>

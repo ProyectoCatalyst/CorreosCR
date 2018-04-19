@@ -312,7 +312,72 @@
         controller: 'controladorRegistrarRepartidor',
         controllerAs: 'vm'
       })
+      .state('main.registrarCarrier', {
+        url: '/registrarCarrier',
+        templateUrl: './components/carrier/registrarCarrier/registrarCarrier.view.html',
+        data: {
+          pageTitle: 'Registrar Carrier | Correos de Costa Rica'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/carrier/registrarCarrier/registrarCarrier.controller.js')
+          }]
+        },
+        controller: 'controladorRegistrarCarrier',
+        controllerAs: 'vm'
+      })
+      
+      .state('main.listarCarrier', {
+        url: '/listarCarrier',
+        templateUrl: './components/carrier/listarCarrier/listarCarrier.view.html',
+        data: {
+          pageTitle: 'Listar Carrier | Correos de Costa Rica'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/carrier/listarCarrier/listarCarrier.controller.js')
+          }]
+        },
+        params: {
+          objCarrier: ''
+        },
+        
+        controller: 'controladorlistaCarrier',
+        controllerAs: 'vm'
+      })
+      
+      .state('main.editarCarrier', {
+        url: '/editarCarrier',
+        templateUrl: './components/carrier/editarCarrier/editarCarrier.view.html',
+        data: {
+          pageTitle: 'Editar Carrier | Correos de Costa Rica'
+        },
+        params: {
+          objCarrier: ''
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/carrier/editarCarrier/editarCarrier.controller.js')
+          }]
+        },
+        controller: 'controladorEditarCarrier',
+        controllerAs: 'vm'
+      })
 
+      .state('main.registroSucursales', {
+        url: '/registroSucursales',
+        templateUrl: './components/sucursales/registrarSucursal/registrarSucursal.view.html',
+        data: {
+          pageTitle: 'Registro Sucursal | Sucursal'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/sucursales/registrarSucursal/registrarSucursal.controller.js')
+          }]
+        },
+        controller: 'controladorRegistrarSucursal',
+        controllerAs: 'vm'
+      })
 
       .state('main.editarUsuario', {
         url: '/editarUsuario',
@@ -330,6 +395,42 @@
       })
 
 
+      .state('main.editarSucursal', {
+        url: '/editarSucursal',
+        templateUrl: './components/sucursales/editarSucursales/editarSucursal.view.html',
+        data: {
+          pageTitle: 'Editar Sucursal | Sucursal'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/sucursales/editarSucursales/editarSucursal.controller.js')
+          }]
+        },
+        params: {
+          objSucursal: ''
+        },
+        controller: 'controladorEditarSucursal',
+        controllerAs: 'vm'
+      })
+
+      .state('main.listarSucursales', {
+        url: '/listarSucursales',
+        templateUrl: './components/sucursales/listarSucursales/listarSucursales.view.html',
+        data: {
+          pageTitle: 'lista Sucursales | Sucursales'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/sucursales/listarSucursales/listarSucursales.controller.js')
+          }]
+        },
+        params: {
+          objSucursal: ''
+        },
+        controller: 'controladorlistaSucursales',
+        controllerAs: 'vm'
+      })
+      
       .state('main.listarTodosLosRepartidores', {
         url: '/listarTodosLosRepartidores',
         templateUrl: './components/usuarios/repartidor/listarTodosLosRepartidores/listarTodosLosRepartidores.view.html',
@@ -358,8 +459,25 @@
         },
         controller: 'controladorCasillero',
         controllerAs: 'vm'
+      })
+
+      .state('main.licencia', {
+        url: '/licencia',
+        templateUrl: './components/licencia/registrarLicencia/registrarLincencia.view.html',
+        data: {
+          pageTitle: 'Registrar licencia'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/licencia/registrarLicencia/registrarLincencia.controller.js')
+          }]
+        },
+        controller: 'controladorRegistrarLicencia',
+        controllerAs: 'vm'
       });
 
     $urlRouterProvider.otherwise('/');
-  };
+  } 
+
+  
 })();
