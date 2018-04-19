@@ -34,7 +34,13 @@ let UserSchema = new mongoose.Schema({
   paquetes          : {type: Array},
   latitud           : {type: String},
   longitud          : {type: String},
-  casillero         : {type: String}
+  casillero         : {type: String},
+
+  //encargado
+  telefono: {type: String},
+  telefonoAdicional: {type: String},
+  sucursal: {type: String},
+  rolAduana: {type: String}
 });
 
 /**

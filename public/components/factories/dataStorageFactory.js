@@ -10,6 +10,15 @@
     const dataAPI = {
       getUsersData: _getUsersData,
       setUserData: _setUserData,
+      updateUserData: _updateUserData,
+
+      registrarConvenio: _registrarConvenio,
+      retornarConvenios: _retornarConvenios,
+      actualizarConvenios: _actualizarConvenios,
+
+      registrarTramite: _registrarTramite,
+      retornarTramite: _retornarTramite,  
+
       addCreditCard: _addCreditCard,
       sendMail: _sendMail,
 
@@ -106,7 +115,13 @@
           'paquetes': data.paquetes,
           'latitud': data.latitud,
           'longitud': data.longitud,
-          'casillero' :data.casillero
+          'casillero' :data.casillero,
+           //   Encargados
+           'telefono': data.telefono,
+           'telefonoAdicional': data.telefonoAdicional,
+           'sucursal': data.sucursal,
+           'rolAduana': data.rolAduana
+          
         }
       });
 
@@ -122,6 +137,211 @@
       return response;
     }
 
+    function _updateUserData(data){
+        let respuesta;
+
+        let peticion = $.ajax({
+            url: 'http://localhost:4000/api//update_users',
+            type: 'put',
+            contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+            dataType: 'json',
+            async: false,
+            data: {
+                'primerNombre': data.primerNombre,
+                'segundoNombre': data.segundoNombre,
+                'primerApellido': data.primerApellido,
+                'segundoApellido': data.segundoApellido,
+                'foto' : data.foto,
+                'cedula': data.cedula,
+                'fecha': data.fecha,
+                'genero': data.genero,
+                'provincia': data.provincia,
+                'canton': data.canton,
+                'distrito': data.distrito,
+                'direccion': data.direccion,
+                'correo': data.correo,
+                'contrasenna': data.contrasenna,
+                'rol': data.rol,
+                'estado': data.estado,
+                // Final del esquema basico
+                // Repartidor
+                'paqueteAsignado': data.paqueteAsignado,
+                'licencia': data.licencia,
+                'telefono': data.telefono,
+                'telefonoAdicional': data.telefonoAdicional,
+                'razonDesact': data.razonDesact,
+                'sucursal': data.sucursal,
+                // Cliente
+                'tarjeta': data.tarjeta,
+                'paquetes': data.paquetes,
+                'latitud' : data.latitud,
+                'longitud' : data.longitud,
+                 //   Encargados
+                 'telefono': data.telefono,
+                 'telefonoAdicional': data.telefonoAdicional,
+                 'sucursal': data.sucursal,
+                 'rolAduana': data.rolAduana
+            }
+        });
+        peticion.done((datos) => {
+            respuesta = datos.msg;
+            console.log('Petición realizada con éxito')
+        });
+        peticion.fail((error) => {
+            respuesta = error;
+            console.log('Error en la petición')
+        });
+        return respuesta;
+    }
+
+    /**
+     * funcion que recibe los datos que se van a agregar a la BD
+     * @param {agregar datos*} data 
+     */
+    function  _registrarConvenio(data){
+        let respuesta;
+
+        let peticion = $.ajax({
+            url: 'http://localhost:4000/api/save_agreement',
+            type: 'post',
+            contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+            dataType: 'json',
+            async: false,
+            data: {
+                'codigoConvenio': data.codigoConvenio,
+                'nombreConvenio': data.nombreConvenio,
+                'descripcionConvenio': data.descripcionConvenio,
+                'institucionConvenio': data.institucionConvenio,
+                'costoConvenio': data.costoConvenio,
+                'desact': data.desact
+                
+            }
+        });
+        peticion.done((datos) => {
+            respuesta = datos.msj;
+            console.log('Petición realizada con éxito')
+        });
+        peticion.fail((error) => {
+            respuesta = error;
+            console.log('Error en la petición')
+        });
+        return respuesta;
+    }
+
+    /**
+     * retorna todos los convenios en la BD
+     */
+    function _retornarConvenios(){
+        let conveniosLS = [];
+
+        let peticion = $.ajax({
+            url: 'http://localhost:4000/api/get_all_agreement_data',
+            type: 'get',
+            contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+            dataType: 'json',
+            async: false,
+            data: {}
+        });
+
+        peticion.done((convenios) => {
+            conveniosLS = convenios
+        });
+        peticion.fail(() => {
+            conveniosLS = []
+            console.log('error')
+        });
+        return conveniosLS
+    }
+
+    /**
+     * funcion que recibe datos modificados para ser reemplazados por el anterior
+     * @param {informacion actualizada del objeto modificado} data 
+     */
+    function _actualizarConvenios(data){
+        let respuesta;
+
+        let peticion = $.ajax({
+            url: 'http://localhost:4000/api/update_agreement',
+            type: 'put',
+            contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+            dataType: 'json',
+            async: false,
+            data: {
+                'codigoConvenio': data.codigoConvenio,
+                'nombreConvenio': data.nombreConvenio,
+                'descripcionConvenio': data.descripcionConvenio,
+                'institucionConvenio': data.institucionConvenio,
+                'costoConvenio': data.costoConvenio,
+                'desact': data.desact
+            }
+        });
+        peticion.done((datos) => {
+            respuesta = datos.msg;
+            console.log('Petición realizada con éxito')
+        });
+        peticion.fail((error) => {
+            respuesta = error;
+            console.log('Error en la petición')
+        });
+        return respuesta;
+    }
+
+    /**
+     * funcion que recibe un objeto nuevo que se agregara a la BD
+     * @param {tramite a agregar} data 
+     */
+    function _registrarTramite(data){
+        let respuesta;
+
+        let peticion = $.ajax({
+            url: 'http://localhost:4000/api/save_procedure',
+            type: 'post',
+            contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+            dataType: 'json',
+            async: false,
+            data: {
+                'codigoTramite': data.codigoTramite,
+                'nombreTramite': data.nombreTramite,
+                'descripcionTramite': data.descripcionTramite,
+                'institucionTramite': data.institucionTramite,
+                'costoTramite': data.costoTramite,
+                'cedulaCliente': data.cedulaCliente,
+                'correoCliente': data.correoCliente
+            }
+        });
+        peticion.done((datos) => {
+            respuesta = datos.msj;
+            console.log('Petición realizada con éxito')
+        });
+        peticion.fail((error) => {
+            respuesta = error;
+            console.log('Error en la petición')
+        });
+        return respuesta;
+    }
+
+    /**retornar todos los tramites en la BD */
+    function _retornarTramite(){
+        let tramitesDB = [];
+
+        let peticion = $.ajax({
+            url: 'http://localhost:4000/api/get_all_procedure_data',
+            type: 'get',
+            contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+            dataType: 'json',
+            async: false,
+            data: {}
+        });
+
+        peticion.done((tramites) => {
+            tramitesDB = tramites
+        });
+        peticion.fail(() => {
+            tramitesDB = []
+            console.log('error')
+        });
+        return tramitesDB
+    }
     function _addCreditCard(pCorreoTarjeta) {
       let response;
       let peticion = $.ajax({

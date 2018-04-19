@@ -44,21 +44,15 @@ class Usuario {
 
 }
 
-class EncargadoAduanas extends Usuario {
-  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pfoto, pcedula, pfecha, pgenero, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado) {
-    super(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pfoto, pcedula, pfecha, pgenero, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado);
-    //TODO Agregar puesto dentro de la Aduana
-  }
-  //TODO Hacer metodos del Encargado de la Aduana
-}
+class Encargado extends Usuario {
+  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pfoto, pcedula, pfecha, pgenero, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado, ptelefono, ptelefonoAdicional, psucursal, prolAduana) {
+    super(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pfoto, pcedula, pfecha, pgenero, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado, ptelefono, ptelefonoAdicional, psucursal, prolAduana);
 
-class EncargadoSucursales extends Usuario {
-  constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pfoto, pcedula, pfecha, pgenero, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado) {
-    super(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pfoto, pcedula, pfecha, pgenero, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado);
-    //TODO sucursal asignada
+    this.telefono = ptelefono;
+    this.telefonoAdicional = ptelefonoAdicional;
+    this.sucursal = psucursal;
+    this.rolAduana = prolAduana;
   }
-
-  //TODO Hacer metodos del Encargado de la sucursales
 }
 
 class Repartidor extends Usuario {
@@ -210,13 +204,15 @@ class Sucursal {
   }
 }
 
-class Convenio {
-  constructor(pcodigoConvenio, pnombreConvenio, pdescripcionConvenio, pinstitucionConvenio, pcostoConvenio) {
+class Convenio{
+  constructor(pcodigoConvenio,pnombreConvenio,pdescripcionConvenio,pinstitucionConvenio,pcostoConvenio, pdesact){
     this.codigoConvenio = pcodigoConvenio;
     this.nombreConvenio = pnombreConvenio;
     this.descripcionConvenio = pdescripcionConvenio;
     this.institucionConvenio = pinstitucionConvenio;
     this.costoConvenio = pcostoConvenio;
+    this.desact = pdesact;
+    
   }
 
   getCodigo() {
@@ -264,5 +260,25 @@ class Casillero {
   }
   getIdCliente() {
     return this.idCliente;
+  }
+}
+
+class Tramite{
+  constructor(pcodigoTramite,pnombreTramite,pdescripcionTramite,pinstitucionTramite,pcostoTramite, pcedulaCliente, pcorreoCliente){
+
+    this.codigoTramite = pcodigoTramite;
+    this.nombreTramite = pnombreTramite;
+    this.descripcionTramite = pdescripcionTramite;
+    this.institucionTramite = pinstitucionTramite;
+    this.costoTramite = pcostoTramite;
+    this.cedulaCliente = pcedulaCliente;
+    this.correoCliente = pcorreoCliente;
+  }
+
+  getCodigo(){
+    return this.codigoTramite
+  }
+  getCedula(){
+    return this.cedulaCliente
   }
 }
