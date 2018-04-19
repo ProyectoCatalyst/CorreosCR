@@ -144,6 +144,101 @@
         controllerAs: 'vm'
       })
 
+      .state('main.registrarConvenio', {
+        url: '/agreementRegistration',
+        templateUrl: './components/convenios/registrarConvenio//registrarConvenio.view.html',
+        data: {
+          pageTitle: 'Registro de Convenios | Correos de Costa Rica'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/convenios/registrarConvenio/registrarConvenio.controller.js')
+          }]
+        },
+        controller: 'controladorRegistrarConvenio',
+        controllerAs: 'vm'
+      })
+      
+      .state('main.listaConvenios', {
+        url: '/agreementList',
+        templateUrl: './components/convenios/listarConvenios/listarConvenios.view.html',
+        data: {
+          pageTitle: 'Lista de convenios | Correos CR'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($oclazyLoad) => {
+            return $oclazyLoad.load ('./components/convenios/listarConvenios/listarConvenios.controller.js')
+          }]
+        },
+        controller : 'controladorListarConvenios',
+        controllerAs: 'vm'
+      })
+      
+      .state('editarConvenios', {
+        url: '/agreementModify',
+        templateUrl: './components/convenios/editarConvenios/editarConvenios.view.html',
+        data: {
+          pageTitle: 'Edición de convenios | Correos CR'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($oclazyLoad) => {
+            return $oclazyLoad.load ('./components/convenios/editarConvenios/editarConvenios.controller.js')
+          }]
+        },
+        params: {
+          convenioMod: ''
+        },
+        controller : 'controladorEditarConvenios',
+        controllerAs: 'vm'
+      })
+
+      .state('main.registrarEncargado', {
+        url: '/registerManager',
+        templateUrl: './components/usuarios/encargados/registrarEncargado/registrarEncargado.view.html',
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/encargados/registrarEncargado/registrarEncargado.controller.js')
+          }]
+        },
+        data: {
+          pageTitle: 'Registrar encargado | Correos CR'
+        },
+        controller: 'controladorRegistroEncargado',
+        controllerAs: 'vm'
+      })
+
+      .state('main.listarEncargados', {
+        url: '/listManager',
+        templateUrl: './components/usuarios/encargados/listarEncargados/listarEncargados.view.html',
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/encargados/listarEncargados/listarEncargados.controller.js')
+          }]
+        },
+        data: {
+          pageTitle: 'Listar encargados | Correos CR'
+        },
+        controller: 'controladorListarEncargados',
+        controllerAs: 'vm'
+      })
+
+      .state('main.editarEncargados', {
+        url: '/modifyManager',
+        templateUrl: './components/usuarios/encargados/editarEncargado/editarEncargado.view.html',
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/encargados/editarEncargado/editarEncargado.controller.js')
+          }]
+        },
+        params: {
+          datosMod: ''
+        },
+        data: {
+          pageTitle: 'Editar encargado | Correos CR'
+        },
+        controller: 'controladorEditarEncargado',
+        controllerAs: 'vm'
+      })
       .state('main.prealerta', {
         url: '/prealertarPaquetes',
         templateUrl: './components/paquetes/prealertarPaquete/prealertarPaquete.view.html',

@@ -63,6 +63,8 @@ app.use( (req, res, next) => {
  */
 const index = require('./index'),
       usuarios = require('./components/usuarios/usuarios.route'),
+      convenios = require('./components/convenios/convenios.route'),
+      tramite = require('./components/tramite/tramite.route'),
       tarjetas = require('./components/tarjetas/tarjetas.route'),
       mail = require('./components/mail/mail.route'),
       carrier = require('./components/carrier/carrier.route'),
@@ -76,6 +78,8 @@ const index = require('./index'),
 app.use('/api', carrier);
 app.use('/api', sucursales);
 app.use('/api', licencias);
+app.use('/api', convenios);
+app.use('/api', tramite);
 app.use('/api', paquetes);
 app.use('/api', tarjetas);
 app.use('/api', mail);
