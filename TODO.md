@@ -12,20 +12,16 @@
 | node_modules\@uirouter\angularjs\release\angular-ui-router.js | 9851 | Use $view service as a central point for registering component-level hooks
 | node_modules\@uirouter\angularjs\release\ui-router-angularjs.js | 1863 | Use $view service as a central point for registering component-level hooks
 | node_modules\argparse\lib\help\formatter.js | 10 | add [additonal formatters][1]
-| node_modules\body-parser\lib\types\json.js | 74 | maybe make this configurable or part of "strict" option
 | node_modules\body-parser\node_modules\debug\browser.js | 37 | add a `localStorage` variable to explicitly enable/disable colors
-| node_modules\bootstrap\js\src\modal.js | 402 | @fat these should probably be refactored out of modal.js
+| node_modules\bootstrap\dist\js\bootstrap.bundle.js | 4688 | @fat these should probably be refactored out of modal.js
+| node_modules\bootstrap\dist\js\bootstrap.bundle.js | 5840 | @fat remove sketch reliance on jQuery position/offset
+| node_modules\bootstrap\dist\js\bootstrap.js | 2254 | @fat these should probably be refactored out of modal.js
+| node_modules\bootstrap\dist\js\bootstrap.js | 3406 | @fat remove sketch reliance on jQuery position/offset
+| node_modules\bootstrap\js\dist\modal.js | 397 | @fat these should probably be refactored out of modal.js
+| node_modules\bootstrap\js\dist\scrollspy.js | 115 | @fat remove sketch reliance on jQuery position/offset
+| node_modules\bootstrap\js\src\modal.js | 401 | @fat these should probably be refactored out of modal.js
 | node_modules\bootstrap\js\src\scrollspy.js | 132 | @fat remove sketch reliance on jQuery position/offset
-| node_modules\bootstrap\js\src\util.js | 120 | Remove in v5
-| node_modules\bootstrap\js\dist\modal.js | 400 | @fat these should probably be refactored out of modal.js
-| node_modules\bootstrap\js\dist\scrollspy.js | 117 | @fat remove sketch reliance on jQuery position/offset
-| node_modules\bootstrap\js\dist\util.js | 108 | Remove in v5
-| node_modules\bootstrap\dist\js\bootstrap.bundle.js | 178 | Remove in v5
-| node_modules\bootstrap\dist\js\bootstrap.bundle.js | 4784 | @fat these should probably be refactored out of modal.js
-| node_modules\bootstrap\dist\js\bootstrap.bundle.js | 5943 | @fat remove sketch reliance on jQuery position/offset
-| node_modules\bootstrap\dist\js\bootstrap.js | 179 | Remove in v5
-| node_modules\bootstrap\dist\js\bootstrap.js | 2276 | @fat these should probably be refactored out of modal.js
-| node_modules\bootstrap\dist\js\bootstrap.js | 3435 | @fat remove sketch reliance on jQuery position/offset
+| node_modules\body-parser\lib\types\json.js | 74 | maybe make this configurable or part of "strict" option
 | node_modules\browser-sync\client\dist\index.js | 153 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\bson\lib\bson\decimal128.js | 239 | implementing a custom parsing for this, or refactoring the regex would yield
 | node_modules\connect\node_modules\debug\browser.js | 37 | add a `localStorage` variable to explicitly enable/disable colors
@@ -71,7 +67,6 @@
 | node_modules\jsdoc\templates\default\publish.js | 675 | move the tutorial functions to templateHelper.js
 | node_modules\mongodb\lib\bulk\common.js | 202 | Something better
 | node_modules\mongodb\lib\bulk\ordered.js | 227 | Bring from driver information in isMaster
-| node_modules\moment\src\locale\fr.js | 50 | Return 'e' when day of month > 1. Move this case inside
 | node_modules\mongodb-core\lib\connection\pool.js | 1193 | reenable when sessions development is complete
 | node_modules\mongodb-core\lib\topologies\replset.js | 1188 | once we drop Node 4, use destructuring either here or in arguments.
 | node_modules\mongodb-core\lib\topologies\shared.js | 385 | 
@@ -93,7 +88,6 @@
 | node_modules\ngmap\spec\directives\marker_spec_bak.js | 59 | need to test marker observers
 | node_modules\ngmap\spec\directives\shape_spec_bak.js | 47 | should test events, but don't know how to get events of a shape
 | node_modules\ngmap\spec\directives\shape_spec_bak.js | 51 | need to test observers
-| node_modules\ngmap\spec\e2e\testapp_spec.js | 32 | apply retry when it has console error. e.g. google image 404 error
 | node_modules\ngmap\spec\lib\angular-mocks.js | 46 | @vojta remove this temporary api
 | node_modules\ngmap\spec\lib\angular-mocks.js | 876 | @i this prevents methods being logged,
 | node_modules\ngmap\spec\lib\angular-mocks.js | 1156 | @vojta change params to: method, url, data, headers, callback
@@ -118,6 +112,7 @@
 | node_modules\ngmap\spec\lib\angular.js | 24480 | @perf generate setters to shave off ~40ms or 1-1.5%
 | node_modules\ngmap\spec\lib\angular.js | 24687 | @perf support naked previousNode in `enter` to avoid creation of jqLite wrapper?
 | node_modules\ngmap\spec\lib\angular.js | 25889 | Add a test for this case
+| node_modules\ngmap\spec\e2e\testapp_spec.js | 32 | apply retry when it has console error. e.g. google image 404 error
 | node_modules\ngmap\spec\services\attr2_options_spec.js | 184 | 
 | node_modules\ngmap\spec\services\attr2_options_spec.js | 190 | 
 | node_modules\ngmap\spec\services\attr2_options_spec.js | 196 | 
@@ -153,7 +148,9 @@
 | node_modules\ngmap\testapp\lib\prettify.js | 557 | handle tabs here?
 | node_modules\ngmap\testapp\lib\prettify.js | 947 | @mikesamuel recognize non-latin letters and numerals in idents
 | node_modules\ngmap\testapp\lib\prettify.js | 1215 | Possibly optimize by using '' if there's no flicker.
+| node_modules\moment\src\locale\fr.js | 50 | Return 'e' when day of month > 1. Move this case inside
 | node_modules\node-gyp\node_modules\glob\common.js | 106 | is an absolute `cwd` supposed to be resolved against `root`?
+| node_modules\node-sass\node_modules\glob\common.js | 106 | is an absolute `cwd` supposed to be resolved against `root`?
 | node_modules\oclazyload\bower_components\angular\angular.js | 2005 | @misko this function needs to be removed
 | node_modules\oclazyload\bower_components\angular\angular.js | 2031 | @perf update `nodes` instead of creating a new object?
 | node_modules\oclazyload\bower_components\angular\angular.js | 3539 | do we still need this?
@@ -184,16 +181,14 @@
 | node_modules\oclazyload\bower_components\angular-mocks\angular-mocks.js | 1340 | @vojta change params to: method, url, data, headers, callback
 | node_modules\raw-body\node_modules\bytes\index.js | 36 | use is-finite module?
 | node_modules\rimraf\node_modules\glob\common.js | 106 | is an absolute `cwd` supposed to be resolved against `root`?
+| node_modules\sass-graph\node_modules\glob\common.js | 106 | is an absolute `cwd` supposed to be resolved against `root`?
 | node_modules\sass-graph\node_modules\yargs\yargs.js | 250 | actually deprecate self.defaults.
 | node_modules\sass-graph\node_modules\yargs\yargs.js | 347 | deprecate self.demand in favor of
-| node_modules\sass-graph\node_modules\glob\common.js | 106 | is an absolute `cwd` supposed to be resolved against `root`?
 | node_modules\serve-index\node_modules\debug\browser.js | 37 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\stylus\lib\functions\blend.js | 25 | different blend modes like overlay etc.
-| node_modules\tiny-lr\node_modules\debug\browser.js | 37 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\underscore-contrib\test\vendor\jquery.js | 3157 | Stop taunting the data cache; remove global events and always attach to document
 | node_modules\underscore-contrib\test\vendor\jquery.js | 4512 | Move to normal caching system
 | node_modules\underscore-contrib\test\vendor\qunit.js | 152 | why??
-| node_modules\node-sass\node_modules\glob\common.js | 106 | is an absolute `cwd` supposed to be resolved against `root`?
 | node_modules\vinyl-fs\lib\dest\index.js | 56 | option for either backpressure or lossy
 | node_modules\vinyl-fs\node_modules\string_decoder\index.js | 43 | Handling all encodings inside a single object makes it very difficult
 | node_modules\vinyl-fs\node_modules\string_decoder\index.js | 45 | There should be a utf8-strict encoding that rejects invalid UTF-8 code
@@ -201,22 +196,23 @@
 | node_modules\vinyl-fs\node_modules\vinyl\index.js | 23 | should this be moved to vinyl-fs?
 | node_modules\vinyl-fs\node_modules\vinyl\index.js | 42 | should this be moved to vinyl-fs?
 | node_modules\vinyl-fs\node_modules\vinyl\index.js | 149 | should this be moved to vinyl-fs?
-| node_modules\@uirouter\core\lib\resolve\resolvable.js | 13 | explicitly make this user configurable
-| node_modules\@uirouter\core\lib\transition\transition.js | 165 | Also compare parameters
-| node_modules\@uirouter\core\lib\url\urlMatcherFactory.js | 78 | typeof?
-| node_modules\@uirouter\core\lib\view\view.js | 58 | Validate incoming view name with a regexp to allow:
+| node_modules\tiny-lr\node_modules\debug\browser.js | 37 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\@uirouter\core\lib-esm\resolve\resolvable.js | 11 | explicitly make this user configurable
 | node_modules\@uirouter\core\lib-esm\transition\transition.js | 163 | Also compare parameters
 | node_modules\@uirouter\core\lib-esm\url\urlMatcherFactory.js | 76 | typeof?
 | node_modules\@uirouter\core\lib-esm\view\view.js | 56 | Validate incoming view name with a regexp to allow:
-| node_modules\@uirouter\angularjs\lib\directives\viewDirective.js | 196 | Use $view service as a central point for registering component-level hooks
+| node_modules\@uirouter\core\lib\resolve\resolvable.js | 13 | explicitly make this user configurable
+| node_modules\@uirouter\core\lib\transition\transition.js | 165 | Also compare parameters
+| node_modules\@uirouter\core\lib\url\urlMatcherFactory.js | 78 | typeof?
+| node_modules\@uirouter\core\lib\view\view.js | 58 | Validate incoming view name with a regexp to allow:
 | node_modules\@uirouter\angularjs\lib-esm\directives\viewDirective.js | 320 | Use $view service as a central point for registering component-level hooks
-| node_modules\csso\lib\compressor\clean\Ruleset.js | 16 | remove toLowerCase when type selectors will be normalized
+| node_modules\@uirouter\angularjs\lib\directives\viewDirective.js | 196 | Use $view service as a central point for registering component-level hooks
 | node_modules\csso\lib\compressor\compress\color.js | 290 | remove those tokens
 | node_modules\csso\lib\compressor\compress\color.js | 297 | remove those tokens
 | node_modules\csso\lib\compressor\compress\color.js | 307 | remove those tokens
 | node_modules\csso\lib\compressor\compress\color.js | 315 | remove those tokens
 | node_modules\csso\lib\compressor\compress\Url.js | 30 | make better quote type selection
+| node_modules\csso\lib\compressor\clean\Ruleset.js | 16 | remove toLowerCase when type selectors will be normalized
 | node_modules\csso\lib\compressor\restructure\1-initialMergeRuleset.js | 41 | remove initial merge
 | node_modules\csso\lib\compressor\restructure\8-restructRuleset.js | 80 | need to be checked
 | node_modules\csso\lib\compressor\restructure\8-restructRuleset.js | 136 | disallow up merge only if any property interception only (i.e. diff.ne2overrided.length > 0);
@@ -316,8 +312,8 @@
 | node_modules\jsdoc\lib\jsdoc\util\templateHelper.js | 941 | generate a warning (ideally during parsing!)
 | node_modules\jsdoc\lib\jsdoc\util\templateHelper.js | 975 | docs
 | node_modules\jsdoc\plugins\test\specs\markdown.js | 13 | more tests; refactor the plugin so multiple settings can be tested
-| node_modules\localtunnel\node_modules\yargs\lib\validation.js | 136 | case-insensitive configurability
 | node_modules\localtunnel\node_modules\debug\src\browser.js | 36 | add a `localStorage` variable to explicitly enable/disable colors
+| node_modules\localtunnel\node_modules\yargs\lib\validation.js | 136 | case-insensitive configurability
 | node_modules\moment\src\lib\create\from-array.js | 100 | We need to take the current isoWeekYear, but that depends on
 | node_modules\moment\src\lib\create\from-string-and-format.js | 19 | Move this to another part of the creation flow to prevent circular deps
 | node_modules\moment\src\lib\create\from-string.js | 136 | Replace the vanilla JS Date object with an indepentent day-of-week check.
@@ -354,13 +350,13 @@
 | node_modules\ngmap\build\docs\js\prettify.js | 947 | @mikesamuel recognize non-latin letters and numerals in idents
 | node_modules\ngmap\build\docs\js\prettify.js | 1215 | Possibly optimize by using '' if there's no flicker.
 | node_modules\ngmap\config\jsdoc\template\publish.js | 644 | move the tutorial functions to templateHelper.js
+| node_modules\node-sass\node_modules\request\lib\auth.js | 52 | More complete implementation of RFC 2617.
 | node_modules\nodemon\node_modules\debug\src\browser.js | 41 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\sass-graph\node_modules\yargs\lib\argsert.js | 7 | should this eventually raise an exception.
 | node_modules\sass-graph\node_modules\yargs\lib\command.js | 288 | move positional arg logic to yargs-parser and remove this duplication
 | node_modules\sass-graph\node_modules\yargs\lib\validation.js | 173 | case-insensitive configurability
 | node_modules\send\node_modules\debug\src\browser.js | 36 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\socket.io-parser\node_modules\debug\src\browser.js | 41 | add a `localStorage` variable to explicitly enable/disable colors
-| node_modules\node-sass\node_modules\request\lib\auth.js | 52 | More complete implementation of RFC 2617.
 | node_modules\vinyl-fs\node_modules\readable-stream\lib\_stream_writable.js | 145 | defer error events consistently everywhere, not just the cb
 | node_modules\csso\lib\compressor\restructure\prepare\index.js | 23 | need to be checked
 | node_modules\express\node_modules\body-parser\lib\types\json.js | 74 | maybe make this configurable or part of "strict" option
@@ -369,12 +365,8 @@
 | node_modules\stylus\node_modules\source-map\test\source-map\test-util.js | 202 | Issue #128: Define and test this function properly.
 | node_modules\gulp-connect\node_modules\serve-static\node_modules\mime\build\test.js | 46 | Uncomment once #157 is resolved
 | node_modules\nodemon\node_modules\expand-brackets\node_modules\debug\src\browser.js | 36 | add a `localStorage` variable to explicitly enable/disable colors
-| public\clases.js | 50 | Agregar puesto dentro de la Aduana
-| public\clases.js | 52 | Hacer metodos del Encargado de la Aduana
-| public\clases.js | 58 | sucursal asignada
-| public\clases.js | 61 | Hacer metodos del Encargado de la sucursales
-| public\clases.js | 142 | Agregar los metodos de las tarjetas
-| public\clases.js | 160 | Agregar  los metodos del paquete
+| public\clases.js | 136 | Agregar los metodos de las tarjetas
+| public\clases.js | 154 | Agregar  los metodos del paquete
 | node_modules\angular\angular.js | 2122 | @misko this function needs to be removed
 | node_modules\angular\angular.js | 2148 | @perf update `nodes` instead of creating a new object?
 | node_modules\angular\angular.js | 3717 | do we still need this?
@@ -445,8 +437,9 @@
 | node_modules\taffydb\taffy.js | 1092 | The curly braces used to be unescaped
 | node_modules\tweetnacl\nacl-fast.js | 2160 | Completely remove this in v0.15.
 | node_modules\tweetnacl\nacl.js | 947 | Completely remove this in v0.15.
-| node_modules\update-notifier\index.js | 25 | Remove deprecated options at some point far into the future
 | node_modules\unzip-response\index.js | 6 | use Array#includes when targeting Node.js 6
+| node_modules\update-notifier\index.js | 25 | Remove deprecated options at some point far into the future
+| node_modules\uws\uws.js | 388 | default HTTP response
 | node_modules\vinyl\index.js | 43 | should this be moved to vinyl-fs?
 | node_modules\vinyl\index.js | 154 | should this be moved to vinyl-fs?
 | node_modules\babylon\lib\index.js | 21 | 
@@ -508,6 +501,7 @@
 | node_modules\localtunnel\lib\Tunnel.js | 47 | @shtylman don't print to stdout?
 | node_modules\localtunnel\lib\TunnelCluster.js | 77 | some languages have single threaded servers which makes opening up
 | node_modules\lodash\function\debounce.js | 62 | Changes.cancel();
+| node_modules\moment\locale\fr.js | 54 | Return 'e' when day of month > 1. Move this case inside
 | node_modules\moment\min\locales.js | 3290 | Return 'e' when day of month > 1. Move this case inside
 | node_modules\moment\min\moment-with-locales.js | 357 | Remove "ordinalParse" fallback in next major release.
 | node_modules\moment\min\moment-with-locales.js | 1000 | add sorting
@@ -521,7 +515,6 @@
 | node_modules\moment\min\moment-with-locales.js | 3668 | Remove "ordinalParse" fallback in next major release.
 | node_modules\moment\min\moment-with-locales.js | 4196 | Use this.as('ms')?
 | node_modules\moment\min\moment-with-locales.js | 7781 | Return 'e' when day of month > 1. Move this case inside
-| node_modules\moment\locale\fr.js | 54 | Return 'e' when day of month > 1. Move this case inside
 | node_modules\mongodb\lib\cursor.js | 1228 | refactor this logic into core
 | node_modules\mongoose\lib\aggregate.js | 503 | refactor to reuse the query builder logic
 | node_modules\mongoose\lib\query.js | 3520 | refactor
@@ -577,9 +570,6 @@
 ### FIXMEs
 | Filename | line # | FIXME
 |:------|:------:|:------
-| node_modules\csso\lib\cli.js | 10 | don't chain until node.js 0.10 drop, since setEncoding isn't chainable in 0.10
-| node_modules\debug\src\node.js | 200 | Should probably have an option in net.Socket to create a
-| node_modules\debug\src\node.js | 208 | Hack to have stream not keep the event loop alive.
 | node_modules\body-parser\node_modules\debug\node.js | 177 | Should probably have an option in net.Socket to create a
 | node_modules\body-parser\node_modules\debug\node.js | 185 | Hack to have stream not keep the event loop alive.
 | node_modules\connect\node_modules\debug\node.js | 177 | Should probably have an option in net.Socket to create a
@@ -588,10 +578,10 @@
 | node_modules\finalhandler\node_modules\debug\node.js | 185 | Hack to have stream not keep the event loop alive.
 | node_modules\leasot\lib\reporters\custom.js | 9 | make the default header a configurable option
 | node_modules\nodemon\lib\monitor\run.js | 266 | decide whether or not we need to decide the encoding
-| node_modules\nodemailer\lib\dkim\index.js | 3 | 
 | node_modules\oclazyload\bower_components\angular\angular.js | 29848 | When a user selects an option, this watch will fire needlessly
 | node_modules\serve-index\node_modules\debug\node.js | 177 | Should probably have an option in net.Socket to create a
 | node_modules\serve-index\node_modules\debug\node.js | 185 | Hack to have stream not keep the event loop alive.
+| node_modules\nodemailer\lib\dkim\index.js | 3 | 
 | node_modules\tiny-lr\node_modules\debug\node.js | 177 | Should probably have an option in net.Socket to create a
 | node_modules\tiny-lr\node_modules\debug\node.js | 185 | Hack to have stream not keep the event loop alive.
 | node_modules\localtunnel\node_modules\debug\src\node.js | 198 | Should probably have an option in net.Socket to create a
@@ -609,3 +599,6 @@
 | node_modules\q\q.js | 363 | Remove this helper and Q.return once ES6 generators are in
 | node_modules\q\q.js | 1309 | Remove this case when SM does ES6 generators.
 | node_modules\q\q.js | 1341 | Remove this interface once ES6 generators are in SpiderMonkey.
+| node_modules\csso\lib\cli.js | 10 | don't chain until node.js 0.10 drop, since setEncoding isn't chainable in 0.10
+| node_modules\debug\src\node.js | 200 | Should probably have an option in net.Socket to create a
+| node_modules\debug\src\node.js | 208 | Hack to have stream not keep the event loop alive.
