@@ -33,6 +33,14 @@
       getLicenceData: _getLicenceData,
       setLicenceData: _setLicenceData,
 
+      getCarrierData: _getCarrierData,
+      setCarrierData: _setCarrierData,
+      updateCarrierData: _updateCarrierData,
+
+      getSucursalesData: _getSucursalesData,
+      setSucursalesData: _setSucursalesData,
+      updateSucursalesData: _updateSucursalesData,
+      
       getPackage: _getPackage,
       setPackage: _setPackage,
       updatePackage: _updatePackage,
@@ -120,7 +128,12 @@
            'telefono': data.telefono,
            'telefonoAdicional': data.telefonoAdicional,
            'sucursal': data.sucursal,
+<<<<<<< HEAD
            'rolAduana': data.rolAduana  
+=======
+           'rolAduana': data.rolAduana
+          
+>>>>>>> origin/Álvaro
         }
       });
 
@@ -667,6 +680,171 @@
       return response;
     } 
 
+    function _getCarrierData() {
+      let listaCarrier = [];
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/get_all_carrier',
+        type: 'get',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {}
+      });
+
+      peticion.done((datos) => {
+        console.log('Datos que vienen desde la base de datos')
+        console.log(datos);
+        listaCarrier = datos;
+      });
+      peticion.fail(() => {
+        listaCarrier = [];
+        console.log('Ocurrió un error');
+      });
+
+      return listaCarrier;
+    }
+
+    function _setCarrierData(pnuevoCarrier) {
+      let response;
+
+      let peticion = $.ajax({
+        url: 'http://localhost:4000/api/save_carrier',
+        type: 'post',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          'codigoCarrier'  : pnuevoCarrier.codigoCarrier,
+          'nombreCarrier'  : pnuevoCarrier.nombreCarrier,
+          'estadoCarrier'  : pnuevoCarrier.estadoCarrier
+        }
+      });
+
+      peticion.done((datos) => {
+        response = datos.success;
+        console.log('Petición realizada con éxito');
+      });
+      peticion.fail((error) => {
+        response = error;
+        console.log('Ocurrió un error');
+      });
+
+      return response;
+    }
+
+    function _updateCarrierData(data){
+      let respuesta;
+
+      let peticion = $.ajax({
+          url: 'http://localhost:4000/api/update_carrier',
+          type: 'put',
+          contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+          dataType: 'json',
+          async: false,
+          data: {
+          
+              'codigoCarrier': data.codigoCarrier,
+              'nombreCarrier': data.nombreCarrier,
+              'estadoCarrier': data.estadoCarrier
+          }
+      });
+      peticion.done((datos) => {
+          respuesta = datos.msg;
+          console.log('Petición realizada con éxito')
+      });
+      peticion.fail((error) => {
+          respuesta = error;
+          console.log('Error en la petición')
+      });
+      return respuesta;
+  }
+
+  function _getSucursalesData() {
+    let listaSucursales = [];
+
+    let peticion = $.ajax({
+      url: 'http://localhost:4000/api/get_all_sucursales',
+      type: 'get',
+      contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+      dataType: 'json',
+      async: false,
+      data: {}
+    });
+
+    peticion.done((datos) => {
+      console.log('Datos que vienen desde la base de datos')
+      console.log(datos);
+      listaSucursales = datos;
+    });
+    peticion.fail(() => {
+      listaSucursales = [];
+      console.log('Ocurrió un error');
+    });
+
+    return listaSucursales;
+  }
+
+  function _setSucursalesData(sucursalNueva) {
+    let response;
+
+    let peticion = $.ajax({
+      url: 'http://localhost:4000/api/save_sucursales',
+      type: 'post',
+      contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+      dataType: 'json',
+      async: false,
+      data: {
+        'codigoSucursal'  : sucursalNueva.codigoSucursal,
+        'nombreSucursal'  : sucursalNueva.nombreSucursal,
+        'provincia'       : sucursalNueva.provincia,
+        'canton'          : sucursalNueva.canton,
+        'distrito'        : sucursalNueva.distrito,
+        'estadoSucursal'  : sucursalNueva.estadoSucursal
+        // 'ubicacion'       : psucursalNueva.ubicacion
+      }
+    });
+
+    peticion.done((datos) => {
+      response = datos.success;
+      console.log('Petición realizada con éxito');
+    });
+    peticion.fail((error) => {
+      response = error;
+      console.log('Ocurrió un error');
+    });
+
+    return response;
+  }
+
+  function _updateSucursalesData(){
+    let respuesta;
+
+    let peticion = $.ajax({
+        url: 'http://localhost:4000/api/update_sucursales',
+        type: 'put',
+        contentType: 'application/x-www-form-urlencoded; charset=utf-8',
+        dataType: 'json',
+        async: false,
+        data: {
+          'codigoSucursal'  : codigoSucursal,
+          'nombreSucursal'  : nombreSucursal,
+          'provincia'       : provincia,
+          'canton'          : canton,
+          'distrito'        : distrito,
+          'estadoSucursal'  : estadoSucursal
+        }
+    });
+    peticion.done((datos) => {
+        respuesta = datos.msg;
+        console.log('Petición realizada con éxito')
+    });
+    peticion.fail((error) => {
+        respuesta = error;
+        console.log('Error en la petición')
+    });
+    return respuesta;
+}
     /**
    * Función que almacena las datos dentro del session Storage
    */

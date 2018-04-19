@@ -1,0 +1,68 @@
+<!-- <header class= "row" id="fondoHeader">
+  <div class = "container-fluid d-none d-md-block m-2" id="logoHeader">
+    <img src="sources/img/registrar/logoMenu.png" alt="" srcset="">
+  </div>
+</header> -->
+<main class="container-fluid">
+
+<section class="row">
+  <div class="col-md-12 mt-5">
+
+    <!-- <form action="" ng-submit="vm.buscarCodigos(vm.informacionCarrier)"> -->
+
+    <h1 id="tituloPrincipal" class="text-center">Lista de mensajeros</h1>
+
+    <table class="table mt-5">
+      <thead class="">
+        <tr>
+          <th scope="col">Código</th>
+          <th scope="col">Nombre</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr ng-repeat="carrier in vm.listarCarrierAct">
+          <td>{{carrier.codigoCarrier}}</td>
+          <td>{{carrier.nombreCarrier}}</td>
+         <td>
+            <button type="click" class="btn btn-danger" ng-click="vm.desactivarCarrier(carrier)">
+              Desactivar
+            </button>
+          </td>
+          <td>
+            <button type="click" class="btn btn-danger" ng-click="vm.editarCarrier(carrier)">
+              Editar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <h2 id="tituloPrincipal" class="text-center mt-5">Mensajeros desactivados</h2>
+    <table class="table mt-5">
+      <thead class="">
+        <tr>
+            <th scope="col">Código</th>
+            <th scope="col">Nombre</th>
+        </tr>
+      </thead>
+       <tbody>
+        <tr ng-repeat="carrier in vm.listarCarrierDesact">
+          <td>{{carrier.codigoCarrier}}</td>
+          <td>{{carrier.nombreCarrier}}</td>
+          <td>
+            <button type="button" class="btn btn-danger" ng-click="vm.activarCarrier(carrier)">
+              Activar
+            </button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-danger" ng-click="vm.editarCarrier(carrier)">
+              Editar
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+</main>
