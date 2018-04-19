@@ -153,10 +153,18 @@ class Paquete{
   getTracking(){
     return this.trackingPaquete;
   }
+  setEstadoPaquete(pEstado){
+    this.estadoPaquete = pEstado;
+  }
   getEstadoPaquete(){
     return this.estadoPaquete;
   }
-  
+  setRepartidor (pidrepartidor) {
+    this.idRepartidor = pidrepartidor;
+  }
+  getRepartidor () {
+    return this.idRepartidor
+  }
 }
 
 class Sucursal{
