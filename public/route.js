@@ -158,7 +158,7 @@
         controller: 'controladorPrealertar',
         controllerAs: 'vm'
       })
-         
+
       .state('main.listarPaquetes', {
         url: '/listarPaquetes',
         templateUrl: './components/paquetes/listarPaquetes/listarPaquetes.view.html',
@@ -166,11 +166,11 @@
           pageTitle: 'Listar Paquetes'
         },
         resolve: {
-          load:['$ocLazyLoad', ($oclazyLoad)=>{
+          load: ['$ocLazyLoad', ($oclazyLoad) => {
             return $oclazyLoad.load('./components/paquetes/listarPaquetes/listarPaquetes.controller.js')
           }]
         },
-        controller:'controladorListarPaquetes',
+        controller: 'controladorListarPaquetes',
         controllerAs: 'vm'
       })
       .state('main.estadoPaquete', {
@@ -202,12 +202,12 @@
         controller: 'controladorModificarEstadoPaquete',
         controllerAs: 'vm'
       })
-      
+
       .state('registrarRepartidor', {
         url: '/registrarRepartidor',
         templateUrl: './components/usuarios/repartidor/registrarRepartidor/registrarRepartidor.view.html',
         data: {
-          pageTitle: 'Registrar cliente'
+          pageTitle: 'Registrar repartidor'
         },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
@@ -217,7 +217,39 @@
         controller: 'controladorRegistrarRepartidor',
         controllerAs: 'vm'
       })
-      
+
+
+      .state('main.editarUsuario', {
+        url: '/editarUsuario',
+        templateUrl: './components/usuarios/editarUsuario/editarUsuario.view.html',
+        data: {
+          pageTitle: 'Editar'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/editarUsuario/editarUsuario.controller.js')
+          }]
+        },
+        controller: 'controladorEditarUsuario',
+        controllerAs: 'vm'
+      })
+
+
+      .state('main.listarTodosLosRepartidores', {
+        url: '/listarTodosLosRepartidores',
+        templateUrl: './components/usuarios/repartidor/listarTodosLosRepartidores/listarTodosLosRepartidores.view.html',
+        data: {
+          pageTitle: 'Listar Usuarios'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/usuarios/repartidor/listarTodosLosRepartidores/listarTodosLosRepartidores.controller.js')
+          }]
+        },
+        controller: 'controladorListaTodosRepartidores',
+        controllerAs: 'vm'
+      })
+
       .state('main.casillero', {
         url: '/casillero',
         templateUrl: './components/casillero/vistaCasillero.view.html',
@@ -231,9 +263,7 @@
         },
         controller: 'controladorCasillero',
         controllerAs: 'vm'
-      })
-      
-      ;
+      });
 
     $urlRouterProvider.otherwise('/');
   };

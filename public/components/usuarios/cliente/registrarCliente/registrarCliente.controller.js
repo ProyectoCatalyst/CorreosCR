@@ -109,7 +109,7 @@
       } else {
         swal({
           title: "Ha ocurrido un Error",
-          text: "No sea tonto, el cliente ya se encuentra registrado",
+          text: "El usuario ha sido anteriormnete registrado.",
           icon: "error",
           button: "Aceptar"
         });

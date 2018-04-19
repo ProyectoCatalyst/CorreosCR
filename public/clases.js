@@ -4,6 +4,7 @@ class Usuario {
     this.segundoNombre = psegundoNombre;
     this.primerApellido = pprimerApellido;
     this.segundoApellido = psegundoApellido;
+    this.foto = pfoto;
     this.cedula = pcedula;
     this.fecha = pfecha;
     this.genero = pgenero;
@@ -12,7 +13,6 @@ class Usuario {
     this.distrito = pdistrito;
     this.direccion = pdireccion;
     this.correo = pcorreo;
-    this.foto = pfoto;
     this.contrasenna = pcontrasenna;
     this.rol = prol;
     this.estado = pestado;
@@ -65,25 +65,16 @@ class Repartidor extends Usuario {
   constructor(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pfoto, pcedula, pfecha, pgenero, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado, ptelefono, ptelefonoAdicional, prazonDesact, psucursal) {
 
     super(pnombre, psegundoNombre, pprimerApellido, psegundoApellido, pfoto, pcedula, pfecha, pgenero, pprovincia, pcanton, pdistrito, pdireccion, pcorreo, pcontrasenna, prol, pestado);
-
-    this.paqueteAsignado = [];
-    this.licencia = [];
     this.telefono = ptelefono;
     this.telefonoAdicional = ptelefonoAdicional;
     this.razonDesact = prazonDesact;
     this.sucursal = psucursal;
+    this.paqueteAsignado = [];
+    this.licencia = [];
   }
 
   getLicencias() {
     return this.licencia
-  }
-
-  getCorreo() {
-    return this.correo
-  }
-
-  getEstado() {
-    return this.estado
   }
 
   getPaqAsignados() {
@@ -163,10 +154,18 @@ class Paquete {
   getTracking() {
     return this.trackingPaquete;
   }
-  getEstadoPaquete() {
+  setEstadoPaquete(pEstado){
+    this.estadoPaquete = pEstado;
+  }
+  getEstadoPaquete(){
     return this.estadoPaquete;
   }
-
+  setRepartidor (pidrepartidor) {
+    this.idRepartidor = pidrepartidor;
+  }
+  getRepartidor () {
+    return this.idRepartidor
+  }
 }
 
 class Sucursal {
