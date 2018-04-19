@@ -10,31 +10,31 @@
                 <table class="table table-striped">
                     <thead class="">
                         <tr>
-                            <th scope="col">Pre-alertado</th>
-                            <th scope="col">En aduana</th>
-                            <th scope="col">En sucursal</th>
-                            <th scope="col">Repartidor</th>
+                            <th scope="col" class="text-center" ng-if="vm.rolUsuario==1">Pre-alertado</th>
+                            <th scope="col" class="text-center" ng-if="vm.rolUsuario==1||vm.rolUsuario==2">En aduana</th>
+                            <th scope="col" class="text-center" ng-if="vm.rolUsuario==1||vm.rolUsuario==3">En sucursal</th>
+                            <th scope="col" class="text-center" ng-if="vm.rolUsuario==1||vm.rolUsuario==4">Repartidor</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>
-                                <button type="button" class="btn btn-danger" ng-click="">
+                            <td class="text-center" ng-if="vm.rolUsuario==1">
+                                <button type="button" class="btn btn-danger" ng-click="vm.cambioEstado(0)">
                                     Pre-alertado
                                 </button>
                             </td>
-                            <td>
-                                <button type="button" class="btn btn-danger" ng-click="">
+                            <td class="text-center" ng-if="vm.rolUsuario==1||vm.rolUsuario==2">
+                                <button type="button" class="btn btn-danger" ng-click="vm.cambioEstado(1)">
                                     Enviar a sucursal
                                 </button>
                             </td>
-                            <td>
-                                <button type="button" class="btn btn-danger" ng-click="">
+                            <td class="text-center" ng-if="vm.rolUsuario==1||vm.rolUsuario==3">
+                                <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
                                     Asignar repartidor
                                 </button>
                             </td>
-                            <td>
-                                <button type="button" class="btn btn-danger" ng-click="">
+                            <td class="text-center" ng-if="vm.rolUsuario==1||vm.rolUsuario==4">
+                                <button type="button" class="btn btn-danger" ng-click="vm.cambioEstado(3)">
                                     Entregar a cliente
                                 </button>
                             </td>
@@ -43,25 +43,41 @@
                 </table>
             </div>
         </section>
-        <section class="row">
-            <div class="col-md-6">
-                <div class="form-group mt-2">
-                    <label>Asigne un repartidor para entregar el paquete:</label>
-                    <select ng-model="vm.PaquetesPrealertadosMod.idRepartidorPaquete.name" class="custom-select">>
-                        <option value>Seleccione un repartidor</option>
-                        <option value="1">Repartidor quemado 1</option>
-                        <option value="2">Repartidor quemado 2</option>
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Asignar repartidor</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label>Asigne un repartidor para entregar el paquete:</label>
+                                <select ng-model="vm.PaquetesPrealertadosMod.idRepartidorPaquete.name" class="custom-select">>
+                                    <option value>Seleccione un repartidor</option>
+                                    <option value="1">Repartidor quemado 1</option>
+                                    <option value="2">Repartidor quemado 2</option>
 
-                        <option ng-repeat="datosRepartidores in vm.repartidoresActivos" value="{{datosRepartidores.cedula}}">{{datosRepartidores.primerNombre}} {{datosRepartidores.primerApellido}}</option>
-                    </select>
+                                    <option ng-repeat="datosRepartidores in vm.repartidoresActivos" value="{{datosRepartidores.cedula}}">{{datosRepartidores.primerNombre}} {{datosRepartidores.primerApellido}}</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Regresar</button>
+                        <button type="button" class="btn btn-danger" ng-click="vm.cambioEstado(2, vm.PaquetesPrealertadosMod.idRepartidorPaquete.name)" data-dismiss="modal">Guardar</button>
+                    </div>
                 </div>
             </div>
-        </section>
-        <div class="row">
+        </div>
+
+        <section class="row">
             <div class="col-md-6 mt-2">
-                <button type="button" class="btn btn-danger">Guardar</button>
                 <button type="button" class="btn btn-danger" ng-click="vm.regresar()">Regresar</button>
             </div>
-        </div>
+        </section>
     </div>
 </main>
