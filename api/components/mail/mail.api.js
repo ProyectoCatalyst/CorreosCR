@@ -14,8 +14,10 @@ module.exports.enviarCorreo = (req, res) => {
     from: 'catalyst.proyecto@gmail.com',
     to: req.body.to,
     subject: req.body.subject,
-    text: req.body.text,
+    text: 'Su contraseña temporal es: ' + req.body.text,
   };
+
+  console.log(mailOptions);
 
   transporter.sendMail(mailOptions,(error, info)=>{
     if(error){

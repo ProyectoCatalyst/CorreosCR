@@ -16,11 +16,12 @@
       obtenerlistadeFiltrada: _obtenerListaFiltrada,
       retornarCorreosUsuarios: _retornarCorreosUsuarios,
       actualizarUsuario: _actualizarUsuario,
-      agregarTarjetaUsuario: _agregarTarjetaUsuario
+      agregarTarjetaUsuario: _agregarTarjetaUsuario,
+      asignarCasillero: _asignarCasillero
     };
     return publicAPI;
 
-    
+
     /**
      * Función que se comunica con el dataStorage para guardar el cliente.
      * @param {Objeto Usuario de cualquier tipo que va a ser almacenado en el backend} pNuevoUsuario 
@@ -40,7 +41,7 @@
         registrovalido = false;
       } else {
         let objEmail = {
-          to : pNuevoUsuario.getCorreo(),
+          to: pNuevoUsuario.getCorreo(),
           subject: 'Contraseña temporal de la aplicación de Correos de Costa Rica',
           text: pNuevoUsuario.getContrasenna()
         };
@@ -50,7 +51,7 @@
 
       return registrovalido;
     };
-    
+
     /**
      * función que obtiene la lista de usuarios del backend
      */
@@ -63,13 +64,13 @@
 
         switch (Number(obj.rol)) {
           case 2:
-            let tempEncargadoAduana = new EncargadoAduanas(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.cedula, tempfecha, obj.genero, obj.ubicacion, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol, obj.estado);
+            let tempEncargadoAduana = new EncargadoAduanas(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.foto, obj.cedula, tempfecha, obj.genero, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo,obj.contrasenna, obj.rol, obj.estado);
 
             listadeusuarios.push(tempEncargadoAduana);
             break;
 
           case 3:
-            let tempEncargadoSucursal = new EncargadoSucursales(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.cedula, tempfecha, obj.genero, obj.ubicacion, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol, obj.estado);
+            let tempEncargadoSucursal = new EncargadoSucursales(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.foto, obj.cedula, tempfecha, obj.genero, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo,obj.contrasenna, obj.rol, obj.estado);
 
             listadeusuarios.push(tempEncargadoSucursal);
             break;
@@ -77,7 +78,7 @@
           case 4:
 
             if (obj.estado == true) {
-              let repartidoresTemp = new Repartidor(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.cedula, obj.fecha, obj.genero, obj.ubicacion, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol, obj.telefono, obj.telefonoAdicional, obj.estado, obj.razonDesact, obj.sucursal);
+              let repartidoresTemp = new Repartidor(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.foto, obj.cedula, tempfecha, obj.genero, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol, obj.estado, obj.telefono, obj.ptelefonoAdicional, obj.razonDesact, obj.sucursal);
 
               obj.licencia.forEach(objLicenciaTemp => {
                 let objLicencia = new Licencia(objLicenciaTemp.codigo, objLicenciaTemp.fechaVencimiento, objLicenciaTemp.tipo, objLicenciaTemp.estado);
@@ -91,10 +92,10 @@
             break;
 
           case 5:
-            let tempCliente = new Cliente(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.foto, obj.cedula, tempfecha, obj.genero, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol, obj.estado, obj.telefono, obj.latitud, obj.longitud);
+            let tempCliente = new Cliente(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.foto, obj.cedula, tempfecha, obj.genero, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol, obj.estado, obj.telefono, obj.latitud, obj.longitud , obj.casillero);
 
             listadeusuarios.push(tempCliente);
-           break;
+            break;
 
           default:
 
@@ -149,6 +150,11 @@
       dataStorageFactory.addCreditCard(pCorreoTarjeta);
     }
 
+    function _asignarCasillero() {
+      let casilleroNuevo = 0;
+      casilleroNuevo = Math.round((Math.random() * 1937));
+      return casilleroNuevo;
+    }
   };
 
 })();

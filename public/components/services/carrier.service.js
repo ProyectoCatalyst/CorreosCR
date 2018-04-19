@@ -88,8 +88,9 @@
       }
 
       if (validarCodigo == true) {
-        listaCarrier.push(pCarrierNuevo);
-        lgetCarrierData(listaCarrier);
+        // listaCarrier.push(pCarrierNuevo);
+        // lgetCarrierData(listaCarrier);
+        dataStorageFactory.setCarrierData(pCarrierNuevo);
       }
       return validarCodigo;
     }// fin función agregar

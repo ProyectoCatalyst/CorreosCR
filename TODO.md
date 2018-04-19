@@ -71,11 +71,11 @@
 | node_modules\mongodb\lib\bulk\common.js | 202 | Something better
 | node_modules\mongodb\lib\bulk\ordered.js | 227 | Bring from driver information in isMaster
 | node_modules\moment\src\locale\fr.js | 50 | Return 'e' when day of month > 1. Move this case inside
+| node_modules\mongoose\lib\error\divergentArray.js | 23 | write up a docs page (FAQ) and link to it
+| node_modules\mongoose\lib\types\documentarray.js | 153 | cast to the _id based on schema for proper comparison
 | node_modules\mongodb-core\lib\connection\pool.js | 1196 | reenable when sessions development is complete
 | node_modules\mongodb-core\lib\topologies\replset.js | 1187 | once we drop Node 4, use destructuring either here or in arguments.
 | node_modules\mongodb-core\lib\topologies\shared.js | 385 | 
-| node_modules\mongoose\lib\error\divergentArray.js | 23 | write up a docs page (FAQ) and link to it
-| node_modules\mongoose\lib\types\documentarray.js | 153 | cast to the _id based on schema for proper comparison
 | node_modules\mquery\lib\collection\node.js | 144 | 
 | node_modules\ngmap\build\scripts\ng-map.debug.js | 245 | it's for backward compatibiliy. will be removed
 | node_modules\ngmap\build\scripts\ng-map.debug.js | 860 | Add remove button.
@@ -199,8 +199,8 @@
 | node_modules\vinyl-fs\node_modules\vinyl\index.js | 23 | should this be moved to vinyl-fs?
 | node_modules\vinyl-fs\node_modules\vinyl\index.js | 42 | should this be moved to vinyl-fs?
 | node_modules\vinyl-fs\node_modules\vinyl\index.js | 149 | should this be moved to vinyl-fs?
-| node_modules\@uirouter\angularjs\lib\directives\viewDirective.js | 196 | Use $view service as a central point for registering component-level hooks
 | node_modules\@uirouter\angularjs\lib-esm\directives\viewDirective.js | 320 | Use $view service as a central point for registering component-level hooks
+| node_modules\@uirouter\angularjs\lib\directives\viewDirective.js | 196 | Use $view service as a central point for registering component-level hooks
 | node_modules\@uirouter\core\lib\resolve\resolvable.js | 13 | explicitly make this user configurable
 | node_modules\@uirouter\core\lib\transition\transition.js | 165 | Also compare parameters
 | node_modules\@uirouter\core\lib\url\urlMatcherFactory.js | 78 | typeof?
@@ -209,12 +209,12 @@
 | node_modules\@uirouter\core\lib-esm\transition\transition.js | 163 | Also compare parameters
 | node_modules\@uirouter\core\lib-esm\url\urlMatcherFactory.js | 76 | typeof?
 | node_modules\@uirouter\core\lib-esm\view\view.js | 56 | Validate incoming view name with a regexp to allow:
+| node_modules\csso\lib\compressor\clean\Ruleset.js | 16 | remove toLowerCase when type selectors will be normalized
 | node_modules\csso\lib\compressor\compress\color.js | 290 | remove those tokens
 | node_modules\csso\lib\compressor\compress\color.js | 297 | remove those tokens
 | node_modules\csso\lib\compressor\compress\color.js | 307 | remove those tokens
 | node_modules\csso\lib\compressor\compress\color.js | 315 | remove those tokens
 | node_modules\csso\lib\compressor\compress\Url.js | 30 | make better quote type selection
-| node_modules\csso\lib\compressor\clean\Ruleset.js | 16 | remove toLowerCase when type selectors will be normalized
 | node_modules\csso\lib\compressor\restructure\1-initialMergeRuleset.js | 41 | remove initial merge
 | node_modules\csso\lib\compressor\restructure\8-restructRuleset.js | 80 | need to be checked
 | node_modules\csso\lib\compressor\restructure\8-restructRuleset.js | 136 | disallow up merge only if any property interception only (i.e. diff.ne2overrided.length > 0);
@@ -314,10 +314,10 @@
 | node_modules\moment\src\lib\create\from-string-and-format.js | 19 | Move this to another part of the creation flow to prevent circular deps
 | node_modules\moment\src\lib\create\from-string.js | 136 | Replace the vanilla JS Date object with an indepentent day-of-week check.
 | node_modules\moment\src\lib\duration\as.js | 35 | Use this.as('ms')?
-| node_modules\moment\src\lib\locale\locales.js | 50 | Find a better way to register and load all the locales in Node
-| node_modules\moment\src\lib\locale\set.js | 19 | Remove "ordinalParse" fallback in next major release.
 | node_modules\moment\src\lib\moment\add-subtract.js | 9 | remove 'name' arg after deprecation is removed
 | node_modules\moment\src\lib\moment\min-max.js | 52 | Use [].sort instead?
+| node_modules\moment\src\lib\locale\locales.js | 50 | Find a better way to register and load all the locales in Node
+| node_modules\moment\src\lib\locale\set.js | 19 | Remove "ordinalParse" fallback in next major release.
 | node_modules\moment\src\lib\units\day-of-month.js | 26 | Remove "ordinalParse" fallback in next major release.
 | node_modules\moment\src\lib\units\month.js | 152 | add sorting
 | node_modules\moment\src\lib\units\month.js | 192 | Another silent failure?
@@ -366,16 +366,16 @@
 | node_modules\gulp-connect\node_modules\send\node_modules\debug\browser.js | 37 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\gulp-connect\node_modules\serve-static\node_modules\send\index.js | 791 | this is all lame, refactor meeee
 | node_modules\stylus\node_modules\source-map\test\source-map\test-util.js | 202 | Issue #128: Define and test this function properly.
-| node_modules\tiny-lr\node_modules\body-parser\lib\types\json.js | 74 | maybe make this configurable or part of "strict" option
 | node_modules\tiny-lr\node_modules\raw-body\node_modules\bytes\index.js | 36 | use is-finite module?
+| node_modules\tiny-lr\node_modules\body-parser\lib\types\json.js | 74 | maybe make this configurable or part of "strict" option
 | node_modules\gulp-connect\node_modules\serve-static\node_modules\mime\build\test.js | 46 | Uncomment once #157 is resolved
 | node_modules\nodemon\node_modules\expand-brackets\node_modules\debug\src\browser.js | 36 | add a `localStorage` variable to explicitly enable/disable colors
 | public\clases.js | 50 | Agregar puesto dentro de la Aduana
 | public\clases.js | 52 | Hacer metodos del Encargado de la Aduana
 | public\clases.js | 58 | sucursal asignada
 | public\clases.js | 61 | Hacer metodos del Encargado de la sucursales
-| public\clases.js | 142 | Agregar los metodos de las tarjetas
-| public\clases.js | 160 | Agregar  los metodos del paquete
+| public\clases.js | 134 | Agregar los metodos de las tarjetas
+| public\clases.js | 152 | Agregar  los metodos del paquete
 | node_modules\angular\angular.js | 2132 | @misko this function needs to be removed
 | node_modules\angular\angular.js | 2158 | @perf update `nodes` instead of creating a new object?
 | node_modules\angular\angular.js | 3728 | do we still need this?
@@ -463,6 +463,7 @@
 | node_modules\bson\browser_build\bson.js | 9422 | Legacy, not needed anymore. Remove in next major version.
 | node_modules\bson\browser_build\bson.js | 14093 | implementing a custom parsing for this, or refactoring the regex would yield
 | node_modules\catharsis\lib\describe.js | 355 | this hardcodes the order and placement of functionNew and functionThis; need to move
+| node_modules\debug\src\browser.js | 36 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\ecc-jsbn\lib\ec.js | 15 | if(x.compareTo(q) >= 0) error
 | node_modules\ecc-jsbn\lib\ec.js | 78 | compression flag
 | node_modules\ecc-jsbn\lib\ec.js | 162 | optimized handling of constants
@@ -471,9 +472,8 @@
 | node_modules\entities\lib\decode.js | 46 | consider creating a merged map
 | node_modules\entities\lib\encode.js | 30 | add ranges
 | node_modules\express\lib\request.js | 448 | change req.host to return host in next major
-| node_modules\form-data\lib\form_data.js | 115 | Looks like there is bug in Node fs.createReadStream
-| node_modules\debug\src\browser.js | 36 | add a `localStorage` variable to explicitly enable/disable colors
 | node_modules\gulp\bin\gulp.js | 181 | batch these
+| node_modules\form-data\lib\form_data.js | 115 | Looks like there is bug in Node fs.createReadStream
 | node_modules\htmlparser2\lib\FeedHandler.js | 5 | make this a streamable handler
 | node_modules\htmlparser2\lib\Tokenizer.js | 627 | make events conditional
 | node_modules\htmlparser2\lib\Tokenizer.js | 880 | add a way to remove current tag
@@ -508,7 +508,6 @@
 | node_modules\localtunnel\lib\Tunnel.js | 47 | @shtylman don't print to stdout?
 | node_modules\localtunnel\lib\TunnelCluster.js | 77 | some languages have single threaded servers which makes opening up
 | node_modules\lodash\function\debounce.js | 62 | Changes.cancel();
-| node_modules\moment\locale\fr.js | 54 | Return 'e' when day of month > 1. Move this case inside
 | node_modules\moment\min\locales.js | 3290 | Return 'e' when day of month > 1. Move this case inside
 | node_modules\moment\min\moment-with-locales.js | 357 | Remove "ordinalParse" fallback in next major release.
 | node_modules\moment\min\moment-with-locales.js | 1000 | add sorting
@@ -522,6 +521,7 @@
 | node_modules\moment\min\moment-with-locales.js | 3668 | Remove "ordinalParse" fallback in next major release.
 | node_modules\moment\min\moment-with-locales.js | 4196 | Use this.as('ms')?
 | node_modules\moment\min\moment-with-locales.js | 7781 | Return 'e' when day of month > 1. Move this case inside
+| node_modules\moment\locale\fr.js | 54 | Return 'e' when day of month > 1. Move this case inside
 | node_modules\mongodb\lib\cursor.js | 1255 | refactor this logic into core
 | node_modules\mongoose\lib\aggregate.js | 503 | refactor to reuse the query builder logic
 | node_modules\mongoose\lib\query.js | 3520 | refactor

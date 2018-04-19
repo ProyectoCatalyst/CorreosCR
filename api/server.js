@@ -67,6 +67,7 @@ const index = require('./index'),
       mail = require('./components/mail/mail.route'),
       carrier = require('./components/carrier/carrier.route'),
       sucursales = require('./components/sucursales/sucursales.route.js' ),
+      licencias = require('./components/licencias/licencias.route'),
       paquetes = require('./components/paquetes/paquetes.route');
 
 /**
@@ -74,6 +75,7 @@ const index = require('./index'),
  */
 app.use('/api', carrier);
 app.use('/api', sucursales);
+app.use('/api', licencias);
 app.use('/api', paquetes);
 app.use('/api', tarjetas);
 app.use('/api', mail);

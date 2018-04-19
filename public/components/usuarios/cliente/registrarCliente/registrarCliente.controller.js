@@ -89,7 +89,9 @@
         contrasenna += chars.charAt(x);
       }
 
-      let objNuevoCliente = new Cliente(pclienteNuevo.nombre, pclienteNuevo.segundoNombre, pclienteNuevo.primerApellido, pclienteNuevo.segundoApellido, urlImagen, pclienteNuevo.cedula, pclienteNuevo.fecha, pclienteNuevo.sexo, pclienteNuevo.provincia.name, pclienteNuevo.canton.name, pclienteNuevo.distrito.name, pclienteNuevo.direccion, pclienteNuevo.correo, contrasenna, rol, estado, pclienteNuevo.telefono, pclienteNuevo.latitud, pclienteNuevo.longitud);
+      let casillero = servicioUsuarios.asignarCasillero();
+
+      let objNuevoCliente = new Cliente(pclienteNuevo.nombre, pclienteNuevo.segundoNombre, pclienteNuevo.primerApellido, pclienteNuevo.segundoApellido, urlImagen, pclienteNuevo.cedula, pclienteNuevo.fecha, pclienteNuevo.sexo, pclienteNuevo.provincia.name, pclienteNuevo.canton.name, pclienteNuevo.distrito.name, pclienteNuevo.direccion, pclienteNuevo.correo, contrasenna, rol, estado, pclienteNuevo.telefono, pclienteNuevo.latitud, pclienteNuevo.longitud, casillero);
 
       console.log(objNuevoCliente);
 
@@ -107,7 +109,7 @@
       } else {
         swal({
           title: "Ha ocurrido un Error",
-          text: "No sea tonto, el cliente ya se encuentra registrado",
+          text: "El usuario ha sido anteriormnete registrado.",
           icon: "error",
           button: "Aceptar"
         });
