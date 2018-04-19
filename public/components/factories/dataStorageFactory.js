@@ -106,6 +106,7 @@
           'paquetes': data.paquetes,
           'latitud': data.latitud,
           'longitud': data.longitud,
+          'casillero' :data.casillero
         }
       });
 

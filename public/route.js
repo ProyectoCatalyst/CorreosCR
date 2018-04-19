@@ -158,7 +158,7 @@
         controller: 'controladorPrealertar',
         controllerAs: 'vm'
       })
-         
+
       .state('main.listarPaquetes', {
         url: '/listarPaquetes',
         templateUrl: './components/paquetes/listarPaquetes/listarPaquetes.view.html',
@@ -166,11 +166,11 @@
           pageTitle: 'Listar Paquetes'
         },
         resolve: {
-          load:['$ocLazyLoad', ($oclazyLoad)=>{
+          load: ['$ocLazyLoad', ($oclazyLoad) => {
             return $oclazyLoad.load('./components/paquetes/listarPaquetes/listarPaquetes.controller.js')
           }]
         },
-        controller:'controladorListarPaquetes',
+        controller: 'controladorListarPaquetes',
         controllerAs: 'vm'
       })
       .state('main.estadoPaquete', {
@@ -202,7 +202,7 @@
         controller: 'controladorModificarEstadoPaquete',
         controllerAs: 'vm'
       })
-      
+
       .state('registrarRepartidor', {
         url: '/registrarRepartidor',
         templateUrl: './components/usuarios/repartidor/registrarRepartidor/registrarRepartidor.view.html',
@@ -247,6 +247,21 @@
           }]
         },
         controller: 'controladorListaTodosRepartidores',
+        controllerAs: 'vm'
+      })
+
+      .state('main.casillero', {
+        url: '/casillero',
+        templateUrl: './components/casillero/vistaCasillero.view.html',
+        data: {
+          pageTitle: 'Mostrar casillero'
+        },
+        resolve: {
+          load: ['$ocLazyLoad', ($ocLazyLoad) => {
+            return $ocLazyLoad.load('./components/casillero/vistaCasillero.controller.js')
+          }]
+        },
+        controller: 'controladorCasillero',
         controllerAs: 'vm'
       });
 
