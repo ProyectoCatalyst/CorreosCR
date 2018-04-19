@@ -23,7 +23,6 @@
 
         vm.paqueteMostrar = paqueteActivo;
 
-
         vm.cambioEstado = (pEstado, idRepartidor) => {
             let estadoDatos = [pEstado, idRepartidor],
                 estado = '';

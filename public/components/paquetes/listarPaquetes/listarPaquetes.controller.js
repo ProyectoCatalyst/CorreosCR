@@ -9,7 +9,6 @@
     function controladorListarPaquetes($stateParams, $state, servicioPaquetes, servicioInicioSesion) {
 
         let vm = this;
-
         const userAuth = servicioInicioSesion.getAuthUser();
         if (userAuth == undefined) {
             $state.go('inicioSesion');
