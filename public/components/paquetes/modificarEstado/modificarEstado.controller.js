@@ -28,7 +28,6 @@
                 PaquetesPrealertadosMod.pesoPaquete, PaquetesPrealertadosMod.precioPaquete, PaquetesPrealertadosMod.costoEnvio,
                 PaquetesPrealertadosMod.costoTotalPaquete, estadoNuevo, PaquetesPrealertadosMod.idRepartidor,
                 PaquetesPrealertadosMod.idSucursal, PaquetesPrealertadosMod.idCliente, PaquetesPrealertadosMod.idMensajero);
-
             servicioPaquetes.modificarEstado(objPaqueteFormato); // envia todo el objeto, compara cada paquete ne el sistema con el codigo del paquete nuevo pmodificarEstado.convenio = paqueteLS[i].convenio
 
 
