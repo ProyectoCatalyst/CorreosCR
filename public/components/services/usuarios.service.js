@@ -64,13 +64,13 @@
 
         switch (Number(obj.rol)) {
           case 2:
-            let tempEncargadoAduana = new EncargadoAduanas(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.foto, obj.cedula, tempfecha, obj.genero, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo,obj.contrasenna, obj.rol, obj.estado);
+            let tempEncargadoAduana = new Encargado(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.foto, obj.cedula, tempfecha, obj.genero, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol, obj.estado, obj.telefono, obj.telefonoAdicional, obj.sucursal, obj.rolAduana);
 
             listadeusuarios.push(tempEncargadoAduana);
             break;
 
           case 3:
-            let tempEncargadoSucursal = new EncargadoSucursales(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.foto, obj.cedula, tempfecha, obj.genero, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo,obj.contrasenna, obj.rol, obj.estado);
+            let tempEncargadoSucursal = new Encargado(obj.primerNombre, obj.segundoNombre, obj.primerApellido, obj.segundoApellido, obj.foto, obj.cedula, tempfecha, obj.genero, obj.provincia, obj.canton, obj.distrito, obj.direccion, obj.correo, obj.contrasenna, obj.rol, obj.estado, obj.telefono, obj.telefonoAdicional, obj.sucursal, obj.rolAduana);
 
             listadeusuarios.push(tempEncargadoSucursal);
             break;
@@ -109,16 +109,7 @@
     }
 
     function _actualizarUsuario(pusuarioModificado) {
-      let listadeusuarios = _obtenerlistadeusuarios();
-
-      for (let i = 0; i < listadeusuarios.length; i++) {
-        if (listadeusuarios[i].getCorreo() == pusuarioModificado.getCorreo()) {
-          listadeusuarios[i] = pusuarioModificado;
-        }
-      }
-
-      let modificacionExitosa = localStorageFactory.setItem(listaUsuarios, listadeusuarios);
-
+      let modificacionExitosa = dataStorageFactory.updateUserData(pusuarioModificado);
       return modificacionExitosa;
     }
 

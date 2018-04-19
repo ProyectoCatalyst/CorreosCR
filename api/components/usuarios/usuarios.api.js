@@ -19,6 +19,16 @@ module.exports.registrar = (req, res) => {
       newUser.telefono = req.body.telefono;
       newUser.casillero = req.body.casillero;
       break;
+    case '2':
+      newUser.telefono = req.body.telefono
+      newUser.telefonoAdicional = req.body.telefonoAdicional
+      newUser.rolAduana = req.body.rolAduana
+      break;
+    case '3':
+    newUser.telefono = req.body.telefono
+    newUser.telefonoAdicional = req.body.telefonoAdicional
+    newUser.sucursal = req.body.sucursal
+    break;
     default:
 
   }
@@ -39,7 +49,7 @@ module.exports.listarTodos = (req, res) => {
 };
 
 module.exports.actualizar = (req, res) => {
-  UserModel.findByIdAndUpdate(req.body.correo, { $set: req.body }, (err, user) => {
+  UserModel.update({correo: req.body.correo}, req.body, (err, user) => {
     if (err) {
       res.json({ success: false, msg: 'No se ha actualizado.' + handleError(err) });
 
