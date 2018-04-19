@@ -3,7 +3,7 @@ let mongoose = require('mongoose');
 
 //Esquema de Licencias
 let carrierSchema = new mongoose.Schema({
-  codigoCarrier   : {type: String, required: true},
+  codigoCarrier   : {type: String, required: true, unique: true},
   nombreCarrier   : {type: String, required: true},
   estadoCarrier   : {type: Boolean, required: true}
 });

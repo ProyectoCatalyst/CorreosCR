@@ -257,15 +257,14 @@
         data: {
           pageTitle: 'Editar Carrier | Correos de Costa Rica'
         },
+        params: {
+          objCarrier: ''
+        },
         resolve: {
           load: ['$ocLazyLoad', ($ocLazyLoad) => {
             return $ocLazyLoad.load('./components/carrier/editarCarrier/editarCarrier.controller.js')
           }]
         },
-        params: {
-          objCarrier: ''
-        },
-        
         controller: 'controladorEditarCarrier',
         controllerAs: 'vm'
       })

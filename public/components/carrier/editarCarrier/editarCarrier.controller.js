@@ -47,7 +47,7 @@
           button: "Aceptar"
         });
 
-        $state.go('main.listarCarriers');
+        $state.go('main.listarCarrier');
       }
       vm.CarrierNueva = null;
       listarCarriers();

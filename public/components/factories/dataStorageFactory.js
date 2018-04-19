@@ -461,6 +461,7 @@
           dataType: 'json',
           async: false,
           data: {
+          
               'codigoCarrier': data.codigoCarrier,
               'nombreCarrier': data.nombreCarrier,
               'estadoCarrier': data.estadoCarrier

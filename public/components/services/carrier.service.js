@@ -4,80 +4,34 @@
     .module('correosCR')
     .service('servicioCarrier', servicioCarrier);
 
-  servicioCarrier.$inject = ['$q', '$log', '$http','dataStorageFactory'];
+  servicioCarrier.$inject = ['$q', '$log', '$http','dataStorageFactory','localStorageFactory'];
 
-  function servicioCarrier($q, $log, $http,dataStorageFactory) {
-
+  function servicioCarrier($q, $log, $http, dataStorageFactory,localStorageFactory) {
 
     let publicAPI = {
       agregarCarrier: _agregarCarrier,
-      retornarCarrierAct: _retornarCarrierAct,
+      retornarCarrier: _retornarCarrier,
       editarCarrier: _editarCarrier, 
+      cambiarEstado: _cambiarEstado,
+      retornarCarrierDesact: _retornarCarrierDesact,
+      retornarCarrierAct: _retornarCarrierAct
+
     }
 
     return publicAPI;
 
-    function _agregarCarrier(pCarrierNuevo) {
-
-      let listaCarrier = _retornarCarrierAct();
-      let validarCodigo = true;
-      let tamanno = listaCarrier.length;
-      for (let i = 0; i < tamanno; i++) {
-        if (pCarrierNuevo.getCodigo() == listaCarrier[i].getCodigo()) {
-          validarCodigo = false;
-        }
-      }
-
-      if (validarCodigo == true) {
-         dataStorageFactory.setCarrierData(pCarrierNuevo);
-
-      }
-      return validarCodigo;
-    }// fin función agregar
 
     function _retornarCarrierAct() {
-
-      let listaCarrierDB = dataStorageFactory.getCarrierData(),
-        carrierTemp = [];
-
-      if (listaCarrierDB == null) {
-
-        return carrierTemp;
-      } else {
-        listaCarrierDB.forEach(obj => {
-
-          let objCarrierNuevo = new Carriers(obj.codigoCarrier, obj.nombreCarrier, obj.estadoCarrier);
-
-          carrierTemp.push(objCarrierNuevo);
-        });
-      }
-
-      return carrierTemp;
-    }// fin función retornar
-
-
-
-    function _editarCarrier(pcarrierEditado) {
-      let modificacionExitosa = false;
-
-      modificacionExitosa = dataStorageFactory.updateCarrier(pcarrierEditado);
-
-      return modificacionExitosa;
-    }
-
-
-
-    function _retornarCarrierAct() {
-        let carrierDB = dataStorageFactory.getCarrierData(),
+      let carrierLS = dataStorageFactory.getCarrierData(),
         carrierAct = [],
         carrierActLS = [];
 
-      if (carrierDB == null) {
+      if (carrierLS == null) {
         return carrierActLS;
       } else {
-        for (let i = 0; i < carrierDB.length; i++) {
-          if (carrierDB[i].estadoCarrier == true) {
-            carrierAct.push(carrierDB[i]);
+        for (let i = 0; i < carrierLS.length; i++) {
+          if (carrierLS[i].estadoCarrier == true) {
+            carrierAct.push(carrierLS[i]);
           }
         }
         carrierAct.forEach(objTemp => {
@@ -85,22 +39,20 @@
 
           carrierActLS.push(objCarrierAct);
         });
-        return carrierAct;
+        return carrierActLS;
       }
     }
-
     function _retornarCarrierDesact() {
-        let carrierDB = dataStorageFactory.getCarrierData(),
+      let carrierLS = dataStorageFactory.getCarrierData(),
         carrierDesact = [],
         carrierDesactLS = [];
 
-
-      if (carrierDB == null) {
+      if (carrierLS == null) {
         return carrierDesactLS;
       } else {
-        for (let i = 0; i < carrierDB.length; i++) {
-          if (carrierDB[i].estadoCarrier == false) {
-            carrierDesact.push(carrierDB[i]);
+        for (let i = 0; i < carrierLS.length; i++) {
+          if (carrierLS[i].estadoCarrier == false) {
+            carrierDesact.push(carrierLS[i]);
           }
         }
 
@@ -112,5 +64,65 @@
         return carrierDesactLS
       }
     }
+
+    function _cambiarEstado(pobjCarrier) {
+      let carrierLS = _retornarCarrier();
+
+      if(pobjCarrier.estadoCarrier){
+        pobjCarrier.estadoCarrier = false;
+      }else{
+        pobjCarrier.estadoCarrier = true;
+      }
+      actualizarLista(pobjCarrier);
+    }
+
+    function _agregarCarrier(pCarrierNuevo) {
+
+      let listaCarrier = _retornarCarrier();
+      let validarCodigo = true;
+      let tamanno = listaCarrier.length;
+      for (let i = 0; i < tamanno; i++) {
+        if (pCarrierNuevo.getCodigo() == listaCarrier[i].getCodigo()) {
+          validarCodigo = false;
+        }
+      }
+
+      if (validarCodigo == true) {
+        listaCarrier.push(pCarrierNuevo);
+        lgetCarrierData(listaCarrier);
+      }
+      return validarCodigo;
+    }// fin función agregar
+
+    function _retornarCarrier() {
+
+      let listaCarrierLocal = dataStorageFactory.getCarrierData(),
+        carrierTemp = [];
+
+      if (listaCarrierLocal == null) {
+
+        return carrierTemp;
+      } else {
+        listaCarrierLocal.forEach(obj => {
+
+          let objCarrierNuevo = new Carriers(obj.codigoCarrier, obj.nombreCarrier, obj.estadoCarrier);
+
+          carrierTemp.push(objCarrierNuevo);
+        });
+      }
+
+      return carrierTemp;
+    }// fin función retornar
+
+
+    function _editarCarrier(pcarrierEditar) {
+      dataStorageFactory.updateCarrierData(pcarrierEditar);
+    }// fin función actualizar
+
+
+    function actualizarLista(pcarrierLS) {
+      dataStorageFactory.updateCarrierData(pcarrierLS);
+    }
+
   }// fin servicio
 })();
