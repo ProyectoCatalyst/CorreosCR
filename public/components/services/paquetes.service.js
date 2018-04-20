@@ -67,7 +67,7 @@
               }
               break;
             case "3":
-              if (objPaquetesPrealertados.estadoPaquete == "Saliendo de aduana" && objPaquetesPrealertados.idSucursal == psucursalID) {
+              if (objPaquetesPrealertados.estadoPaquete == "Saliendo de aduana") {
                 listaPaquetesPrealertados.push(objPaquetesPrealertados);
               }
               break;
@@ -84,7 +84,7 @@
 
     function _retornarPaquetesPorRepartidor(pusuarioCorreo) {
       let listaPaquetesPorRepartidor = [];
-      let listaPaquetesPrealertadosLocal = JSON.parse(localStorage.getItem("listaPaquetesPrealertadosLS"));
+      let listaPaquetesPrealertadosLocal = _retornarPaquetesPrealertados();
 
       if (listaPaquetesPrealertadosLocal == null) {
         listaPaquetesPorRepartidor = [];
@@ -94,7 +94,7 @@
           let objPaquetesPrealertados = new Paquete(obj.trackingPaquete, obj.tipoPaquete, obj.pesoPaquete,
             obj.precioPaquete, obj.costoEnvio, obj.costoTotalPaquete, obj.estadoPaquete, obj.idRepartidor,
             obj.idSucursal, obj.idCliente);
-          if (objPaquetesPrealertados.estadoPaquete == "Entregado a repartidor" && objPaquetesPrealertados.idRepartidorPaquete == usuarioCorreo) {
+          if (objPaquetesPrealertados.estadoPaquete == "Entregado a repartidor") {
             listaPaquetesPorRepartidor.push(objPaquetesPrealertados);
           }
         });
